@@ -66,6 +66,18 @@
 ------
 ### Wireframes
 
+* Desktop View
+
+![Wireframes](hobo_hatch_b2b/static/wireframes/wireframes_desktop_view.png)
+
+* Mobile View
+
+![Wireframes](hobo_hatch_b2b/static/wireframes/wireframes_mobile_view.png)
+
+* Tablet View
+
+![Wireframes](hobo_hatch_b2b/static/wireframes/wireframes_tablet_view.png)
+
 
 
 ## Surface
