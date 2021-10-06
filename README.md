@@ -11,6 +11,7 @@
 * This will influence the design in terms of the surface of the website, as even though the website is B2B it is equally important that the brand ethos and look is conveyed to the store buyers. 
 
 ## User Stories - Buyer / Stockist
+* This group are the primary audience for the site.  Operations need to be simple and effective from browsing through to payment to divert workload from the Brand Owner.  The buyer should be able to easily add styles to the bag, view product details if needed (or not be bombarded with them if they are a repeat purchaser), and edit the bag in a review before proceeding to payment. 
 
 | **US ID** | **User Type**      | **Action**                                               | **Expected Outcome**                                                |
 | --------- | ------------------ | -------------------------------------------------------- | ------------------------------------------------------------------- |
@@ -27,6 +28,7 @@
 | **US 10** | Buyer / Stockist | View more about the brand on an about us page            | Feel confident in the product I am investing in.                    |
 
 ## User Stories - Site Owner / Brand Owner
+* The Brand / Site owner should have sufficient access to be able to support the client where needed.  They should have full CRUD accessibility and this should not be too technical to access. 
 
 | **US ID** | User Type                | Action                                                 | Expected Outcome                                                                         |
 | --------- | ------------------------ | ------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
@@ -37,17 +39,18 @@
 | **US 14** | Brand Owner / Site Owner | Provide a frequently asked questions page              | To avoid unnecessary inbound customer service emails                                     |
 | **US 15** | Brand Owner / Site Owner | Display customer testimonials                          | Encourage new stockists                                                                  |
 
-## User Stories - Site Owner / Brand Owner
+## User Stories - Site User / First Time User
 * As this site is not intended for the general public, the following are intended to cover users that do not know the brannd already or may be trying to log in / register for the first time. 
 
-| **US ID** | User Type | Action                                                 | Expected Outcome                                                   |
-| --------- | --------- | ------------------------------------------------------ | ------------------------------------------------------------------ |
-|           |           |                                                        |                                                                    |
-| **US 16** | Site User | Register for an account                                | Easily create account                                              |
-| **US 17** | Site User | Receive email response to confirm registration request | Be reassured that your request is being processed                  |
-| **US 18** | Site User | Login and Logout                                       | Access shopping, and account info.                                 |
-| **US 19** | Site User | Recover Password                                       | Able to easily re-access my account through a link                 |
-| **US 20** | Site User | Have a personalised user profile                       | Be able to view order history and edit account / business details. |
+| **US ID** | User Type | Action                                                    | Expected Outcome                                                    |
+| --------- | --------- | --------------------------------------------------------- | ------------------------------------------------------------------- |
+|           |           |                                                           |                                                                     |
+| **US 16** | Site User | Register for an account                                   | Easily create account                                               |
+| **US 17** | Site User | Receive email response to confirm registration request    | Be reassured that your request is being processed                   |
+| **US 18** | Site User | Login and Logout                                          | Access shopping, and account info.                                  |
+| **US 19** | Site User | Recover Password                                          | Able to easily re-access my account through a link                  |
+| **US 20** | Site User | Easily create personalised user profile                   | Be able to view order history and edit account / business details.  |
+| **US 21** | Site User | Have a good re-direction experience if not a B2B customer | Be redirected to the E-commerce site and / or social media profiles |
 
 ## Scope & Features
 ------
