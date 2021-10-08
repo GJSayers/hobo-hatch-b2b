@@ -59,6 +59,8 @@
 ------
 
 ### Conceptual Design
+* Given that the general premis of the site is centered around B2B ordering, most core features & actions are taken in the logged in status of a B2B stockist.  The below conceptual flowchart is produced on Lucid Chart and gives a visual representation of the key customer journeys whilst using the site. 
+![Conceptural Flowchart](hobo_hatch_b2b/static/conceptual_design/conceptual_flowchart.png)
 ### Database Schema
 
 
