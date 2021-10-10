@@ -1,8 +1,8 @@
 # Hobo & Hatch B2B Ordering Portal
 
 * This ordering portal is created for the fourth and final project on the Full Stack Developer Diploma with Code Institute.  
-* The project encompasses the languages and frameworks that I have been using throughout the course, and in particular HTML5, CSS3 & Javascript as frontend tools, using Bootstrap as a frontend framework.  The backend is created with Python, sqlite3 and Django and deployed on Heroku. 
-* The project is based on a real life spec to design a wholesale ordering portal for retail & wholesale clothing and accessories brand Hobo & Hatch.  The project is delivered at this stage as an MVP, with future features and implementations expected in V2. 
+* The project encompasses the languages and frameworks that I have been using throughout the course, and in particular HTML5, CSS3 & Javascript as frontend tools, using Bootstrap as a frontend framework.  The backend is created with Python, sqlite3 and Django and deployed on Heroku at which point the database used is postgres. 
+* The project is based on a real life spec to design a wholesale / B2B ordering portal for retail & wholesale clothing and accessories brand Hobo & Hatch.  The project is delivered at this stage as an MVP, with future features and implementations expected in V2. 
 
 ## Strategy
 ------
@@ -88,7 +88,20 @@
 ## Surface
 ------
 ### Design Inspiration & Colour Choices
+* Hobo & Hatch HQ is located in Perth, Australia and consequently a lot of their design inspiration comes from the sea, rust-coloured landscape elements and natural tones. 
+* Additionally, I wanted to ensure that the colour pallete was in keeping with colour trends, so I took a look at colour trends for 2022 on [Pantone](https://www.pantone.com/articles/fashion-color-trend-report/new-york-fashion-week-spring-summer-2022)
+* I found that the following colours were aligned with the colours I was considering that had been inspired by the brand imagery:
+![Pantone swatches](hobo_hatch_b2b/static/conceptual_design/pantone_colors.png)
+* Here are some example images from the brand's lifestyle image collection
+![Sea Lifestyle Image](hobo_hatch_b2b/static/conceptual_design/hobo_imagery_sea.png)
+![Outdoorsy Lifestyle Image](hobo_hatch_b2b/static/conceptual_design/hobo_imagery_outdoors.png)
+![Beach / Earth Tones Lifestyle Image](hobo_hatch_b2b/static/conceptual_design/hobo_imagery_beach.png)
+* With these inspirations I settled on the following colour scheme produced on [Coolors](https://coolors.co/)
+![](hobo_hatch_b2b/static/conceptual_design/hobo_hatch_colourscheme_final.png)
+
 ### Typography
+* For fonts I will be using Quicksand from [Google Fonts](https://fonts.google.com/) as this is an accessibility friendly font, and has a light yet clear effect which is reflective on the brand's values of 'treading lightly'.  
 ### Imagery
+* Imagery used will be source from the brand itself - Hobo & Hatch. 
 
 
