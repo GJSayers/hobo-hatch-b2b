@@ -1,6 +1,36 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block page_header %}
+{% endblock %}
+
 {% block content %}
+<div class="container">
+    <div class="row">
+        <h1 class="page-title">
+            Welcome to Hobo & Hatch B2B Ordering
+        </h1>
+    </div>
+    <div class="row">  
+        <p class="home-page-text">
+            Here is some text about the brand
+        </p>
+    </div>
+    <div class="row">
+        <div class="login-row">
+            <p>Login to Shop the latest Hobo & Hatch Collections</p>
+            <button class="login-button">
+                Login
+            </button>
+        </div>
+        <div class="apply-row">
+            <p>Not a stockist yet?</p>
+            <button class="apply-link" >
+                Apply to be a stockist
+            </button>
+        </div>
+    </div>
+    
+</div>
     
 {% endblock %}
