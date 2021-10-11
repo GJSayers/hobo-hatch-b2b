@@ -6,6 +6,7 @@ body {
     background: url('/media/hobo_imagery_beach.png');
     background-size: cover;
     color: #0A151A;
+    text-anchor: #0A151A;
 }
 
 body.title-text {
@@ -23,4 +24,12 @@ body.body-text {
 .home-logo {
     max-width: 250px;
     max-height: 150px;
+}
+
+.search-bar {
+    background: none;
+    border-bottom: solid, 2px, #0A151A;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }

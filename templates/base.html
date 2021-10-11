@@ -16,10 +16,12 @@
 
   <!-- Bootstrap CSS -->
   {% block corecss %}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@300&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
   {% endblock %}
 
@@ -27,9 +29,15 @@
   {% endblock %}
 
   {% block corejs %}
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+  </script>
   <script src="https://kit.fontawesome.com/50cb4e3408.js" crossorigin="anonymous"></script>
   {% endblock %}
 
@@ -40,12 +48,16 @@
 </head>
 
 <body>
+  <!-- header -->
   <header class="container-fluid fixed-top">
     <div class="row justify-content-center">
+      <!-- blank div -->
       <div class="col-4 my-0"></div>
-      <div class="col-4 my-0 logo">
-        <img class="home-logo" src="/media/logo_home.png" alt="hobo-hatch-logo">
+      <!-- logo div -->
+      <div class="col-4 center-block text-center">
+        <img class="home-logo center-block" src="/media/logo_home.png" alt="hobo-hatch-logo">
       </div>
+      <!-- account and shopping bag div -->
       <div class="col-4 my-0">
         <div class="row">
           <div class="col-12 my-0">
@@ -58,36 +70,36 @@
                 </a>
                 <div class="dropdown-menu border-0" aria-labelledby="user-options">
                   {% if request.user.is_authenticated %}
-                      {% if request.user.is_superuser %}
-                          <a href="" class="dropdown-item">Manage Products</a>
-                      {% endif %}
-                      <a href="" class="dropdown-item">My Account</a>
-                      <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                  {% else %}
-                      <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                      <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                  {% if request.user.is_superuser %}
+                  <a href="" class="dropdown-item">Manage Products</a>
                   {% endif %}
-              </div>
+                  <a href="" class="dropdown-item">My Account</a>
+                  <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                  {% else %}
+                  <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                  <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                  {% endif %}
+                </div>
               </li>
               <li class="list-inline-item my-0">
                 <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
                   <div class="text-center">
-                      <div><i class="fas fa-shopping-bag"></i></div>
-                      <span class="my-0">
-                        items
-                          {% if total_items %}
-                              {{ total_items }}
-                          {% else %}
-                              0 
-                          {% endif %}
-                      </span>
-                      <span class="my-0">
-                        | {% if grand_total %}
-                              £{{ grand_total|floatformat:2 }}
-                          {% else %}
-                              £0.00
-                          {% endif %}
-                      </span>
+                    <div><i class="fas fa-shopping-bag"></i></div>
+                    <span class="my-0">
+                      items
+                      {% if total_items %}
+                      {{ total_items }}
+                      {% else %}
+                      0
+                      {% endif %}
+                    </span>
+                    <span class="my-0">
+                      | {% if grand_total %}
+                      £{{ grand_total|floatformat:2 }}
+                      {% else %}
+                      £0.00
+                      {% endif %}
+                    </span>
                   </div>
                 </a>
               </li>
@@ -96,12 +108,12 @@
         </div>
       </div>
       <div class="col-4"></div>
-      <div class="col-4 my-0 search">
+      <div class="col-12 my-0 search body-text">
         <form action="" method="GET">
-          <div class="col-12 input-group w-40 my-0">
-            <input class="form-control border border-grey rounded-0 my-0" type="text" name="q" placeholder="Search">
+          <div class="col input-group w-40 my-0 center-block max-width-50">
+            <input class="form-control rounded-0 my-0 search-bar" type="text" name="q" placeholder="Search">
             <div class="input-group-prepend">
-              <button type="submit" class="form-control btn btn-grey rounded-0 my-0">
+              <button type="submit" class="form-control rounded-0 my-0 search-bar">
                 <span class="icon">
                   <i class="fas fa-search"></i>
                 </span>
@@ -112,25 +124,25 @@
       </div>
       <div class="col-4"></div>
     </div>
-      <div class="row justify-content-center nav-row">
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Active</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Disabled</a>
-          </li>
-        </ul>
-      </div>
+    <div class="row justify-content-center nav-row body-text">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+    </div>
     </div>
   </header>
-  
+
 
   {% if messages %}
   <div class="message-container"></div>
