@@ -1,0 +1,26 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: url('/media/hobo_imagery_beach.png');
+    background-size: cover;
+    color: #0A151A;
+}
+
+body.title-text {
+    font-family: 'Montserrat', 'sans-serif';
+}
+
+body.body-text {
+    font-family: 'Quicksand', 'sans-serif';
+}
+
+.header-container {
+    padding-top: 200px;
+}
+
+.home-logo {
+    max-width: 250px;
+    max-height: 150px;
+}
