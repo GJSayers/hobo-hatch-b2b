@@ -1,0 +1,164 @@
+[
+    {
+       "pk": [1],
+       "model": "products.type",
+       "fields": {
+          "product_type_name" : "earrings",
+          "friendly_name": "Earrings",
+          "category": [1]
+       }
+    },
+   {
+       "pk": 2,
+       "model": "products.type",
+       "fields": {
+          "product_type_name": "pendants_necklaces",
+          "friendly_name": "Pendants / Necklaces",
+          "category": [1]
+       }
+    },
+   {
+       "pk": 3,
+       "model": "products.type",
+       "fields": {
+          "product_type_name": "rings",
+          "friendly_name": "Rings",
+          "category": [1]
+       }
+    },
+   {
+       "pk": 4,
+       "model": "products.type",
+       "fields": {
+          "product_type_name": "bracelets_bangles",
+          "friendly_name": "Bracelets / Bangles",
+          "category": [1]
+       }
+    },
+    {
+       "pk": 5,
+       "model": "products.type",
+       "fields": {
+          "product_type_name": "tops",
+          "friendly_name": "Tops",
+          "category": [5]
+       }
+    },
+    {
+       "pk": 6,
+       "model": "products.type",
+       "fields": {
+          "product_type_name": "knitwear",
+          "friendly_name": "Knitwear",
+          "category": [5]
+       }
+    },
+    {
+       "pk": 7,
+       "model": "products.type",
+       "fields": {
+          "product_type_name": "skirts",
+          "friendly_name": "Skirts",
+          "category": [5]
+       }
+    },
+    {
+       "pk": 8,
+       "model": "products.type",
+       "fields": {
+          "product_type_name": "shorts",
+          "friendly_name": "Shorts",
+          "category": [5]
+       }
+    },
+    {
+       "pk": 9,
+       "model": "products.type",
+       "fields": {
+          "product_type_name": "trousers",
+          "friendly_name": "Trousers",
+          "category": [5]
+       }
+    },
+    {
+       "pk": 10,
+       "model": "products.type",
+       "fields": {
+          "product_type_name": "jeans",
+          "friendly_name": "Jeans",
+          "category": [5]
+       }
+    },
+    {
+        "pk": 11,
+        "model": "products.type",
+        "fields": {
+           "product_type_name": "ponchos",
+           "friendly_name": "Ponchos",
+           "category": [5]
+        }
+     },
+    {
+        "pk": 12,
+        "model": "products.type",
+        "fields": {
+           "product_type_name": "beanies",
+           "friendly_name": "Beanie Hats",
+           "category": [4]
+        }
+    },
+    {
+        "pk": 13,
+        "model": "products.type",
+        "fields": {
+           "product_type_name": "scarves",
+           "friendly_name": "Scarves",
+           "category": [4]
+        }
+    },
+    {
+        "pk": 14,
+        "model": "products.type",
+        "fields": {
+           "product_type_name": "beanie_hats",
+           "friendly_name": "Beanie Hats",
+           "category": [4]
+        }
+    },
+    {
+        "pk": 15,
+        "model": "products.type",
+        "fields": {
+           "product_type_name": "leather_bags",
+           "friendly_name": "Leather Bags",
+           "category": [2]
+        }
+    },
+    {
+        "pk": 16,
+        "model": "products.type",
+        "fields": {
+           "product_type_name": "beltbag_bumbag",
+           "friendly_name": "Beltbags / Bumbags",
+           "category": [2]
+        }
+    },
+    {
+        "pk": 17,
+        "model": "products.type",
+        "fields": {
+           "product_type_name": "wallets_purses",
+           "friendly_name": "Wallets / Purses",
+           "category": [2]
+        }
+    },
+    {
+        "pk": 18,
+        "model": "products.type",
+        "fields": {
+           "product_type_name": "belts",
+           "friendly_name": "Belts",
+           "category": [2]
+        }
+    }
+]
