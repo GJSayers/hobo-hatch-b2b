@@ -100,7 +100,8 @@
 ![](hobo_hatch_b2b/static/conceptual_design/hobo_hatch_colourscheme_final.png)
 
 ### Typography
-* For fonts I will be using Quicksand from [Google Fonts](https://fonts.google.com/) as this is an accessibility friendly font, and has a light yet clear effect which is reflective on the brand's values of 'treading lightly'.  
+* For fonts I will be using Quicksand from [Google Fonts](https://fonts.google.com/?query=quicksand for the body text as this is an accessibility friendly font, and has a light yet clear effect which is reflective on the brand's values of 'treading lightly'.  
+* For titles & headers Montserrat will be used Google Fonts](https://fonts.google.com/?query=montserrat)
 ### Imagery
 * Imagery used will be source from the brand itself - Hobo & Hatch. 
 
