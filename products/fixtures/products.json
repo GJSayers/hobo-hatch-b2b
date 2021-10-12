@@ -1,0 +1,40 @@
+[
+    {
+        "pk": 1,
+        "model": "products.product",
+        "fields": {
+            "sku": "bea_h_er_moon_ss",
+            "product_name": "Bea Silver Huggies Moon Earrings",
+            "product_category": 1,
+            "product_type": 1,
+            "product_properties": ["Sterling Silver", "Hand-crafted", "No-exchange"],
+            "product_is_bestseller": true,
+            "description": "Simple silver mini huggie hoop earrings, featuring sweet little moon charms to suit any style",
+            "size_type": "universal_size_type",
+            "product_price": 14.00,
+            "rrp_price": 29.00,
+            "image_url": "https://cdn.shopify.com/s/files/1/0498/5303/8758/products/BeaHuggiesMoonSS.png?v=1624207717",
+            "image": "bea_huggies_moon_ss.png"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.rings",
+        "fields": {
+            "sku": "aya_ring_ss",
+            "product_name": "Aya Ring Silver",
+            "product_category": 1,
+            "product_type": 3,
+            "product_properties": ["Sterling Silver", "Hand-crafted", "No-exchange"],
+            "product_is_bestseller": true,
+            "description": "Simple silver mini huggie hoop earrings, featuring sweet little moon charms to suit any style",
+            "size_type": "rings_sizes",
+            "jewellery_properties": "SR",
+            "rings_sizes": ["6","7","8","9","10"],
+            "product_price": 14.00,
+            "rrp_price": 29.00,
+            "image_url": "https://cdn.shopify.com/s/files/1/0498/5303/8758/products/BeaHuggiesMoonSS.png?v=1624207717",
+            "image": "bea_huggies_moon_ss.png"
+        }
+    }
+]
