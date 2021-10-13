@@ -10,10 +10,44 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            {{ products }}
+        <!-- Logged in customer div -->
+        <!-- Collection dropdown and descriptive div -->
+        
+        {% for product in products %}
+            <div class="col text-center">
+                <!-- Product Image and Title div -->
+                <div class="row">
+                    <div class="col-sm-12 col-lg-4">
+                        <div class="card">    
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.product_name }}</h5>
+                                <p class="card-text">COST:{{ product.product_price }}| RRP:{{ product.rrp_price}}</p>
+                            </div>
+                            <img src="{{ product.image_url }}" class="card-img-bottom" alt="{{ product.product_name|lower }}">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product input & quick add div -->
+                <div class="row">
+                    <div class="col-sm-12 col-lg-6">
+                        { if product.}
+                        {{}}
+
+                    </div>
+                </div>
+                <!-- Product Info div -->
+                <div class="row">
+                    <div class="col-sm-12 col-lg-6">
+
+                    </div>
+                </div> 
+            </div>
         </div>
+        {% endfor %}
     </div>
+
 
 {% endblock %}
