@@ -1,45 +1,45 @@
 [
     {
        "pk": 1,
-       "model": "products.category",
+       "model": "products.productcategory",
        "fields": {
-          "category_name": "jewellery",
+          "name": "jewellery",
           "friendly_name": "Jewellery",
           "product_type": [1,2,3,4]
        }
     },
    {
        "pk": 2,
-       "model": "products.category",
+       "model": "products.productcategory",
        "fields": {
-          "category_name": "leather_accessories",
+          "name": "leather_accessories",
           "friendly_name": "Leather Accessories",
           "product_type": [15,16,17,18]
        }
     },
    {
        "pk": 3,
-       "model": "products.category",
+       "model": "products.productcategory",
        "fields": {
-          "product_type_name": "blankets",
+          "name": "blankets",
           "friendly_name": "Blankets",
           "product_type": []
        }
     },
    {
        "pk": 4,
-       "model": "products.category",
+       "model": "products.productcategory",
        "fields": {
-          "product_type_name": "knitted_accessories",
+          "name": "knitted_accessories",
           "friendly_name": "Knitted Accessories",
           "product_type": [12,13,14]
        }
     },
     {
        "pk": 5,
-       "model": "products.category",
+       "model": "products.productcategory",
        "fields": {
-          "product_type_name": "clothing",
+          "name": "clothing",
           "friendly_name": "Clothing",
           "product_type": [5,6,7,8,9,10]
 
