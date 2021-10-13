@@ -4,8 +4,13 @@ from djchoices import DjangoChoices, ChoiceItem
 
 
 class ProductCategory(models.Model):
-
+    """
+    Class to define categories for products and Products Types within the categories
+    """
     class Meta:
+        """
+        Class to designate plural name
+        """
         verbose_name_plural = 'Categories'
 
     PRODUCT_TYPE_CHOICES = (
@@ -44,7 +49,14 @@ class ProductCategory(models.Model):
 
 
 class ProductType(models.Model):
-    verbose_name_plural = 'Product Types'
+    """
+    Class to identify different product types and which Categories they belong to
+    """
+    class Meta:
+        """
+        Class to designate plural name
+        """
+        verbose_name_plural = 'Product Types'
 
     name = models.CharField(max_length=90)
     friendly_name = models.CharField(max_length=90, null=False, blank=False)
@@ -68,7 +80,14 @@ class ProductType(models.Model):
 
 
 class Product(models.Model):
+    """
+    Class to define the generic product model - Subclasses for products with
+    differing sizes are properties are included as sub-classes
+    """
     class ProductProperties(DjangoChoices):
+        """
+        Subclass for general product properties - use on more info section
+        """
         sterling_silver = ChoiceItem("SS")
         gold_plated = ChoiceItem("GP")
         wool = ChoiceItem("PW")
@@ -77,6 +96,9 @@ class Product(models.Model):
         low_environmental_impact = ChoiceItem("LI")
    
     class SizeType(DjangoChoices):
+        """
+        Subclass to define product size options - use to display size entry
+        """
         one_size = ChoiceItem("universal_size_type")
         jewellery_sizes = ChoiceItem("jewellery_size_type")
         clothing_sizes = ChoiceItem("clothing_size_type")
@@ -105,12 +127,22 @@ class Product(models.Model):
 
 
 class Ring(Product):
+    """
+    Child class of product to define Rings products
+    they have different properties & sizes
+    """
 
     class JewelleryProperties(DjangoChoices):
+        """
+        Subclass of Rings for metal choice definition
+        """
         silver = ChoiceItem("SR")
         gold = ChoiceItem("GD")
 
     class RingSizes(DjangoChoices):
+        """
+        Subclass of Rings for size run definition
+        """
         L = ChoiceItem("6")
         N = ChoiceItem("7")
         P = ChoiceItem("8")
@@ -121,6 +153,28 @@ class Ring(Product):
         max_length=2, choices=JewelleryProperties.choices)
     ring_sizes = MultiSelectField(max_length=2, choices=RingSizes.choices,
                                    default="6")
+
+    def __str__(self):
+        return self.product_name
+
+
+class Clothing(Product):
+    """
+    Child class of product to define Clothing products
+    they have different properties & sizes
+    """
+
+    class ClothingSizes(DjangoChoices):
+        """
+        Subclass of Clothing for size run definition
+        """
+        XS = ChoiceItem("XS")
+        S = ChoiceItem("S")
+        M = ChoiceItem("M")
+        L = ChoiceItem("L")
+        XL = ChoiceItem("XL")
+    
+    clothing_sizes = MultiSelectField(max_length=2, choices=ClothingSizes.choices, default="XS")
 
     def __str__(self):
         return self.product_name
