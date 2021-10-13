@@ -39,13 +39,20 @@
                 <!-- Product Info div -->
                 <div class="row">
                     <div class="col-sm-12 col-lg-6">
-
+                        <div>
+                        {% if product.product_properties %}
+                            {{ product.product_properties }}
+                        {% endif %}
+                        </div>
+                        <div>
+                        {% if ring_sizes %}
+                            <span>{{ ring_sizes }}</span>
+                        {% endif %}
+                        </div>
                     </div>
                 </div> 
             </div>
         </div>
         {% endfor %}
     </div>
-
-
 {% endblock %}
