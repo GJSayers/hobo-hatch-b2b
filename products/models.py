@@ -108,7 +108,7 @@ class Product(models.Model):
         'ProductCategory', null=True, blank=False, on_delete=models.SET_NULL)
     product_type = models.ForeignKey(
         'ProductType', null=True, blank=False, on_delete=models.SET_NULL)
-    product_properties = MultiSelectField(max_length=2,
+    product_properties = MultiSelectField(max_length=11,
                                           choices=ProductProperties.choices,
                                           default="FP")
     product_sku = models.CharField(max_length=90, null=False, blank=False)
@@ -151,7 +151,7 @@ class Ring(Product):
 
     jewellery_properties = models.CharField(
         max_length=2, choices=JewelleryProperties.choices)
-    ring_sizes = MultiSelectField(max_length=2, choices=RingSizes.choices,
+    ring_sizes = MultiSelectField(max_length=11, choices=RingSizes.choices,
                                    default="6")
 
     def __str__(self):
@@ -174,7 +174,7 @@ class Clothing(Product):
         L = ChoiceItem("L")
         XL = ChoiceItem("XL")
     
-    clothing_sizes = MultiSelectField(max_length=2, choices=ClothingSizes.choices, default="XS")
+    clothing_sizes = MultiSelectField(max_length=11, choices=ClothingSizes.choices, default="XS")
 
     def __str__(self):
         return self.product_name
