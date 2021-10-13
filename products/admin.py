@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Product, ProductCategory, ProductType, Ring
 
-# Register your models here.
+admin.site.register(Product)
+admin.site.register(ProductCategory)
+admin.site.register(ProductType)
+admin.site.register(Ring)
