@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from model_utils.managers import InheritanceManager
 from .models import (Product, ProductCategory,
-                    ProductType, Ring) # JewelleryProperties
+                     ProductType, Ring, Clothing)  # JewelleryProperties
 
 
 def collections(request):
@@ -9,16 +10,20 @@ def collections(request):
     """
     
     products = Product.objects.all()
-    categories = ProductCategory()
-    product_type = ProductType()
-    # rings = Ring.objects.all()
-    # ring_sizes = JewelleryProperties.RingSizes
-
+    categories = ProductCategory.name
+    product_type = ProductType.name
+    jewellery_size_type = Product.SizeType.jewellery_sizes
+    ring = Ring.objects.all()
+    clothing_sizes = Clothing(Product).ClothingSizes.choices
+    print(jewellery_size_type)
+    print(ring)
+    
     context = {
         'products': products,
         'categories': categories,
         'product_type': product_type,
-        # 'rings': rings,
-        # 'ring_sizes': ring_sizes,
+        'jewellery_size_type': jewellery_size_type,
+        'ring': ring,
+        'clothing_sizes': clothing_sizes
     }
     return render(request, 'products/collections.html', context)

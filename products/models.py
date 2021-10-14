@@ -1,4 +1,5 @@
 from django.db import models
+from model_utils.managers import InheritanceManager
 from multiselectfield import MultiSelectField
 from djchoices import DjangoChoices, ChoiceItem
 
@@ -115,15 +116,20 @@ class Product(models.Model):
     product_description = models.TextField()
     product_is_bestseller = models.BooleanField(default=False,
                                                 null=False, blank=False)
-    size_type = MultiSelectField(max_length=30, choices=SizeType.choices,
-                                 default="universal_size_type")
+    # added fields due to issues with display 
+    ring_size_matrix = models.BooleanField(default=False, null=True, blank=True)
+    clothing_size_matrix = models.BooleanField(default=False, null=True, blank=True)
+    one_size = models.BooleanField(default=True, null=True, blank=True)
+    # size_type = models.MultiSelectField(max_length=30, choices=SizeType.choices,
+    #                            default="universal_size_type")
     product_price = models.DecimalField(max_digits=6, decimal_places=2)
     rrp_price = models.DecimalField(max_digits=6, decimal_places=2)
     image_url = models.URLField(max_length=1024, null=False, blank=False)
     image = models.ImageField(null=True, blank=True)
 
-    def __str__(self):
-        return self.product_name
+
+def __str__(self):
+    return self.product_name
 
 
 class Ring(Product):
@@ -139,6 +145,8 @@ class Ring(Product):
         silver = ChoiceItem("SR")
         gold = ChoiceItem("GD")
 
+    
+
     class RingSizes(DjangoChoices):
         """
         Subclass of Rings for size run definition
@@ -150,12 +158,12 @@ class Ring(Product):
         U = ChoiceItem("10")
 
     jewellery_properties = models.CharField(
-        max_length=2, choices=JewelleryProperties.choices)
+         max_length=2, choices=JewelleryProperties.choices)
     ring_sizes = MultiSelectField(max_length=11, choices=RingSizes.choices,
                                    default="6")
 
     def __str__(self):
-        return self.product_name
+        return 'ring str'
 
 
 class Clothing(Product):
@@ -173,8 +181,8 @@ class Clothing(Product):
         M = ChoiceItem("M")
         L = ChoiceItem("L")
         XL = ChoiceItem("XL")
-    
+   
     clothing_sizes = MultiSelectField(max_length=11, choices=ClothingSizes.choices, default="XS")
 
-    def __str__(self):
-        return self.product_name
+    # def __str__(self):
+    #    return self.product_name
