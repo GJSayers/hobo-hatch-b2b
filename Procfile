@@ -1,0 +1,1 @@
+web: gunicorn hobo_hatch_b2b.wsgi:application
