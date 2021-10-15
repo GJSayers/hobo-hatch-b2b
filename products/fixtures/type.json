@@ -1,7 +1,7 @@
 [
     {
        "pk": 1,
-       "model": "products.producttype",
+       "model": "products.type",
        "fields": {
           "name" : "earrings",
           "friendly_name": "Earrings",
@@ -10,7 +10,7 @@
     },
    {
        "pk": 2,
-       "model": "products.producttype",
+       "model": "products.type",
        "fields": {
           "name": "pendants_necklaces",
           "friendly_name": "Pendants / Necklaces",
@@ -19,7 +19,7 @@
     },
    {
        "pk": 3,
-       "model": "products.producttype",
+       "model": "products.type",
        "fields": {
           "name": "rings",
           "friendly_name": "Rings",
@@ -28,7 +28,7 @@
     },
    {
        "pk": 4,
-       "model": "products.producttype",
+       "model": "products.type",
        "fields": {
           "name": "bracelets_bangles",
           "friendly_name": "Bracelets / Bangles",
@@ -37,7 +37,7 @@
     },
     {
        "pk": 5,
-       "model": "products.producttype",
+       "model": "products.type",
        "fields": {
           "name": "tops",
           "friendly_name": "Tops",
@@ -46,7 +46,7 @@
     },
     {
        "pk": 6,
-       "model": "products.producttype",
+       "model": "products.type",
        "fields": {
           "name": "knitwear",
           "friendly_name": "Knitwear",
@@ -55,7 +55,7 @@
     },
     {
        "pk": 7,
-       "model": "products.producttype",
+       "model": "products.type",
        "fields": {
           "name": "skirts",
           "friendly_name": "Skirts",
@@ -64,7 +64,7 @@
     },
     {
        "pk": 8,
-       "model": "products.producttype",
+       "model": "products.type",
        "fields": {
           "name": "shorts",
           "friendly_name": "Shorts",
@@ -73,7 +73,7 @@
     },
     {
        "pk": 9,
-       "model": "products.producttype",
+       "model": "products.type",
        "fields": {
           "name": "trousers",
           "friendly_name": "Trousers",
@@ -82,7 +82,7 @@
     },
     {
        "pk": 10,
-       "model": "products.producttype",
+       "model": "products.type",
        "fields": {
           "name": "jeans",
           "friendly_name": "Jeans",
@@ -91,7 +91,7 @@
     },
     {
         "pk": 11,
-        "model": "products.producttype",
+        "model": "products.type",
         "fields": {
            "name": "ponchos",
            "friendly_name": "Ponchos",
@@ -100,7 +100,7 @@
      },
     {
         "pk": 12,
-        "model": "products.producttype",
+        "model": "products.type",
         "fields": {
            "name": "beanies",
            "friendly_name": "Beanie Hats",
@@ -109,7 +109,7 @@
     },
     {
         "pk": 13,
-        "model": "products.producttype",
+        "model": "products.type",
         "fields": {
            "name": "scarves",
            "friendly_name": "Scarves",
@@ -118,7 +118,7 @@
     },
     {
         "pk": 14,
-        "model": "products.producttype",
+        "model": "products.type",
         "fields": {
            "name": "beanie_hats",
            "friendly_name": "Beanie Hats",
@@ -127,7 +127,7 @@
     },
     {
         "pk": 15,
-        "model": "products.producttype",
+        "model": "products.type",
         "fields": {
            "name": "leather_bags",
            "friendly_name": "Leather Bags",
@@ -136,7 +136,7 @@
     },
     {
         "pk": 16,
-        "model": "products.producttype",
+        "model": "products.type",
         "fields": {
            "name": "beltbag_bumbag",
            "friendly_name": "Beltbags / Bumbags",
@@ -145,7 +145,7 @@
     },
     {
         "pk": 17,
-        "model": "products.producttype",
+        "model": "products.type",
         "fields": {
            "name": "wallets_purses",
            "friendly_name": "Wallets / Purses",
@@ -154,7 +154,7 @@
     },
     {
         "pk": 18,
-        "model": "products.producttype",
+        "model": "products.type",
         "fields": {
            "name": "belts",
            "friendly_name": "Belts",

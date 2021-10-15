@@ -4,7 +4,7 @@ from multiselectfield import MultiSelectField
 from djchoices import DjangoChoices, ChoiceItem
 
 
-class ProductCategory(models.Model):
+class Category(models.Model):
     """
     Class to define categories for products and Products Types within the categories
     """
@@ -38,7 +38,7 @@ class ProductCategory(models.Model):
     name = models.CharField(max_length=90)
     friendly_name = models.CharField(max_length=90, null=False, blank=False)
     product_type = MultiSelectField(
-                                    'ProductType', max_length=3,
+                                    'Type', max_length=20,
                                     choices=PRODUCT_TYPE_CHOICES,
                                     default="Earrings")
 
@@ -49,7 +49,7 @@ class ProductCategory(models.Model):
         return self.friendly_name
 
 
-class ProductType(models.Model):
+class Type(models.Model):
     """
     Class to identify different product types and which Categories they belong to
     """
@@ -106,9 +106,9 @@ class Product(models.Model):
 
     product_name = models.CharField(max_length=90)
     product_category = models.ForeignKey(
-        'ProductCategory', null=True, blank=False, on_delete=models.SET_NULL)
+        'Category', null=True, blank=False, on_delete=models.SET_NULL)
     product_type = models.ForeignKey(
-        'ProductType', null=True, blank=False, on_delete=models.SET_NULL)
+        'Type', null=True, blank=False, on_delete=models.SET_NULL)
     product_properties = MultiSelectField(max_length=11,
                                           choices=ProductProperties.choices,
                                           default="FP")

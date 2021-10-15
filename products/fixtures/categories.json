@@ -1,7 +1,7 @@
 [
     {
        "pk": 1,
-       "model": "products.productcategory",
+       "model": "products.category",
        "fields": {
           "name": "jewellery",
           "friendly_name": "Jewellery",
@@ -10,7 +10,7 @@
     },
    {
        "pk": 2,
-       "model": "products.productcategory",
+       "model": "products.category",
        "fields": {
           "name": "leather_accessories",
           "friendly_name": "Leather Accessories",
@@ -19,7 +19,7 @@
     },
    {
        "pk": 3,
-       "model": "products.productcategory",
+       "model": "products.category",
        "fields": {
           "name": "blankets",
           "friendly_name": "Blankets",
@@ -28,7 +28,7 @@
     },
    {
        "pk": 4,
-       "model": "products.productcategory",
+       "model": "products.category",
        "fields": {
           "name": "knitted_accessories",
           "friendly_name": "Knitted Accessories",
@@ -37,7 +37,7 @@
     },
     {
        "pk": 5,
-       "model": "products.productcategory",
+       "model": "products.category",
        "fields": {
           "name": "clothing",
           "friendly_name": "Clothing",

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, ProductCategory, ProductType, Ring, Clothing
+from .models import Product, Category, Type, Ring, Clothing
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -15,7 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
     ordering = ('product_sku',)
 
 
-class ProductCategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
         'name',
@@ -25,7 +25,7 @@ class ProductCategoryAdmin(admin.ModelAdmin):
     ordering = ('friendly_name',)
 
 
-class ProductTypeAdmin(admin.ModelAdmin):
+class TypeAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
         'name',
@@ -36,7 +36,7 @@ class ProductTypeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product, ProductAdmin)
-admin.site.register(ProductCategory, ProductCategoryAdmin)
-admin.site.register(ProductType, ProductTypeAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Type, TypeAdmin)
 admin.site.register(Ring)
 admin.site.register(Clothing)
