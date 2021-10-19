@@ -127,13 +127,27 @@ The pip3 command is to save your installation dependencies.
 * Because Postgres is a different database to SQlite3 (which is what is used in the Git environment) it is necessary to make migrations, migrate and re-load the data, in the case of this app using fixtures.  The following commands were used:
 * python3 manage.py makemigrations
 * python3 manage.py migrate 
-* python3 manage.py loaddata <filename>
-
-* ADD HERE DEPLOYMENT ISSUE * 
-
-
+* python3 manage.py loaddata for each fixture you want to upload ensuring that you consider dependencies between the fixtures. 
+* python3 createsuperuser to create an admin user and follow the instructions in the Git CLI. 
 * Create if statement in settings file to ensure that if we are in Heroku we connect to Postgres, and if not to Sqlite3 
 Install Gunicorn using:
 * pip3 install gunicorn
 
 * Create a Procfile 
+
+#### DEPLOYMENT ISSUES 
+I decided to deploy early so as not to get nasty surprises close to the due date of the project - I came up against a few issues and I thought it would be useful to document these here.  
+* The first error I encountered on this process was "Django.db.utiles.DataError: value to long for type"
+upon which I entered the command to see if there were outstanding migrations:
+* python3 manage.py showmigrations
+This revealed that indeed there were quite a few migrations that had not applied. 
+![Migrations](docs/deployment_migrations_1.png)
+I searched on slack to see if anyone had encountered a similar problem, and discovered that you can skip the offending migration using:
+* python3 manage.py migrate app_name migration_name --fake
+So I decided to try this and the remaining migrations processed. However another error was thrown: 
+ ![Error](docs/deployment_error_2.png)
+After running through where the process may have gone wrong and with my mentor and finding no obvious methodology errors, we decided to remove the migrations - and with help from tutor support re-install them and re-running all the migrations. 
+
+
+
+
