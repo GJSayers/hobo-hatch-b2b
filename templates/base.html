@@ -97,7 +97,7 @@
       </div>
       <div class="col-4"></div>
     </div>
-    <div class="row justify-content-center nav-row body-text">
+    <nav class="row justify-content-center nav-row body-text">
       <ul class="nav justify-content-center">
         <li class="nav-item">
           {% if request.user.is_authenticated %}
@@ -140,12 +140,12 @@
           </div> 
         </li>
       </ul>
-    </div>
+    </nav>
     </div>
   </header>
 
   {% if messages %}
-  <div class="message-container"></div>
+  <aside class="message-container"></aside>
   {% endif %}
 
   {% block page_header %}
@@ -156,6 +156,8 @@
 
   {% block postloadjs %}
   {% endblock %}
+
+  <footer></footer>
 
 </body>
 
