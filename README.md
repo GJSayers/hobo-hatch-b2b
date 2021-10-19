@@ -105,4 +105,35 @@
 ### Imagery
 * Imagery used will be source from the brand itself - Hobo & Hatch. 
 
+## Deployment
 
+* Create a Heroku app on the [Heroku Website](https://id.heroku.com/login) by clicking on the new app button:
+![](docs/new_app.png)
+* In the resources tab of the Heroku app, go to the add-ons section and search for postgress. For this app I used the free version 'HobbyDev' : 
+![](docs/add_postrges.png)
+![](docs/add_postrgress_submit.png)
+
+
+* To enable the use of Postrgres, back in Gitpod install dj_database_url,and psycopg2-binary in the CLI.  The CLI commands are:
+* pip3 install dj_database_url
+* pip3 install psycopg2-binary
+Then: 
+* pip3 freeze > requirements.txt 
+The pip3 command is to save your installation dependencies. 
+
+* In your settings file, add 'import dj_database_url' at the top of the file below the other import instructions. 
+* Configure the database in settings file
+
+* Because Postgres is a different database to SQlite3 (which is what is used in the Git environment) it is necessary to make migrations, migrate and re-load the data, in the case of this app using fixtures.  The following commands were used:
+* python3 manage.py makemigrations
+* python3 manage.py migrate 
+* python3 manage.py loaddata <filename>
+
+* ADD HERE DEPLOYMENT ISSUE * 
+
+
+* Create if statement in settings file to ensure that if we are in Heroku we connect to Postgres, and if not to Sqlite3 
+Install Gunicorn using:
+* pip3 install gunicorn
+
+* Create a Procfile 
