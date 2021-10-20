@@ -223,11 +223,25 @@ in the JSON tab, on the resources row, you will need to add again the **arn numb
 * From this page you can tick the appropriate group and click **Next** until the final **Create User** button.  
 * A CSV will be created with the user access details - **download this and save it in a safe place** These details can only be downloaded once. 
 
+### Connecting AWS to Django 
+
+* To be able to use crud functionality to create, update and delete static files in AWS through the django UI it is necessary to install boto3 usign the following command:
+* pip3 install boto3
+* I also installed ![django-storages](https://django-storages.readthedocs.io/en/latest/) which is a collection of storage backends for Django, using the command:
+* pip3 install django-storages
+* followed by pip3 freeze > requirements.txt to ensure the dependencies are installed in deployment.
+* next add 'storages' to installed apps in settings.py:
+![](docs/storages.png)
+* Define access variables and media storage config in the settings.py file being sure to keep any secret keys either in your env.py file or in the environment variables on GIT. 
+![](docs/aws_settings_config.png)
+![](docs/aws_custom_storages.png)
+* Set up the same variables in the Heroku config vars.
+* Create a custom storages file, importing ettings and S3Boto3Storage. with classes inheriting S3Boto3Storage and defining location for static files and media files. 
+![](docs/aws_config_vars_heroku.png)
+* Remove the Collect Static Config var to enable the static files to be collected into the buid on the next push. 
 
 
 
-
-* Assign the user to the **user group**
 
 
 
