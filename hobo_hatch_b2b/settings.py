@@ -161,6 +161,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if 'USE_AWS' in os.environ:
+    # Cache control to improve user performance by allowing images to be cached
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 209 20:00:00 CET',
+        'CacheControl': 'max-age=20000000',
+    }
+
     # AWS S3 bucket config
     AWS_STORAGE_BUCKET_NAME = 'hobo-hatch-b2b'
     AWS_S3_REGION_NAME = 'eu-central-1'
