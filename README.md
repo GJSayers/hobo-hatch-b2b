@@ -195,7 +195,39 @@ Then click **save**.
 
 ### Creating a user for AWS
 
+To use the S3 Bucket, it is necessary to create a user.  
 
+* Back in the AWS Management Console, either **click on IAM** in your recently visited services or serach for the same in the search bar. 
+
+* Create a **user group** for the user by clicking on **User Groups** in the side menu of AWS:
+![](docs/user_groups.png)
+* Then click on **Create Group**
+![](docs/create_group.png)
+* Give your group a name that is relevant to the project / user
+* Click through the following steps to create group ( we come back to those later on )
+* Create an **access policy** associated with the relevant S3 bucket by choosing **policies** from the side menu bar:
+![](docs/policies.png)
+* Then **click create policy button**
+* From the Create Policy page click **import managed policy**
+![](docs/import_managed_policy.png)
+* From the choose policies to import page **search for S3** and select **s3 full access policy** and **click the import button**:
+![](docs/import_policy.png)
+in the JSON tab, on the resources row, you will need to add again the **arn number** that you used previously from the bucket policy page to the json text - in the format of a list with one line including the arn number, and one including the arn number with "/*" at the end. 
+* Then you can click **review policy** to add a name and a description. 
+* Finally click through to **create policy**
+* Then back in **User Groups** click on your newly created group
+* Search for the **policy** you created and click **Attach Policy**
+* Next **Create a User** to add to the group by navigating to the **Users** page:
+![](docs/users.png)
+* Click **add user** and give the user a name that makes sense to your project and user access and select the **Programmatic Access** radio button and click **Next** 
+* From this page you can tick the appropriate group and click **Next** until the final **Create User** button.  
+* A CSV will be created with the user access details - **download this and save it in a safe place** These details can only be downloaded once. 
+
+
+
+
+
+* Assign the user to the **user group**
 
 
 
