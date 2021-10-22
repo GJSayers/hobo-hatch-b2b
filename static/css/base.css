@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: url('../media/hobo_imagery_beach.png');
+    background: url('./media/hobo_imagery_beach.png');
     background-size: cover;
     color: #0A151A;
     text-anchor: #0A151A;
