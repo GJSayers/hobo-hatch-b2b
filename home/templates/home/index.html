@@ -11,31 +11,37 @@
 
 {% block content %}
 <main class="container justify-content-center">
-    <div class="row justify-content-center title-text">
+
+    <!-- Welcome Section -->
+    <section class="row welcome-section justify-content-center title-text">
         <h1 class="page-title title-text">
             Welcome to Hobo & Hatch B2B Ordering
         </h1>
-    </div>
-    <div class="row justify-content-center">
+    </section>
+
+    <!-- About Section -->
+    <section class="row about-section justify-content-center">
         <div class="col-12 body-text justify-content-center">
             <p class="home-page-text justify-content-center">
                 Here is some text about the brand
             </p>
         </div>
-    </div>
-    <div class="row justify-content-center">
+    </section>
+
+    <!-- CTA  Section -->
+    <section class="row action-section justify-content-center">
         <div class="col-12 login-row body-text justify-content-center">
             <p class="home-page-text justify-content-center">Login to Shop the latest Hobo & Hatch Collections</p>
-            <button class="login-button">
+            <a href="{% url 'account_login' %}" class="btn btn-light login-button" role="button">
                 Login
-            </button>
+            </a>
         </div>
         <div class="col-12 apply-row body-text justify-content-center">
             <p class="home-page-text justify-content-center">Not a stockist yet?</p>
-            <button class="apply-link" >
+            <a href="{% url 'account_signup' %}" class="btn btn-light register-btn apply-link" role="button">
                 Apply to be a stockist
-            </button>
+            </a>
         </div>
-    </div>  
+    </section>  
 </main>
 {% endblock %}
