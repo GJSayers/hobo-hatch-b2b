@@ -13,6 +13,20 @@
     <main class="container-fluid">
         <div class="row">
         <!-- Logged in customer div -->
+        <!-- Filter by category section -->
+        <section class="col-12 category-filter justify-content-center">
+            
+            <form method="GET" action="{% url 'collections' %}?Category">
+                {% for category in categories %}
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox{{ category.name }}" name="chosen_categories" value="{{ category.name }}" {% if category.name in chosen_categories %}checked{% endif %}>
+                        <label class="form-check-label" for="inlineCheckbox{{ category.name }}">{{ category.friendly_name }}</label>
+                    </div>
+                {% endfor %}
+                    
+                    <button type="submit" class="form-control btn btn-primary mb-3">Filter</button>
+            </form>
+        </section>
         <!-- Collection dropdown and descriptive div -->
         
         {% for product in products %}
@@ -25,7 +39,7 @@
                                 <h5 class="card-title">{{ product.product_name }}</h5>
                                 <p class="card-text">COST:{{ product.product_price }} | RRP:{{ product.rrp_price}}</p>
                             </div>
-                            <img src="{{ product.image.url }} " class="card-img-bottom" alt="{{ product.product_name|lower }}">
+                            <img src="{{ product.image_url }}" class="card-img-bottom" alt="{{ product.product_name|lower }}">
                         </div>
                     </div>
                 </div>
@@ -43,57 +57,39 @@
                         {% if product.product_properties %}
                             {{ product.product_properties }}
                         {% endif %}
+                        {% if jewellery_properties %}
+                            {{ jewellery_properties }}
+                        {% endif %}
                         </div>
                         <div class="row">
-                            <form action="">
                             {% with product.ring_size_matrix as ring %}
                                 {% if ring %}
-                                <!-- <div class="col-12">
-                                    <p><strong>Size:</strong></p>
-                                    <select class="form-control rounded-0 w-50" name="product_size" id='id_product_size'>
-                                        <option value="xs">XS</option>
-                                        <option value="s">S</option>
-                                        <option value="m" selected>M</option>
-                                        <option value="l">L</option>
-                                        <option value="xl">XL</option>
-                                    </select>
-                                </div> -->
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">L</span>
-                                    <input type="text" class="form-control" aria-label="L">
-                                    <span class="input-group-text">N</span>
-                                    <input type="text" class="form-control" aria-label="N">
-                                    <span class="input-group-text">P</span>
-                                    <input type="text" class="form-control" aria-label="P">
-                                    <span class="input-group-text">S</span>
-                                    <input type="text" class="form-control" aria-label="S">
-                                    <span class="input-group-text">U</span>
-                                    <input type="text" class="form-control" aria-label="L">
-                                  </div>
+                                    <div class="col-12 justify-content-center">
+                                        <p>
+                                            <span>Size Range</span>
+                                            <span>L N P S U </span>
+                                        </p>
+                                    </div>
                                 {% endif %}
                             {% endwith %}
                             {% with product.clothing_size_matrix as clothing %}
                                   {% if clothing %}
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text">XS</span>
-                                    <input type="text" class="form-control" aria-label="extra small">
-                                    <span class="input-group-text">S</span>
-                                    <input type="text" class="form-control" aria-label="small">
-                                    <span class="input-group-text">M</span>
-                                    <input type="text" class="form-control" aria-label="medium">
-                                    <span class="input-group-text">L</span>
-                                    <input type="text" class="form-control" aria-label="large">
-                                    <span class="input-group-text">XL</span>
-                                    <input type="text" class="form-control" aria-label="extra large">
-                                  </div>
+                                    <div class="col-12 justify-content-center">
+                                        <p>
+                                            <span>Size Range</span>
+                                            <span>xs s m l xl</span>
+                                        </p>
+                                    </div>
+                                  
                                   {% endif %}
                             {% endwith %}
                             {% with product.one_size as o %}
                                   {% if o %}
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text">One Size</span>
-                                    <input type="text" label="One Size" class="form-control" placeholder="Enter Qty" aria-label="one size">
-                                  </div>
+                                    <div class="col-12 justify-content-center">
+                                        <p>
+                                            <span>One Size</span>
+                                        </p>
+                                    </div>
                                   {% endif %}
                             {% endwith %}
                         
