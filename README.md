@@ -266,5 +266,15 @@ So I decided to try this and the remaining migrations processed. However another
 After running through where the process may have gone wrong and with my mentor and finding no obvious methodology errors, we decided to remove the migrations - and with help from tutor support re-install them and re-running all the migrations. 
 
 
+## Bugs & Fixes
+
+* Filtering checkbox choices:
+
+Part of the **US 2** is to be able to view the products by Categroy, which I had chosen to deliver as a checkbox of options on the collections page.  For some time I was unable to get the products to filter appropriately ( no filtering was occuring, despite query logic in the view )
+
+In the end I managed to solve this by combining solutions from these two Stack overflow posts:
+![How to get checkbox values in django application](https://stackoverflow.com/questions/48735726/how-to-get-checkbox-values-in-django-application)
+![How to filter with multiple values from checkboxes in Django?](https://stackoverflow.com/questions/58245655/how-to-filter-with-multiple-values-from-checkboxes-in-django)
+
 
 
