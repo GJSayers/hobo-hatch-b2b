@@ -55,10 +55,15 @@
                     <div class="col-sm-12 col-lg-6">
                         <div>
                         {% if product.product_properties %}
-                            {{ product.product_properties }}
-                        {% endif %}
-                        {% if jewellery_properties %}
-                            {{ jewellery_properties }}
+                            {% for p in product.product_properties %}
+                                {% if p == "LI" %}<i class="fab fa-envira"></i>
+                                {% elif p == "FP"%}<i class="fas fa-hands-helping"></i>
+                                {% elif p == "HC"%}<i class="fas fa-hand-paper"></i>
+                                {% elif p == "PW"%}<i class="fas fa-mitten"></i>
+                                {% elif p == "SS" %}<p class="metal-type">925 Sterling Silver</p>
+                                {% elif p == "GP" %}<p class="metal-type">Gold-Plated Silver</p>
+                                {% endif %}  
+                            {% endfor %}
                         {% endif %}
                         </div>
                         <div class="row">

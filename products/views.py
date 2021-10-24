@@ -19,7 +19,7 @@ def collections(request):
     clothing_sizes = Clothing(Product).ClothingSizes.choices
     chosen_categories = None
 
-    if request.GET:
+    if request.GET:  # filter the products by category checkbox
         chosen_categories = request.GET.getlist('chosen_categories')
         products = Product.objects.filter(product_category__in=Category.objects.filter(
                                           name__in=chosen_categories))
