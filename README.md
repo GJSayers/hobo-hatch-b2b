@@ -238,7 +238,10 @@ in the JSON tab, on the resources row, you will need to add again the **arn numb
 * Set up the same variables in the Heroku config vars.
 * Create a custom storages file, importing ettings and S3Boto3Storage. with classes inheriting S3Boto3Storage and defining location for static files and media files. 
 ![](docs/aws_config_vars_heroku.png)
-* Remove the Collect Static Config var to enable the static files to be collected into the buid on the next push. 
+* Remove the Collect Static Config var to enable the static files to be collected into the buid on the next push.
+* If the build has been successful, you should see a similar output to this in the Heroku build log:
+![](docs/build_success_heroku.png)
+* You should then also be able to see your static folder in your S3 bucket
 
 
 
