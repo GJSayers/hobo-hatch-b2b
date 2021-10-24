@@ -111,7 +111,7 @@
           <ul class="nav justify-content-center">
             {% if request.user.is_authenticated %}
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false" href="#">Collections
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{% url 'collections' %}">Collections
                 </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a href="#" class="dropdown-item">Jewellery</a></li>
