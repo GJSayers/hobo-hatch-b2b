@@ -65,7 +65,7 @@
   "fields": {
     "product_name": "Storm Wool Blanket",
     "product_category": 3,
-    "product_type": 19,
+    "product_type": 18,
     "product_properties": "PW,HC,FP,LI",
     "product_sku": "wool_bkt_strm",
     "product_description": "Autumn & Winter are seasons of recovery and preparation.  Snuggle up in our cozy wool blanket.",
@@ -97,13 +97,6 @@
     "rrp_price": "29.00",
     "image_url": "https://cdn.shopify.com/s/files/1/0498/5303/8758/products/HazelButterscotch2.jpg?v=1612864681",
     "image": "beanie_hazel_bs_2.jpeg"
-  }
-},
-{
-  "model": "products.clothing",
-  "pk": 1,
-  "fields": {
-    "clothing_sizes": "XS,S,M,L,XL"
   }
 }
 ]
