@@ -49,7 +49,6 @@ def product_detail(request, product_id):
     ring = Ring.objects.all()
     clothing_sizes = Clothing(Product).ClothingSizes.choices
     
-    
     context = {
         'product': product,
         'categories': categories,
@@ -58,4 +57,4 @@ def product_detail(request, product_id):
         'ring': ring,
         'clothing_sizes': clothing_sizes
     }
-    return render(request, 'products/collections.html', context)
+    return render(request, 'products/product_detail.html', context)
