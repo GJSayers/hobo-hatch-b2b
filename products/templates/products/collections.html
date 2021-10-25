@@ -39,7 +39,9 @@
                                 <h5 class="card-title">{{ product.product_name }}</h5>
                                 <p class="card-text">COST:{{ product.product_price }} | RRP:{{ product.rrp_price}}</p>
                             </div>
-                            <img src="{{ product.image_url }}" class="card-img-bottom" alt="{{ product.product_name|lower }}">
+                            <a href="{% url 'product_detail' product.id %}">
+                                <img src="{{ product.image_url }}" class="card-img-bottom" alt="{{ product.product_name|lower }}">
+                            </a>
                         </div>
                     </div>
                 </div>
