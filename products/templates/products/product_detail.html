@@ -11,98 +11,91 @@
 
 {% block content %}
     <main class="container-fluid">
-        <div class="row">
-        <!-- Logged in customer div -->
-        <!-- Collection dropdown and descriptive div -->
-        
-        {% for product in products %}
-            <div class="col text-center">
-                <!-- Product Image and Title div -->
-                <div class="row">
-                    <div class="col-sm-12 col-lg-4">
+        <!-- Logged in customer section -->
+            <div class="row text-center justify-content-center">
+
+        <!-- Product Card & tile -->
+                    <div class="col-sm-12 col-md-6 col-lg-4 image_card">
                         <div class="card">    
                             <div class="card-body">
                                 <h5 class="card-title">{{ product.product_name }}</h5>
                                 <p class="card-text">COST:{{ product.product_price }} | RRP:{{ product.rrp_price}}</p>
                             </div>
-                            <img src="{{ product.image_url }}" class="card-img-bottom" alt="{{ product.product_name|lower }}">
+                            <a href="{{ product.image.url }}" target="blank">
+                                <img src="{{ product.image.url }}" class="card-img-bottom" alt="{{ product.product_name|lower }}">
+                            </a>
                         </div>
                     </div>
-                </div>
+    
                 
-                <!-- Product input & quick add div -->
-                <div class="row">
-                    <div class="col-sm-12 col-lg-6">
-                  
-                    </div>
-                </div>
                 <!-- Product Info div -->
-                <div class="row">
-                    <div class="col-sm-12 col-lg-6">
-                        <div>
-                        {% if product.product_properties %}
-                            {{ product.product_properties }}
-                        {% endif %}
+                <section class="col-sm-12 col-md-6 col-lg-4 product_info_input justify-content-center">
+                        <div class="col-12 properties">
+                            {% if product.product_properties %}
+                                {% for p in product.product_properties %}
+                                    {% if p == "LI" %}<span style="font-size: 48px"><i class="fab fa-envira"></i></span>
+                                    {% elif p == "FP"%}<span style="font-size: 48px"><i class="fas fa-hands-helping"></i></span>
+                                    {% elif p == "HC"%}<span style="font-size: 48px"><i class="fas fa-hand-paper"></i></span>
+                                    {% elif p == "PW"%}<span style="font-size: 48px"><i class="fas fa-mitten"></i></span>
+                                    {% elif p == "SS" %}<p class="metal-type">925 Sterling Silver</p>
+                                    {% elif p == "GP" %}<p class="metal-type">Gold-Plated Silver</p>
+                                    {% endif %}  
+                                {% endfor %}
+                            {% endif %}
+                            <div class="col-12 description">
+                                {{ product.product_description }}
+                            </div>
+                            <form class="" action="">
+                                {% with product.ring_size_matrix as ring %}
+                                    {% if ring %}
+                                    <div class="col-12 input-group mb-3">
+                                        <span class="input-group-text">L</span>
+                                        <input type="text" class="form-control" aria-label="L">
+                                        <span class="input-group-text">N</span>
+                                        <input type="text" class="form-control" aria-label="N">
+                                        <span class="input-group-text">P</span>
+                                        <input type="text" class="form-control" aria-label="P">
+                                        <span class="input-group-text">S</span>
+                                        <input type="text" class="form-control" aria-label="S">
+                                        <span class="input-group-text">U</span>
+                                        <input type="text" class="form-control" aria-label="L">
+                                      </div>
+                                    {% endif %}
+                                {% endwith %}
+                                {% with product.clothing_size_matrix as clothing %}
+                                      {% if clothing %}
+                                      <div class="col-sm-12 input-group mb-3">
+                                        <span class="input-group-text">XS</span>
+                                        <input type="text" class="form-control" aria-label="extra small">
+                                        <span class="input-group-text">S</span>
+                                        <input type="text" class="form-control" aria-label="small">
+                                        <span class="input-group-text">M</span>
+                                        <input type="text" class="form-control" aria-label="medium">
+                                        <span class="input-group-text">L</span>
+                                        <input type="text" class="form-control" aria-label="large">
+                                        <span class="input-group-text">XL</span>
+                                        <input type="text" class="form-control" aria-label="extra large">
+                                      </div>
+                                      {% endif %}
+                                {% endwith %}
+                                {% with product.one_size as o %}
+                                      {% if o %}
+                                      <div class="col-sm-12 col-md-6 col-lg-4 input-group mb-3">
+                                        <span class="input-group-text">One Size</span>
+                                        <input type="text" label="One Size" class="form-control" placeholder="Enter Qty" aria-label="one size">
+                                      </div>
+                                      {% endif %}
+                                {% endwith %}
+                            
+                            </form>
                         </div>
-                        <div class="row">
-                            <form action="">
-                            {% with product.ring_size_matrix as ring %}
-                                {% if ring %}
-                                <!-- <div class="col-12">
-                                    <p><strong>Size:</strong></p>
-                                    <select class="form-control rounded-0 w-50" name="product_size" id='id_product_size'>
-                                        <option value="xs">XS</option>
-                                        <option value="s">S</option>
-                                        <option value="m" selected>M</option>
-                                        <option value="l">L</option>
-                                        <option value="xl">XL</option>
-                                    </select>
-                                </div> -->
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">L</span>
-                                    <input type="text" class="form-control" aria-label="L">
-                                    <span class="input-group-text">N</span>
-                                    <input type="text" class="form-control" aria-label="N">
-                                    <span class="input-group-text">P</span>
-                                    <input type="text" class="form-control" aria-label="P">
-                                    <span class="input-group-text">S</span>
-                                    <input type="text" class="form-control" aria-label="S">
-                                    <span class="input-group-text">U</span>
-                                    <input type="text" class="form-control" aria-label="L">
-                                  </div>
-                                {% endif %}
-                            {% endwith %}
-                            {% with product.clothing_size_matrix as clothing %}
-                                  {% if clothing %}
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text">XS</span>
-                                    <input type="text" class="form-control" aria-label="extra small">
-                                    <span class="input-group-text">S</span>
-                                    <input type="text" class="form-control" aria-label="small">
-                                    <span class="input-group-text">M</span>
-                                    <input type="text" class="form-control" aria-label="medium">
-                                    <span class="input-group-text">L</span>
-                                    <input type="text" class="form-control" aria-label="large">
-                                    <span class="input-group-text">XL</span>
-                                    <input type="text" class="form-control" aria-label="extra large">
-                                  </div>
-                                  {% endif %}
-                            {% endwith %}
-                            {% with product.one_size as o %}
-                                  {% if o %}
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text">One Size</span>
-                                    <input type="text" label="One Size" class="form-control" placeholder="Enter Qty" aria-label="one size">
-                                  </div>
-                                  {% endif %}
-                            {% endwith %}
-                        
-                        </form>
-                    </div>
-                    </div>
-                </div> 
+
+                </section>
+                        <!-- Product input & quick add section -->
+                <!-- <section class="col-sm-12 col-md-6 input_section"> -->
+                   
+                    <!-- </section> -->
             </div>
         </div>
-        {% endfor %}
     </main>
 {% endblock %}
