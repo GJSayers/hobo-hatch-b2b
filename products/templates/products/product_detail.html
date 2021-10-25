@@ -45,47 +45,57 @@
                             <div class="col-12 description">
                                 {{ product.product_description }}
                             </div>
-                            <form class="" action="">
+                            <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
+                                {% csrf_token %}
                                 {% with product.ring_size_matrix as ring %}
                                     {% if ring %}
-                                    <div class="col-12 input-group mb-3">
-                                        <span class="input-group-text">L</span>
-                                        <input type="text" class="form-control" aria-label="L">
-                                        <span class="input-group-text">N</span>
-                                        <input type="text" class="form-control" aria-label="N">
-                                        <span class="input-group-text">P</span>
-                                        <input type="text" class="form-control" aria-label="P">
-                                        <span class="input-group-text">S</span>
-                                        <input type="text" class="form-control" aria-label="S">
-                                        <span class="input-group-text">U</span>
-                                        <input type="text" class="form-control" aria-label="L">
+                                    <div class="col-12 form-group mb-3">
+                                        <span class="input-group">L</span>
+                                        <input type="number" class="form-control qty_input" name="quantity_l" value="1" min="0" max="99" data-item_id="{{ product.id }}L" id="id_qty_{{ product.id }}" aria-label="L">
+                                        <span class="input-group">N</span>
+                                        <input type="number" class="form-control qty_input_N" name="quantity_n" value="1" min="0" max="99" data-item_id="{{ product.id }}N" id="id_qty_{{ product.id }}" aria-label="N">
+                                        <span class="input-group">P</span>
+                                        <input type="number" class="form-control qty_input_P" name="quantity_p" value="1" min="0" max="99" data-item_id="{{ product.id }}P" id="id_qty_{{ product.id }}" aria-label="P">
+                                        <span class="input-group">S</span>
+                                        <input type="number" class="form-control qty_input_S" name="quantity_s" value="1" min="0" max="99" data-item_id="{{ product.id }}S" id="id_qty_{{ product.id }}" aria-label="S">
+                                        <span class="input-group">U</span>
+                                        <input type="number" class="form-control qty_input_U" name="quantity_u" value="1" min="0" max="99" data-item_id="{{ product.id }}U" id="id_qty_{{ product.id }}" aria-label="U">
                                       </div>
                                     {% endif %}
                                 {% endwith %}
                                 {% with product.clothing_size_matrix as clothing %}
                                       {% if clothing %}
-                                      <div class="col-sm-12 input-group mb-3">
-                                        <span class="input-group-text">XS</span>
-                                        <input type="text" class="form-control" aria-label="extra small">
-                                        <span class="input-group-text">S</span>
-                                        <input type="text" class="form-control" aria-label="small">
-                                        <span class="input-group-text">M</span>
-                                        <input type="text" class="form-control" aria-label="medium">
-                                        <span class="input-group-text">L</span>
-                                        <input type="text" class="form-control" aria-label="large">
-                                        <span class="input-group-text">XL</span>
-                                        <input type="text" class="form-control" aria-label="extra large">
+                                      <div class="col-sm-12 form-group mb-3">
+                                        <span class="input-group">XS</span>
+                                        <input type="number" class="form-control qty_input_XS" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}XS" id="id_qty_{{ product.id }}XS" aria-label="extra small">
+                                        <span class="input-group">S</span>
+                                        <input type="number" class="form-control qty_input_S" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}S" id="id_qty_{{ product.id }}S" aria-label="small">
+                                        <span class="input-group">M</span>
+                                        <input type="number" class="form-control qty_input_M" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}M" id="id_qty_{{ product.id }}M" aria-label="medium">
+                                        <span class="input-group">L</span>
+                                        <input type="number" class="form-control qty_input_L" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}L" id="id_qty_{{ product.id }}L" aria-label="large">
+                                        <span class="input-group">XL</span>
+                                        <input type="number" class="form-control qty_input_XL" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}XL" id="id_qty_{{ product.id }}XL" aria-label="extra large">
                                       </div>
                                       {% endif %}
                                 {% endwith %}
                                 {% with product.one_size as o %}
                                       {% if o %}
-                                      <div class="col-sm-12 col-md-6 col-lg-4 input-group mb-3">
-                                        <span class="input-group-text">One Size</span>
-                                        <input type="text" label="One Size" class="form-control" placeholder="Enter Qty" aria-label="one size">
+                                      <div class="col-sm-12 col-md-6 col-lg-4 form-group mb-3">
+                                        <span class="input-group">One Size</span>
+                                        <input type="number" label="One Size" class="form-control qty_input" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" placeholder="Enter Qty" aria-label="one size">
                                       </div>
                                       {% endif %}
                                 {% endwith %}
+                                <div class="col-12">
+                                    <a href="{% url 'collections' %}" class="btn btn-primary">
+                                        <span class="icon">
+                                        </span>
+                                        <span class="text-uppercase">Continue Browsing</span>
+                                    </a>
+                                    <input type="submit" class="btn btn-primary" value="Add to Bag">
+                                </div>
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             
                             </form>
                         </div>
