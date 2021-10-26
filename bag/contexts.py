@@ -22,7 +22,26 @@ def bag_contents(request):
                 'quantity': item_data,
                 'product': product,
             })
-        
+        else:
+            product = get_object_or_404(Product, pk=item_id)
+            for sizes, (quantity_l, quantity_n, quantity_p, quantity_s,
+                        quantity_u) in item_data['ring_items'].items():
+                total += (quantity_l and quantity_n and quantity_p
+                          and quantity_s and quantity_u) * product.product_price
+                product_count += (quantity_l and quantity_n and quantity_p
+                                  and quantity_s or quantity_u)
+                bag_items.append({
+                    'item_id': item_id,
+                    'ring_items': {sizes:
+                                   {['quantity_l']: quantity_l,
+                                    ['quantity_n']: quantity_n,
+                                    ['quantity_p']: quantity_p,
+                                    ['quantity_s']: quantity_s,
+                                    ['quantity_u']: quantity_u
+                                    }
+                                   },
+                    'product': product,
+                })
 
     grand_total = delivery + total
     total_items = product_count

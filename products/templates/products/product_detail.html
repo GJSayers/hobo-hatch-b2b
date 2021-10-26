@@ -49,17 +49,17 @@
                                 {% csrf_token %}
                                 {% with product.ring_size_matrix as ring %}
                                     {% if ring %}
-                                    <div class="col-12 form-group mb-3">
+                                    <div class="col-12 form-group mb-3 ring_sizes" name="ring_sizes" id="id_ring_sizes" data-item_id="{{ product.id }}">
                                         <span class="input-group">L</span>
-                                        <input type="number" class="form-control qty_input" name="quantity_l" value="1" min="0" max="99" data-item_id="{{ product.id }}L" id="id_qty_{{ product.id }}" aria-label="L">
+                                        <input type="number" class="form-control qty_input" name="quantity_l" value="1" min="0" max="99" aria-label="L">
                                         <span class="input-group">N</span>
-                                        <input type="number" class="form-control qty_input_N" name="quantity_n" value="1" min="0" max="99" data-item_id="{{ product.id }}N" id="id_qty_{{ product.id }}" aria-label="N">
+                                        <input type="number" class="form-control qty_input" name="quantity_n" value="1" min="0" max="99" aria-label="N">
                                         <span class="input-group">P</span>
-                                        <input type="number" class="form-control qty_input_P" name="quantity_p" value="1" min="0" max="99" data-item_id="{{ product.id }}P" id="id_qty_{{ product.id }}" aria-label="P">
+                                        <input type="number" class="form-control qty_input" name="quantity_p" value="1" min="0" max="99" aria-label="P">
                                         <span class="input-group">S</span>
-                                        <input type="number" class="form-control qty_input_S" name="quantity_s" value="1" min="0" max="99" data-item_id="{{ product.id }}S" id="id_qty_{{ product.id }}" aria-label="S">
+                                        <input type="number" class="form-control qty_input" name="quantity_s" value="1" min="0" max="99" aria-label="S">
                                         <span class="input-group">U</span>
-                                        <input type="number" class="form-control qty_input_U" name="quantity_u" value="1" min="0" max="99" data-item_id="{{ product.id }}U" id="id_qty_{{ product.id }}" aria-label="U">
+                                        <input type="number" class="form-control qty_input" name="quantity_u" value="1" min="0" max="99" aria-label="U">
                                       </div>
                                     {% endif %}
                                 {% endwith %}
