@@ -60,11 +60,11 @@
 
 ### Conceptual Design
 * Given that the general premis of the site is centered around B2B ordering, most core features & actions are taken in the logged in status of a B2B stockist.  The below conceptual flowchart is produced on Lucid Chart and gives a visual representation of the key customer journeys whilst using the site. 
-![Conceptural Flowchart](static/conceptual_design/conceptual_flowchart.png)
+![Conceptural Flowchart](docs/conceptual_design/conceptual_flowchart.png)
 ### Database Schema
 * In the development environment sqlite3 and fixtures will be used to create the relational database.  Then in production to Heroku, postgres will be used. 
 * Below you can see the intended database model for this project including anticipated fixtures and forms.  
-![Database Schema / Model](static/conceptual_design/hobo_hatch_db_model.png)
+![Database Schema / Model](docs/conceptual_design/hobo_hatch_db_model.png)
 
 
 ## Skeleton
@@ -73,15 +73,15 @@
 
 * Desktop View
 
-![Wireframes](static/wireframes/wireframes_desktop_view.png)
+![Wireframes](docs/wireframes/wireframes_desktop_view.png)
 
 * Mobile View
 
-![Wireframes](static/wireframes/wireframes_mobile_view.png)
+![Wireframes](docs/wireframes/wireframes_mobile_view.png)
 
 * Tablet View
 
-![Wireframes](static/wireframes/wireframes_tablet_view.png)
+![Wireframes](docs/wireframes/wireframes_tablet_view.png)
 
 
 
@@ -91,13 +91,13 @@
 * Hobo & Hatch HQ is located in Perth, Australia and consequently a lot of their design inspiration comes from the sea, rust-coloured landscape elements and natural tones. 
 * Additionally, I wanted to ensure that the colour pallete was in keeping with colour trends, so I took a look at colour trends for 2022 on [Pantone](https://www.pantone.com/articles/fashion-color-trend-report/new-york-fashion-week-spring-summer-2022)
 * I found that the following colours were aligned with the colours I was considering that had been inspired by the brand imagery:
-![Pantone swatches](static/conceptual_design/pantone_colors.png)
+![Pantone swatches](docs/conceptual_design/pantone_colors.png)
 * Here are some example images from the brand's lifestyle image collection
-![Sea Lifestyle Image](static/conceptual_design/hobo_imagery_sea.png)
-![Outdoorsy Lifestyle Image](static/conceptual_design/hobo_imagery_outdoors.png)
-![Beach / Earth Tones Lifestyle Image](static/conceptual_design/hobo_imagery_beach.png)
+![Sea Lifestyle Image](docs/conceptual_design/hobo_imagery_sea.png)
+![Outdoorsy Lifestyle Image](docs/conceptual_design/hobo_imagery_outdoors.png)
+![Beach / Earth Tones Lifestyle Image](docs/conceptual_design/hobo_imagery_beach.png)
 * With these inspirations I settled on the following colour scheme produced on [Coolors](https://coolors.co/)
-![](static/conceptual_design/hobo_hatch_colourscheme_final.png)
+![](docs/conceptual_design/hobo_hatch_colourscheme_final.png)
 
 ### Typography
 * For fonts I will be using Quicksand from [Google Fonts](https://fonts.google.com/?query=quicksand) for the body text as this is an accessibility friendly font, and has a light yet clear effect which is reflective on the brand's values of 'treading lightly'.  
@@ -227,11 +227,12 @@ in the JSON tab, on the resources row, you will need to add again the **arn numb
 
 * To be able to use crud functionality to create, update and delete static files in AWS through the django UI it is necessary to install boto3 usign the following command:
 * pip3 install boto3
-* I also installed ![django-storages](https://django-storages.readthedocs.io/en/latest/) which is a collection of storage backends for Django, using the command:
+* I also installed [django-storages](https://django-storages.readthedocs.io/en/latest/) which is a collection of storage backends for Django, using the command:
 * pip3 install django-storages
 * followed by pip3 freeze > requirements.txt to ensure the dependencies are installed in deployment.
 * next add 'storages' to installed apps in settings.py:
 ![](docs/storages.png)
+
 * Define access variables and media storage config in the settings.py file being sure to keep any secret keys either in your env.py file or in the environment variables on GIT. 
 ![](docs/aws_settings_config.png)
 ![](docs/aws_custom_storages.png)
@@ -273,8 +274,8 @@ After running through where the process may have gone wrong and with my mentor a
 Part of the **US 2** is to be able to view the products by Categroy, which I had chosen to deliver as a checkbox of options on the collections page.  For some time I was unable to get the products to filter appropriately ( no filtering was occuring, despite query logic in the view )
 
 In the end I managed to solve this by combining solutions from these two Stack overflow posts:
-![How to get checkbox values in django application](https://stackoverflow.com/questions/48735726/how-to-get-checkbox-values-in-django-application)
-![How to filter with multiple values from checkboxes in Django?](https://stackoverflow.com/questions/58245655/how-to-filter-with-multiple-values-from-checkboxes-in-django)
+[How to get checkbox values in django application](https://stackoverflow.com/questions/48735726/how-to-get-checkbox-values-in-django-application)
+[How to filter with multiple values from checkboxes in Django?](https://stackoverflow.com/questions/58245655/how-to-filter-with-multiple-values-from-checkboxes-in-django)
 
 
 
