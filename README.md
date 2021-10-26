@@ -60,11 +60,11 @@
 
 ### Conceptual Design
 * Given that the general premis of the site is centered around B2B ordering, most core features & actions are taken in the logged in status of a B2B stockist.  The below conceptual flowchart is produced on Lucid Chart and gives a visual representation of the key customer journeys whilst using the site. 
-![Conceptural Flowchart](static/conceptual_design/conceptual_flowchart.png)
+![Conceptural Flowchart](docs/conceptual_design/conceptual_flowchart.png)
 ### Database Schema
 * In the development environment sqlite3 and fixtures will be used to create the relational database.  Then in production to Heroku, postgres will be used. 
 * Below you can see the intended database model for this project including anticipated fixtures and forms.  
-![Database Schema / Model](static/conceptual_design/hobo_hatch_db_model.png)
+![Database Schema / Model](docs/conceptual_design/hobo_hatch_db_model.png)
 
 
 ## Skeleton
@@ -73,15 +73,15 @@
 
 * Desktop View
 
-![Wireframes](static/wireframes/wireframes_desktop_view.png)
+![Wireframes](docs/wireframes/wireframes_desktop_view.png)
 
 * Mobile View
 
-![Wireframes](static/wireframes/wireframes_mobile_view.png)
+![Wireframes](docs/wireframes/wireframes_mobile_view.png)
 
 * Tablet View
 
-![Wireframes](static/wireframes/wireframes_tablet_view.png)
+![Wireframes](docs/wireframes/wireframes_tablet_view.png)
 
 
 
@@ -91,13 +91,13 @@
 * Hobo & Hatch HQ is located in Perth, Australia and consequently a lot of their design inspiration comes from the sea, rust-coloured landscape elements and natural tones. 
 * Additionally, I wanted to ensure that the colour pallete was in keeping with colour trends, so I took a look at colour trends for 2022 on [Pantone](https://www.pantone.com/articles/fashion-color-trend-report/new-york-fashion-week-spring-summer-2022)
 * I found that the following colours were aligned with the colours I was considering that had been inspired by the brand imagery:
-![Pantone swatches](static/conceptual_design/pantone_colors.png)
+![Pantone swatches](docs/conceptual_design/pantone_colors.png)
 * Here are some example images from the brand's lifestyle image collection
-![Sea Lifestyle Image](static/conceptual_design/hobo_imagery_sea.png)
-![Outdoorsy Lifestyle Image](static/conceptual_design/hobo_imagery_outdoors.png)
-![Beach / Earth Tones Lifestyle Image](static/conceptual_design/hobo_imagery_beach.png)
+![Sea Lifestyle Image](docs/conceptual_design/hobo_imagery_sea.png)
+![Outdoorsy Lifestyle Image](docs/conceptual_design/hobo_imagery_outdoors.png)
+![Beach / Earth Tones Lifestyle Image](docs/conceptual_design/hobo_imagery_beach.png)
 * With these inspirations I settled on the following colour scheme produced on [Coolors](https://coolors.co/)
-![](static/conceptual_design/hobo_hatch_colourscheme_final.png)
+![](docs/conceptual_design/hobo_hatch_colourscheme_final.png)
 
 ### Typography
 * For fonts I will be using Quicksand from [Google Fonts](https://fonts.google.com/?query=quicksand) for the body text as this is an accessibility friendly font, and has a light yet clear effect which is reflective on the brand's values of 'treading lightly'.  
