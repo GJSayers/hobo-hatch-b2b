@@ -227,11 +227,12 @@ in the JSON tab, on the resources row, you will need to add again the **arn numb
 
 * To be able to use crud functionality to create, update and delete static files in AWS through the django UI it is necessary to install boto3 usign the following command:
 * pip3 install boto3
-* I also installed ![django-storages](https://django-storages.readthedocs.io/en/latest/) which is a collection of storage backends for Django, using the command:
+* I also installed [django-storages](https://django-storages.readthedocs.io/en/latest/) which is a collection of storage backends for Django, using the command:
 * pip3 install django-storages
 * followed by pip3 freeze > requirements.txt to ensure the dependencies are installed in deployment.
 * next add 'storages' to installed apps in settings.py:
 ![](docs/storages.png)
+
 * Define access variables and media storage config in the settings.py file being sure to keep any secret keys either in your env.py file or in the environment variables on GIT. 
 ![](docs/aws_settings_config.png)
 ![](docs/aws_custom_storages.png)
@@ -273,8 +274,8 @@ After running through where the process may have gone wrong and with my mentor a
 Part of the **US 2** is to be able to view the products by Categroy, which I had chosen to deliver as a checkbox of options on the collections page.  For some time I was unable to get the products to filter appropriately ( no filtering was occuring, despite query logic in the view )
 
 In the end I managed to solve this by combining solutions from these two Stack overflow posts:
-![How to get checkbox values in django application](https://stackoverflow.com/questions/48735726/how-to-get-checkbox-values-in-django-application)
-![How to filter with multiple values from checkboxes in Django?](https://stackoverflow.com/questions/58245655/how-to-filter-with-multiple-values-from-checkboxes-in-django)
+[How to get checkbox values in django application](https://stackoverflow.com/questions/48735726/how-to-get-checkbox-values-in-django-application)
+[How to filter with multiple values from checkboxes in Django?](https://stackoverflow.com/questions/58245655/how-to-filter-with-multiple-values-from-checkboxes-in-django)
 
 
 
