@@ -17,6 +17,7 @@ def collections(request):
     jewellery_size_type = Product.SizeType.jewellery_sizes
     ring = Ring.objects.all()
     clothing_sizes = Clothing(Product).ClothingSizes.choices
+    ring_sizes = Ring(Product).RingSizes.choices
     chosen_categories = None
 
     if request.GET:  # filter the products by category checkbox
@@ -31,9 +32,13 @@ def collections(request):
         'jewellery_size_type': jewellery_size_type,
         'ring': ring,
         'clothing_sizes': clothing_sizes,
+        'ring_sizes': ring_sizes,
         'categories': categories,
         'chosen_categories': chosen_categories,
     }
+
+    print("clothing_sizes", clothing_sizes)
+    print("ring_sizes", ring_sizes)
     return render(request, 'products/collections.html', context)
 
 
@@ -48,6 +53,7 @@ def product_detail(request, product_id):
     jewellery_size_type = Product.SizeType.jewellery_sizes
     ring = Ring.objects.all()
     clothing_sizes = Clothing(Product).ClothingSizes.choices
+    ring_sizes = Ring(Product).RingSizes.choices
     
     context = {
         'product': product,
@@ -55,6 +61,7 @@ def product_detail(request, product_id):
         'product_type': product_type,
         'jewellery_size_type': jewellery_size_type,
         'ring': ring,
-        'clothing_sizes': clothing_sizes
+        'clothing_sizes': clothing_sizes,
+        'ring_sizes': ring_sizes,
     }
     return render(request, 'products/product_detail.html', context)
