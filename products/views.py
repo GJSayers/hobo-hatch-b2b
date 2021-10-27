@@ -12,10 +12,12 @@ def collections(request):
     """
     
     products = Product.objects.all()
+    print("products-view products", products)
     categories = Category.objects.all()
     product_type = Type.name
     jewellery_size_type = Product.SizeType.jewellery_sizes
     ring = Ring.objects.all()
+    print("products-view ring", ring)
     clothing_sizes = Clothing(Product).ClothingSizes.choices
     ring_sizes = Ring(Product).RingSizes.choices
     chosen_categories = None
@@ -37,8 +39,8 @@ def collections(request):
         'chosen_categories': chosen_categories,
     }
 
-    print("clothing_sizes", clothing_sizes)
-    print("ring_sizes", ring_sizes)
+    print("products-view clothing_sizes", clothing_sizes)
+    print("products-view ring_sizes", ring_sizes)
     return render(request, 'products/collections.html', context)
 
 
