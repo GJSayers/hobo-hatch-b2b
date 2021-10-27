@@ -46,10 +46,10 @@
                             <td class="py-3">
                                 <p class="my-0"><strong>{{ item.product.product_name }}</strong></p>
                                 
-                                <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
+                                <p class="my-0 small text-muted">SKU: {{ item.product.product_sku|upper }}</p>
                             </td>
                             <td class="py-3">
-                                <p class="my-0"><p class="my-0"><strong>Size: </strong>{% if item.product.ring_size_matrix %}{{ item.size|upper }}{% elif item.product.clothing_size_matrix %}{{ item.size|upper }}One Size{% endif %}</p></p>
+                                <p class="my-0"><p class="my-0"><strong>Size: </strong>{% if item.product.ring_size_matrix %}{{ item.size|upper }}{% elif item.product.clothing_size_matrix %}{{ item.size|upper }}{% elif item.product.one_size%}One Size{% endif %}</p></p>
                             </td>
                             <td class="py-3">
                                 <p class="my-0">£{{ item.product.product_price }}</p>
@@ -68,11 +68,6 @@
                             <h6><strong>Total Item Qty: {{ total_items }}</strong></h6>
                             <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
                             <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
-                            {% if free_delivery_delta > 0 %}
-                                <p class="mb-1 text-danger">
-                                    You could get free delivery by spending just <strong>${{ free_delivery_delta }}</strong> more!
-                                </p>
-                            {% endif %}
                         </td>
                     </tr>
                     <tr>

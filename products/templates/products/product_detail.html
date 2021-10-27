@@ -50,6 +50,7 @@
                                 {% with product.ring_size_matrix as ring %}
                                     {% if ring %}
                                     <div class="col-12 form-group mb-3">
+                                        <input type="hidden" name="{{ product.product_type }}" id="id_{{ product.product_type }}" value="{{ product.product_type }}">
                                         <span class="input-group">L</span>
                                         <input type="number" class="form-control qty_input" name="quantity_l" value="1" min="0" max="99" data-item_id="{{ product.id }}L" id="id_qty_{{ product.id }}" aria-label="L">
                                         <span class="input-group">N</span>
@@ -66,22 +67,25 @@
                                 {% with product.clothing_size_matrix as clothing %}
                                       {% if clothing %}
                                       <div class="col-sm-12 form-group mb-3">
+                                        <input type="hidden" name="{{ product.product_type }}" id="'id_{{ product.product_type }}" value="{{ product.product_type }}">
                                         <span class="input-group">XS</span>
-                                        <input type="number" class="form-control qty_input_XS" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}XS" id="id_qty_{{ product.id }}XS" aria-label="extra small">
+                                        <input type="number" class="form-control qty_input_XS" name="quantity_xs" value="1" min="0" max="99" data-item_id="{{ product.id }}XS" id="id_qty_{{ product.id }}XS" aria-label="extra small">
                                         <span class="input-group">S</span>
-                                        <input type="number" class="form-control qty_input_S" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}S" id="id_qty_{{ product.id }}S" aria-label="small">
+                                        <input type="number" class="form-control qty_input_S" name="quantity_sm" value="1" min="0" max="99" data-item_id="{{ product.id }}S" id="id_qty_{{ product.id }}S" aria-label="small">
                                         <span class="input-group">M</span>
-                                        <input type="number" class="form-control qty_input_M" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}M" id="id_qty_{{ product.id }}M" aria-label="medium">
+                                        <input type="number" class="form-control qty_input_M" name="quantity_m" value="1" min="0" max="99" data-item_id="{{ product.id }}M" id="id_qty_{{ product.id }}M" aria-label="medium">
                                         <span class="input-group">L</span>
-                                        <input type="number" class="form-control qty_input_L" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}L" id="id_qty_{{ product.id }}L" aria-label="large">
+                                        <input type="number" class="form-control qty_input_L" name="quantity_lg" value="1" min="0" max="99" data-item_id="{{ product.id }}L" id="id_qty_{{ product.id }}L" aria-label="large">
                                         <span class="input-group">XL</span>
-                                        <input type="number" class="form-control qty_input_XL" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}XL" id="id_qty_{{ product.id }}XL" aria-label="extra large">
+                                        <input type="number" class="form-control qty_input_XL" name="quantity_xl" value="1" min="0" max="99" data-item_id="{{ product.id }}XL" id="id_qty_{{ product.id }}XL" aria-label="extra large">
+                                        
                                       </div>
                                       {% endif %}
                                 {% endwith %}
                                 {% with product.one_size as o %}
                                       {% if o %}
                                       <div class="col-sm-12 col-md-6 col-lg-4 form-group mb-3">
+                                        <input type="hidden" name="{{ product.type }}" id="'id_{{ product.type }}">
                                         <span class="input-group">One Size</span>
                                         <input type="number" label="One Size" class="form-control qty_input" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" placeholder="Enter Qty" aria-label="one size">
                                       </div>

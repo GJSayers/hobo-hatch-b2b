@@ -57,4 +57,5 @@ def product_detail(request, product_id):
         'ring': ring,
         'clothing_sizes': clothing_sizes
     }
+    print(product_type)
     return render(request, 'products/product_detail.html', context)
