@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'home',
     'products',
     'bag',
+    'profiles',
     'multiselectfield',
     'storages',
 ]
