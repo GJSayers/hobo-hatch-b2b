@@ -22,7 +22,7 @@ def bag_contents(request):
             total_items += item_data
             bag_items.append({ 
                 'item_id': item_id,
-                'type': type,
+                'type': product.product_type,
                 'quantity_l': item_data,
                 'quantity_n': item_data,
                 'quantity_p': item_data,
@@ -31,6 +31,7 @@ def bag_contents(request):
                 'quantity': item_data,
                 'product': product,
             })
+            print("bag items", bag.items())
             print("bag_contents", item_data)
 
     grand_total = delivery + total
