@@ -71,10 +71,10 @@
                       {% endif %}
                     </span>
                     <span class="my-0">
-                      | {% if grand_total %}
-                      £{{ grand_total|floatformat:2 }}
-                      {% else %}
-                      £0.00
+                      |{% if grand_total %}
+                        £{{ grand_total|floatformat:2 }}
+                        {% else %}
+                        £0.00
                       {% endif %}
                     </span>
                   </div>
