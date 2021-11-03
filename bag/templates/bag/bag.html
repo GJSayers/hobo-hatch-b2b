@@ -32,7 +32,6 @@
                             <th scope="col">Product Info</th>
                             <th scope="col">Product Name</th>
                             <th scope="col">Product Sizes</th>
-                            <th scope="col">Price</th>
                             <th scope="col">Qty</th>
                             <th scope="col">Subtotal</th>
                         </tr>
@@ -47,13 +46,44 @@
                                 <p class="my-0"><strong>{{ item.product.product_name }}</strong></p>
                                 
                                 <p class="my-0 small text-muted">SKU: {{ item.product.product_sku|upper }}</p>
+
+                                <p class="my-0">Cost Price: £{{ item.product.product_price }}</p>
+
+                                <p class="my-0">RRP: £{{ item.product.rrp_price }}</p>
                             </td>
                             <td class="py-3">
-                                <p class="my-0"><p class="my-0"><strong>Size: </strong>{% if item.product.ring_size_matrix %}{{ item.size|upper }}{% elif item.product.clothing_size_matrix %}{{ item.size|upper }}{% elif item.product.one_size%}One Size{% endif %}</p></p>
+                                <p class="my-0">
+                                    <table class="table table-sm table-borderless">
+                                    <tr>
+                                        {% for n in item.size_names %}
+                                        <th scope="col">{{ n }}</th>
+                                        {% endfor %}
+                                        
+                                        
+                                        
+                                    </tr>
+                                    <tr>
+                                        {% for q in item.qty %}
+                                        <td>
+                                        {{ q }}
+                                        </td>
+                                        {% endfor %}
+                                        <!-- <td>
+                                        {{ item.qty }}
+                                        </td>
+                                        <td>
+                                        {{ item.qty }}
+                                        </td>
+                                        <td>
+                                        {{ item.qty }}
+                                        </td>
+                                        <td>
+                                        {{ item.qty }} -->
+                                        <!-- </td> -->
+                                    </tr>
+                                </table></p>
                             </td>
-                            <td class="py-3">
-                                <p class="my-0">£{{ item.product.product_price }}</p>
-                            </td>
+                            
                             <td class="py-3 w-25">
                                 <p class="my-0">{{ item.quantity }}</p>
                             </td>

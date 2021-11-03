@@ -16,40 +16,40 @@ def add_to_bag(request, item_id):
     """
     rings = request.POST.get('rings')
     clothing = request.POST.get('knitwear')
-    # size_qty = None
+    size_qty = None
     redirect_url = request.POST.get('redirect_url')
     
     if 'knitwear' in request.POST:
-        quantity_xs = int(request.POST.get('quantity_xs'))
-        quantity_sm = int(request.POST.get('quantity_sm'))
-        quantity_m = int(request.POST.get('quantity_m'))
-        quantity_lg = int(request.POST.get('quantity_lg'))
-        quantity_xl = int(request.POST.get('quantity_xl'))
+        xs = int(request.POST.get('xs'))
+        sm = int(request.POST.get('sm'))
+        m = int(request.POST.get('m'))
+        lg = int(request.POST.get('lg'))
+        xl = int(request.POST.get('xl'))
         product_type = request.POST.get('knitwear')
         clothing_size_qtys = {
-                            'quantity_xs': quantity_xs,
-                            'quantity_sm': quantity_sm,
-                            'quantity_m': quantity_m,
-                            'quantity_lg': quantity_lg,
-                            'quantity_xl': quantity_xl
+                            'xs': xs,
+                            'sm': sm,
+                            'm': m,
+                            'lg': lg,
+                            'xl': xl
                             }
         print("clothing_size_qtys", clothing_size_qtys)
         clothing_qty = clothing_size_qtys
         size_qty = clothing_qty
 
     elif 'rings' in request.POST:
-        quantity_l = int(request.POST.get('quantity_l'))
-        quantity_n = int(request.POST.get('quantity_n'))
-        quantity_p = int(request.POST.get('quantity_p'))
-        quantity_s = int(request.POST.get('quantity_s'))
-        quantity_u = int(request.POST.get('quantity_u'))
+        l = int(request.POST.get('l'))
+        n = int(request.POST.get('n'))
+        p = int(request.POST.get('p'))
+        s = int(request.POST.get('s'))
+        u = int(request.POST.get('u'))
         product_type = request.POST.get('rings')
         ring_size_qtys = {
-                            'quantity_l': quantity_l,
-                            'quantity_n': quantity_n,
-                            'quantity_p': quantity_p,
-                            'quantity_s': quantity_s,
-                            'quantity_u': quantity_u
+                            'l': l,
+                            'n': n,
+                            'p': p,
+                            's': s,
+                            'u': u
                         }
         print("ring_size_qtys", ring_size_qtys)
         ring_qty = ring_size_qtys
