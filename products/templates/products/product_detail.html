@@ -52,50 +52,90 @@
                                         <!-- {% for size in product.ring.ring_sizes %}
 
                                         {% endfor %} -->
-                                    <div class="col-12 form-group mb-3">
-                                        <input type="hidden" name="{{ product.product_type }}" id="{{ product.product_type }}" data-item_id="{{ product.id }}" value="{{ product.product_type.name }}">
-                                        
-                                        <span class="input-group">L</span>
-                                        <input type="number" class="form-control qty_input" name="l" value="1" min="0" max="99" id="id_qty_{{ product.id }}" data-item_id="{{ product.id }}"  aria-label="L">
+                                    <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0">
+                                        <div>
+                                        <input type="hidden" name="{{ product.product_type }}"
+                                            id="{{ product.product_type }}" data-item_id="{{ product.id }}"
+                                            value="{{ product.product_type.name }}">
+                                        </div>
 
-                                        <span class="input-group">N</span>
-                                        <input type="number" class="form-control qty_input_N" name="n" value="1" min="0" max="99" id="id_qty_{{ product.id }}" data-item_id="{{ product.id }}"  aria-label="N">
 
-                                        <span class="input-group">P</span>
-                                        <input type="number" class="form-control qty_input_P" name="p" value="1" min="0" max="99" id="id_qty_{{ product.id }}" data-item_id="{{ product.id }}"  aria-label="P">
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <span class="input-group justify-content-center">L</span>
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="l" value="1"
+                                                min="0" max="99" id="id_qty_{{ product.id }}"
+                                                data-item_id="{{ product.id }}" aria-label="L">
+                                        </div>
 
-                                        <span class="input-group">S</span>
-                                        <input type="number" class="form-control qty_input_S" name="s" value="1" min="0" max="99" id="id_qty_{{ product.id }}" data-item_id="{{ product.id }}"  aria-label="S">
 
-                                        <span class="input-group">U</span>
-                                        <input type="number" class="form-control qty_input_U" name="u" value="1" min="0" max="99" id="id_qty_{{ product.id }}" data-item_id="{{ product.id }}"  aria-label="U">
-                                      </div>
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <span class="input-group justify-content-center">N</span>
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="n" value="1"
+                                                min="0" max="99" id="id_qty_{{ product.id }}"
+                                                data-item_id="{{ product.id }}" aria-label="N">
+                                        </div>
+
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <span class="input-group justify-content-center">P</span>
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="p"
+                                                value="1" min="0" max="99" id="id_qty_{{ product.id }}"
+                                                data-item_id="{{ product.id }}" aria-label="P">
+                                        </div>
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <span class="input-group justify-content-center">S</span>
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="s"
+                                                value="1" min="0" max="99" id="id_qty_{{ product.id }}"
+                                                data-item_id="{{ product.id }}" aria-label="S">
+                                        </div>
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <span class="input-group justify-content-center">U</span>
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="u"
+                                                value="1" min="0" max="99" id="id_qty_{{ product.id }}"
+                                                data-item_id="{{ product.id }}" aria-label="U">
+                                        </div>
+                                    </div>
                                     {% endif %}
                                 {% endwith %}
                                 {% with product.clothing_size_matrix as clothing %}
                                       {% if clothing %}
-                                      <div class="col-sm-12 form-group mb-3">
-                                        <input type="hidden" name="{{ product.product_type }}" id="id_{{ product.product_type }}" data-item_id="{{ product.id }}" value="{{ product.product_type }}">
-                                        <span class="input-group">XS</span>
-                                        <input type="number" class="form-control qty_input_XS" name="xs" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="extra small">
-                                        <span class="input-group">S</span>
-                                        <input type="number" class="form-control qty_input_S" name="sm" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="small">
-                                        <span class="input-group">M</span>
-                                        <input type="number" class="form-control qty_input_M" name="m" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="medium">
-                                        <span class="input-group">L</span>
-                                        <input type="number" class="form-control qty_input_L" name="lg" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="large">
-                                        <span class="input-group">XL</span>
-                                        <input type="number" class="form-control qty_input_XL" name="xl" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="extra large">
+                                      <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0 px-0">
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <input type="hidden" name="{{ product.product_type }}" id="id_{{ product.product_type }}" data-item_id="{{ product.id }}" value="{{ product.product_type }}">
+                                        </div>
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <span class="input-group justify-content-center">XS</span>
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="xs" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="extra small">
+                                        </div>
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <span class="input-group justify-content-center">S</span>
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="sm" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="small">
+                                        </div>
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <span class="input-group justify-content-center">M</span>
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="m" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="medium">
+                                        </div>
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <span class="input-group justify-content-center">L</span>
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="lg" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="large">
+                                        </div>
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <span class="input-group justify-content-center">XL</span>
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="xl" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="extra large">
+                                        </div>
                                         
                                       </div>
                                       {% endif %}
                                 {% endwith %}
                                 {% with product.one_size as o %}
                                       {% if o %}
-                                      <div class="col-sm-12 col-md-6 col-lg-4 form-group mb-3">
-                                        <input type="hidden" name="{{ product.type }}" id="id_{{ product.type }}" data-item_id="{{ product.id }}" value="{{ product.type }}">
-                                        <span class="input-group">One Size</span>
-                                        <input type="number" label="One Size" class="form-control qty_input" name="quantity" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-product_type="{{ product.product_type }}" id="quantity" placeholder="Enter Qty" aria-label="one size">
+                                      
+                                      <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0">
+                                        
+                                            <input type="hidden" name="universal" id="id_universal" data-item_id="{{ product.id }}" value="universal">
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <span class="input-group justify-content-center">One Size</span>
+                                            <input type="number" label="One Size" class="form-control qty_input input-box rounded-0" name="{{ product.id }}" value="1" min="0" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" placeholder="Enter Qty" aria-label="one size">
+                                        </div>
                                       </div>
                                       {% endif %}
                                 {% endwith %}
@@ -120,4 +160,10 @@
             </div>
         </div>
     </main>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'products/includes/products.js' %}
+{% include 'products/includes/qty_input_scripts.html' %}
 {% endblock %}

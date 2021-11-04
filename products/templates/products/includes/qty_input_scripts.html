@@ -1,0 +1,42 @@
+<script type="text/javascript">
+
+// Add minus button for each input element
+$(".input-box").before(
+    `<div class="input-group-prepend">                                       
+        <button class="decrement-qty btn rounded-0" data-item_id="{{ product.id }}"
+            id="decrement-qty_{{ product.id }}">
+            <span class="icon">
+            <i class="fas fa-minus"></i>
+            </span>
+        </button>
+    </div>`
+);
+
+// Add plus button for each input element
+$(".input-box").after(`
+    <div class="input-group-append">
+        <button class="increment-qty btn rounded-0" data-item_id="{{ product.id }}"
+            id="increment-qty_{{ product.id }}">
+            <span class="icon">
+            <i class="fas fa-plus"></i>
+            </span>
+        </button>
+    </div>`
+);
+
+// Increment quantity
+$('.increment-qty').click(function(e) {
+    e.preventDefault();
+    var closestInput = $(this).closest('.input-wrapper').find('.qty_input')[0];
+    var currentValue = parseInt($(closestInput).val());
+    $(closestInput).val(currentValue + 1);
+});
+
+// Decrement quantity
+$('.decrement-qty').click(function(e) {
+    e.preventDefault();
+    var closestInput = $(this).closest('.input-wrapper').find('.qty_input')[0];
+    var currentValue = parseInt($(closestInput).val());
+    $(closestInput).val(currentValue - 1)
+});
+</script>
