@@ -49,9 +49,7 @@
                                 {% csrf_token %}
                                 {% with product.ring_size_matrix as ring %}
                                     {% if ring %}
-                                        <!-- {% for size in product.ring.ring_sizes %}
 
-                                        {% endfor %} -->
                                     <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0">
                                         <div>
                                         <input type="hidden" name="{{ product.product_type }}"
@@ -59,14 +57,12 @@
                                             value="{{ product.product_type.name }}">
                                         </div>
 
-
                                         <div class="col-2 px-1 input-wrapper">
                                             <span class="input-group justify-content-center">L</span>
                                             <input type="number" class="form-control qty_input input-box rounded-0" name="l" value="1"
                                                 min="0" max="99" id="id_qty_{{ product.id }}"
                                                 data-item_id="{{ product.id }}" aria-label="L">
                                         </div>
-
 
                                         <div class="col-2 px-1 input-wrapper">
                                             <span class="input-group justify-content-center">N</span>
@@ -131,10 +127,13 @@
                                       
                                       <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0">
                                         
-                                            <input type="hidden" name="universal" id="id_universal" data-item_id="{{ product.id }}" value="universal">
+                                        <div class="col-2 px-1 input-wrapper">
+                                            <input type="hidden" name="{{ product.product_type }}" id="id_{{ product.product_type }}" data-item_id="{{ product.id }}" value="{{ product.product_type }}">
+                                        </div>
+
                                         <div class="col-2 px-1 input-wrapper">
                                             <span class="input-group justify-content-center">One Size</span>
-                                            <input type="number" label="One Size" class="form-control qty_input input-box rounded-0" name="{{ product.id }}" value="1" min="0" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" placeholder="Enter Qty" aria-label="one size">
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="one_size" value="1" min="0" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" aria-label="one size">
                                         </div>
                                       </div>
                                       {% endif %}

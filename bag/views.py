@@ -16,6 +16,11 @@ def add_to_bag(request, item_id):
     """
     rings = request.POST.get('rings')
     clothing = request.POST.get('knitwear')
+    beltbag_bumbag = request.POST.get('beltbag_bumbag')
+    belts = request.POST.get('belts')
+    beanie_hats = request.POST.get('beanie_hats')
+    blankets = request.POST.get('blankets')
+    
     size_qty = None
     redirect_url = request.POST.get('redirect_url')
     
@@ -54,6 +59,27 @@ def add_to_bag(request, item_id):
         print("ring_size_qtys", ring_size_qtys)
         ring_qty = ring_size_qtys
         size_qty = ring_qty
+
+    elif 'beltbag_bumbag' in request.POST:
+        one_size = int(request.POST.get('one_size'))
+        product_type = request.POST.get('beltbag_bumbag')
+        universal_qty = {'one_size': one_size}
+    
+    elif 'belts' in request.POST:
+        one_size = int(request.POST.get('one_size'))
+        product_type = request.POST.get('belts')
+        universal_qty = {'one_size': one_size}
+    
+    elif 'beanie_hats' in request.POST:
+        one_size = int(request.POST.get('one_size'))
+        product_type = request.POST.get('beanie_hats')
+        universal_qty = {'one_size': one_size}
+    
+    elif 'blankets' in request.POST:
+        one_size = int(request.POST.get('one_size'))
+        product_type = request.POST.get('blankets')
+        universal_qty = {'one_size': one_size}
+    
     bag = request.session.get('bag', {})
 
     def add_quantities(size_qty, product_type, item_id, bag):
@@ -78,6 +104,18 @@ def add_to_bag(request, item_id):
         
     elif clothing:
         add_quantities(clothing_size_qtys, product_type, item_id, bag)
+    
+    elif beltbag_bumbag:
+        add_quantities(universal_qty, product_type, item_id, bag)
+
+    elif belts:
+        add_quantities(universal_qty, product_type, item_id, bag)
+
+    elif blankets:
+        add_quantities(universal_qty, product_type, item_id, bag)
+
+    elif beanie_hats:
+        add_quantities(universal_qty, product_type, item_id, bag)
 
     request.session['bag'] = bag
     print("session bag", request.session['bag'])
