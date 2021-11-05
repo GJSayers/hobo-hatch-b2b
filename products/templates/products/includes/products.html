@@ -3,8 +3,8 @@
 // Add minus button for each input element
 $(".input-box").before(
     `<div class="input-group-prepend">                                       
-        <button class="decrement-qty btn rounded-0" data-item_id="{{ item.id }}"
-            id="decrement-qty_{{ item.id }}">
+        <button class="decrement-qty btn rounded-0" data-item_id="{{ product.id }}"
+            id="decrement-qty_{{ product.id }}">
             <span class="icon">
             <i class="fas fa-minus"></i>
             </span>
@@ -13,17 +13,17 @@ $(".input-box").before(
 );
 
 // Add plus button for each input element
+
 $(".input-box").after(`
     <div class="input-group-append">
-        <button class="increment-qty btn rounded-0" data-item_id="{{ item.id }}"
-            id="increment-qty_{{ item.id }}">
+        <button class="increment-qty btn rounded-0" data-item_id="{{ product.id }}"
+            id="increment-qty_{{ product.id }}">
             <span class="icon">
             <i class="fas fa-plus"></i>
             </span>
         </button>
     </div>`
 );
-
 
 // Enable / disable
 function handleEnableDisable(size) {
@@ -71,4 +71,6 @@ $('.decrement-qty').click(function(e) {
     var size = $(this).closest('.input-wrapper').data('size');
     handleEnableDisable(size);
 });
+
 </script>
+

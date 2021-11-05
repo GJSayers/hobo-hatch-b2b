@@ -100,23 +100,23 @@
                                         </div>
                                         <div class="col-2 px-1 input-wrapper">
                                             <span class="input-group justify-content-center">XS</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="xs" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="extra small">
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="xs" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="xs" id="id_qty_{{ product.id }}" aria-label="extra small">
                                         </div>
                                         <div class="col-2 px-1 input-wrapper">
                                             <span class="input-group justify-content-center">S</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="sm" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="small">
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="sm" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="sm"  id="id_qty_{{ product.id }}" aria-label="small">
                                         </div>
                                         <div class="col-2 px-1 input-wrapper">
                                             <span class="input-group justify-content-center">M</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="m" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="medium">
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="m" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="m" id="id_qty_{{ product.id }}" aria-label="medium">
                                         </div>
                                         <div class="col-2 px-1 input-wrapper">
                                             <span class="input-group justify-content-center">L</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="lg" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="large">
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="lg" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="lg" id="id_qty_{{ product.id }}" aria-label="large">
                                         </div>
                                         <div class="col-2 px-1 input-wrapper">
                                             <span class="input-group justify-content-center">XL</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="xl" value="1" min="0" max="99" data-item_id="{{ product.id }}"  id="id_qty_{{ product.id }}" aria-label="extra large">
+                                            <input type="number" class="form-control qty_input input-box rounded-0" name="xl" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="xl" id="id_qty_{{ product.id }}" aria-label="extra large">
                                         </div>
                                         
                                       </div>
@@ -163,6 +163,5 @@
 
 {% block postloadjs %}
 {{ block.super }}
-{% include 'products/includes/products.js' %}
-{% include 'products/includes/qty_input_scripts.html' %}
+{% include 'products/includes/products.html' %}
 {% endblock %}
