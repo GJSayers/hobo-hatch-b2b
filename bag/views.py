@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from products. models import Product
+from django.shortcuts import render, redirect, reverse, HttpResponse
+# from products. models import Product
 # from django.utils.datastructures import MultiValueDict
 
 
@@ -20,10 +20,9 @@ def add_to_bag(request, item_id):
     belts = request.POST.get('belts')
     beanie_hats = request.POST.get('beanie_hats')
     blankets = request.POST.get('blankets')
-    
-    size_qty = None
+    # bag = request.session.get('bag', {})
     redirect_url = request.POST.get('redirect_url')
-    
+
     if 'knitwear' in request.POST:
         xs = int(request.POST.get('xs'))
         sm = int(request.POST.get('sm'))
@@ -38,9 +37,6 @@ def add_to_bag(request, item_id):
                             'lg': lg,
                             'xl': xl
                             }
-        print("clothing_size_qtys", clothing_size_qtys)
-        clothing_qty = clothing_size_qtys
-        size_qty = clothing_qty
 
     elif 'rings' in request.POST:
         l = int(request.POST.get('l'))
@@ -56,30 +52,27 @@ def add_to_bag(request, item_id):
                             's': s,
                             'u': u
                         }
-        print("ring_size_qtys", ring_size_qtys)
-        ring_qty = ring_size_qtys
-        size_qty = ring_qty
 
     elif 'beltbag_bumbag' in request.POST:
         one_size = int(request.POST.get('one_size'))
         product_type = request.POST.get('beltbag_bumbag')
         universal_qty = {'one_size': one_size}
-    
+
     elif 'belts' in request.POST:
         one_size = int(request.POST.get('one_size'))
         product_type = request.POST.get('belts')
         universal_qty = {'one_size': one_size}
-    
+
     elif 'beanie_hats' in request.POST:
         one_size = int(request.POST.get('one_size'))
         product_type = request.POST.get('beanie_hats')
         universal_qty = {'one_size': one_size}
-    
+
     elif 'blankets' in request.POST:
         one_size = int(request.POST.get('one_size'))
         product_type = request.POST.get('blankets')
         universal_qty = {'one_size': one_size}
-    
+
     bag = request.session.get('bag', {})
 
     def add_quantities(size_qty, product_type, item_id, bag):
@@ -88,23 +81,19 @@ def add_to_bag(request, item_id):
         bag to avoid overwriting.
         breaking down the function into sections per size type
         """
+        qty = request.POST.get('qty')
         if item_id in list(bag.keys()):
-            if size_qty in bag[item_id][product_type].keys():
-                bag[item_id][product_type] += size_qty
-                print("+=", size_qty)
-            else:
-                bag[item_id][product_type] = size_qty
-                print("=", size_qty)
+            bag[item_id][product_type][size_qty] += qty
         else:
             bag[item_id] = {product_type: size_qty}
             print("create", size_qty)
 
     if rings:
         add_quantities(ring_size_qtys, product_type, item_id, bag)
-        
+
     elif clothing:
         add_quantities(clothing_size_qtys, product_type, item_id, bag)
-    
+
     elif beltbag_bumbag:
         add_quantities(universal_qty, product_type, item_id, bag)
 
@@ -120,3 +109,126 @@ def add_to_bag(request, item_id):
     request.session['bag'] = bag
     print("session bag", request.session['bag'])
     return redirect(redirect_url)
+
+
+def edit_bag(request, item_id):
+    """
+    Edit or remove items from the bag view
+    """
+    print("edit_bag")
+    
+    rings = request.POST.get('rings')
+    clothing = request.POST.get('knitwear')
+    beltbag_bumbag = request.POST.get('beltbag_bumbag')
+    belts = request.POST.get('belts')
+    beanie_hats = request.POST.get('beanie_hats')
+    blankets = request.POST.get('blankets')
+    size_qty = request.POST.get('size_qty')
+    bag = request.session.get('bag', {})
+
+    if 'knitwear' in request.POST:
+        xs = int(request.POST.get('xs'))
+        sm = int(request.POST.get('sm'))
+        m = int(request.POST.get('m'))
+        lg = int(request.POST.get('lg'))
+        xl = int(request.POST.get('xl'))
+        product_type = request.POST.get('knitwear')
+        clothing_size_qtys = {
+                            'xs': xs,
+                            'sm': sm,
+                            'm': m,
+                            'lg': lg,
+                            'xl': xl
+                            }
+
+    elif 'rings' in request.POST:
+        l = int(request.POST.get('l'))
+        n = int(request.POST.get('n'))
+        p = int(request.POST.get('p'))
+        s = int(request.POST.get('s'))
+        u = int(request.POST.get('u'))
+        product_type = request.POST.get('rings')
+        ring_size_qtys = {
+                            'l': l,
+                            'n': n,
+                            'p': p,
+                            's': s,
+                            'u': u
+                        }
+
+    elif 'beltbag_bumbag' in request.POST:
+        one_size = int(request.POST.get('one_size'))
+        product_type = request.POST.get('beltbag_bumbag')
+        universal_qty = {'one_size': one_size}
+
+    elif 'belts' in request.POST:
+        one_size = int(request.POST.get('one_size'))
+        product_type = request.POST.get('belts')
+        universal_qty = {'one_size': one_size}
+
+    elif 'beanie_hats' in request.POST:
+        one_size = int(request.POST.get('one_size'))
+        product_type = request.POST.get('beanie_hats')
+        universal_qty = {'one_size': one_size}
+
+    elif 'blankets' in request.POST:
+        one_size = int(request.POST.get('one_size'))
+        product_type = request.POST.get('blankets')
+        universal_qty = {'one_size': one_size}
+
+    # bag = request.session.get('bag', {})
+
+    def edit_quantities(size_qty, product_type, item_id, bag):
+        """
+        Identifies which product type is being added to the
+        bag to avoid overwriting.
+        breaking down the function into sections per size type
+        """
+        size_qty = request.POST.get('size_qty')
+        line_qty = request.POST.get('line_qty')
+        
+
+        # qty = list(int(request.POST.get(['qty'])))
+        if item_id in list(bag.keys()):
+            if line_qty > 0:
+                bag[item_id] = {product_type: size_qty}
+                print("update size", size_qty)
+            else:
+                bag.pop(item_id)
+
+        bag = request.session.get('bag', {})
+
+    if rings:
+        edit_quantities(ring_size_qtys, product_type, item_id, bag)
+
+    elif clothing:
+        edit_quantities(clothing_size_qtys, product_type, item_id, bag)
+
+    elif beltbag_bumbag:
+        edit_quantities(universal_qty, product_type, item_id, bag)
+
+    elif belts:
+        edit_quantities(universal_qty, product_type, item_id, bag)
+
+    elif blankets:
+        edit_quantities(universal_qty, product_type, item_id, bag)
+
+    elif beanie_hats:
+        edit_quantities(universal_qty, product_type, item_id, bag)
+
+    request.session['bag'] = bag
+    print("session bag", request.session['bag'])
+    return redirect(reverse('view_bag'))
+
+def remove_from_bag(request, item_id):
+    """Remove the item from the shopping bag"""
+    bag = request.session.get('bag', {})
+    try:
+        
+        bag.pop(item_id)
+
+        request.session['bag'] = bag
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        return HttpResponse(status=500)
