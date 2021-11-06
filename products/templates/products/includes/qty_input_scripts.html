@@ -1,10 +1,12 @@
 <script type="text/javascript">
 
+$( document ).ready(function() {
+
 // Add minus button for each input element
 $(".input-box").before(
     `<div class="input-group-prepend">                                       
-        <button class="decrement-qty btn rounded-0" data-item_id="{{ item.id }}"
-            id="decrement-qty_{{ item.id }}">
+        <button class="decrement-qty btn rounded-0" data-item_id="{{ item.item_id }}"
+            id="decrement-qty_{{ s }}">
             <span class="icon">
             <i class="fas fa-minus"></i>
             </span>
@@ -15,8 +17,8 @@ $(".input-box").before(
 // Add plus button for each input element
 $(".input-box").after(`
     <div class="input-group-append">
-        <button class="increment-qty btn rounded-0" data-item_id="{{ item.id }}"
-            id="increment-qty_{{ item.id }}">
+        <button class="increment-qty btn rounded-0" data-item_id="{{ item.item_id }}"
+            id="increment-qty_{{ s }}">
             <span class="icon">
             <i class="fas fa-plus"></i>
             </span>
@@ -24,20 +26,22 @@ $(".input-box").after(`
     </div>`
 );
 
+});
+
 
 // Enable / disable
-function handleEnableDisable(size) {
-    currentValue = parseInt($(`#id_qty_${size}`).val());
+function handleEnableDisable(itemId, size) {
+    currentValue = parseInt($(`#id_qty_${itemId}${size}`).val());
     var minusDisabled = currentValue < 2;
     var plusDisabled = currentValue > 98;
-    $(`#decrement-qty_${size}`).prop('disabled', minusDisabled);
-    $(`#increment-qty_${size}`).prop('disabled', plusDisabled);
+    $(`#decrement-qty_${itemId}${size}`).prop('disabled', minusDisabled);
+    $(`#increment-qty_${itemId}${size}`).prop('disabled', plusDisabled);
 }
 
 // Ensure proper enabling/disabling of all inputs on page load
 var allQtyInputs = $('.qty_input');
     for(var i = 0; i < allQtyInputs.length; i++){
-        var size = $(this).closest('.input-wrapper').data('size');
+        var size = $(this).data('size');
        
         handleEnableDisable(size);
     }
@@ -45,9 +49,9 @@ var allQtyInputs = $('.qty_input');
 
 // Check enable/disable every time the input is changed
 $('.qty_input').change(function() {
-    // var itemId = $(this).data(itemId);
-    var size = $(this).closest('.input-wrapper').data('size');
-    handleEnableDisable(size);
+    var itemId = $(this).data(itemId);
+    var size = $(this).data('size');
+    handleEnableDisable(itemIdsize);
 });
 
 
@@ -57,9 +61,9 @@ $('.increment-qty').click(function(e) {
     var closestInput = $(this).closest('.input-wrapper').find('.qty_input')[0];
     var currentValue = parseInt($(closestInput).val());
     $(closestInput).val(currentValue + 1);
-    // var itemId = $(this).data(itemId);
-    var size = $(this).closest('.input-wrapper').data('size');
-    handleEnableDisable(size);
+    var itemId = $(this).data(itemId);
+    var size = $(this).data('size');
+    handleEnableDisable(itemId,size);
 });
 
 // Decrement quantity
@@ -68,7 +72,8 @@ $('.decrement-qty').click(function(e) {
     var closestInput = $(this).closest('.input-wrapper').find('.qty_input')[0];
     var currentValue = parseInt($(closestInput).val());
     $(closestInput).val(currentValue - 1)
-    var size = $(this).closest('.input-wrapper').data('size');
-    handleEnableDisable(size);
+    var itemId = $(this).data(itemId);
+    var size = $(this).data(size);
+    handleEnableDisable(itemId, size);
 });
 </script>

@@ -50,7 +50,7 @@
                                 <p class="my-0">RRP: £{{ item.product.rrp_price }}</p>
                             </td>
                             
-                                <form class="form update-form" action="" method="POST">
+                                <form class="form update-form" action="{% url 'edit_bag' item.item_id %}" method="POST">
                                     {% csrf_token %}
                                     <td class="py-0 w-50 justify-content-center">
                                         <table class="table table-sm table-borderless">
@@ -65,20 +65,22 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    {% for q in item.qty %}
+                                                    {% for s,q in item.size_items %}
+                                                    
                                                     <td class="py-3 text-center">
                                                         <div class="col form-group justify-content-center mt-3 mb-3">
-                                                        
-                                                            <input type="hidden" name=""
-                                                                id="{{ item.product_type }}" data-item_id="{{ product.id }}"
-                                                                value="{{ item.product_type.name }}">
-                                                        
+                                                            
+                                                            <input type="hidden" name="{{ s }}"
+                                                                id="{{ s }}" data-item_id="{{ item.item_id }}"
+                                                                 value="{{ s }}">
+                                                                
                                                             
                                                             <div class="pr-3 pl-3 input-wrapper">
                                                                 <span class="input-group"></span>
-                                                                <input type="number" class="form-control qty_input input-box rounded-0 text-center"  value="{{ q }}"
-                                                                    min="0" max="99" id="id_qty_"
-                                                                    data-item_id="{{ item.id }}" aria-label="{{ n }}">
+                                                                <input type="number" class="form-control qty_input input-box rounded-0 text-center"  value="{{ q }}" data-size="{{ s }}"
+                                                                    min="0" max="99" id="id_qty_{{ s }}"
+                                                                    data-item_id="{{ item.item_id }}" aria-label="size{{ s }}">
+                                                                 
                                                             </div>
                                                         </div>       
                                                     </td> 
@@ -87,14 +89,22 @@
                                             </tbody>
                                         </table>
                                     </td>
+                                    <div class="col-12">
+                                    
+                                    <input type="submit" class="btn btn-primary" value="Edit Item"><span class="text-uppercase"><i class="fas fa-pen"></i></span>
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                    </div>
+                                    
                                 </form>
+                                <!-- <a class="update-link">Update</a> -->
+                                <a class="remove-item" id="remove_{{ item.item_id }}" data-type="{{ item.product_type }}" >Remove</a>
                                 
                             
                             <td class="py-3 w-15">
                                 <p class="my-0 line-qty">{{ item.line_qty }}</p>
+                                
                                 <p class="pt-5">
-                                <a href="" class="update-link">Update</a>
-                                <a href="" class="remove-link" id="remove_{{ item.item_id }}">Remove</a>
+                                
                                 </p>
                             </td>
                             <td class="py-3">
@@ -140,4 +150,27 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'products/includes/qty_input_scripts.html' %}
+<script type="text/javascript">
+    // A $( document ).ready() block.
+    $( document ).ready(function() {
+        // Update quantity on click
+        // $('.update-link').click(function(e) {
+        //     var form = $(this).prev('.update-form');
+        //     form.submit();
+        // })
+
+        // Remove item and reload on click
+        $('.remove-item').click(function(e) {
+            var csrfToken = "{{ csrf_token }}";
+            var itemId = $(this).attr('id').split('remove_')[1];
+            let url = `remove/${itemId}/`;
+            var data = {'csrfmiddlewaretoken': csrfToken};
+
+            $.post(url, data)
+            .done(function() {
+                location.reload();
+            });
+        })
+    });
+</script>
 {% endblock %}
