@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'profiles',
+    'checkout',
     'multiselectfield',
     'storages',
 ]

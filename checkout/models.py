@@ -13,7 +13,7 @@ class Order(models.Model):
     buyer_name = models.CharField(max_length=60, null=False, blank=False)
     stockist = models.ForeignKey(Stockist,
                                  null=False, blank=False,
-                                 on_delete=models.SET_NULL,
+                                 on_delete=models.CASCADE,
                                  related_name='order')
     buyer_phone = models.CharField(max_length=20, null=False, blank=False)
     buyer_email = models.CharField(max_length=200, null=False, blank=False)
@@ -71,12 +71,6 @@ class OrderLineItem(models.Model):
     product = models.ForeignKey(Product, null=False,
                                 blank=False, on_delete=models.CASCADE)
     # add and update model with correct qty / size reference once bug sorted in add to bag
-    product_category = models.ForeignKey(Product,
-                                         null=False, blank=False,
-                                         on_delete=models.CASCADE)
-    product_type = models.ForeignKey(Product,
-                                     null=False, blank=False,
-                                     on_delete=models.SET_NULL)
     lineitem_qty = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,
                                          null=False, blank=False, editable=False)
