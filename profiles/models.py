@@ -35,6 +35,7 @@ class Stockist(models.Model):
         (1, "Pureplay Ecomm"),
         (2, "Physical Only"),
         (3, "Multi-Channel"),
+        (4, "Marketplace"),
     )
 
     stockist_channel = models.CharField(max_length=30,
