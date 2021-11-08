@@ -21,10 +21,8 @@
     <div class="row">
         <div class="col">
             {% if bag_items %}
-                {{ bag_items }}
                 <br>
                 <br>
-                {{ request.session.bag }}
             <div class="table-responsive rounded">
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">
@@ -105,7 +103,7 @@
                             <a href="{% url 'collections' %}" class="btn btn-outline-black rounded-0 btn-lg">
                                 <span class="text-uppercase">Continue Shopping</span>
                             </a>
-                            <a href="" class="btn btn-black rounded-0 btn-lg">
+                            <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
                                 <span class="text-uppercase">Secure Checkout</span>
                                 <span class="icon">
                                     <i class="fas fa-lock"></i>

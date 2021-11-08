@@ -16,7 +16,8 @@ class Order(models.Model):
                                  on_delete=models.CASCADE,
                                  related_name='order')
     buyer_phone = models.CharField(max_length=20, null=False, blank=False)
-    buyer_email = models.CharField(max_length=200, null=False, blank=False)
+    buyer_email = models.EmailField(max_length=200, null=False, blank=False)
+    # accounts_email = models.EmailField(max_length=200, null=False, blank=False)
     accounts_phone = models.CharField(max_length=20, null=False, blank=False)
     address_1 = models.CharField(max_length=100, null=False, blank=False)
     address_2 = models.CharField(max_length=100, null=False, blank=True)
