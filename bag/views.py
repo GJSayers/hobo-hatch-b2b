@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
-# from products. models import Product
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.contrib import messages
+from products. models import Product
 # from django.utils.datastructures import MultiValueDict
 
 
@@ -81,12 +82,14 @@ def add_to_bag(request, item_id):
         bag to avoid overwriting.
         breaking down the function into sections per size type
         """
-        qty = request.POST.get('qty')
+        product = get_object_or_404(Product, pk=item_id)
         if item_id in list(bag.keys()):
-            bag[item_id][product_type][size_qty] += qty
+            bag[item_id][product_type][size_qty] += [size_qty]
+            messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
         else:
             bag[item_id] = {product_type: size_qty}
             print("create", size_qty)
+            messages.success(request, f'{product.product_name} has been added to your bag')
 
     if rings:
         add_quantities(ring_size_qtys, product_type, item_id, bag)
@@ -184,17 +187,18 @@ def edit_bag(request, item_id):
         bag to avoid overwriting.
         breaking down the function into sections per size type
         """
+        product = get_object_or_404(Product, pk=item_id)
         size_qty = request.POST.get('size_qty')
         line_qty = request.POST.get('line_qty')
-        
-
         # qty = list(int(request.POST.get(['qty'])))
         if item_id in list(bag.keys()):
             if line_qty > 0:
                 bag[item_id] = {product_type: size_qty}
+                messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
                 print("update size", size_qty)
             else:
                 bag.pop(item_id)
+                messages.success(request, f'{product.product_name} has been removed bag')
 
         bag = request.session.get('bag', {})
 
@@ -222,13 +226,16 @@ def edit_bag(request, item_id):
 
 def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
+    product = get_object_or_404(Product, pk=item_id)
     bag = request.session.get('bag', {})
     try:
         
         bag.pop(item_id)
+        messages.success(request, f'{product.product_name} has been removed bag')
 
         request.session['bag'] = bag
         return HttpResponse(status=200)
 
     except Exception as e:
+        messages.error(request, f'There was an error removing this item: {e}')
         return HttpResponse(status=500)
