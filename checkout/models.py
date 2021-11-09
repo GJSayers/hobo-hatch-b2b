@@ -14,7 +14,7 @@ class Order(models.Model):
     stockist = models.ForeignKey(Stockist,
                                  null=False, blank=False,
                                  on_delete=models.CASCADE,
-                                 related_name='order')
+                                 related_name='orders')
     buyer_phone = models.CharField(max_length=20, null=False, blank=False)
     buyer_email = models.EmailField(max_length=200, null=False, blank=False)
     # accounts_email = models.EmailField(max_length=200, null=False, blank=False)
@@ -66,7 +66,7 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
-    order = models.ForeignKey(Order, null=False, blank=False,
+    orders = models.ForeignKey(Order, null=False, blank=False,
                               on_delete=models.CASCADE, 
                               related_name='lineitem')
     product = models.ForeignKey(Product, null=False,

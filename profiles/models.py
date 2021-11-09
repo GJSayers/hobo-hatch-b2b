@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from multiselectfield import MultiSelectField
 from django_countries.fields import CountryField
@@ -67,3 +69,14 @@ class Stockist(models.Model):
 
 def __str__(self):
     return self.stockist_name
+
+
+@receiver(post_save, sender=User)
+def creates_or_update_user_profile(sender, instance, created, **kwargs):
+    """
+    Create / Update stockist profile 
+    """
+    if created:
+        UserProfile.objects.create(user=instance)
+    # Existing users save the updated profile if any cahnges are made
+    instance.userprofile.save()
