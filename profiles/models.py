@@ -7,23 +7,23 @@ from multiselectfield import MultiSelectField
 from django_countries.fields import CountryField
 
 
-class Stockist(models.Model):
+class UserProfile(models.Model):
     """
     A stockist model for creating a stockist account for placing orders:
     Without an account customers cannot place orders
     """
-    stockist = models.OneToOneField(User, on_delete=models.CASCADE)
-    stockist_name = models.CharField(max_length=60, null=False, blank=False)
-    buyer_name = models.CharField(max_length=60, null=False, blank=False)
-    buyer_phone = models.CharField(max_length=20, null=False, blank=False)
-    buyer_email = models.EmailField(max_length=200, null=False, blank=False)
-    accounts_phone = models.CharField(max_length=20, null=False, blank=False)
-    accounts_email = models.EmailField(max_length=200, null=False, blank=False)
-    address_1 = models.CharField(max_length=80, null=False, blank=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    stockist_name = models.CharField(max_length=60, null=True, blank=True)
+    buyer_name = models.CharField(max_length=60, null=True, blank=True)
+    buyer_phone = models.CharField(max_length=20, null=True, blank=True)
+    buyer_email = models.EmailField(max_length=200, null=True, blank=True)
+    accounts_phone = models.CharField(max_length=20, null=True, blank=True)
+    accounts_email = models.EmailField(max_length=200, null=True, blank=True)
+    address_1 = models.CharField(max_length=80, null=True, blank=True)
     address_2 = models.CharField(max_length=80, null=True, blank=True)
-    town_or_city = models.CharField(max_length=35, null=False, blank=False)
-    county_or_state = models.CharField(max_length=35, null=False, blank=False)
-    postcode = models.CharField(max_length=12, null=False, blank=False)
+    town_or_city = models.CharField(max_length=35, null=True, blank=True)
+    county_or_state = models.CharField(max_length=35, null=True, blank=True)
+    postcode = models.CharField(max_length=12, null=True, blank=True)
     country = CountryField(blank_label='Country *', null=True, blank=True)
 
     CURRENCY_OPTIONS = (
@@ -68,15 +68,15 @@ class Stockist(models.Model):
 
 
 def __str__(self):
-    return self.stockist_name
+    return self.user.username
 
 
 @receiver(post_save, sender=User)
-def creates_or_update_user_profile(sender, instance, created, **kwargs):
+def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
     Create / Update stockist profile 
     """
     if created:
         UserProfile.objects.create(user=instance)
-    # Existing users save the updated profile if any cahnges are made
+    # Existing users save the updated profile if any changes are made
     instance.userprofile.save()

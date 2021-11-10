@@ -103,13 +103,9 @@
 
     <!-- Navigation -->
     <nav class="nav justify-content-center">
-    <!-- bar navbar-expand-lg navbar-light bg-light m-3" role="navigation">
-      <div class="container-fluid">
-        <button class="position-absolute top-0 start-50 translate-middle navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+    
           <ul class="nav justify-content-center">
+    <!-- Check which items to display in Navbar based on if user is authenticated or not -->
             {% if request.user.is_authenticated %}
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{% url 'collections' %}">Collections
@@ -125,7 +121,9 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" href="#">My Profile</a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a href="#" class="dropdown-item">My Account</a></li>
+                    <li><a href="{% url 'profile' %}" class="dropdown-item">My Account</a></li>
+    <!-- If user is a super user they can access product management -->
+
                     {% if request.user.is_superuser %}
                     <li><a href="" class="dropdown-item">Manage Products</a></li>  
                     {% endif %}
@@ -134,12 +132,12 @@
               </li>
             {% else %}
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                <a class="nav-link" aria-current="page" href="{% url 'profile' %}">Login</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="{% url 'account_signup' %}">Apply</a>
               </li>
-              {% endif %}
+            {% endif %}
 
             <li class="nav-item">
               <a class="nav-link" href="#">About Us</a>

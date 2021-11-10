@@ -5,13 +5,13 @@ from django.db.models import Sum
 from django.conf import settings
 
 from products.models import Product
-from profiles.models import Stockist
+from profiles.models import UserProfile
 
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
     buyer_name = models.CharField(max_length=60, null=False, blank=False)
-    stockist = models.ForeignKey(Stockist,
+    stockist = models.ForeignKey(UserProfile,
                                  null=False, blank=False,
                                  on_delete=models.CASCADE,
                                  related_name='orders')
