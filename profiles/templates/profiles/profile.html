@@ -16,13 +16,27 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container mb-2">
+<div class="container">
     <div class="row">
         <div class="col">
             <hr>
                 <h2 class="logo-font mb-4">My Account</h2>
             <hr>
         </div>
-        {{ profile }}
     </div>
+    <div class="row">
+        <div class="col-12-col-lg-6">
+            <p>Default Delivery Information</p>
+            <form action="{% url 'profile' %}" methood="POST" class="mt-3" id="profile-update-form">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-primary float-right">Update Details</button>
+            </form>
+        </div>
+        <div class="col-12 col-lg-6">
+            <p>Order History</p>
+            {{ orders }}
+        </div>
+    </div>   
+</div>
 {% endblock %}

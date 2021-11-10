@@ -13,7 +13,7 @@ class UserProfile(models.Model):
     Without an account customers cannot place orders
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    stockist_name = models.CharField(max_length=60, null=True, blank=True)
+    stockist = models.CharField(max_length=60, null=True, blank=True)
     buyer_name = models.CharField(max_length=60, null=True, blank=True)
     buyer_phone = models.CharField(max_length=20, null=True, blank=True)
     buyer_email = models.EmailField(max_length=200, null=True, blank=True)
