@@ -45,6 +45,8 @@
                     {{ order_form.county_or_state | as_crispy_field }}
                     {{ order_form.postcode | as_crispy_field }}
                     {{ order_form.country | as_crispy_field }}
+                    {{ order_form.delivery_date | as_crispy_field }}
+                    
 
                 </fieldset>
                 <fieldset class="px-3">
@@ -81,6 +83,7 @@
 
 {% block postloadjs %}
     {{ block.super }}
+    {{ order_form.media }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ CLIENT_SECRET|json_script:"id_client_secret" }}
     <script src="{% static '/checkout/js/stripe_elements.js' %}"></script>
