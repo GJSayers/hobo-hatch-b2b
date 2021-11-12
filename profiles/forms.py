@@ -4,7 +4,9 @@ from .models import UserProfile
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        exclude = ('user', 'purchasing_currency', 'stockist_channel', 'stockist_market', 'categories' )
+        exclude = ('user', 'country', 'purchasing_currency',
+                   'stockist_channel', 'stockist_market',
+                   'categories', 'accounts_email', )
                   # not possible to enter due to bug / 'delivery_date',
     
     def __init__(self, *args, **kwargs):
@@ -19,7 +21,7 @@ class UserProfileForm(forms.ModelForm):
             'buyer_phone': 'Buyer Name',
             'buyer_email': 'Buyer Email Address',
             'accounts_phone': 'Accounts Phone Number',
-            'accounts_email': 'Accounts Email Address',
+            # 'accounts_email': 'Accounts Email Address',
             'address_1': 'Address Line 1',
             'address_2': 'Address Line 2',
             'town_or_city': 'Town or City',
