@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'profiles',
     'checkout',
     'multiselectfield',
+    'bootstrap_datepicker_plus',
     'storages',
     'crispy_forms',
 ]

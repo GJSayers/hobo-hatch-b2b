@@ -55,7 +55,7 @@ form.addEventListener('submit', function(ev) {
                 <span class="icon" role="alert">
                 <i class="fas fa-times"></i>
                 </span>
-                <span>${event.error.message}</span>
+                <span>${result.error.message}</span>
                 `;
                 $(errorDiv).html(msg);
                 card.update({ 'disabled': false});
