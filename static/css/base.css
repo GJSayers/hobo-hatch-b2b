@@ -4,10 +4,36 @@ html {
 
 body {
     /* background: url('/media/hobo_imagery_beach.png'); */
-    /* background-size: cover; */
+    background-color: #F2F3F7;
     color: #0A151A;
     text-anchor: #0A151A;
+    height: calc(100vh - 164px);
 }
+
+
+/* ------------------------------ header & nav */
+
+.nav-link {
+    color: #0A151A;
+}
+i {
+    color: #005E66;
+}
+
+.fa-plus,
+.fa-minus {
+    color: #0A151A;
+}
+.nav-link:hover {
+    color: #005E66;
+}
+
+/* ------------------------------ buttons */
+
+
+
+
+/* ------------------------------ body */
 
 body.title-text {
     font-family: 'Montserrat', 'sans-serif';
@@ -50,3 +76,35 @@ body.body-text {
 .toast-capper {
     height: 2px;
 }
+
+
+/* ------------------------------- Product detail */
+
+.product-section {
+
+    padding-top: 100px;
+
+}
+
+.properties {
+    justify-content: center;
+    padding-top: 28px;
+}
+
+.input-group-prepend,
+.input-group-append,
+.input-box {
+    display: inline-flex;
+    text-align: center;
+}
+
+/* ------------------------------- Buttons */
+
+.btn-affirmative,
+.btn-back {
+    border-radius: 0px;
+    border: 2px solid #A98B7D;
+    margin: 7px;
+    color: #996361;
+}
+

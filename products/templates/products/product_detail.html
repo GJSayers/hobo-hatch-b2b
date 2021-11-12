@@ -10,13 +10,13 @@
 {% endblock %}
 
 {% block content %}
-    <main class="container-fluid">
+    <main class="container-fluid product-section">
         <!-- Logged in customer section -->
             <div class="row text-center justify-content-center">
 
         <!-- Product Card & tile -->
                     <div class="col-sm-12 col-md-6 col-lg-4 image_card">
-                        <div class="card">    
+                        <div style="border: 0px; border-radius: none;" class="card">    
                             <div class="card-body">
                                 <h5 class="card-title">{{ product.product_name }}</h5>
                                 <p class="card-text">COST:{{ product.product_price }} | RRP:{{ product.rrp_price}}</p>
@@ -33,16 +33,16 @@
                         <div class="col-12 properties">
                             {% if product.product_properties %}
                                 {% for p in product.product_properties %}
-                                    {% if p == "LI" %}<span style="font-size: 48px"><i class="fab fa-envira"></i></span>
-                                    {% elif p == "FP"%}<span style="font-size: 48px"><i class="fas fa-hands-helping"></i></span>
-                                    {% elif p == "HC"%}<span style="font-size: 48px"><i class="fas fa-hand-paper"></i></span>
-                                    {% elif p == "PW"%}<span style="font-size: 48px"><i class="fas fa-mitten"></i></span>
+                                    {% if p == "LI" %}<span class="p-2" style="font-size: 36px"><i class="fab fa-envira"></i></span>
+                                    {% elif p == "FP"%}<span class="p-2" style="font-size: 36px"><i class="fas fa-hands-helping"></i></span>
+                                    {% elif p == "HC"%}<span class="p-2" style="font-size: 36px"><i class="fas fa-hand-paper"></i></span>
+                                    {% elif p == "PW"%}<span class="p-2" style="font-size: 36px"><i class="fas fa-mitten"></i></span>
                                     {% elif p == "SS" %}<p class="metal-type">925 Sterling Silver</p>
                                     {% elif p == "GP" %}<p class="metal-type">Gold-Plated Silver</p>
                                     {% endif %}  
                                 {% endfor %}
                             {% endif %}
-                            <div class="col-12 description">
+                            <div class="col-12 p-4 description">
                                 {{ product.product_description }}
                             </div>
                             <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
@@ -51,7 +51,7 @@
                                     {% if ring %}
 
                                     <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0">
-                                        <div>
+                                        <div class="hidden">
                                         <input type="hidden" name="{{ product.product_type }}"
                                             id="{{ product.product_type }}" data-item_id="{{ product.id }}"
                                             value="{{ product.product_type.name }}">
@@ -95,7 +95,7 @@
                                 {% with product.clothing_size_matrix as clothing %}
                                       {% if clothing %}
                                       <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0 px-0">
-                                        <div class="col-2 px-1 input-wrapper">
+                                        <div class="hidden">
                                             <input type="hidden" name="{{ product.product_type }}" id="id_{{ product.product_type }}" data-item_id="{{ product.id }}" value="{{ product.product_type }}">
                                         </div>
                                         <div class="col-2 px-1 input-wrapper">
@@ -127,7 +127,7 @@
                                       
                                       <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0">
                                         
-                                        <div class="col-2 px-1 input-wrapper">
+                                        <div class="hidden">
                                             <input type="hidden" name="{{ product.product_type }}" id="id_{{ product.product_type }}" data-item_id="{{ product.id }}" value="{{ product.product_type }}">
                                         </div>
 
@@ -139,12 +139,12 @@
                                       {% endif %}
                                 {% endwith %}
                                 <div class="col-12">
-                                    <a href="{% url 'collections' %}" class="btn btn-primary">
+                                    <a href="{% url 'collections' %}" class="btn btn-back">
                                         <span class="icon">
                                         </span>
                                         <span class="text-uppercase">Continue Browsing</span>
                                     </a>
-                                    <input type="submit" class="btn btn-primary" value="Add to Bag">
+                                    <input type="submit" class="btn btn-affirmative" value="Add to Bag">
                                 </div>
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             
