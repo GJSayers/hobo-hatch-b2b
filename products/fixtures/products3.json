@@ -1,0 +1,337 @@
+[
+{
+  "model": "products.category",
+  "pk": 1,
+  "fields": {
+    "name": "jewellery",
+    "friendly_name": "Jewellery",
+    "product_type": "1,2,3,4"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 2,
+  "fields": {
+    "name": "leather_accessories",
+    "friendly_name": "Leather Accessories",
+    "product_type": "15,16,17,18"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 3,
+  "fields": {
+    "name": "blankets",
+    "friendly_name": "Blankets",
+    "product_type": ""
+  }
+},
+{
+  "model": "products.category",
+  "pk": 4,
+  "fields": {
+    "name": "knitted_accessories",
+    "friendly_name": "Knitted Accessories",
+    "product_type": "12,13,14"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 5,
+  "fields": {
+    "name": "clothing",
+    "friendly_name": "Clothing",
+    "product_type": "5,6,7,8,9,10"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 1,
+  "fields": {
+    "name": "earrings",
+    "friendly_name": "Earrings",
+    "product_categories": "[1]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 2,
+  "fields": {
+    "name": "pendants_necklaces",
+    "friendly_name": "Pendants / Necklaces",
+    "product_categories": "[1]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 3,
+  "fields": {
+    "name": "rings",
+    "friendly_name": "Rings",
+    "product_categories": "[1]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 4,
+  "fields": {
+    "name": "bracelets_bangles",
+    "friendly_name": "Bracelets / Bangles",
+    "product_categories": "[1]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 5,
+  "fields": {
+    "name": "tops",
+    "friendly_name": "Tops",
+    "product_categories": "[5]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 6,
+  "fields": {
+    "name": "knitwear",
+    "friendly_name": "Knitwear",
+    "product_categories": "[5]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 7,
+  "fields": {
+    "name": "skirts",
+    "friendly_name": "Skirts",
+    "product_categories": "[5]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 8,
+  "fields": {
+    "name": "shorts",
+    "friendly_name": "Shorts",
+    "product_categories": "[5]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 9,
+  "fields": {
+    "name": "trousers",
+    "friendly_name": "Trousers",
+    "product_categories": "[5]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 10,
+  "fields": {
+    "name": "jeans",
+    "friendly_name": "Jeans",
+    "product_categories": "[5]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 11,
+  "fields": {
+    "name": "ponchos",
+    "friendly_name": "Ponchos",
+    "product_categories": "[5]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 12,
+  "fields": {
+    "name": "beanies",
+    "friendly_name": "Beanie Hats",
+    "product_categories": "[4]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 13,
+  "fields": {
+    "name": "scarves",
+    "friendly_name": "Scarves",
+    "product_categories": "[4]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 14,
+  "fields": {
+    "name": "beanie_hats",
+    "friendly_name": "Beanie Hats",
+    "product_categories": "[4]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 15,
+  "fields": {
+    "name": "leather_bags",
+    "friendly_name": "Leather Bags",
+    "product_categories": "[2]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 16,
+  "fields": {
+    "name": "beltbag_bumbag",
+    "friendly_name": "Beltbags / Bumbags",
+    "product_categories": "[2]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 17,
+  "fields": {
+    "name": "wallets_purses",
+    "friendly_name": "Wallets / Purses",
+    "product_categories": "[2]"
+  }
+},
+{
+  "model": "products.type",
+  "pk": 18,
+  "fields": {
+    "name": "belts",
+    "friendly_name": "Belts",
+    "product_categories": "[2]"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 1,
+  "fields": {
+    "product_name": "Wyatt Cardi",
+    "product_category": 5,
+    "product_type": 6,
+    "product_properties": "PW,HC,FP,LI",
+    "product_sku": "wyatt_cardi",
+    "product_description": "Knit by hand in Nepal, using the finest New Zealand wool.",
+    "product_is_bestseller": false,
+    "ring_size_matrix": false,
+    "clothing_size_matrix": true,
+    "one_size": false,
+    "product_price": "70.00",
+    "rrp_price": "159.00",
+    "image_url": "https://cdn.shopify.com/s/files/1/0498/5303/8758/products/unnamed-1.png?v=1633263498",
+    "image": "wyatt_cardi.png"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "product_name": "Aya Silver Hammered Ring",
+    "product_category": 1,
+    "product_type": 3,
+    "product_properties": "SS,HC,FP,LI",
+    "product_sku": "aya_ring_silver",
+    "product_description": "Aya Hammered Ring by Hobo and Hatch - A beautiful thick handmade sterling silver hammered ring.",
+    "product_is_bestseller": true,
+    "ring_size_matrix": true,
+    "clothing_size_matrix": false,
+    "one_size": false,
+    "product_price": "30.00",
+    "rrp_price": "69.00",
+    "image_url": "https://cdn.shopify.com/s/files/1/0498/5303/8758/products/AyaHammeredRingSS.png?v=1624207781",
+    "image": "aya_hammered_ring_ss_2Ur7cpu.png"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 3,
+  "fields": {
+    "product_name": "Risko Belt Bag Black",
+    "product_category": 2,
+    "product_type": 16,
+    "product_properties": "HC,FP,LI",
+    "product_sku": "risko_belt_bag_bb_black",
+    "product_description": "Risko Leather Belt by Hobo and Hatch Our Risko Belt Bag is the little gem you have been waiting for.  The strap is just like a belt so loop her through your favourite denim or over a summer dress. Under the flap and button, a zip to enter,  3 card holders inside and room for your phone, money,  or a few other essentials. On reverse of the bag there is a zip pocket for things like passport, room key or just anything that really needs to be in a safe spot.",
+    "product_is_bestseller": false,
+    "ring_size_matrix": false,
+    "clothing_size_matrix": false,
+    "one_size": true,
+    "product_price": "49.00",
+    "rrp_price": "125.00",
+    "image_url": "https://cdn.shopify.com/s/files/1/0498/5303/8758/products/RISKOBELT-6.jpg?v=1615559148",
+    "image": "risko_belt_blk_PsyfbXI.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 4,
+  "fields": {
+    "product_name": "Storm Wool Blanket",
+    "product_category": 3,
+    "product_type": 18,
+    "product_properties": "PW,HC,FP,LI",
+    "product_sku": "wool_bkt_strm",
+    "product_description": "Autumn & Winter are seasons of recovery and preparation.  Snuggle up in our cozy wool blanket.",
+    "product_is_bestseller": true,
+    "ring_size_matrix": false,
+    "clothing_size_matrix": false,
+    "one_size": true,
+    "product_price": "40.00",
+    "rrp_price": "95.00",
+    "image_url": "https://cdn.shopify.com/s/files/1/0498/5303/8758/products/1U5A5882.jpg?v=1606120760",
+    "image": "storm_blanket.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 5,
+  "fields": {
+    "product_name": "Hazel Bobble Hat - Butterscotch",
+    "product_category": 4,
+    "product_type": 14,
+    "product_properties": "PW,HC,FP,LI",
+    "product_sku": "beanie_hazel_bs",
+    "product_description": "Hand knitted beanie bobble hat.  Chunky & cozy, and featuring flattering butterscotch.  Using 100% New Zealand Wool with a fleece inner band.  Fairly produced by our skilled artisans in Nepal.",
+    "product_is_bestseller": false,
+    "ring_size_matrix": false,
+    "clothing_size_matrix": false,
+    "one_size": true,
+    "product_price": "12.50",
+    "rrp_price": "29.00",
+    "image_url": "https://cdn.shopify.com/s/files/1/0498/5303/8758/products/HazelButterscotch2.jpg?v=1612864681",
+    "image": "beanie_hazel_bs_2.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 6,
+  "fields": {
+    "product_name": "Mae - Garnet Ring",
+    "product_category": 1,
+    "product_type": 3,
+    "product_properties": "SS,HC,FP,LI",
+    "product_sku": "mae_ring_1",
+    "product_description": "Mae Ring  in Garnet by Hobo and Hatch.\r\n\r\nFeaturing a filigree sterling silver setting, with a polished oval Garnet stone.\r\nBall details to either side of the stone.\r\n\r\nMae is available in Ethically sourced Garnet and 925 Sterling Silver.",
+    "product_is_bestseller": true,
+    "ring_size_matrix": true,
+    "clothing_size_matrix": false,
+    "one_size": false,
+    "product_price": "20.00",
+    "rrp_price": "45.00",
+    "image_url": "https://cdn.shopify.com/s/files/1/0498/5303/8758/products/MaeGarnetRingSS.png?v=1615559148",
+    "image": "Mae_Garnet_Ring_SS.png"
+  }
+},
+{
+  "model": "products.ring",
+  "pk": 6,
+  "fields": {
+    "jewellery_properties": "SR",
+    "ring_sizes": "6,7,8,9,10"
+  }
+}
+]
