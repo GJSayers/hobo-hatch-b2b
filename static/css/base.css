@@ -14,11 +14,11 @@ body {
     height: calc(100vh - 200px);
 }
 
-.index-container {
+/* .index-container {
     background: url('/media/hobo_imagery_sea.png');
     background-size: cover;
     z-index: 100;
-}
+} */
 
 
 /* ------------------------------ header & nav */
@@ -61,10 +61,6 @@ i {
 }
 
 
-
-
-
-
 /* ------------------------------ body */
 
 .title-text {
@@ -78,7 +74,7 @@ i {
 }
 
 .header-container {
-    padding-top: 200px;
+    padding-top: 250px;
 }
 
 .home-logo {
@@ -180,11 +176,19 @@ i {
 
 footer {
     background: rgba(169, 139, 125, .5);
+    margin-bottom: 0px;
 }
 
-.footer-container {
-    background: rgba(169, 139, 125, .5);
+@media only screen and (min-height: 1024px) {
+    footer {
+        margin-top: 120px;
 }
+
+@media only screen and (min-height: 1300px) {
+    footer {
+        margin-top: 510px;
+}
+
 .footer-text {
     font-family: 'Quicksand', 'sans-serif';
 }
