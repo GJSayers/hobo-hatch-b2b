@@ -1,17 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,500;0,600;0,800;1,400;1,500&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+
 html {
     height: 100%;
 }
 
 body {
     /* background: url('/media/hobo_imagery_beach.png'); */
-    background-color: #F2F3F7;
+    /* background-color: #F2F3F7; */
+    font-family: 'Quicksand', 'sans-serif';
     color: #0A151A;
     text-anchor: #0A151A;
-    height: calc(100vh - 164px);
+    height: calc(100vh - 200px);
+}
+
+.index-container {
+    background: url('/media/hobo_imagery_sea.png');
+    background-size: cover;
+    z-index: 100;
 }
 
 
 /* ------------------------------ header & nav */
+
+header {
+    background: #F2F3F7;
+}
 
 .nav-link {
     color: #0A151A;
@@ -28,18 +42,38 @@ i {
     color: #005E66;
 }
 
-/* ------------------------------ buttons */
+.logo-div,
+.navbars-div {
+    text-align: center;
+}
+
+.navbars-div {
+    padding-top: 5%;
+}
+
+.dropdown-toggle::after {
+    border-top: 0;
+}
+
+.dropdown-menu {
+    border: 0;
+    border-radius: 0;
+}
+
+
 
 
 
 
 /* ------------------------------ body */
 
-body.title-text {
+.title-text {
+    text-align: center;
     font-family: 'Montserrat', 'sans-serif';
+    font-weight: 400;
 }
 
-body.body-text {
+.body-text {
     font-family: 'Quicksand', 'sans-serif';
 }
 
@@ -48,9 +82,16 @@ body.body-text {
 }
 
 .home-logo {
+    align-items: center;
     max-width: 250px;
     max-height: 150px;
 }
+
+/* @media only screen and (max-width: 600px) {
+    .home-logo {
+        align-items: center;
+        max-width: 150px;
+  } */
 
 .search-bar {
     background: none;
@@ -108,3 +149,42 @@ body.body-text {
     color: #996361;
 }
 
+/* ------------------------------- Homepage */
+.welcome-section {
+    padding: 5%;
+}
+
+.about-section,
+.action-section {
+    text-align: center;
+}
+
+.action-section {
+    padding-top: 5%;
+}
+
+.login-link,
+.apply-link,
+.shop-link {
+    color: #005E66;
+    font-weight: 600;
+}
+
+.login-link:hover,
+.apply-link:hover,
+.shop-link:hover {
+    color:#996361;
+}
+
+/* ------------------------------- Footer */
+
+footer {
+    background: rgba(169, 139, 125, .5);
+}
+
+.footer-container {
+    background: rgba(169, 139, 125, .5);
+}
+.footer-text {
+    font-family: 'Quicksand', 'sans-serif';
+}
