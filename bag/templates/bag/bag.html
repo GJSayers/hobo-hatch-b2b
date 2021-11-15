@@ -71,8 +71,9 @@
                                                         <div class="col form-group justify-content-center mt-3 mb-3">
                                                             <div class="pr-3 pl-3 input-wrapper">
                                                             <div class="input-group-prepend">                                       
-                                                                    <button class="decrement-qty btn rounded-0" data-item_id="{{ item.item_id }}"  name="{{ s }}"
-                                                                        id="decrement-qty_{{ s }}">
+                                                                    <button class="decrement-qty decrement-qty_{{ s }} btn rounded-0" data-item_id="{{ item.item_id }}" data-size="{{ s }}"
+                                                                      name="{{ s }}"
+                                                                        >
                                                                         <span class="icon">
                                                                         <i class="fas fa-minus"></i>
                                                                         </span>
@@ -83,19 +84,20 @@
                                                                 id="{{ s }}" data-item_id="{{ item.item_id }}"
                                                                  value="{{ s }}">
                                                                 <span class="input-group"></span>
-                                                                <input type="number" class="form-control qty_input input-box rounded-0 text-center"  data-size="{{ s }}" value="{{ q }}" name="{{ s }}"
-                                                                    min="0" max="99" id="id_qty_{{ s }}"
+                                                                <input type="number" class="form-control qty_input input-box rounded-0 text-center"  data-size="{{ s }}" value="{{ q }}" name="{{ s }}" id="id_qty_{{ s }}"
+                                                                    min="0" max="99" id=""
                                                                     data-item_id="{{ item.item_id }}" aria-label="size{{ s }}">
                                                                  
-                                                            </div>
+                                                            
                                                             <div class="input-group-append">
-                                                                <button class="increment-qty btn rounded-0" data-item_id="{{ item.item_id }}"
-                                                                    id="increment-qty_{{ s }}" data-size="{{ s }}">
+                                                                <button class="increment-qty increment-qty_{{ s }} btn rounded-0" data-item_id="{{ item.item_id }}" data-size="{{ s }}" name="{{ s }}"
+                                                                    id="">
                                                                     <span class="icon">
                                                                     <i class="fas fa-plus"></i>
                                                                     </span>
                                                                 </button>
                                                             </div>
+                                                        </div>
                                                         </div>       
                                                     </td> 
                                                     {% endfor %}
