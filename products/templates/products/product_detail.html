@@ -18,8 +18,8 @@
                     <div class="col-sm-12 col-md-6 col-lg-4 image_card">
                         <div style="border: 0px; border-radius: none;" class="card">    
                             <div class="card-body">
-                                <h5 class="card-title">{{ product.product_name }}</h5>
-                                <p class="card-text">COST:{{ product.product_price }} | RRP:{{ product.rrp_price}}</p>
+                                <h5 class="card-title title-text">{{ product.product_name }}</h5>
+                                <p class="card-text">COST £ {{ product.product_price }} | RRP £ {{ product.rrp_price}}</p>
                             </div>
                             <a href="{{ product.image.url }}" target="blank">
                                 <img src="{{ product.image.url }}" class="card-img-bottom" alt="{{ product.product_name|lower }}">
@@ -30,7 +30,9 @@
                 
                 <!-- Product Info div -->
                 <section class="col-sm-12 col-md-6 col-lg-4 product_info_input justify-content-center">
-                        <div class="col-12 properties">
+                    <p class="card-text product-info">Product Info </p>
+                                <button type="button" class="info-open"><i class="fas fa-chevron-circle-down"></i></a></button>
+                        <div class="col-12 properties info" style="display: none;">
                             {% if product.product_properties %}
                                 {% for p in product.product_properties %}
                                     {% if p == "LI" %}<span class="p-2" style="font-size: 36px"><i class="fab fa-envira"></i></span>
@@ -45,6 +47,8 @@
                             <div class="col-12 p-4 description">
                                 {{ product.product_description }}
                             </div>
+                        </div>
+                        <div class="col-12 inputs">
                             <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                                 {% csrf_token %}
                                 {% with product.ring_size_matrix as ring %}
@@ -55,88 +59,363 @@
                                         <input type="hidden" name="{{ product.product_type }}"
                                             id="{{ product.product_type }}" data-item_id="{{ product.id }}"
                                             value="{{ product.product_type.name }}">
-                                        </div>
+                                        </div> 
 
-                                        <div class="col-2 px-1 input-wrapper">
-                                            <span class="input-group justify-content-center">L</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="l" value="1"
-                                                min="0" max="99" id="id_qty_{{ product.id }}"
-                                                data-item_id="{{ product.id }}" data-size="l" aria-label="L">
-                                        </div>
+                                                <!-- ring size qty l -->
+                                            <div class="col-2 px-1 input-wrapper">
+                                                <span class="input-group justify-content-center">L</span>
 
-                                        <div class="col-2 px-1 input-wrapper">
-                                            <span class="input-group justify-content-center">N</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="n" value="1"
-                                                min="0" max="99" id="id_qty_{{ product.id }}"
-                                                data-item_id="{{ product.id }}" data-size="n" aria-label="N">
-                                        </div>
+                                                    <!-- input minus buttons -->
+                                                <div class="input-group-prepend">                                       
+                                                    <button class="decrement-qty decrement-qty_l btn rounded-0" data-item_id="{{ item.item_id }}" data-size="l"
+                                                        name="l">
+                                                        <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
 
-                                        <div class="col-2 px-1 input-wrapper">
-                                            <span class="input-group justify-content-center">P</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="p"
-                                                value="1" min="0" max="99" id="id_qty_{{ product.id }}"
-                                                data-item_id="{{ product.id }}" data-size="p" aria-label="P">
-                                        </div>
-                                        <div class="col-2 px-1 input-wrapper">
-                                            <span class="input-group justify-content-center">S</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="s"
-                                                value="1" min="0" max="99" id="id_qty_{{ product.id }}"
-                                                data-item_id="{{ product.id }}" data-size="s" aria-label="S">
-                                        </div>
-                                        <div class="col-2 px-1 input-wrapper">
-                                            <span class="input-group justify-content-center">U</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="u"
-                                                value="1" min="0" max="99" id="id_qty_{{ product.id }}"
-                                                data-item_id="{{ product.id }}" data-size="u" aria-label="U">
+                                                    <!-- input values -->
+                                                <input type="hidden" name="l" id="l" data-item_id="{{ item.item_id }}" value="l">
+                                                <input type="number" class="form-control qty_input input-box rounded-0" name="l" data-size="l" value="1"
+                                                    min="0" max="99" id="id_qty_l"
+                                                    data-item_id="{{ product.id }}"  aria-label="L">
+
+                                                    <!-- input add buttons -->
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty increment-qty_l btn rounded-0" data-item_id="{{ item.item_id }}" data-size="l" name="l"
+                                                        id="">
+                                                        <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                                <!-- ring size qty n -->
+                                            <div class="col-2 px-1 input-wrapper">
+                                                <span class="input-group justify-content-center">N</span>
+
+                                                    <!-- input minus buttons -->
+                                                <div class="input-group-prepend">                                       
+                                                    <button class="decrement-qty decrement-qty_n btn rounded-0" data-item_id="{{ item.item_id }}" data-size="n"
+                                                        name="n">
+                                                        <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+
+                                                    <!-- input values -->
+                                                <input type="hidden" name="n" id="n" data-item_id="{{ item.item_id }}" value="n">
+                                                <input type="number" class="form-control qty_input input-box rounded-0" name="n" data-size="n" value="1"
+                                                    min="0" max="99" id="id_qty_n"
+                                                    data-item_id="{{ product.id }}"  aria-label="N">
+                                                
+                                                    <!-- input add buttons -->
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty increment-qty_n btn rounded-0" data-item_id="{{ item.item_id }}" data-size="n" name="n"
+                                                        id="">
+                                                        <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                                <!-- ring size qty p -->
+                                            <div class="col-2 px-1 input-wrapper">
+                                                <span class="input-group justify-content-center">P</span>
+
+                                                    <!-- input minus buttons -->
+                                                <div class="input-group-prepend">                                       
+                                                    <button class="decrement-qty decrement-qty_p btn rounded-0" data-item_id="{{ item.item_id }}" data-size="p"
+                                                        name="p">
+                                                        <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+
+                                                    <!-- input values -->
+                                                <input type="hidden" name="p" id="p" data-item_id="{{ item.item_id }}" value="p">
+                                                <input type="number" class="form-control qty_input input-box rounded-0" name="p" id="id_qty_p"
+                                                    value="1" min="0" max="99" 
+                                                    data-item_id="{{ product.id }}" data-size="p" aria-label="P">
+
+                                                    <!-- input add buttons -->
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty increment-qty_p btn rounded-0" data-item_id="{{ item.item_id }}" data-size="p" name="p"
+                                                        id="">
+                                                        <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                    
+                                                <!-- ring size qty s -->
+                                            <div class="col-2 px-1 input-wrapper">
+                                                <span class="input-group justify-content-center">S</span>
+
+                                                    <!-- input minus buttons -->
+                                                <div class="input-group-prepend">                                       
+                                                    <button class="decrement-qty decrement-qty_s btn rounded-0" data-item_id="{{ item.item_id }}" data-size="s"
+                                                        name="s">
+                                                        <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+
+                                                    <!-- input values -->
+                                                <input type="hidden" name="s" id="s" data-item_id="{{ item.item_id }}" value="s">
+                                                <input type="number" class="form-control qty_input input-box rounded-0" name="s" id="id_qty_s"
+                                                    value="1" min="0" max="99" 
+                                                    data-item_id="{{ product.id }}" data-size="s" aria-label="S">
+
+                                                    <!-- input add buttons -->
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty increment-qty_s btn rounded-0" data-item_id="{{ item.item_id }}" data-size="s" name="s"
+                                                        id="">
+                                                        <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        
+
+                                                <!-- ring size qty u -->
+                                            <div class="col-2 px-1 input-wrapper">
+                                                <span class="input-group justify-content-center">U</span>
+
+                                                    <!-- input minus buttons -->
+                                                <div class="input-group-prepend">                                       
+                                                    <button class="decrement-qty decrement-qty_u btn rounded-0" data-item_id="{{ item.item_id }}" data-size="u"
+                                                        name="u">
+                                                        <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+
+                                                    <!-- input values -->
+                                                <input type="hidden" name="u" id="u" data-item_id="{{ item.item_id }}" value="u">
+                                                <input type="number" class="form-control qty_input input-box rounded-0" name="u" id="id_qty_u"
+                                                    value="1" min="0" max="99" 
+                                                    data-item_id="{{ product.id }}" data-size="u" aria-label="U">
+
+                                                    <!-- input add buttons -->
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty increment-qty_u btn rounded-0" data-item_id="{{ item.item_id }}" data-size="u" name="u"
+                                                        id="">
+                                                        <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     {% endif %}
                                 {% endwith %}
                                 {% with product.clothing_size_matrix as clothing %}
                                       {% if clothing %}
+
+                                        <!-- create qty input fields for each clothing size -->
                                       <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0 px-0">
                                         <div class="hidden">
                                             <input type="hidden" name="{{ product.product_type }}" id="id_{{ product.product_type }}" data-item_id="{{ product.id }}" value="{{ product.product_type }}">
                                         </div>
+
+                                            <!-- clothing size qty xs -->
                                         <div class="col-2 px-1 input-wrapper">
                                             <span class="input-group justify-content-center">XS</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="xs" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="xs" id="id_qty_{{ product.id }}" aria-label="extra small">
+
+                                                    <!-- input minus buttons -->
+                                                <div class="input-group-prepend">                                       
+                                                    <button class="decrement-qty decrement-qty_xs btn rounded-0" data-item_id="{{ item.item_id }}" data-size="xs"
+                                                        name="xs">
+                                                        <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+
+                                                    <!-- input values -->
+                                                <input type="hidden" name="xs" id="xs" data-item_id="{{ item.item_id }}" value="xs">
+                                                <input type="number" class="form-control qty_input input-box rounded-0" name="xs" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="xs" id="id_qty_xs" aria-label="extra small">
+
+                                                    <!-- input add buttons -->
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty increment-qty_xs btn rounded-0" data-item_id="{{ item.item_id }}" data-size="xs" name="xs"
+                                                        id="">
+                                                        <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                                <!-- clothing size qty sm -->
+                                            <div class="col-2 px-1 input-wrapper">
+                                                <span class="input-group justify-content-center">SM</span>
+
+                                                    <!-- input minus buttons -->
+                                                <div class="input-group-prepend">                                       
+                                                    <button class="decrement-qty decrement-qty_sm btn rounded-0" data-item_id="{{ item.item_id }}" data-size="sm"
+                                                        name="sm">
+                                                        <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+
+                                                    <!-- input values -->
+                                                <input type="hidden" name="sm" id="sm" data-item_id="{{ item.item_id }}" value="sm">
+                                                <input type="number" class="form-control qty_input input-box rounded-0" name="sm" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="sm"  id="id_qty_sm" aria-label="small">
+
+                                                    <!-- input add buttons -->
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty increment-qty_sm btn rounded-0" data-item_id="{{ item.item_id }}" data-size="sm" name="sm"
+                                                        id="">
+                                                        <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                                <!-- clothing size qty m -->
+                                            <div class="col-2 px-1 input-wrapper">
+                                                <span class="input-group justify-content-center">M</span>
+
+                                                    <!-- input minus buttons -->
+                                                <div class="input-group-prepend">                                       
+                                                    <button class="decrement-qty decrement-qty_m btn rounded-0" data-item_id="{{ item.item_id }}" data-size="m"
+                                                        name="m">
+                                                        <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+
+                                                    <!-- input values -->
+                                                <input type="hidden" name="m" id="m" data-item_id="{{ item.item_id }}" value="m">
+                                                <input type="number" class="form-control qty_input input-box rounded-0" name="m" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="m" id="id_qty_m" aria-label="medium">
+
+                                                <!-- input add buttons -->
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty increment-qty_m btn rounded-0" data-item_id="{{ item.item_id }}" data-size="m" name="m"
+                                                        id="">
+                                                        <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                                <!-- clothing size qty lg -->
+                                            <div class="col-2 px-1 input-wrapper">
+                                                <span class="input-group justify-content-center">LG</span>
+
+                                                    <!-- input minus buttons -->
+                                                <div class="input-group-prepend">                                       
+                                                    <button class="decrement-qty decrement-qty_lg btn rounded-0" data-item_id="{{ item.item_id }}" data-size="lg"
+                                                        name="lg">
+                                                        <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+
+                                                    <!-- input values -->
+                                                <input type="hidden" name="lg" id="lg" data-item_id="{{ item.item_id }}" value="lg">
+                                                <input type="number" class="form-control qty_input input-box rounded-0" name="lg" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="lg" id="id_qty_lg" aria-label="large">
+
+                                                    <!-- input add buttons -->
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty increment-qty_lg btn rounded-0" data-item_id="{{ item.item_id }}" data-size="lg" name="lg"
+                                                        id="">
+                                                        <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                                <!-- clothing size qty xl -->
+                                            <div class="col-2 px-1 input-wrapper">
+                                                <span class="input-group justify-content-center">XL</span>
+
+                                                    <!-- input minus buttons -->
+                                                <div class="input-group-prepend">                                       
+                                                    <button class="decrement-qty decrement-qty_xl btn rounded-0" data-item_id="{{ item.item_id }}" data-size="xl"
+                                                        name="xl">
+                                                        <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+
+                                                    <!-- input values -->
+                                                <input type="hidden" name="xl" id="xl" data-item_id="{{ item.item_id }}" value="xl">
+                                                <input type="number" class="form-control qty_input input-box rounded-0" name="xl" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="xl" id="id_qty_xl" aria-label="extra large">
+
+                                                    <!-- input add buttons -->
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty increment-qty_xl btn rounded-0" data-item_id="{{ item.item_id }}" data-size="xl" name="xl"
+                                                        id="">
+                                                        <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-2 px-1 input-wrapper">
-                                            <span class="input-group justify-content-center">S</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="sm" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="sm"  id="id_qty_{{ product.id }}" aria-label="small">
-                                        </div>
-                                        <div class="col-2 px-1 input-wrapper">
-                                            <span class="input-group justify-content-center">M</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="m" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="m" id="id_qty_{{ product.id }}" aria-label="medium">
-                                        </div>
-                                        <div class="col-2 px-1 input-wrapper">
-                                            <span class="input-group justify-content-center">L</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="lg" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="lg" id="id_qty_{{ product.id }}" aria-label="large">
-                                        </div>
-                                        <div class="col-2 px-1 input-wrapper">
-                                            <span class="input-group justify-content-center">XL</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="xl" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="xl" id="id_qty_{{ product.id }}" aria-label="extra large">
-                                        </div>
-                                        
-                                      </div>
+
                                       {% endif %}
                                 {% endwith %}
                                 {% with product.one_size as o %}
-                                      {% if o %}
-                                      
-                                      <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0">
+                                    {% if o %}
+                                            
+                                            <!-- create qty input fields for one size items -->
+                                        <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0">
                                         
-                                        <div class="hidden">
-                                            <input type="hidden" name="{{ product.product_type }}" id="id_{{ product.product_type }}" data-item_id="{{ product.id }}" value="{{ product.product_type }}">
-                                        </div>
+                                            <div class="hidden">
+                                                <input type="hidden" name="{{ product.product_type }}" id="id_{{ product.product_type }}" data-item_id="{{ product.id }}" value="{{ product.product_type }}">
+                                            </div>
+                                                <!-- one_size item_qtys -->
+                                            <div class="col-2 px-1 input-wrapper">
+                                                <span class="input-group justify-content-center">One Size</span>
 
-                                        <div class="col-2 px-1 input-wrapper">
-                                            <span class="input-group justify-content-center">One Size</span>
-                                            <input type="number" class="form-control qty_input input-box rounded-0" name="one_size" value="1" min="0" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" aria-label="one size">
+                                                    <!-- input minus buttons -->
+                                                <div class="input-group-prepend">                                       
+                                                    <button class="decrement-qty decrement-qty_one_size btn rounded-0" data-item_id="{{ item.item_id }}" data-size="one_size"
+                                                        name="one_size">
+                                                        <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+
+                                                    <!-- input values -->
+                                                <input type="hidden" name="one_size" id="one_size" data-item_id="{{ item.item_id }}" value="one_size">
+                                                <input type="number" class="form-control qty_input input-box rounded-0" name="one_size" value="1" min="0" max="99" data-item_id="{{ product.id }}" data-size="one_size" id="id_qty_one_size" aria-label="one size">
+
+                                                    <!-- input add buttons -->
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty increment-qty_one_size btn rounded-0" data-item_id="{{item.item_id }}" data-size="one_size" name="one_size"
+                                                        id="">
+                                                        <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
-                                      </div>
-                                      {% endif %}
+                                    {% endif %}
                                 {% endwith %}
                                 <div class="col-12">
                                     <a href="{% url 'collections' %}" class="btn btn-back">
@@ -145,9 +424,9 @@
                                         <span class="text-uppercase">Continue Browsing</span>
                                     </a>
                                     <input type="submit" class="btn btn-affirmative" value="Add to Bag">
+                               
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 </div>
-                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                            
                             </form>
                         </div>
 
@@ -164,4 +443,5 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'products/includes/products.html' %}
+{% include 'products/includes/details_display.html' %}
 {% endblock %}

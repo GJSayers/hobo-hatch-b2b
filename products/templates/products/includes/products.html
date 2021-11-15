@@ -1,51 +1,52 @@
 <script type="text/javascript">
 
 // Add minus button for each input element
-$(".input-box").before(
-    `<div class="input-group-prepend">                                       
-        <button class="decrement-qty btn rounded-0" data-item_id="{{ product.id }}"
-            id="decrement-qty_{{ product.id }}">
-            <span class="icon">
-            <i class="fas fa-minus"></i>
-            </span>
-        </button>
-    </div>`
-);
+// $(".input-box").before(
+//     `<div class="input-group-append">                                       
+//         <button class="decrement-qty btn rounded-0" data-item_id="{{ product.id }}" data-size="{{ s }}"
+//             id="id_size_{{ s }}">
+//             <span class="icon">
+//             <i class="fas fa-minus"></i>
+//             </span>
+//         </button>
+//     </div>`
+// );
 
-// Add plus button for each input element
+// // Add plus button for each input element
 
-$(".input-box").after(`
-    <div class="input-group-append">
-        <button class="increment-qty btn rounded-0" data-item_id="{{ product.id }}"
-            id="increment-qty_{{ product.id }}">
-            <span class="icon">
-            <i class="fas fa-plus"></i>
-            </span>
-        </button>
-    </div>`
-);
+// $(".input-box").after(`
+//     <div class="input-group-append">
+//         <button class="increment-qty btn rounded-0" data-item_id="{{ product.id }}" data-size="{{ s }}"
+//             id="id_size_{{ s }}">
+//             <span class="icon">
+//             <i class="fas fa-plus"></i>
+//             </span>
+//         </button>
+//     </div>`
+// );
 
 // Enable / disable
 function handleEnableDisable(size) {
     currentValue = parseInt($(`#id_qty_${size}`).val());
-    var minusDisabled = currentValue < 2;
+    console.log(currentValue)
+    var minusDisabled = currentValue < 1;
+    console.log(currentValue)
     var plusDisabled = currentValue > 98;
-    $(`#decrement-qty_${size}`).prop('disabled', minusDisabled);
-    $(`#increment-qty_${size}`).prop('disabled', plusDisabled);
+    console.log(currentValue)
+    $(`.decrement-qty_${size}`).prop('disabled', minusDisabled);
+    $(`.increment-qty_${size}`).prop('disabled', plusDisabled);
 }
 
 // Ensure proper enabling/disabling of all inputs on page load
 var allQtyInputs = $('.qty_input');
     for(var i = 0; i < allQtyInputs.length; i++){
         var size = $(this).closest('.input-wrapper').data('size');
-       
         handleEnableDisable(size);
     }
 
 
 // Check enable/disable every time the input is changed
 $('.qty_input').change(function() {
-    // var itemId = $(this).data(itemId);
     var size = $(this).closest('.input-wrapper').data('size');
     handleEnableDisable(size);
 });
@@ -57,8 +58,7 @@ $('.increment-qty').click(function(e) {
     var closestInput = $(this).closest('.input-wrapper').find('.qty_input')[0];
     var currentValue = parseInt($(closestInput).val());
     $(closestInput).val(currentValue + 1);
-    // var itemId = $(this).data(itemId);
-    var size = $(this).closest('.input-wrapper').data('size');
+    var size = $(this).data('size');
     handleEnableDisable(size);
 });
 
@@ -68,7 +68,7 @@ $('.decrement-qty').click(function(e) {
     var closestInput = $(this).closest('.input-wrapper').find('.qty_input')[0];
     var currentValue = parseInt($(closestInput).val());
     $(closestInput).val(currentValue - 1)
-    var size = $(this).closest('.input-wrapper').data('size');
+    var size = $(this).data('size');
     handleEnableDisable(size);
 });
 

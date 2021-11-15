@@ -70,25 +70,26 @@
                                                     <td class="py-3 text-center">
                                                         <div class="col form-group justify-content-center mt-3 mb-3">
                                                             <div class="pr-3 pl-3 input-wrapper">
+
+                                                                <!-- input minus buttons -->
                                                             <div class="input-group-prepend">                                       
-                                                                    <button class="decrement-qty decrement-qty_{{ s }} btn rounded-0" data-item_id="{{ item.item_id }}" data-size="{{ s }}"
-                                                                      name="{{ s }}"
-                                                                        >
-                                                                        <span class="icon">
-                                                                        <i class="fas fa-minus"></i>
-                                                                        </span>
-                                                                    </button>
-                                                                </div>
-                                                            
-                                                            <input type="hidden" name="{{ s }}"
-                                                                id="{{ s }}" data-item_id="{{ item.item_id }}"
-                                                                 value="{{ s }}">
+                                                                <button class="decrement-qty decrement-qty_{{ s }} btn rounded-0" data-item_id="{{ item.item_id }}" data-size="{{ s }}"
+                                                                      name="{{ s }}">
+                                                                    <span class="icon">
+                                                                    <i class="fas fa-minus"></i>
+                                                                    </span>
+                                                                </button>
+                                                            </div>
+
+                                                                <!-- input values -->
+                                                            <input type="hidden" name="{{ s }}" id="{{ s }}" 
+                                                                data-item_id="{{ item.item_id }}" value="{{ s }}">
                                                                 <span class="input-group"></span>
-                                                                <input type="number" class="form-control qty_input input-box rounded-0 text-center"  data-size="{{ s }}" value="{{ q }}" name="{{ s }}" id="id_qty_{{ s }}"
-                                                                    min="0" max="99" id=""
+                                                                    <input type="number" class="form-control qty_input input-box rounded-0 text-center"  data-size="{{ s }}" value="{{ q }}" 
+                                                                    name="{{ s }}" id="id_qty_{{ s }}" min="0" max="99" id=""
                                                                     data-item_id="{{ item.item_id }}" aria-label="size{{ s }}">
                                                                  
-                                                            
+                                                                <!-- input add buttons -->
                                                             <div class="input-group-append">
                                                                 <button class="increment-qty increment-qty_{{ s }} btn rounded-0" data-item_id="{{ item.item_id }}" data-size="{{ s }}" name="{{ s }}"
                                                                     id="">

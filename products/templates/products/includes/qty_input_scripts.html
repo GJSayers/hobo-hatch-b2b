@@ -13,7 +13,6 @@ function handleEnableDisable(size) {
 var allQtyInputs = $('.qty_input');
     for(var i = 0; i < allQtyInputs.length; i++){
         var size = $(this).closest('.input-wrapper').data('size');
-        console.log(size);
         handleEnableDisable(size);
     }
 
