@@ -182,15 +182,23 @@ i {
 
 /* ------------------------------- Product Cards */
 
-.card {
-    border: none;
-    border-radius: none;
-}
+
 
 hr {
     border: 1px solid #A98B7D;
     width: 25%;
     display: inline-flex;
+}
+
+.card {
+    border-radius: none;
+    border: none;
+}
+
+button.info-open {
+    border-radius: none;
+    border: none;
+    background: none;
 }
 
 
@@ -201,9 +209,11 @@ hr {
         object-fit: cover;
     }
 
-    .card-body {
+    .card {
         object-fit: cover;
         height: 10vw;
+        
+
     }
 }
 

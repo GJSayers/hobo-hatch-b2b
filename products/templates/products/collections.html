@@ -9,14 +9,16 @@
 </div>
 {% endblock %}
 
+
 {% block content %}
     <main class="container-fluid">
         <div class="row">
         <!-- Logged in customer div -->
         <!-- Filter by category section -->
-        <section class="col-12 category-filter justify-content-center">
+        <section class="col-12 category-filter justify-content-center" id="categories-filter" style="display: none;">
             
             <form method="GET" action="{% url 'collections' %}?Category">
+                <button type="button" class="categories-close btn float-right"><i class="fas fa-times"></i></button>
                 {% for category in categories %}
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="inlineCheckbox{{ category.name }}" name="chosen_categories" value="{{ category.name }}" {% if category.name in chosen_categories %}checked{% endif %}>
@@ -26,7 +28,11 @@
                     
                     <button type="submit" class="form-control btn-affirmative">Filter</button>
             </form>
+                    
         </section>
+        <div class="col-12 text-center filter-display">
+            <button type="button" class="categories-open btn-affirmative">Filter by Category <i class="fas fa-filter"></i></button>
+        </div>
         <!-- Collection dropdown and descriptive div -->
         
         {% for product in products %}
@@ -37,12 +43,76 @@
                         <div class="card">    
                             <div class="card-body">
                                 <h5 class="card-title title-text">{{ product.product_name }}</h5>
-                                <p class="card-text">COST:{{ product.product_price }} | RRP:{{ product.rrp_price}}</p>
-                            </div>
+                                <p class="card-text">Cost £{{ product.product_price }} | RRP £{{ product.rrp_price}}</p>
+                                <p class="card-text product-info">Product Info </p>
+                                <button type="button" class="info-open"><i class="fas fa-chevron-circle-down"></i></a></button>
+                                
+                                <!-- Product Info div -->
+                                <div class="row info" data-info="{{ product.product_name }}" style="display: none;">
+                                    <div class="col" >
+                                        <div class="p-2">
+                                        {% if product.product_properties %}
+                                            {% for p in product.product_properties %}
+                                                {% if p == "LI" %}
+                                                <p class="env-text" style="display: none;">This product is produced in such a way as to create minimal impact on the environment</p>
+                                                <p class="min-environmental-impact"><i class="fab fa-envira"></i></p>
+                                                {% elif p == "FP"%}
+                                                <p class="fairly-produced"><i class="fas fa-hands-helping"></i></p>
+                                                {% elif p == "HC"%}
+                                                <p class="hand-crafted"><i class="fas fa-hand-paper"></i></p>
+                                                {% elif p == "PW"%}
+                                                <p class="wool"><i class="fas fa-mitten"></i></p>
+                                                {% elif p == "SS" %}<p class="metal-type">925 Sterling Silver</p>
+                                                {% elif p == "GP" %}<p class="metal-type">Gold-Plated Silver</p>
+                                                {% endif %}  
+                                            {% endfor %}
+                                        {% endif %}
+                                        </div>
+                                        <div class="row">
+                                            {% with product.ring_size_matrix as ring %}
+                                                {% if ring %}
+                                                    <div class="pt-2 col-12 justify-content-center">
+                                                        <p class="tite-text"><span>Size Range</span></p>
+                                                        <p class=""><span>L N P S U </span></p>
+                                                            
+                                                        
+                                                    </div>
+                                                {% endif %}
+                                            {% endwith %}
+                                            {% with product.clothing_size_matrix as clothing %}
+                                                {% if clothing %}
+                                                    <div class="col-12 justify-content-center">
+                                                        <p>
+                                                            <span>Size Range</span>
+                                                            <span>xs s m l xl</span>
+                                                        </p>
+                                                    </div>
+                                                
+                                                {% endif %}
+                                            {% endwith %}
+                                            {% with product.one_size as o %}
+                                                {% if o %}
+                                                    <div class="col-12 justify-content-center">
+                                                        <p>
+                                                            <span>One Size</span>
+                                                        </p>
+                                                    </div>
+                                                {% endif %}
+                                            {% endwith %}
+                                        
+                                        </form>
+                                        
+                                    </div>
+                                    
+                                    </div>
+                                    
+                                </div> 
+                        </div>
                             <a href="{% url 'product_detail' product.id %}">
                                 <img src="{{ product.image_url }}" class="card-img-bottom" alt="{{ product.product_name|lower }}">
                             </a>
                         </div>
+                        <hr>
                     </div>
                 
                 
@@ -52,63 +122,19 @@
                     
                         </div>
                     </div>
-                    <!-- Product Info div -->
-                    <div class="row">
-                        <div class="col">
-                            <div>
-                            {% if product.product_properties %}
-                                {% for p in product.product_properties %}
-                                    {% if p == "LI" %}<i class="fab fa-envira"></i>
-                                    {% elif p == "FP"%}<i class="fas fa-hands-helping"></i>
-                                    {% elif p == "HC"%}<i class="fas fa-hand-paper"></i>
-                                    {% elif p == "PW"%}<i class="fas fa-mitten"></i>
-                                    {% elif p == "SS" %}<p class="metal-type">925 Sterling Silver</p>
-                                    {% elif p == "GP" %}<p class="metal-type">Gold-Plated Silver</p>
-                                    {% endif %}  
-                                {% endfor %}
-                            {% endif %}
-                            </div>
-                            <div class="row">
-                                {% with product.ring_size_matrix as ring %}
-                                    {% if ring %}
-                                        <div class="col-12 justify-content-center">
-                                            <p>
-                                                <span>Size Range</span>
-                                                <span>L N P S U </span>
-                                            </p>
-                                        </div>
-                                    {% endif %}
-                                {% endwith %}
-                                {% with product.clothing_size_matrix as clothing %}
-                                    {% if clothing %}
-                                        <div class="col-12 justify-content-center">
-                                            <p>
-                                                <span>Size Range</span>
-                                                <span>xs s m l xl</span>
-                                            </p>
-                                        </div>
-                                    
-                                    {% endif %}
-                                {% endwith %}
-                                {% with product.one_size as o %}
-                                    {% if o %}
-                                        <div class="col-12 justify-content-center">
-                                            <p>
-                                                <span>One Size</span>
-                                            </p>
-                                        </div>
-                                    {% endif %}
-                                {% endwith %}
-                            
-                            </form>
-                        </div>
-                        </div>
-                    </div> 
+                    
                 </div>
             </div>
-            <hr>
+            
             {% endfor %}
         </div>
         
     </main>
 {% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {% include 'products/includes/details_display.html' %}
+{% endblock %}
+
+
