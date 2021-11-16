@@ -2,6 +2,7 @@ from django.db import models
 
 from profiles.models import UserProfile
 
+
 class Testimonial(models.Model):
     """
     Class to define Testimonial for the about page
@@ -12,7 +13,7 @@ class Testimonial(models.Model):
         """
         verbose_name_plural = 'Testimonials'
 
-    stockist = models.ForeignKey(   
+    stockist = models.ForeignKey(
         UserProfile, null=True, blank=False, on_delete=models.SET_NULL)
     buyer_name = models.CharField(max_length=90, null=False, blank=False)
     testimonial = models.TextField(max_length=300, null=False, blank=False)

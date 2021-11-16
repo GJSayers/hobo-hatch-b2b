@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'profiles',
     'checkout',
     'about',
+    'faqs',
     'multiselectfield',
     'bootstrap_datepicker_plus',
     'storages',
