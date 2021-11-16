@@ -1,0 +1,20 @@
+[
+    {
+       "pk": 1,
+       "model": "about.testimonial",
+       "fields": {
+          "stockist": 1,
+          "buyer_name": "Test Buyer",
+          "testimonial": "Orders arrived, thank you. Very happy with it. The product is very nice quality, the wool is so soft"
+       }
+    },
+   {
+       "pk": 2,
+       "model": "about.testimonial",
+       "fields": {
+            "stockist": 2,
+            "buyer_name": "Test Buyer 2",
+            "testimonial": "Thanks for the speedy delivery. The hats are even nicer than I thought they’d be"
+       }
+    }
+]

@@ -1,4 +1,4 @@
-from django.shortcuts import render, request,
+from django.shortcuts import render
 
 
 def about(request):
