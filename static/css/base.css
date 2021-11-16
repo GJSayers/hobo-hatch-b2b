@@ -219,6 +219,50 @@ div.carousel-caption {
     padding-bottom: 10%;
 }
 
+/* ------------------------------- FAQ's */
+
+.accordion {
+    width: 85%;
+    
+}
+
+.btn-link {
+    color: #0A151A;
+    text
+}
+
+.btn-link:hover,
+.btn:focus,
+.btn-link:focus
+ {
+    color: #005E66;
+    text-decoration: none;
+}
+
+.btn.focus, .btn:focus {
+    box-shadow: none;
+}
+
+.accordian-header {
+    background-color: #F2F3F7;
+    border-bottom: solid 3px #996361;
+}
+
+.accordian-card-body {
+    background-color: none;
+}
+
+.contact-div {
+    padding-top: 10%;
+}
+.contact-link {
+    color: #005E66;
+}
+.contact-text {
+    font-size: 12px;
+}
+
+
 /* ------------------------------- Product Cards */
 
 

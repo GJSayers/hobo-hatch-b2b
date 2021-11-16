@@ -1,5 +1,4 @@
-from django.shortcuts import render, get_object_or_404
-from model_utils.managers import InheritanceManager
+from django.shortcuts import render
 from .models import Testimonial
 
 
