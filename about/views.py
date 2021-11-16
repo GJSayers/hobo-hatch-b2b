@@ -1,11 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from model_utils.managers import InheritanceManager
+from .models import Testimonial
 
 
 def about(request):
     """
     About Page View 
     """
+    testimonials = Testimonial.objects.all()
 
-    template = 'about/about.html'
+    context = {
+        'testimonials': testimonials,
+        # 'buyer': buyer,
+        
+    }
+    print("testimonials", testimonials)
+    # print("buyer", buyer)
+    
 
-    return render(request, template)
+
+    return render(request, 'about/about.html', context)

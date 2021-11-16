@@ -16,3 +16,6 @@ class Testimonial(models.Model):
         UserProfile, null=True, blank=False, on_delete=models.SET_NULL)
     buyer_name = models.CharField(max_length=90, null=False, blank=False)
     testimonial = models.TextField(max_length=300, null=False, blank=False)
+
+    def __str__(self):
+        return self.testimonial

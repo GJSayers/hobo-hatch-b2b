@@ -181,6 +181,44 @@ i {
     color:#996361;
 }
 
+/* ------------------------------- About Page */
+
+
+.carousel-control-next {
+    opacity: none;
+
+}
+
+.carousel-item {
+    align-items: center;
+}
+
+.carousel-img {
+    width: 100%;
+    opacity: 80%;
+    height: 35vw;
+    object-fit: cover;
+}
+
+div.carousel-caption {
+    padding-top: 3%;
+    background-color: rgba(153, 99, 97, .5);
+
+}
+
+.carousel-caption {
+    padding-top: none;
+    width: 70%;
+    height: 20vw;
+    
+    
+}
+
+.carousel-caption h3 {
+    font-size: 15px;
+    padding-bottom: 10%;
+}
+
 /* ------------------------------- Product Cards */
 
 
