@@ -1,30 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,500;0,600;0,800;1,400;1,500&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+
 html {
     height: 100%;
 }
 
 body {
     /* background: url('/media/hobo_imagery_beach.png'); */
-    /* background-size: cover; */
+    /* background-color: #F2F3F7; */
+    font-family: 'Quicksand', 'sans-serif';
     color: #0A151A;
     text-anchor: #0A151A;
+    height: calc(100vh - 200px);
 }
 
-body.title-text {
+/* .index-container {
+    background: url('/media/hobo_imagery_sea.png');
+    background-size: cover;
+    z-index: 100;
+} */
+
+
+/* ------------------------------ header & nav */
+
+header {
+    background: #F2F3F7;
+}
+
+.nav-link {
+    color: #0A151A;
+}
+i {
+    color: #005E66;
+}
+
+.fa-plus,
+.fa-minus {
+    color: #0A151A;
+}
+.nav-link:hover {
+    color: #005E66;
+}
+
+.logo-div,
+.navbars-div {
+    text-align: center;
+}
+
+.navbars-div {
+    padding-top: 5%;
+}
+
+.dropdown-toggle::after {
+    border-top: 0;
+}
+
+.dropdown-menu {
+    border: 0;
+    border-radius: 0;
+}
+
+
+/* ------------------------------ body */
+
+.title-text {
+    text-align: center;
     font-family: 'Montserrat', 'sans-serif';
+    font-weight: 400;
 }
 
-body.body-text {
+.body-text {
     font-family: 'Quicksand', 'sans-serif';
 }
 
 .header-container {
-    padding-top: 200px;
+    padding-top: 250px;
 }
 
 .home-logo {
+    align-items: center;
     max-width: 250px;
     max-height: 150px;
 }
+
+/* @media only screen and (max-width: 600px) {
+    .home-logo {
+        align-items: center;
+        max-width: 150px;
+  } */
 
 .search-bar {
     background: none;
@@ -49,4 +112,293 @@ body.body-text {
 
 .toast-capper {
     height: 2px;
+}
+
+
+/* ------------------------------- Product detail */
+
+.product-section {
+
+    padding-top: 100px;
+
+}
+
+.properties {
+    justify-content: center;
+    padding-top: 28px;
+}
+
+.input-group-prepend,
+.input-group-append,
+.input-box {
+    display: inline-flex;
+    text-align: center;
+
+}
+
+/* ------------------------------- Buttons */
+
+.btn-affirmative,
+.btn-back {
+    border-radius: 0px;
+    border: 2px solid #A98B7D;
+    margin: 7px;
+    color: #996361;
+}
+
+/* ------------------------------- Checkboxes */
+
+.form-check.form-check-input {
+    border: 1px solid #A98B7D;
+    border-radius: 0px;
+    color: #996361;
+}
+
+/* ------------------------------- Homepage */
+.welcome-section {
+    padding: 5%;
+}
+
+.about-section,
+.action-section {
+    text-align: center;
+}
+
+.action-section {
+    padding-top: 5%;
+}
+
+.login-link,
+.apply-link,
+.shop-link {
+    color: #005E66;
+    font-weight: 600;
+}
+
+.login-link:hover,
+.apply-link:hover,
+.shop-link:hover {
+    color:#996361;
+}
+
+/* ------------------------------- About Page */
+
+
+.carousel-control-next {
+    opacity: none;
+
+}
+
+.carousel-item {
+    align-items: center;
+}
+
+.carousel-img {
+    width: 100%;
+    opacity: 80%;
+    height: 35vw;
+    object-fit: cover;
+}
+
+div.carousel-caption {
+    padding-top: 3%;
+    background-color: rgba(153, 99, 97, .5);
+
+}
+
+.carousel-caption {
+    padding-top: none;
+    width: 70%;
+    height: 20vw;
+    
+    
+}
+
+.carousel-caption h3 {
+    font-size: 15px;
+    padding-bottom: 10%;
+}
+
+/* ------------------------------- FAQ's */
+
+.accordion {
+    width: 85%;
+    
+}
+
+.btn-link {
+    color: #0A151A;
+    text
+}
+
+.btn-link:hover,
+.btn:focus,
+.btn-link:focus
+ {
+    color: #005E66;
+    text-decoration: none;
+}
+
+.btn.focus, .btn:focus {
+    box-shadow: none;
+}
+
+.accordian-header {
+    background-color: #F2F3F7;
+    border-bottom: solid 3px #996361;
+}
+
+.accordian-card-body {
+    background-color: none;
+}
+
+.contact-div {
+    padding-top: 10%;
+}
+.contact-link {
+    color: #005E66;
+}
+.contact-text {
+    font-size: 12px;
+}
+
+
+/* ------------------------------- Product Cards */
+
+
+
+hr {
+    border: 1px solid #A98B7D;
+    width: 25%;
+    display: inline-flex;
+}
+
+.card {
+    border-radius: none;
+    border: none;
+}
+
+button.info-open {
+    border-radius: none;
+    border: none;
+    background: none;
+}
+
+
+@media only screen and (min-height: 1366px) {
+    .card-img-bottom {
+        width: 100%;
+        height: 30vw;
+        object-fit: cover;
+    }
+
+    .card {
+        object-fit: cover;
+        height: 10vw;
+        
+
+    }
+}
+
+@media only screen and (min-height: 1024px) {
+    .card-img-bottom {
+        width: 100%;
+        height: 50vw;
+        object-fit: cover;
+    }
+
+    .card-body {
+        object-fit: cover;
+        height: 15vw;
+    }
+}
+
+@media only screen and (min-height: 667px) {
+    .card-img-bottom {
+        width: 100%;
+        height: 65vw;
+        object-fit: cover;
+    }
+}
+
+
+/* ------------------------------- Footer */
+
+footer {
+    background: rgba(169, 139, 125, .5);
+    margin-bottom: 0px;
+}
+
+@media only screen and (min-height: 1024px) {
+    footer {
+        margin-top: 120px;
+}
+
+@media only screen and (min-height: 1300px) {
+    footer {
+        margin-top: 510px;
+}
+
+.footer-text {
+    font-family: 'Quicksand', 'sans-serif';
+}
+
+
+/* ---------------- Allauth form formatting */
+
+input[name='q']::placeholder {
+    color: #F2F3F7;
+}
+
+
+.allauth-form-inner-content p {
+    margin-top: 1.5rem; /* mt-4 */
+    color: #A98B7D; /* text-secondary */
+}
+
+.allauth-form-inner-content input {
+    border-color: #0A151A;
+    border-radius: 0;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #F2F3F7;
+}
+
+.allauth-form-inner-content button,
+.allauth-form-inner-content input[type='submit'] {
+	/* btn */
+	display: inline-block;
+    font-weight: 400;
+    color: #F2F3F7;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #0A151A;
+    border: 1px solid #A98B7D;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0;
+
+    /* standard bootstrap btn transitions */
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.allauth-form-inner-content button:hover,
+.allauth-form-inner-content input[type='submit']:hover {	
+	color: #F2F3F7;
+    background-color: #0A151A;
+    border-color: #0A151A;
+}
+
+.allauth-form-inner-content a {
+	color: #996361; /* text-info */
 }

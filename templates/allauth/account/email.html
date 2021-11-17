@@ -6,7 +6,7 @@
 
 {% block inner_content %}
 
-      <h2 class="logo-font mb-4">{% trans "E-mail Addresses" %}</h2>
+      <h2 class="title-text mb-4">{% trans "E-mail Addresses" %}</h2>
     
 {% if user.emailaddress_set.all %}
 <p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
@@ -33,9 +33,9 @@
   {% endfor %}
 
 <div class="buttonHolder">
-      <button class="secondaryAction" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
-      <button class="secondaryAction" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
-      <button class="primaryAction" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
+      <button class="btn btn-back" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
+      <button class="btn btn-back" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
+      <button class="btn btn-affirmative" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
 </div>
 
 </fieldset>
@@ -52,7 +52,7 @@
     <form method="post" action="{% url 'account_email' %}" class="add_email">
         {% csrf_token %}
         {{ form|crispy }}
-        <button name="action_add" type="submit">{% trans "Add E-mail" %}</button>
+        <button name="btn btn-affirmative" type="submit">{% trans "Add E-mail" %}</button>
     </form>
 
 {% endblock %}

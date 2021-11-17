@@ -1,0 +1,21 @@
+<script type="text/javascript">
+    
+$('.categories-open').on("click",function() {
+    $(".category-filter").show(200);
+    $('.categories-open').hide(200);
+});
+
+// on clicking the filter closing button, hide the checkboxes
+
+$('.categories-close').on("click",function() {
+    $(".category-filter").hide(200);
+});
+
+
+// toggle product info to display on demand
+
+$('.info-open').on("click",function() {
+    $('.info').toggle();
+});
+
+</script>

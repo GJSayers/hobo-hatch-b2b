@@ -1,0 +1,47 @@
+[
+    {
+       "pk": 1,
+       "model": "faqs.faqs",
+       "fields": {
+          "faq_category": "Delivery",
+          "question": "How long will it take for my order to dispatch?",
+          "answer": "If you have chosen an immediate item, we will aim to dispatch your order within 1-4 working days.  If you have chosen a future dated delivery date we will aim to delivery within 7 working days of the chosen date."
+       }
+    },
+   {
+        "pk": 2,
+        "model": "faqs.faqs",
+        "fields": {
+            "faq_category": "Payments",
+            "question": "What are your payment terms?",
+            "answer": "Payment terms are pro-forma in most cases, we accept card payments at point of order."
+       }
+    },
+    {
+        "pk": 3,
+        "model": "faqs.faqs",
+        "fields": {
+            "faq_category": "Marketing",
+            "question": "What assets do you provide for marketing Hobo & Hatch?",
+            "answer": "We have a vast array of quality product and lifestyle images which you will have access to once if you are a Hobo & Hatch stockist."
+       }
+    },
+    {
+        "pk": 4,
+        "model": "faqs.faqs",
+        "fields": {
+            "faq_category": "Payments",
+            "question": "What is the minimum order value?",
+            "answer": "Our minimum order value is £300"
+       }
+    },
+    {
+        "pk": 1,
+        "model": "faqs.faqs",
+        "fields": {
+            "faq_category": "Delivery",
+            "question": "How much does delivery cost?",
+            "answer": "For orders within the UK, standard delivery is £15.  Please contact us for a delivery quote if you are outside the UK."
+       }
+    }  
+]

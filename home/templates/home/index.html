@@ -10,37 +10,49 @@
 {% endblock %}
 
 {% block content %}
-<main class="container justify-content-center">
+<main class="container justify-content-center index-container">
 
-    <!-- Welcome Section -->
-    <section class="row welcome-section justify-content-center title-text">
+            <!-- Welcome Section -->
+
+    <section class="p-2 row welcome-section justify-content-center text-center">
         <h1 class="page-title title-text">
-            Welcome to Hobo & Hatch B2B Ordering
+            Hobo & Hatch B2B
         </h1>
-    </section>
 
-    <!-- About Section -->
-    <section class="row about-section justify-content-center">
-        <div class="col-12 body-text justify-content-center">
-            <p class="home-page-text justify-content-center">
-                Here is some text about the brand
+            <!-- Intro paragraphs -->
+
+        <div class="col-12 home-page-text justify-content-center">
+            <p class="about-p1 body-text justify-content-center">
+                Designed in South-Western Australia, Hobo and Hatch is a treasure trove for the searcher of the extraordinary.  Individually designed items merged with vintage inspiration, simple honest craftsmanship with elegant design.
+            </p>
+            <p class="about-p2 body-text">
+                Treading lightly and directly empowering creative communities, Hobo and Hatch celebrates finding beauty in the simple.
             </p>
         </div>
-    </section>
 
-    <!-- CTA  Section -->
-    <section class="row action-section justify-content-center">
+            <!-- Call to action -->
+  
         <div class="col-12 login-row body-text justify-content-center">
-            <p class="home-page-text justify-content-center">Login to Shop the latest Hobo & Hatch Collections</p>
-            <a href="{% url 'account_login' %}" class="btn btn-light login-button" role="button">
-                Login
-            </a>
+            <p class="body-text justify-content-center">Already a Stockist? 
+                <a href="{% url 'account_login' %}" class="login-link" role="link">
+                Login to Shop the latest Hobo & Hatch Collections
+                </a>
+            </p>
+            
         </div>
-        <div class="col-12 apply-row body-text justify-content-center">
-            <p class="home-page-text justify-content-center">Not a stockist yet?</p>
-            <a href="{% url 'account_signup' %}" class="btn btn-light register-btn apply-link" role="button">
-                Apply to be a stockist
-            </a>
+        <div class="col-12 apply-row justify-content-center">
+            <p class="body-text justify-content-center">Not a stockist yet?
+                <a href="{% url 'account_signup' %}" class="apply-link" role="link">
+                    Apply to be a stockist
+                </a>
+            </p>
+        </div>
+        <div class="col-12 retail-row justify-content-center">
+            <p class="body-text justify-content-center">Regular customer?
+                <a href="https://www.hoboandhatch.co.uk/" class="shop-link" role="link">
+                    Shop our retail site
+                </a>
+            </p>
         </div>
     </section>  
 </main>

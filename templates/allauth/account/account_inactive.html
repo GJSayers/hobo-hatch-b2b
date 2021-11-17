@@ -6,7 +6,13 @@
 
 {% block inner_content %}
 
-<h2 class="logo-font mb-4">{% trans "Account Inactive" %}</h2>
+<h2 class="title-text mb-4">{% trans "Account Inactive" %}</h2>
+
+<p>
+    If you would like to make a new account, then please
+    <a class="apply-link" href="{{ signup_url }}">sign up</a> first.
+</p>
+    
 
 
 {% endblock %}

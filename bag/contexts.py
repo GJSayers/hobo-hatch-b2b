@@ -13,7 +13,7 @@ def bag_contents(request):
     # clothing = request.POST.get('knitwear')
     bag = request.session.get('bag', {})
     delivery = Decimal(settings.STANDARD_DELIVERY_COST)
-    
+
     for item_id, item_data in bag.items():
         product = get_object_or_404(Product, pk=item_id)
         print("contexts product", product)
