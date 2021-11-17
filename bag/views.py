@@ -83,9 +83,35 @@ def add_to_bag(request, item_id):
         breaking down the function into sections per size type
         """
         product = get_object_or_404(Product, pk=item_id)
+
         if item_id in list(bag.keys()):
-            bag[item_id][product_type][size_qty] += [size_qty]
-            messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+            if beanie_hats:
+                bag[item_id][product_type]['one_size'] += one_size
+                messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+            if beltbag_bumbag:
+                bag[item_id][product_type]['one_size'] += one_size
+                messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+            if belts:
+                bag[item_id][product_type]['one_size'] += one_size
+                messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+            if blankets:
+                bag[item_id][product_type]['one_size'] += one_size
+                messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+            if clothing:
+                bag[item_id][product_type]['xs'] += xs
+                bag[item_id][product_type]['sm'] += sm
+                bag[item_id][product_type]['m'] += m
+                bag[item_id][product_type]['lg'] += lg
+                bag[item_id][product_type]['xl'] += xl
+                messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+            if rings:
+                bag[item_id][product_type]['l'] += l
+                bag[item_id][product_type]['n'] += n
+                bag[item_id][product_type]['p'] += p
+                bag[item_id][product_type]['s'] += s
+                bag[item_id][product_type]['u'] += u
+                messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+
         else:
             bag[item_id] = {product_type: size_qty}
             print("create", size_qty)
