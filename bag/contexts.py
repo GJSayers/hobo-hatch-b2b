@@ -16,17 +16,22 @@ def bag_contents(request):
     
     for item_id, item_data in bag.items():
         product = get_object_or_404(Product, pk=item_id)
+        print("contexts product", product)
         product_type = str(product.product_type)
+        print("contexts product_type", product_type)
         size_qty = item_data[product_type]
-        print(size_qty)
+        print("contexts size_qty", size_qty)
         size_items = size_qty.items()
-        print(item_data)
+        print("contexts size_items", size_items)
+        
         size_names = size_qty.keys()
+        print("contexts size_names", size_names)
         qty = size_qty.values()
-        line_qty = int(sum(qty))
-        line_total = line_qty * product.product_price
-        print("line_qty", line_qty)
         print("qty", qty)
+        line_qty = int(sum(qty))
+        print("line_qty", line_qty)
+        line_total = line_qty * product.product_price
+        print("line_total", line_total)
         # total += qty * product.product_price
         bag_items.append({
                                 'item_id': item_id,
