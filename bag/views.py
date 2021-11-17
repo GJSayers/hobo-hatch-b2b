@@ -82,10 +82,33 @@ def add_to_bag(request, item_id):
         bag to avoid overwriting.
         breaking down the function into sections per size type
         """
+
         product = get_object_or_404(Product, pk=item_id)
+        
         if item_id in list(bag.keys()):
-            bag[item_id][product_type][size_qty] += [size_qty]
-            messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+            if beltbag_bumbag:
+                size_qty['one_size'] += one_size
+            elif belts:
+                size_qty['one_size'] += one_size
+            elif blankets:
+                size_qty['one_size'] += one_size
+            elif beanie_hats:
+                size_qty['one_size'] += one_size
+            elif knitwear:
+                size_qty['xs'] += xs
+                size_qty['sm'] += sm
+                size_qty['m'] += m
+                size_qty['lg'] += lg
+                size_qty['xl'] += xl
+            elif rings:
+                size_qty['l'] += l
+                size_qty['n'] += n
+                size_qty['p'] += p
+                size_qty['s'] += s
+                size_qty['u'] += u
+
+
+                messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
         else:
             bag[item_id] = {product_type: size_qty}
             print("create", size_qty)
@@ -199,7 +222,7 @@ def edit_bag(request, item_id):
             else:
                 bag.pop(item_id)
                 messages.success(request, f'{product.product_name} has been removed bag')
-
+        
         bag = request.session.get('bag', {})
 
     if rings:

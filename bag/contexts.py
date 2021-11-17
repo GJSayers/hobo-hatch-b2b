@@ -7,6 +7,8 @@ from products.models import Product
 def bag_contents(request):
 
     bag_items = []
+    line_totals = []
+    # size_qty = []
     # total = 0
     # product_count = 0
     # rings = request.POST.get('rings')
@@ -23,7 +25,6 @@ def bag_contents(request):
         print("contexts size_qty", size_qty)
         size_items = size_qty.items()
         print("contexts size_items", size_items)
-        
         size_names = size_qty.keys()
         print("contexts size_names", size_names)
         qty = size_qty.values()
@@ -34,34 +35,18 @@ def bag_contents(request):
         print("line_total", line_total)
         # total += qty * product.product_price
         bag_items.append({
-                                'item_id': item_id,
-                                'product_type': str(product.product_type),
-                                'qty': qty,
-                                'size_items': size_items,
-                                'size_names': size_names,
-                                'line_qty': line_qty,
-                                'line_total': line_total,
-                                'product': product,
-                            })
-        #     print("bag items", bag_items)
-        # else:
-        #     product = get_object_or_404(Product, pk=item_id)
-        #     # size_names = size_qty.keys()
-        #     qty = item_data
-        #     line_qty = sum(size_qty.values())
-        #     line_total = line_qty * product.product_price
-        #     bag_items.append({
-        #                         'item_id': item_id,
-        #                         'product_type': str(product.product_type),
-        #                         'qty': qty,
-        #                         # 'size_names': size_names,
-        #                         'line_qty': line_qty,
-        #                         'line_total': line_total,
-        #                         'product': product,
-        #     })
-        # print("bag items", bag_items)
+                            'item_id': item_id,
+                            'product_type': str(product.product_type),
+                            'size_qty': item_data,
+                            'line_qty': line_qty,
+                            'line_total': line_total,
+                            'product': product,
+                        })
+        
+        line_totals.append(line_total)
 
-    grand_total = delivery
+    print("line_totals", line_totals)
+    grand_total = delivery + sum(line_totals)
 
     context = {
         'bag_items': bag_items,
