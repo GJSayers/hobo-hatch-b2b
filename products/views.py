@@ -52,10 +52,10 @@ def product_detail(request, product_id):
     context = {
         'product': product,
         'categories': categories,
-        'product_type': product_type,
+        'product_type': str(product_type),
         'jewellery_size_type': jewellery_size_type,
         'ring': ring,
         'clothing_sizes': clothing_sizes
     }
-    print(product_type)
+    print("product type in product details", product_type)
     return render(request, 'products/product_detail.html', context)

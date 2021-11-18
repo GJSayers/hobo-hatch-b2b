@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
-from products. models import Product
+from products.models import Product
 # from django.utils.datastructures import MultiValueDict
 
 
@@ -21,7 +21,6 @@ def add_to_bag(request, item_id):
     belts = request.POST.get('belts')
     beanie_hats = request.POST.get('beanie_hats')
     blankets = request.POST.get('blankets')
-    # bag = request.session.get('bag', {})
     redirect_url = request.POST.get('redirect_url')
 
     if 'knitwear' in request.POST:
@@ -144,16 +143,14 @@ def edit_bag(request, item_id):
     """
     Edit or remove items from the bag view
     """
-    print("edit_bag")
-    
+    bag = request.session.get('bag', {})
     rings = request.POST.get('rings')
     clothing = request.POST.get('knitwear')
     beltbag_bumbag = request.POST.get('beltbag_bumbag')
     belts = request.POST.get('belts')
     beanie_hats = request.POST.get('beanie_hats')
     blankets = request.POST.get('blankets')
-    size_qty = request.POST.get('size_qty')
-    bag = request.session.get('bag', {})
+    product = get_object_or_404(Product, pk=item_id)
 
     if 'knitwear' in request.POST:
         xs = int(request.POST.get('xs'))
@@ -161,14 +158,19 @@ def edit_bag(request, item_id):
         m = int(request.POST.get('m'))
         lg = int(request.POST.get('lg'))
         xl = int(request.POST.get('xl'))
+        print("sizes", xs, sm, m, lg, xl)
         product_type = request.POST.get('knitwear')
-        clothing_size_qtys = {
-                            'xs': xs,
-                            'sm': sm,
-                            'm': m,
-                            'lg': lg,
-                            'xl': xl
-                            }
+        if xs > 0:
+            bag[item_id][product_type]['xs'] = xs
+        if sm > 0:
+            bag[item_id][product_type]['sm'] = sm
+        if m > 0:
+            bag[item_id][product_type]['m'] = m
+        if lg > 0:
+            bag[item_id][product_type]['lg'] = lg
+        if xl > 0:
+            bag[item_id][product_type]['xl'] = xl
+            messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
 
     elif 'rings' in request.POST:
         l = int(request.POST.get('l'))
@@ -177,85 +179,102 @@ def edit_bag(request, item_id):
         s = int(request.POST.get('s'))
         u = int(request.POST.get('u'))
         product_type = request.POST.get('rings')
-        ring_size_qtys = {
-                            'l': l,
-                            'n': n,
-                            'p': p,
-                            's': s,
-                            'u': u
-                        }
 
     elif 'beltbag_bumbag' in request.POST:
         one_size = int(request.POST.get('one_size'))
         product_type = request.POST.get('beltbag_bumbag')
-        universal_qty = {'one_size': one_size}
+        # universal_qty = {'one_size': one_size}
 
     elif 'belts' in request.POST:
         one_size = int(request.POST.get('one_size'))
         product_type = request.POST.get('belts')
-        universal_qty = {'one_size': one_size}
+        # universal_qty = {'one_size': one_size}
 
     elif 'beanie_hats' in request.POST:
         one_size = int(request.POST.get('one_size'))
         product_type = request.POST.get('beanie_hats')
-        universal_qty = {'one_size': one_size}
+        # universal_qty = {'one_size': one_size}
 
     elif 'blankets' in request.POST:
         one_size = int(request.POST.get('one_size'))
         product_type = request.POST.get('blankets')
-        universal_qty = {'one_size': one_size}
-
-    # bag = request.session.get('bag', {})
-
-    def edit_quantities(size_qty, product_type, item_id, bag):
-        """
-        Identifies which product type is being added to the
-        bag to avoid overwriting.
-        breaking down the function into sections per size type
-        """
-        product = get_object_or_404(Product, pk=item_id)
-        size_qty = request.POST.get('size_qty')
-        line_qty = request.POST.get('line_qty')
-        # qty = list(int(request.POST.get(['qty'])))
-        if item_id in list(bag.keys()):
-            if line_qty > 0:
-                bag[item_id] = {product_type: size_qty}
-                messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
-                print("update size", size_qty)
-            else:
-                bag.pop(item_id)
-                messages.success(request, f'{product.product_name} has been removed bag')
-
-        bag = request.session.get('bag', {})
-
-    if rings:
-        edit_quantities(ring_size_qtys, product_type, item_id, bag)
-
-    elif clothing:
-        edit_quantities(clothing_size_qtys, product_type, item_id, bag)
-
-    elif beltbag_bumbag:
-        edit_quantities(universal_qty, product_type, item_id, bag)
-
-    elif belts:
-        edit_quantities(universal_qty, product_type, item_id, bag)
-
-    elif blankets:
-        edit_quantities(universal_qty, product_type, item_id, bag)
-
-    elif beanie_hats:
-        edit_quantities(universal_qty, product_type, item_id, bag)
-
-    request.session['bag'] = bag
+        # universal_qty = {'one_size': one_size}
+    
+        request.session['bag'] = bag
     print("session bag", request.session['bag'])
     return redirect(reverse('view_bag'))
+
+    # def edit_quantities(size_qty, product_type, item_id, bag):
+    #     """
+    #     Identifies which product type is being added to the
+    #     bag to avoid overwriting.
+    #     breaking down the function into sections per size type
+    #     """
+
+    # if beanie_hats:
+    #     if one_size > 0:
+    #         bag[item_id][product_type]['one_size'] = one_size
+    #         messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+    # if beltbag_bumbag:
+    #     if one_size > 0:
+    #         bag[item_id][product_type]['one_size'] = one_size
+    #         messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+    # if belts:
+    #     if one_size > 0:
+    #         bag[item_id][product_type]['one_size'] = one_size
+    #         messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+    # if blankets:
+    #     if one_size > 0:
+    #         bag[item_id][product_type]['one_size'] = one_size
+    #         messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+    # # if clothing:
+    # #     bag[item_id][product_type]['xs'] = xs
+    # #     bag[item_id][product_type]['sm'] = sm
+    # #     bag[item_id][product_type]['m'] = m
+    # #     bag[item_id][product_type]['lg'] = lg
+    # #     bag[item_id][product_type]['xl'] = xl
+    # #     messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+    # if rings:
+    #     bag[item_id][product_type]['l'] = l
+    #     bag[item_id][product_type]['n'] = n
+    #     bag[item_id][product_type]['p'] = p
+    #     bag[item_id][product_type]['s'] = s
+    #     bag[item_id][product_type]['u'] = u
+    #     messages.success(request, f'{product.product_name} has been updated {bag[item_id]}')
+
+    
+
+    # else:
+    #     bag[item_id] = {product_type: size_qty}
+    #     print("create", size_qty)
+    #     messages.success(request, f'{product.product_name} has been added to your bag')
+
+    # if rings:
+    #     edit_quantities(ring_size_qtys, product_type, item_id, bag)
+
+    # elif clothing:
+    #     edit_quantities(clothing_size_qtys, product_type, item_id, bag)
+
+    # elif beltbag_bumbag:
+    #     edit_quantities(universal_qty, product_type, item_id, bag)
+
+    # elif belts:
+    #     edit_quantities(universal_qty, product_type, item_id, bag)
+
+    # elif blankets:
+    #     edit_quantities(universal_qty, product_type, item_id, bag)
+
+    # elif beanie_hats:
+    #     edit_quantities(universal_qty, product_type, item_id, bag)
+
+    
+
 
 def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
     product = get_object_or_404(Product, pk=item_id)
     bag = request.session.get('bag', {})
     try:
-        
         bag.pop(item_id)
         messages.success(request, f'{product.product_name} has been removed bag')
 
