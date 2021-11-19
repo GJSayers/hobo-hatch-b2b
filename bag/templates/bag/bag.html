@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -153,10 +154,10 @@
                         <!-- item & value grand totals -->
                         <tr>
                             <td colspan="5" class="pt-5 text-right">
-                                <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
-                                <h6><strong>Total Item Qty: {{ total_items }}</strong></h6>
-                                <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
-                                <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+                                <h6 class="title-text text-right">Sub Total: £{{ total|floatformat:2 }}</h6>
+                                <h6 class="title-text text-right">Total Item Qty: {{ total_items }}</h6>
+                                <h6 class="title-text text-right">Delivery: £{{ delivery|floatformat:2 }}</h6>
+                                <h4 class="mt-4 title-text text-right">Grand Total: £{{ grand_total|floatformat:2 }}</h4>
                             </td>
                         </tr>
                         <!-- checkout & continue shopping buttons -->

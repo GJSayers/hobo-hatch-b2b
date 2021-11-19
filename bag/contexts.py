@@ -7,7 +7,12 @@ from products.models import Product
 def bag_contents(request):
 
     bag_items = []
+    line_totals = []
+    line_qtys = []
+    print("line_totals", line_totals)
     bag = request.session.get('bag', {})
+    total = 0
+    product_count = 0
     delivery = Decimal(settings.STANDARD_DELIVERY_COST)
 
     for item_id, item_data in bag.items():
@@ -19,6 +24,11 @@ def bag_contents(request):
         qty = size_qty.values()
         line_qty = int(sum(qty))
         line_total = line_qty * product.product_price
+        
+        print("total", total)
+        # line_count = int(sum(line_qty))
+        # product_count += line_count
+        # total += int(sum(line_total))
         bag_items.append({
                                 'item_id': item_id,
                                 'product_type': str(product.product_type),
@@ -27,14 +37,23 @@ def bag_contents(request):
                                 'size_names': size_names,
                                 'line_qty': line_qty,
                                 'line_total': line_total,
+                                'total': total,
                                 'product': product,
                             })
 
-    grand_total = delivery
+        line_totals.append(line_total)
+        line_qtys.append(line_qty)
+        total_items = sum(line_qtys)
+        total = sum(line_totals)
+
+    print("line_totals", line_totals)
+    grand_total = delivery + total
 
     context = {
         'bag_items': bag_items,
         'delivery': delivery,
+        'total': total,
+        'total_items': total_items,
         'grand_total': grand_total,
     }
 
