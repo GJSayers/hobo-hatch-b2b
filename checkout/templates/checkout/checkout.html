@@ -17,6 +17,54 @@
             <h2 class="logo-font mb-4">Checkout</h2>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12 col-lg-6 order-lg-last mb-5">
+            <p class="text-muted">Order Summary ({{ total_items }})</p>
+            <div class="row">
+                <div class="col-7 offset-2">
+                    <p class="mb-1 mt-0 small text-muted">Item</p>
+                </div>
+                <div class="col-3 text-right">
+                    <p class="mb-1 mt-0 small text-muted">Subtotal</p>
+                </div>
+            </div>
+            {% for item in bag_items %}
+                <div class="row">
+                    <div class="col-2 mb-1">
+                        <a href="{% url 'product_detail' item.product.id %}">
+                            {% if item.product.image %}
+                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.product_name }}">
+                            {% else %}
+                                <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.product_name }}">
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="col-7">
+                        <p class="my-0"><strong>{{ item.product.product_name }}</strong></p>
+                        <p class="my-0 small">Size run:
+                            <br> 
+                            {% for s, q in item.size_items %}{{ s|upper }}, <strong>{{ q|upper }}</strong> | {% endfor %}</p>
+                        <p class="my-0 small text-muted">Qty: {{ item.line_qty }}</p>
+                    </div>
+                    <div class="col-3 text-right">
+                        <p class="my-0 small text-muted">£ {{ item.line_total|floatformat:2 }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            <hr class="my-0">
+            <div class="row text-black text-right">
+                <div class="col-7 offset-2">
+                    <p class="my-0">Order Total:</p>
+                    <p class="my-0">Delivery:</p>
+                    <p class="my-0">Grand Total:</p>
+                </div>
+                <div class="col-3">
+                    <p class="my-0">£ {{ total | floatformat:2 }}</p>
+                    <p class="my-0">£ {{ delivery | floatformat:2 }}</p>
+                    <p class="my-0"><strong>£ {{ grand_total | floatformat:2 }}</strong></p>
+                </div>
+            </div>
+        </div>
 
     <div class="row">
         <div class="col-12 col-lg-6">
@@ -36,6 +84,7 @@
                 <fieldset class="rounded-0 px-3 mb-5">
                     <legend class="fieldset-label">Accounting Details</legend>
                     {{ order_form.accounts_phone | as_crispy_field }}
+                    {{ order_form.accounts_email | as_crispy_field }}
                 </fieldset class="rounded-0 px-3 mb-5">
                 <fieldset class="rounded-0 px-3 mb-5">
                     <legend class="fieldset-label">Delivery Details</legend>
@@ -73,17 +122,18 @@
                         <span class="icon">
                             <i class="fas fa-exclamation-circle"></i>
                         </span>
-                        <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+                        <span>Your card will be charged <strong>£ {{ grand_total|floatformat:2 }}</strong></span>
                     </p>
                 </div>
             </form>
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block postloadjs %}
     {{ block.super }}
-    {{ order_form.media }}
+    
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ CLIENT_SECRET|json_script:"id_client_secret" }}
     <script src="{% static '/checkout/js/stripe_elements.js' %}"></script>

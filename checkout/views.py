@@ -26,7 +26,9 @@ def checkout(request):
     if request.method == 'POST':
         bag = request.session.get('bag', {})
         print("checkout bag", bag)
-        line_qty = request.session.get('line_qty')
+        product_type = request.POST.get('product_type')
+        line_qty = request.POST.get('line_qty')
+        line_total = request.POST.get('line_total')
 
         form_data = {
             'buyer_name': request.POST['buyer_name'],
@@ -45,6 +47,10 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
+            # pid = request.POST.get('client_secret').split('_secret')[0]
+            # order.stripe_pid = pid
+            # order.original_bag = json.dumps(bag)
+            # order.save()
             order = order_form.save()
             print("order", order)
             for item_id, item_data in list(bag.items()):
@@ -53,10 +59,12 @@ def checkout(request):
                     order_line_item = OrderLineItem(
                                     order=order,
                                     product=product,
-                                    line_qty=line_qty,
+                                    product_type=product_type,
+                                    lineitem_qty=line_qty,
+                                    lineitem_total=line_total,
                                 )
                     print("order_line_item", order_line_item)
-                    order_line_item.save()
+                    # order_line_item.save()
                 
                 except Product.DoesNotExist:
                     messages.error(request, (
