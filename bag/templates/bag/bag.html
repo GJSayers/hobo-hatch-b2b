@@ -105,7 +105,7 @@
                                                                             <span class="input-group"></span>
                                                                             <input type="number"
                                                                                 class="form-control qty_input qty_input_{{ s }} input-box rounded-0 text-center"
-                                                                                data-size="{{ s }}" value="{{ q }}" name="{{ s }}"
+                                                                                data-size="{{ s }}" data-product_type="{{ item.product.product_type }}" value="{{ q }}" name="{{ s }}"
                                                                                 id="id_qty_{{ s }}" min="0" max="99"
                                                                                 data-item_id="{{ item.item_id }}"
                                                                                 aria-label="size{{ s }}">

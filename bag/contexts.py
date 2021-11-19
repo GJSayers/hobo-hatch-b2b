@@ -12,7 +12,7 @@ def bag_contents(request):
     print("line_totals", line_totals)
     bag = request.session.get('bag', {})
     total = 0
-    product_count = 0
+    total_items = 0
     delivery = Decimal(settings.STANDARD_DELIVERY_COST)
 
     for item_id, item_data in bag.items():
