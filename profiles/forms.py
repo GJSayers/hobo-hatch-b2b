@@ -4,9 +4,9 @@ from .models import UserProfile
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        exclude = ('user', 'country', 'purchasing_currency',
+        exclude = ('user', 'purchasing_currency',
                    'stockist_channel', 'stockist_market',
-                   'categories', 'accounts_email', )
+                   'categories', )
                   # not possible to enter due to bug / 'delivery_date',
     
     def __init__(self, *args, **kwargs):
@@ -18,20 +18,21 @@ class UserProfileForm(forms.ModelForm):
         placeholders = {
             'buyer_name': 'Buyer Name',
             'stockist': 'Store Name',
-            'buyer_phone': 'Buyer Name',
+            'buyer_name': 'Buyer Name',
+            'buyer_phone': 'Buyer Phone',
             'buyer_email': 'Buyer Email Address',
             'accounts_phone': 'Accounts Phone Number',
-            # 'accounts_email': 'Accounts Email Address',
+            'accounts_email': 'Accounts Email Address',
             'address_1': 'Address Line 1',
             'address_2': 'Address Line 2',
             'town_or_city': 'Town or City',
             'county_or_state': 'County or State',
+            'country': 'Country',
             'postcode': 'Postcode / Zipcode',
             'website_url': 'Website',
             
         }
 
-        # not possible to enter due to bug / 'delivery_date': 'Preferred Date of Delivery',
 
         self.fields['buyer_name'].widget.attrs['autofocus'] = True
         for field in self.fields:

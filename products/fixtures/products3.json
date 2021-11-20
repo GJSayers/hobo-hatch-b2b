@@ -147,9 +147,9 @@
   "model": "products.type",
   "pk": 12,
   "fields": {
-    "name": "beanies",
-    "friendly_name": "Beanie Hats",
-    "product_categories": "[4]"
+    "name": "blankets",
+    "friendly_name": "Blankets",
+    "product_categories": "[3]"
   }
 },
 {
@@ -272,7 +272,7 @@
   "fields": {
     "product_name": "Storm Wool Blanket",
     "product_category": 3,
-    "product_type": 18,
+    "product_type": 12,
     "product_properties": "PW,HC,FP,LI",
     "product_sku": "wool_bkt_strm",
     "product_description": "Autumn & Winter are seasons of recovery and preparation.  Snuggle up in our cozy wool blanket.",

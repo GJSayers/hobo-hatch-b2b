@@ -26,7 +26,7 @@ class Category(models.Model):
         (9, "Trousers"),
         (10, "Jeans"),
         (11, "Ponchos"),
-        (12, "Beanie Hats"),
+        (12, "Blankets"),
         (13, "Scarves"),
         (14, "Beanie Hats"),
         (15, "Leather Bags"),
