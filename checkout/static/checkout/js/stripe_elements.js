@@ -24,18 +24,18 @@ card.mount('#card-element');
 // Handle card validation errors with event listener
 card.addEventListener('change', (event) => {
     var errorDiv = document.getElementById('card-errors');
-        if (event.error) {
-            var msg = `
-            <span class="icon" role="alert">
-            <i class="fas fa-times"></i>
-            </span>
-            <span>${event.error.message}</span>
-            `;
-            $(errorDiv).html(msg);
-        } else {
-            errorDiv.textContent = '';
-        }
-    });
+    if (event.error) {
+        var msg = `
+        <span class="icon" role="alert">
+        <i class="fas fa-times"></i>
+        </span>
+        <span>${event.error.message}</span>
+        `;
+        $(errorDiv).html(msg);
+    } else {
+        errorDiv.textContent = '';
+    }
+});
 
     // Handle form submit
 var form = document.getElementById('payment-form');
@@ -48,7 +48,7 @@ form.addEventListener('submit', function(ev) {
         payment_method: {
             card: card,
         }
-    }).then(function(result){
+    }).then(function(result) {
         if (result.error) {
             var errorDiv = document.getElementById('card-errors');
             var msg = `
@@ -57,11 +57,12 @@ form.addEventListener('submit', function(ev) {
                 </span>
                 <span>${result.error.message}</span>
                 `;
-                $(errorDiv).html(msg);
-                card.update({ 'disabled': false});
-                $('#submit-button').attr('disabled', false);
-            } else {
-                if (result.paymentIntent.status === 'succeeded') {form.submit();
+            $(errorDiv).html(msg);
+            card.update({ 'disabled': false});
+            $('#submit-button').attr('disabled', false);
+        } else {
+            if (result.paymentIntent.status === 'succeeded') {
+                form.submit();
             }
         }
     });

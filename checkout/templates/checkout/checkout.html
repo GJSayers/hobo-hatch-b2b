@@ -65,6 +65,7 @@
                 </div>
             </div>
         </div>
+        <!-- {% if user.is_authenticated %} -->
 
     <div class="row">
         <div class="col-12 col-lg-6">
@@ -95,8 +96,10 @@
                     {{ order_form.postcode | as_crispy_field }}
                     {{ order_form.country | as_crispy_field }}
                     {{ order_form.delivery_date | as_crispy_field }}
-                    
-
+                    <div class="form-check form-check-inline float-right mr-0">
+                            <label class="form-check-label" for="id-save-info">Update this account info to {{ stockist }} profile</label>
+                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+                    </div>
                 </fieldset>
                 <fieldset class="px-3">
                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
@@ -128,13 +131,19 @@
             </form>
         </div>
     </div>
+    <!-- {% else %}
+    <div>
+    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+    <a class="text-info" href="{% url 'account_login' %}">login</a> to complete this order
+    </div>
+    {% endif %} -->
+
 </div>
 {% endblock %}
 
 {% block postloadjs %}
     {{ block.super }}
-    
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ CLIENT_SECRET|json_script:"id_client_secret" }}
+    {{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static '/checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
