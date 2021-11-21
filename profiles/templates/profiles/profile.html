@@ -20,23 +20,38 @@
     <div class="row">
         <div class="col">
             <hr>
-                <h2 class="logo-font mb-4">My Account</h2>
+                <h2 class="title-text my-2 text-left">
+                    {{ profile.user }}
+                </h2>
             <hr>
         </div>
+        
     </div>
-    <div class="row">
-        <div class="col-12-col-lg-6">
-            <p>Default Delivery Information</p>
-            <form action="{% url 'profile' %}" methood="POST" class="mt-3" id="profile-update-form">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <button class="btn btn-primary float-right">Update Details</button>
-            </form>
-        </div>
-        <div class="col-12 col-lg-6">
+    <main class="row">
+
+            <!-- Profile Details  -->
+
+        <section class="col-12-col-lg-6 profile-details">
+            <div class="col-12-col-lg-6">
+
+                    <!-- Profile Update Form -->
+
+                <p>Default Info</p>
+                <form action="{% url 'profile' %}" method="POST" class="mt-3" id="profile-update-form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn btn-primary float-right">Update Details</button>
+                </form>
+            </div>
+        </section>
+
+            <!-- Order History  -->
+
+        <section class="col-12 col-lg-6 order-history">
             <p>Order History</p>
             <div class="order-history table-responsive">
-                <div class="table table-sm table-borderless">
+                <div class="table table-borderless">
+                    <table>
                     <thead>
                         <tr>
                             <th>Order Number</th>
@@ -46,26 +61,28 @@
                             <th>Order Total</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    
                         {% for order in orders %}
                         <tr>
                             <td>
-                                <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number}}">
-                                    {{ order.order_number }}  
+                                 <a class="nav-link" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number|truncatechars:6 }}">
+                                    {{ order.order_number|truncatechars:6 }}  
                                 </a>
+                                
                             </td>
                             <td>{{ order.date }}
                             </td>
+
                             <td>{{ order.delivery_date }}</td>
                             <td>{{ order.total_items }}</td>
-                            <td>£ {{ order.grand_total }}/td>
+                            <td>£ {{ order.grand_total }}</td>
                         </tr>
                         {% endfor %}
-                    </tbody>
+                    </table>
 
                 </div>
             </div>
-        </div>
-    </div>   
+        </section>
+    </main>   
 </div>
 {% endblock %}

@@ -28,7 +28,7 @@ header {
 }
 
 .nav-link {
-    color: #0A151A;
+    color: #996361;
 }
 i {
     color: #005E66;
@@ -366,7 +366,7 @@ input[name='q']::placeholder {
 }
 
 .allauth-form-inner-content input::placeholder {
-    color: #F2F3F7;
+    color: #A98B7D;
 }
 
 .allauth-form-inner-content button,

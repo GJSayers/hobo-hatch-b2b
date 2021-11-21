@@ -1,13 +1,11 @@
 from django import forms
 from .models import UserProfile
 
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        exclude = ('user', 'purchasing_currency',
-                   'stockist_channel', 'stockist_market',
-                   'categories', )
-                  # not possible to enter due to bug / 'delivery_date',
+        exclude = ('user','purchasing_currency', 'stockist_channel', 'categories', 'stockist_market')
     
     def __init__(self, *args, **kwargs):
         """
@@ -30,9 +28,8 @@ class UserProfileForm(forms.ModelForm):
             'country': 'Country',
             'postcode': 'Postcode / Zipcode',
             'website_url': 'Website',
-            
-        }
 
+        }
 
         self.fields['buyer_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
@@ -42,5 +39,5 @@ class UserProfileForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
             self.fields[field].label = False
