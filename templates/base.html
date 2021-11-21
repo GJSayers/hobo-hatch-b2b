@@ -76,23 +76,7 @@
         </div>
       <div class="col-4"></div> -->
 
-      <!-- Search Form -->
-      <!-- <div class="col-12 my-0 search body-text">
-        <form action="" method="GET">
-          <div class="col input-group w-40 my-0 center-block max-width-50">
-            <input class="form-control rounded-0 my-0 search-bar" type="text" name="q" placeholder="Search">
-            <div class="input-group-prepend">
-              <button type="submit" class="form-control rounded-0 my-0 search-bar">
-                <span class="icon">
-                  <i class="fas fa-search"></i>
-                </span>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="col-4"></div>
-    </div>  -->
+      
 
                         <!-- Navigation -->
     <nav class="navbar navbar-expand-lg">
@@ -139,7 +123,10 @@
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  href="{% url 'profile' %}">Account   <i class="fas fa-angle-double-down"></i></a>
             <ul class="dropdown-menu ml-auto text-left" aria-labelledby="navbarDropdownMenuLink">
               <li class="">
-                <a class="dropdown-item" href="{% url 'account_logout' %}?chosen_categories=blankets">Logout</a>
+                <a class="dropdown-item" href="{% url 'profile' %}">My Account</a>
+              </li>
+              <li class="">
+                <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
               </li>
             </ul> 
           </li>
@@ -154,7 +141,9 @@
             </li>
             {% endif %}
         </ul>
+        
       </div>
+      
 
                         <!-- Logo block -->
       <div class="col-sm-12 col-lg-4 logo-div my-2 py-2 pb-2 order-0 position-relative justify-content-center">
@@ -178,8 +167,32 @@
             <a class="nav-link" href="#">FAQ's</a>
           </li>
         </ul>
-      </div>  
+      </div>
+ 
     </nav>
+    <!-- {% if request.user.is_authenticated %}
+    <div class="row align-items-center pb-2">
+         Search Form
+        <div class="col-8 my-0 search body-text">
+          <form action="" method="GET">
+            <div class="col input-group center-block">
+              <div class="input-group-append">
+                <button type="submit" class="form-control rounded-0 my-0 search-bar">
+                  <span class="icon">
+                    <i class="fas fa-search"></i>
+                  </span>
+                </button>
+              </div>
+              <input class="form-control rounded-0 my-0 search-bar" type="text" name="q" placeholder="Search">
+            </div>
+          </form>
+        </div>
+          Bag 
+      <div class="col-4 text-center px-3">
+        <a class="text-center" href="{% url 'view_bag' %}"><i class="fas fa-shopping-bag"></i></a>
+      </div>
+    </div>
+    {% endif %} -->
   </header>
 
   <!-- Messages -->
