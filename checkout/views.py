@@ -129,6 +129,7 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+    order_line_item = get_object_or_404(OrderLineItem, order=order)
     messages.success(request, f'Thankyou, your order have been successfully placed! \
         #     Order number: {order_number}. An email confirmation \
         #         will be sent to {order.buyer_email}')
@@ -139,6 +140,7 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
+        'order_line_item': order_line_item,
     }
 
     return render(request, template, context)

@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+
 {% block page_header %}
 <div class="container header-container">
     <div class="row justify-content-center">
@@ -10,7 +15,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="overlay"></div>
+<div id="loading-overlay">
+    <h1 class="text-light title-text loading-spinner">
+        <span class="icon">
+            <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+        </span>
+    </h1>
+</div>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -18,40 +29,42 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-lg-6 order-lg-last mb-5">
+        <div class="col-md-12 col-lg-6 order-lg-last mb-5">
             <p class="text-muted">Order Summary ({{ total_items }})</p>
             <div class="row">
-                <div class="col-7 offset-2">
-                    <p class="mb-1 mt-0 small text-muted">Item</p>
+                <div class="col-md-7 offset-md-2">
+                    <p class="d-none d-md-block mb-1 mt-0 small text-muted">Item</p>
                 </div>
-                <div class="col-3 text-right">
-                    <p class="mb-1 mt-0 small text-muted">Subtotal</p>
+                <div class="col-md-3 text-md-right">
+                    <p class="d-none d-md-block mb-1 mt-0 small text-muted">Subtotal</p>
                 </div>
             </div>
             {% for item in bag_items %}
                 <div class="row">
-                    <div class="col-2 mb-1">
+                    <div class="col-md-2 mb-1">
+                        <p class="d-sm-block d-md-none my-0"><strong>{{ item.product.product_name }}</strong></p>
                         <a href="{% url 'product_detail' item.product.id %}">
                             {% if item.product.image %}
-                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.product_name }}">
+                                <img class="w-100 px-sm-2 py-sm-2" src="{{ item.product.image.url }}" alt="{{ product.product_name }}">
                             {% else %}
                                 <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.product_name }}">
                             {% endif %}
                         </a>
                     </div>
-                    <div class="col-7">
-                        <p class="my-0"><strong>{{ item.product.product_name }}</strong></p>
+                    <div class="col-md-7">
+                        <p class="d-none d-md-block my-0"><strong>{{ item.product.product_name }}</strong></p>
                         <p class="my-0 small">Size run:
                             <br> 
                             {% for s, q in item.size_items %}{{ s|upper }}, <strong>{{ q|upper }}</strong> | {% endfor %}</p>
-                        <p class="my-0 small text-muted">Qty: {{ item.line_qty }}</p>
+                        <p class="my-0 small text-muted">Line Qty: {{ item.line_qty }}</p>
                     </div>
-                    <div class="col-3 text-right">
-                        <p class="my-0 small text-muted">£ {{ item.line_total|floatformat:2 }}</p>
+                    <div class="col-md-3 text-md-right">
+                        <p class="my-0 small text-muted">Line Total: £ {{ item.line_total|floatformat:2 }}</p>
                     </div>
                 </div>
+                <hr class="my-2 text-center">
             {% endfor %}
-            <hr class="my-0">
+            
             <div class="row text-black text-right">
                 <div class="col-7 offset-2">
                     <p class="my-0">Order Total:</p>
@@ -67,7 +80,7 @@
         </div>
         <!-- {% if user.is_authenticated %} -->
 
-    <div class="row">
+    
         <div class="col-12 col-lg-6">
             <p>Please fill out your information to complete you order.</p>
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
@@ -130,7 +143,7 @@
                 </div>
             </form>
         </div>
-    </div>
+  
     <!-- {% else %}
     <div>
     <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
