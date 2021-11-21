@@ -402,3 +402,10 @@ input[name='q']::placeholder {
 .allauth-form-inner-content a {
 	color: #996361; /* text-info */
 }
+
+/* --------------------------- product admin styling */
+
+.product-fields {
+    border: 1px solid #0A151A;
+    border-radius: 0%;
+}
