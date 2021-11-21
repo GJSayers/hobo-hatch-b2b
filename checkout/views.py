@@ -53,24 +53,24 @@ def checkout(request):
                 print("bag.items", bag.items())
                 try:
                     product = Product.objects.get(id=item_id)
-                    if 'knitwear' in item_data:
-                        product_type = str(product.product_type)
-                        size_qty = item_data[product_type]
-                        qty = size_qty.values()
-                        line_qty = int(sum(qty))
-                        print("order form line_qtys", line_qty)
-                        line_total = line_qty * product.product_price
-                        print("order form line_total", line_total)
-                
-                        order_line_item = OrderLineItem(
-                                        order=order,
-                                        product=product,
-                                        product_type=product_type,
-                                        lineitem_qty=line_qty,
-                                        lineitem_total=line_total,
-                                    )
-                        print("order_line_item", order_line_item)
-                        order_line_item.save()
+                    # if 'knitwear' in item_data:
+                    product_type = str(product.product_type)
+                    size_qty = item_data[product_type]
+                    qty = size_qty.values()
+                    line_qty = int(sum(qty))
+                    print("order form line_qtys", line_qty)
+                    line_total = line_qty * product.product_price
+                    print("order form line_total", line_total)
+            
+                    order_line_item = OrderLineItem(
+                                    order=order,
+                                    product=product,
+                                    product_type=product_type,
+                                    lineitem_qty=line_qty,
+                                    lineitem_total=line_total,
+                                )
+                    print("order_line_item", order_line_item)
+                    order_line_item.save()
                 
                 except Product.DoesNotExist:
                     messages.error(request, (

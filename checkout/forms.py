@@ -14,9 +14,6 @@ class OrderForm(forms.ModelForm):
                   'address_1', 'address_2', 'town_or_city',
                   'county_or_state', 'postcode',
                   'country',)
-        # widgets = {
-        #     'delivery_date': DateInput(format='%d/%m/%Y'),
-        # }
 
     def __init__(self, *args, **kwargs):
         """
