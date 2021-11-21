@@ -9,6 +9,7 @@ from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
 from bag.contexts import bag_contents
 
 import stripe
@@ -79,6 +80,7 @@ def checkout(request):
                                  for assistance!"))
                     order.delete()
                     return redirect(reverse('view_bag'))
+            # Update user profile details
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(
                    reverse('checkout_success', args=[order.order_number]))
@@ -104,10 +106,28 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-
-        print(intent)
-
-        order_form = OrderForm()
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                order_form = OrderForm(initial={
+                    'buyer_name': profile.user.get_full_name(),
+                    'buyer_email': profile.user.email,
+                    'buyer_phone': profile.buyer_phone,
+                    'stockist': profile.stockist,
+                    'accounts_phone': profile.accounts_phone,
+                    'accounts_email': profile.accounts_email,
+                    'address_1': profile.address_1,
+                    'address_2': profile.address_2,
+                    'town_or_city': profile.town_or_city,
+                    'county_or_state': profile.county_or_state, 
+                    'postcode': profile.postcode,
+                    'country': profile.country,
+                    # 'delivery_date': request.POST['delivery_date'],  
+                })
+            except UserProfile.DoesNotExist:
+                order_form = OrderFrom()
+        else:
+            order_form = OrderForm()
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
@@ -134,39 +154,37 @@ def checkout_success(request, order_number):
         #     Order number: {order_number}. An email confirmation \
         #         will be sent to {order.buyer_email}')
 
-    if 'bag' in request.session:
-        del request.session['bag']
+    if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        order.user_profile = profile
+        # Attach the user's profile to the order
+        order.save()
+        if save_info:
+            profile_data = {
+                'buyer_phone': order.buyer_phone,
+                'buyer_email': order.buyer_email,
+                'accounts_phone': order.accounts_phone,
+                'accounts_email': order.accounts_email,
+                'address_1': order.address_1,
+                'address_2': order.address_2,
+                'town_or_city': order.town_or_city,
+                'county_or_state': order.county_or_state,
+                'postcode': order.postcode,
+            }
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
 
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-        'order_line_item': order_line_item,
-    }
+        messages.success(request, f'Thankyou, your order has been successfully placed! \
+            Order number: {order_number}. An email confirmation \
+                will be sent to {order.buyer_email}')
+
+        if 'bag' in request.session:
+            del request.session['bag']
+        
+        template = 'checkout/checkout_success.html'
+        context = {
+            'order': order,
+        }
 
     return render(request, template, context)
-
-    # if request.user.is_authenticated:
-    #     profile = UserProfile.objects.get(user=request.user)
-    #     order.user_profile = profile
-    #     # Attach the user's profile to the order
-    #     order.save()
-    #     # decide whether to save the following - might neeed to be dealt with in a different way
-    #     if save_info:
-    #         profile_data = {
-    #             'buyer_phone': order.buyer_phone,
-    #             'buyer_email': order.buyer_email,
-    #             'accounts_phone': order.accounts_phone,
-    #             'accounts_email': order.accounts_email,
-    #             'address_1': order.address_1,
-    #             'address_2': order.address_2,
-    #             'town_or_city': order.town_or_city,
-    #             'county_or_state': order.county_or_state,
-    #             'postcode': order.postcode,
-    #         }
-    #         user_profile_form = UserProfileForm(profile_data, instance=profile)
-    #         if user_profile_form.is_valid():
-    #             user_profile_form.save()
-
-    #     messages.success(request, f'Thankyou, your order have been successfully placed! \
-    #         Order number: {order_number}. An email confirmation \
-    #             will be sent to {order.buyer_email}')

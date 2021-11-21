@@ -26,7 +26,7 @@ class Order(models.Model):
     town_or_city = models.CharField(max_length=35, null=False, blank=False)
     county_or_state = models.CharField(max_length=35, null=False, blank=False)
     postcode = models.CharField(max_length=12, null=False, blank=False)
-    country = CountryField(max_length=50, null=False, blank=False)
+    country = CountryField(blank_label='Country *', null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
     delivery_date = models.DateField(auto_now_add=False,
                                      editable=True, blank=True, null=True)

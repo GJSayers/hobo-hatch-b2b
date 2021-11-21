@@ -5,7 +5,7 @@
   padding: 10px 12px;
   border: 1px solid transparent;
   border-radius: 0px;
-  background-color: white;
+  background-color: F2F3F7;
   box-shadow: 0 1px 3px 0 #e6ebf1;
   -webkit-transition: box-shadow 150ms ease;
   transition: box-shadow 150ms ease;
@@ -18,22 +18,51 @@
 }
 
 .StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
+  background-color: #F2F3F7 !important;
 }
 
 .stripe-style-input::placeholder {
-    color: #aab7c4;
+    color: #A98B7D;
 }
 
 .fieldset-label {
+    color: #0A151A;
     position: relative;
     right: .5rem;
 }
 
 #payment-form .form-control,
 #card-element {
-    color: #000;
-    border: 1px solid #000;
+    color: #0A151A;
+    border: 1px solid #0A151A;
+}
+
+
+select,
+select option {
+    color: #0A151A;
+}
+
+select:invalid,
+select option[value=""] {
+    color: #A98B7D !important;
+}
+
+/* ------------------------------- Checkboxes */
+
+#id-save-info .form-check.form-check-input {
+  border: 1px solid #A98B7D;
+  border-radius: 0px;
+  color: #996361;
+}
+input[type="checkbox" i] {
+  background-color: #A98B7D;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 3px 3px 3px 4px;
+  padding: initial;
+  border: initial;
 }
 
 #loading-overlay {
