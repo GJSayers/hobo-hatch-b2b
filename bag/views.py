@@ -200,7 +200,7 @@ def edit_bag(request, item_id):
     else:
         print("edit not working")
         return redirect(reverse('view_bag'))
-    
+
     product = get_object_or_404(Product, pk=item_id)
     bag = request.session.get('bag', {})
 

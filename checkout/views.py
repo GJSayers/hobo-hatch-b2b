@@ -25,78 +25,89 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    # if request.method == 'POST':
-    bag = request.session.get('bag', {})
-    print("checkout bag", bag)
+    if request.method == 'POST':
+        bag = request.session.get('bag', {})
+        live_bag = bag_contents(request)
 
-    #     form_data = {
-    #         'buyer_name': request.POST['buyer_name'],
-    #         'buyer_phone': request.POST['buyer_phone'],
-    #         'buyer_email': request.POST['buyer_email'],
-    #         'stockist': request.POST['stockist'],
-    #         'accounts_phone': request.POST['accounts_phone'],
-    #         'address_1': request.POST['address_1'],
-    #         'address_2': request.POST['address_2'],
-    #         'town_or_city': request.POST['town_or_city'],
-    #         'county_or_state': request.POST['county_or_state'],
-    #         'postcode': request.POST['postcode'],
-    #         'country': request.POST['country'],
-    #         'delivery_date': request.POST['delivery_date'],      
+        form_data = {
+            'buyer_name': request.POST['buyer_name'],
+            'buyer_phone': request.POST['buyer_phone'],
+            'buyer_email': request.POST['buyer_email'],
+            'stockist': request.POST['stockist'],
+            'accounts_phone': request.POST['accounts_phone'],
+            'accounts_email': request.POST['accounts_email'],
+            'address_1': request.POST['address_1'],
+            'address_2': request.POST['address_2'],
+            'town_or_city': request.POST['town_or_city'],
+            'county_or_state': request.POST['county_or_state'],
+            'postcode': request.POST['postcode'],
+            'country': request.POST['country'],
+            'delivery_date': request.POST['delivery_date'],      
 
-    #     }
-    #     order_form = OrderForm(form_data)
-    #     if order_form.is_valid():
-    #         order = order_form.save()
-    #         print("order", order)
-    #         for item_id, item_data in bag.items():
-    #             try:
-    #                 product = Product.objects.get(id=item_id)
-    #                 # product_type = request.POST.get('product_type')
-    #                 # line_qty = request.POST.get('line_qty')
-    #                 # line_total = request.POST.get('line_total')
-    #                 order_line_item = OrderLineItem(
-    #                                 order=order,
-    #                                 product=product,
-    #                                 product_type=product_type,
-    #                                 lineitem_qty=line_qty,
-    #                                 lineitem_total=line_total,
-    #                             )
-    #                 print("order_line_item", order_line_item)
-    #                 order_line_item.save()
+        }
+        order_form = OrderForm(form_data)
+        if order_form.is_valid():
+            print("form valid")
+            order = order_form.save()
+            for item_id, item_data in bag.items():
+                print("bag.items", bag.items())
+                try:
+                    product = Product.objects.get(id=item_id)
+                    if 'knitwear' in item_data:
+                        product_type = str(product.product_type)
+                        size_qty = item_data[product_type]
+                        qty = size_qty.values()
+                        line_qty = int(sum(qty))
+                        print("order form line_qtys", line_qty)
+                        line_total = line_qty * product.product_price
+                        print("order form line_total", line_total)
                 
-    #             except Product.DoesNotExist:
-    #                 messages.error(request, (
-    #                     "The product you requested was not found in our \
-    #                          database - Please email the team \
-    #                              for assistance!"))
-    #                 order.delete()
-    #                 return redirect(reverse('view_bag'))
-    #         request.session['save_info'] = 'save-info' in request.POST
-    #         return redirect(
-    #                reverse('checkout_success', args=[order.order_number]))
-    #     else:
-    #         messages.error(request, 'There was an error with your form. \
-    #                 Please double check your information.')
-    # else:
-        # bag = request.session.get('bag', {})
-    if not bag:
-        messages.error(request, "There are currently \
-            no products in your bag")
-        return redirect(reverse('collections'))
+                        order_line_item = OrderLineItem(
+                                        order=order,
+                                        product=product,
+                                        product_type=product_type,
+                                        lineitem_qty=line_qty,
+                                        lineitem_total=line_total,
+                                    )
+                        print("order_line_item", order_line_item)
+                        order_line_item.save()
+                
+                except Product.DoesNotExist:
+                    messages.error(request, (
+                        "The product you requested was not found in our \
+                             database - Please email the team \
+                                 for assistance!"))
+                    order.delete()
+                    return redirect(reverse('view_bag'))
+            request.session['save_info'] = 'save-info' in request.POST
+            return redirect(
+                   reverse('checkout_success', args=[order.order_number]))
+        else:
+            print(order_form.errors)
+            messages.error(request, 'There was an error with your form. \
+                Please double check your information.')
+    else:
+        bag = request.session.get('bag', {})
+        print("checkout bag", bag)
 
-    live_bag = bag_contents(request)
-    print("live_bag", live_bag)
-    total = live_bag['grand_total']
-    stripe_total = round(total * 100)
-    stripe.api_key = stripe_secret_key
-    intent = stripe.PaymentIntent.create(
-        amount=stripe_total,
-        currency=settings.STRIPE_CURRENCY,
-    )
+        if not bag:
+            messages.error(request, "There are currently \
+                no products in your bag")
+            return redirect(reverse('collections'))
 
-    print(intent)
+        live_bag = bag_contents(request)
+        print("live_bag", live_bag)
+        total = live_bag['grand_total']
+        stripe_total = round(total * 100)
+        stripe.api_key = stripe_secret_key
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
 
-    order_form = OrderForm()
+        print(intent)
+
+        order_form = OrderForm()
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
