@@ -1,6 +1,5 @@
 import os
 from dotenv import load_dotenv
-
 load_dotenv()
 
 from pathlib import Path
@@ -177,7 +176,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 if 'USE_AWS' in os.environ:
     # Cache control to improve user performance by allowing images to be cached
     AWS_S3_OBJECT_PARAMETERS = {
-        'Expires': 'Thu, 31 Dec 209 20:00:00 CET',
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 CET',
         'CacheControl': 'max-age=20000000',
     }
 
@@ -211,3 +210,5 @@ STANDARD_DELIVERY_COST = 15
 STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+
+DEFAULT_FROM_EMAIL = 'hobohatch@b2b.com'
