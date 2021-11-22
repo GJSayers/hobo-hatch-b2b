@@ -147,7 +147,7 @@
 
                         <!-- Logo block -->
       <div class="col-sm-12 col-lg-4 logo-div my-2 py-2 pb-2 order-0 position-relative justify-content-center">
-          <a class="mx-auto" href="#">
+          <a class="mx-auto" href="{% url 'collections' %}">
               <img class="home-logo center-block" src="{{ MEDIA_URL }}logo_home.png" alt="hobo-hatch-logo">
           </a>
         <div class="col mx-auto justify-content-center navbars-div">
@@ -161,10 +161,10 @@
       <div class="col-lg-4 navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2 justify-content-center" >
         <ul class="navbar-nav text-center">
           <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="{% url 'about' %}">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">FAQ's</a>
+            <a class="nav-link" href="{% url 'faqs' %}">FAQ's</a>
           </li>
         </ul>
       </div>

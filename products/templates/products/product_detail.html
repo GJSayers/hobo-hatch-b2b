@@ -28,22 +28,13 @@
                     </div>
     
                 
-                <!-- Product Info div -->
+                <!-- Product Info section -->
                 <section class="col-sm-12 col-md-6 col-lg-4 product_info_input justify-content-center">
                     <p class="card-text product-info">Product Info </p>
                                 <button type="button" class="info-open"><i class="fas fa-chevron-circle-down"></i></a></button>
                         <div class="col-12 properties info" style="display: none;">
-                            {% if product.product_properties %}
-                                {% for p in product.product_properties %}
-                                    {% if p == "LI" %}<span class="p-2" style="font-size: 36px"><i class="fab fa-envira"></i></span>
-                                    {% elif p == "FP"%}<span class="p-2" style="font-size: 36px"><i class="fas fa-hands-helping"></i></span>
-                                    {% elif p == "HC"%}<span class="p-2" style="font-size: 36px"><i class="fas fa-hand-paper"></i></span>
-                                    {% elif p == "PW"%}<span class="p-2" style="font-size: 36px"><i class="fas fa-mitten"></i></span>
-                                    {% elif p == "SS" %}<p class="metal-type">925 Sterling Silver</p>
-                                    {% elif p == "GP" %}<p class="metal-type">Gold-Plated Silver</p>
-                                    {% endif %}  
-                                {% endfor %}
-                            {% endif %}
+                            <!-- Product Info div -->
+                            {% include 'products/includes/product_properties.html' %}
                             <div class="col-12 p-4 description">
                                 {{ product.product_description }}
                             </div>
