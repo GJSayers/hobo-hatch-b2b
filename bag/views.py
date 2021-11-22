@@ -160,11 +160,17 @@ def edit_bag(request, item_id):
     """
     print("edit_bag", edit_bag)
     beltbag_bumbag = request.POST.get('beltbag_bumbag')
+    print("beltbag_bumbag", beltbag_bumbag)
     belts = request.POST.get('belts')
+    print("belts", belts)
     beanie_hats = request.POST.get('beanie_hats')
+    print("beanie_hats", beanie_hats)
     blankets = request.POST.get('blankets')
+    print("blankets", blankets)
     knitwear = request.POST.get('knitwear')
+    print("knitwear", knitwear)
     rings = request.POST.get('rings')
+    print("rings", rings)
 
     if knitwear:
         print("knitwear recognsed")
@@ -175,7 +181,7 @@ def edit_bag(request, item_id):
         xl = int(request.POST.get('xl'))
         product_qty = [xs, sm, m, lg, xl]
         print("product_qty",  product_qty)
-        clothing_line_count = sum(product_qty)
+        clothing_line_count = int(sum(product_qty))
         print("clothing_line_count", clothing_line_count)
         ring_line_count = None
         one_size = None
@@ -190,13 +196,13 @@ def edit_bag(request, item_id):
         print("product_qty",  product_qty)
         ring_line_count = sum(product_qty)
         print("ring_line_count", ring_line_count)
-        clothing_line_count = 0
-        one_size = 0
+        clothing_line_count = None
+        one_size = None
     elif beltbag_bumbag or belts or beanie_hats or blankets:
         print("other items recognised")
         one_size = int(request.POST.get('one_size'))
-        clothing_line_count = 0
-        ring_line_count = 0
+        clothing_line_count = None
+        ring_line_count = None
     else:
         print("edit not working")
         return redirect(reverse('view_bag'))
@@ -204,49 +210,45 @@ def edit_bag(request, item_id):
     product = get_object_or_404(Product, pk=item_id)
     bag = request.session.get('bag', {})
 
-    # if clothing_line_count > 0:
-    if clothing_line_count > 0:
-        bag[item_id]['xs'] = xs
-        bag[item_id]['sm'] = sm
-        bag[item_id]['m'] = m
-        bag[item_id]['lg'] = lg
-        bag[item_id]['xl'] = xl
+    if clothing_line_count is not None:
+        print("clothing_line_count 2", clothing_line_count)
+        bag[item_id]['knitwear']['xs'] = xs
+        bag[item_id]['knitwear']['sm'] = sm
+        bag[item_id]['knitwear']['m'] = m
+        bag[item_id]['knitwear']['lg'] = lg
+        bag[item_id]['knitwear']['xl'] = xl
         messages.success(
             request,
-            f'{product.product_name} quantities updated {bag[item_id]}')
-    else:
-        if clothing_line_count == 0:
-            bag.pop(item_id)
+            f'{product.product_name} quantities updated, XS, {xs} | SM, {sm} | M, {m} | LG, {lg} | XL, {xl}')
 
-    # if ring_line_count is not None:
-    if ring_line_count > 0:
-        bag[item_id]['l'] = l
-        bag[item_id]['n'] = n
-        bag[item_id]['p'] = p
-        bag[item_id]['s'] = s
-        bag[item_id]['u'] = u
+    elif ring_line_count is not None:
+        bag[item_id]['rings']['l'] = l
+        bag[item_id]['rings']['n'] = n
+        bag[item_id]['rings']['p'] = p
+        bag[item_id]['rings']['s'] = s
+        bag[item_id]['rings']['u'] = u
+        ring_line_count = ring_line_count
         messages.success(
             request,
-            f'{product.product_name} quantities updated {bag[item_id]}')
-    else:
-        if ring_line_count == 0:
-            bag.pop(item_id)
-        messages.success(
-            request,
-            f'{product.product_name} has been removed from your bag')
+            f'{product.product_name} quantities updated, L, {l} | N, {n} | P, {p} | S, {s} | U, {u}')
 
-    # if one_size is not None:
-    if one_size > 0:
-        bag[item_id]['one_size'] = one_size
+    elif one_size is not None:
+        if beltbag_bumbag:
+            bag[item_id]['beltbag_bumbag']['one_size'] = one_size
+        elif belts:
+            bag[item_id]['belts']['one_size'] = one_size
+        elif beanie_hats:
+            bag[item_id]['beanie_hats']['one_size'] = one_size
+        elif blankets:
+            bag[item_id]['blankets']['one_size'] = one_size
         messages.success(
             request,
-            f'{product.product_name} quantities updated {bag[item_id]}')
+            f'{product.product_name} quantities updated, One Size: {one_size}')
     else:
-        if one_size == 0:
-            bag.pop(item_id)
+        bag.pop(item_id)
         messages.success(
-            request,
-            f'{product.product_name} has been removed from your bag')
+        request,
+        f'{product.product_name} has been removed from your bag')
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
