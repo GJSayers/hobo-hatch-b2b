@@ -14,6 +14,7 @@
     <main class="container-fluid">
         <div class="row">
         <!-- Logged in customer div -->
+        {% if request.user.is_authenticated %}
 
         <!-- Filter by category section -->
         <section class="col-12 category-filter justify-content-center" id="categories-filter" style="display: none;">
@@ -21,10 +22,12 @@
             <form method="GET" action="{% url 'collections' %}?Category">
                 <button type="button" class="categories-close btn float-right"><i class="fas fa-times"></i></button>
                 {% for category in categories %}
+                    {% if category.name in permissions_list %}
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="inlineCheckbox{{ category.name }}" name="chosen_categories" value="{{ category.name }}" {% if category.name in chosen_categories %}checked{% endif %}>
                         <label class="form-check-label" for="inlineCheckbox{{ category.name }}">{{ category.friendly_name }}</label>
                     </div>
+                    {% endif %}
                 {% endfor %}
                     
                     <button type="submit" class="form-control filter-button">Filter  <i class="fas fa-filter"></i></button></button>
@@ -36,45 +39,50 @@
         </div>
        
         <!-- Collection dropdown and descriptive div -->
-        {% for product in products %}
-        <div class="col-sm-12 col-md-6 col-lg-4 text-center">
-            <!-- Product Image and Title div -->
-            <div class="col">
-                <div class="col">
-                    <div class="card collection-card">
-                        <div class="card-body collection-card-body">
-                            <h5 class="card-title title-text collection-card-title">{{ product.product_name }}</h5>
-                            <p class="card-text collection-card-text">Cost £{{ product.product_price }} | RRP
-                                £{{ product.rrp_price}}</p>
-                            <p class="card-text product-info">Product Info </p>
-                            <button type="button" class="info-open"><i
-                                    class="fas fa-chevron-circle-down"></i></a></button>
+        
+            {% for product in products %}
+            <!-- Only display items/products the user has permission to view  -->      
+            
 
-                            <!-- Product Info div -->
-                            {% include 'products/includes/product_properties.html' %}
-                        </div>
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img src="{{ product.image_url }}" class="card-img-bottom collection-card-img-bottom"
-                                alt="{{ product.product_name|lower }}">
-                        </a>
-                    </div>
-
-                </div>
-                
-                
-                    <!-- Product input & quick add div -->
-                    <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4 text-center">
+                        <!-- Product Image and Title div -->
                         <div class="col">
-                    
+                            <div class="col">
+                                <div class="card collection-card">
+                                    <div class="card-body collection-card-body">
+                                        <h5 class="card-title title-text collection-card-title">{{ product.product_name }}</h5>
+                                        <p class="card-text collection-card-text">Cost £{{ product.product_price }} | RRP
+                                            £{{ product.rrp_price}}</p>
+                                        <p class="card-text product-info">Product Info </p>
+                                        <button type="button" class="info-open"><i
+                                                class="fas fa-chevron-circle-down"></i></a></button>
+
+                                        <!-- Product Info div -->
+                                        {% include 'products/includes/product_properties.html' %}
+                                    </div>
+                                    <a href="{% url 'product_detail' product.id %}">
+                                        <img src="{{ product.image_url }}" class="card-img-bottom collection-card-img-bottom"
+                                            alt="{{ product.product_name|lower }}">
+                                    </a>
+                                </div>
+
+                            </div>
+                            
+                            
+                                <!-- Product input & quick add div -->
+                                <div class="row">
+                                    <div class="col">
+                                
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
                         </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
+                    
             
             {% endfor %}
-        </div>
-        
+        {% endif %}
+    </div>
     </main>
 {% endblock %}
 

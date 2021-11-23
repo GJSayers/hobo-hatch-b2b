@@ -1,5 +1,4 @@
 from django.db import models
-from model_utils.managers import InheritanceManager
 from multiselectfield import MultiSelectField
 from djchoices import DjangoChoices, ChoiceItem
 
