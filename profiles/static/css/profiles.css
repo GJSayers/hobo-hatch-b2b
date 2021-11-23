@@ -1,3 +1,5 @@
+/* ---------------------------------- profile page styling */
+/* ---------------------------------- form controls */
 #profile-update-form .form-control {
     color: #0A151A;
 }
@@ -13,4 +15,49 @@
 
 #id_default_country option:first-child {
     color: #A98B7D;
+}
+
+/* ---------------------------------- category cards */
+
+.card-img {
+    width: 100%;
+    opacity: 80%;
+    height: 20vw;
+    object-fit: cover;
+}
+
+.card-img-overlay {
+    background-color: rgba(153, 99, 97, .3);
+}
+
+.category-title-link {
+    color: #F2F3F7;
+}
+
+.category-card-title {
+    color: #F2F3F7;
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+.category-card-title:hover {
+    font-size: 110%;
+}
+
+/* ----------------------- Ipad Pro reduce body size */
+
+@media only screen and (min-width: 1024px) and (min-height:1366px) {
+    html {
+        
+        max-height: 65%;
+        
+    } 
+}
+
+/* ------------------------------------------- icons */
+
+i:hover {
+    font-size: 110%;
+    color: #996361;
 }
