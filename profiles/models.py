@@ -27,31 +27,32 @@ class UserProfile(models.Model):
     country = CountryField(blank_label='Country *', null=True, blank=True)
 
     CURRENCY_OPTIONS = (
-        (1, "GBP"),
-        (2, "EUR"),
+        ('GBP', 'GBP'),
+        ('EUR', 'EUR'),
     )
     purchasing_currency = models.CharField(max_length=30,
                                            choices=CURRENCY_OPTIONS)
 
     CHANNEL_OPTIONS = (
-        (1, "Pureplay Ecomm"),
-        (2, "Physical Only"),
-        (3, "Multi-Channel"),
-        (4, "Marketplace"),
+        ('Pureplay Ecomm', 'Pureplay Ecomm'),
+        ('Physical Only', 'Physical Only'),
+        ('Multi-Channel', 'Multi-Channel'),
+        ('Marketplace', 'Marketplace'),
     )
 
-    stockist_channel = models.CharField(max_length=30,
+    stockist_channel = models.CharField(max_length=100,
                                         choices=CHANNEL_OPTIONS)
 
     MARKET_OPTIONS = (
-        (1, "Women"),
-        (2, "Home"),
-        (3, "Jewellery"),
-        (4, "Accessories"),
-        (5, "Clothing"),
-        (6, "Gifting"),
+        ('Women', 'Women'),
+        ('Home', 'Home'),
+        ('Jewellery', 'Jewellery'),
+        ('Accessories', 'Accessories'),
+        ('Clothing', 'Clothing'),
+        ('Gifting', 'Gifting'),
     )
-    stockist_market = MultiSelectField(max_length=30,
+    
+    stockist_market = MultiSelectField(max_length=100,
                                        choices=MARKET_OPTIONS)
     website_url = models.URLField(max_length=200, null=True, blank=True)
 
@@ -61,9 +62,9 @@ class UserProfile(models.Model):
         ('blankets', 'Blankets'),
         ('knitted_accessories', 'Knitted Accessories'),
         ('clothing', 'Clothing'),
-        )
+    )
 
-    categories = MultiSelectField(max_length=30,
+    categories = MultiSelectField(max_length=100,
                                   choices=PURCHASING_CATEGORIES)
 
 
@@ -72,7 +73,7 @@ def __str__(self):
 
 
 @receiver(post_save, sender=User)
-def create_or_update_user_profile(sender, instance, created, **kwargs):
+def create_or_update_stockist(sender, instance, created, **kwargs):
     """
     Create / Update stockist profile 
     """

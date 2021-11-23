@@ -3,6 +3,7 @@ from django.contrib import messages
 
 from .models import UserProfile
 from .forms import UserProfileForm
+from products.models import Category
 
 from checkout.models import Order
 
@@ -12,6 +13,12 @@ def profile(request):
     Display the client / user profile
     """
     profile = get_object_or_404(UserProfile, user=request.user)
+    user_categories = profile.categories
+    permissions_list = user_categories[0:]
+    print("permissions_list", permissions_list)
+    categories = Category.objects.all()
+    permissions_categories = Category.objects.filter(
+                                          name__in=permissions_list)
     form = UserProfileForm(instance=profile)
     print("profile", profile)
     print("profile", profile.user)
@@ -23,12 +30,17 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Details updated successfully')
-    
+        else:
+            messages.error(request, 'Update failed. Polease check your form is valid.')
+    else:
+        form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
 
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
+        'categories': categories,
+        'permissions_list': permissions_list,
         'form': form,
         'orders': orders,
         'on_profile_page': True,

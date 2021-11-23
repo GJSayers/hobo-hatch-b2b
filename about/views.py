@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Testimonial
+from profiles.models import UserProfile
 
 
 def about(request):
