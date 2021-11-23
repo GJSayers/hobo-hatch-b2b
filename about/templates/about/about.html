@@ -10,18 +10,29 @@
 {% endblock %}
 
 {% block content %}
-<main class="container justify-content-center index-container">
+
+<main class="container justify-content-center ">
+    {% if request.user.is_authenticated %}
+        {% include 'profiles/inlcudes/logged_in_row.html' %}
+    {% else %}
+    <div class="row authenticate-row justify-content-center">
+        <p class="text-center">
+        <span class="col-6"><a class="login-link" href="{% url 'account_login' %}">Login</a></span>|<span class="col-6"><a class="login-link" href="{% url 'account_signup' %}">Join</a></span>
+        </p>
+    </div>
+    {% endif %}
 
             <!-- Welcome Section -->
 
-    <section class="p-2 row welcome-section justify-content-center text-center">
+    <section class="p-2 pb-3row welcome-section justify-content-center text-center">
         <h1 class="page-title title-text">
             Hobo & Hatch B2B
         </h1>
+        <hr>
 
             <!-- Intro paragraphs -->
 
-        <div class="col-12 home-page-text justify-content-center">
+        <div class="col-12 home-page-text justify-content-center py-3">
             <p class="about-p1 body-text justify-content-center">
                 Designed in South-Western Australia, Hobo and Hatch is a treasure trove for the searcher of the extraordinary.  Individually designed items merged with vintage inspiration, simple honest craftsmanship with elegant design.
             </p>
@@ -32,11 +43,12 @@
 
             <!-- Call to action -->
   
-        <div class="col-12 testimonials body-text justify-content-center">
+        <div class="col-12 testimonials body-text justify-content-center py-3">
             <div class="col-12">
-                <h2 class="title-text">What our customers say about us...</h2>
+                <h2 class="title-text pb-3">What our customers say about us...</h2>
             </div>
-            <div id="carouselControls" class="carousel slide" data-ride="carousel" data-interval="false" >
+            <hr>
+            <div id="carouselControls" class="carousel slide align-items-center pt-4" data-ride="carousel" data-interval="false" >
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img src="/media/hobo_imagery_lake.jpg" class="d-block w-100 carousel-img" alt="hobo_lake_image">
@@ -56,7 +68,7 @@
                         <div class="carousel-caption">
                             
                             <h3>" {{ testimonials|random }} "</h3>
-                            <h4>{{ buyer }}</h4>
+                            <h4>{{ buyer_name }}</h4>
                            
                     </div>
                   </div>

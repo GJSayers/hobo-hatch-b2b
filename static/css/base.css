@@ -18,7 +18,7 @@ body {
     background: url('/media/hobo_imagery_sea.png');
     background-size: cover;
     z-index: 100;
-} */
+}
 
 
 /* ------------------------------ header & nav */
@@ -69,8 +69,12 @@ i {
 
 /* ------------------------------ body */
 
+section h1 .page-title {
+    text-align:start;
+}
+
 .title-text {
-    text-align: center;
+    /* text-align: center; */
     font-family: 'Montserrat', 'sans-serif';
     font-weight: 400;
 }
@@ -217,23 +221,16 @@ i {
     object-fit: cover;
 }
 
-div.carousel-caption {
-    padding-top: 3%;
-    background-color: rgba(153, 99, 97, .5);
-
-}
 
 .carousel-caption {
     padding-top: none;
-    width: 70%;
-    height: 20vw;
-    
-    
+    background-color: rgba(153, 99, 97, .3);
 }
 
 .carousel-caption h3 {
     font-size: 15px;
-    padding-bottom: 10%;
+    padding: 10%;
+    font-size: 2vw;
 }
 
 /* ------------------------------- FAQ's */
@@ -245,7 +242,6 @@ div.carousel-caption {
 
 .btn-link {
     color: #0A151A;
-    text
 }
 
 .btn-link:hover,
