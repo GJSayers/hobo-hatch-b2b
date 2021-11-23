@@ -297,7 +297,9 @@ hr {
     border: none;
 }
 
-button.info-open {
+button.profile-details-open,
+button.info-open,
+button.order-history-open {
     border-radius: none;
     border: none;
     background: none;

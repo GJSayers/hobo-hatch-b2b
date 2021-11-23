@@ -1,0 +1,29 @@
+<div class="col-12 align-items-center">
+    <div class="row">
+        <div class="d-sm-none d-md-block col-6 text-left p-0">
+            <p class="profile-welcome">Hi {{ profile.buyer_name }} you are logged in for <span>{{ profile.stockist }}</span></p>
+        </div>
+        <div class="col-6 text-right">
+            <p>
+                <a class="nav-link" href="{% url 'view_bag' %}">
+                    <span><i class="fas fa-shopping-bag"></i></span>
+                    <span class="my-0">
+                        (
+                        {% if total_items %}
+                        {{ total_items }}
+                        {% else %}
+                        0
+                        {% endif %} )
+                    </span>
+                    <span class="my-0">
+                        |{% if grand_total %}
+                        £{{ grand_total|floatformat:2 }}
+                        {% else %}
+                        £0.00
+                        {% endif %}
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
