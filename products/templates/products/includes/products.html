@@ -1,30 +1,5 @@
-<script type="text/javascript">
-
-// Add minus button for each input element
-// $(".input-box").before(
-//     `<div class="input-group-append">                                       
-//         <button class="decrement-qty btn rounded-0" data-item_id="{{ product.id }}" data-size="{{ s }}"
-//             id="id_size_{{ s }}">
-//             <span class="icon">
-//             <i class="fas fa-minus"></i>
-//             </span>
-//         </button>
-//     </div>`
-// );
-
-// // Add plus button for each input element
-
-// $(".input-box").after(`
-//     <div class="input-group-append">
-//         <button class="increment-qty btn rounded-0" data-item_id="{{ product.id }}" data-size="{{ s }}"
-//             id="id_size_{{ s }}">
-//             <span class="icon">
-//             <i class="fas fa-plus"></i>
-//             </span>
-//         </button>
-//     </div>`
-// );
-
+/* jshint esversion: 8, jquery: true */
+<script>
 // Enable / disable
 function handleEnableDisable(size) {
     currentValue = parseInt($(`#id_qty_${size}`).val());

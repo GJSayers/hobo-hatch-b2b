@@ -8,6 +8,7 @@ def about(request):
     About Page View 
     """
     testimonials = Testimonial.objects.all()
+    
 
     context = {
         'testimonials': testimonials,
@@ -15,8 +16,5 @@ def about(request):
         
     }
     print("testimonials", testimonials)
-    # print("buyer", buyer)
-    
-
 
     return render(request, 'about/about.html', context)
