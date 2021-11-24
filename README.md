@@ -73,15 +73,15 @@
 
 * Desktop View
 
-![Wireframes](docs/wireframes/wireframes_desktop_view.png)
+![Wireframes](/docs/wireframes/wireframes_desktop_view.png)
 
 * Mobile View
 
-![Wireframes](docs/wireframes/wireframes_mobile_view.png)
+![Wireframes](/docs/wireframes/wireframes_mobile_view.png)
 
 * Tablet View
 
-![Wireframes](docs/wireframes/wireframes_tablet_view.png)
+![Wireframes](/docs/wireframes/wireframes_tablet_view.png)
 
 
 
@@ -103,12 +103,22 @@
 * For fonts I will be using Quicksand from [Google Fonts](https://fonts.google.com/?query=quicksand) for the body text as this is an accessibility friendly font, and has a light yet clear effect which is reflective on the brand's values of 'treading lightly'.  
 * For titles & headers Montserrat will be used [Google Fonts](https://fonts.google.com/?query=montserrat)
 ### Imagery
-* Imagery used will be source from the brand itself - Hobo & Hatch. 
+* Imagery used will be source from the brand itself - [Hobo & Hatch](https://www.hoboandhatch.co.uk/)
 
 ## Deployment
 
 The deployment of a Full Stack ecommerce store using the Django framework takes multiple different considerations since we are also needing to store and serve multiple different images, take payments and store product and order data. 
-To serve the project I am using an AWS S3 bucket to store and serve the static files / images, I am using Heroku to host the site and using the Heroku Postgres add-on as the database. 
+To serve the project I am using an AWS S3 bucket to store and serve the static files / images, I am using Heroku to host the site and using the Heroku Postgres add-on as the database.
+
+## Local Deployment
+
+In order to make a local copy of this project, you can clone it. In your IDE Terminal, type the following command to clone my repository:
+
+- `git clone https://github.com/GJSayers/hobo-hatch-b2b.git`
+
+Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/GJSayers/hobo-hatch-b2b)
 
 ### Heroku Set-up
 
@@ -120,26 +130,26 @@ To serve the project I am using an AWS S3 bucket to store and serve the static f
 
 
 * To enable the use of Postrgres, back in Gitpod install dj_database_url,and psycopg2-binary in the CLI.  The CLI commands are:
-* pip3 install dj_database_url
-* pip3 install psycopg2-binary
+* `pip3 install dj_database_url`
+* `pip3 install psycopg2-binary`
 Then: 
-* pip3 freeze > requirements.txt 
+* `pip3 freeze > requirements.txt` 
 The pip3 command is to save your installation dependencies. 
 
 * In your settings file, add 'import dj_database_url' at the top of the file below the other import instructions. 
 * Configure the database in settings file
 
 * Because Postgres is a different database to SQlite3 (which is what is used in the Git environment) it is necessary to make migrations, migrate and re-load the data, in the case of this app using fixtures.  The following commands were used:
-* python3 manage.py makemigrations
-* python3 manage.py migrate 
-* python3 manage.py loaddata for each fixture you want to upload ensuring that you consider dependencies between the fixtures. 
-* python3 createsuperuser to create an admin user and follow the instructions in the Git CLI. 
+* `python3 manage.py makemigrations`
+* `python3 manage.py migrate` 
+* `python3 manage.py loaddata` for each fixture you want to upload ensuring that you consider dependencies between the fixtures. 
+* `python3 createsuperuser` to create an admin user and follow the instructions in the Git CLI. 
 * Create if statement in settings file to ensure that if we are in Heroku we connect to Postgres, and if not to Sqlite3 
 Install Gunicorn using:
-* pip3 install gunicorn
+* `pip3 install gunicorn`
 
 * Create a Procfile to enable dynos
-* Since I am hosting images in an S3 bucket on AWS, it is necessary to instruct Heroku not to pick up the static media files from the Git repository by COLLECT-STATIC -1 in Keroku config vars.
+* Since I am hosting images in an S3 bucket on AWS, it is necessary to instruct Heroku not to pick up the static media files from the Git repository by COLLECT-STATIC -1 in Heroku config vars.
 * Set up secret key in eny.py and also in the Heroku environment variables. 
 * Set up allowed hosts in settings.py
 * Ensure that your env.py is in your Gitignore before pushing changes. 
@@ -153,44 +163,69 @@ Head across to AWS.amazon.com
 create an amazon account 
 you will need to add in some payment details, so please be aware that if you go above the free usage limits. 
 Once the account is created or if you already have an account you can sign in.
-In the main dashboard, If you hace already used S3 buckets you will find in 'Recently Used Services' or otherwise you can search for S3 in the search bar:
+* In the main dashboard, If you hace already used S3 buckets you will find in 'Recently Used Services' or otherwise you can search for S3 in the search bar:
+
 ![](docs/aws_logged_in.png)
+
 Once you have clicked to reach S3, you can click on 'Create Bucket' to create your bucket:
+
 ![](docs/create_s3_bucket.png)
+
 * From here, best practise is to **give your bucket a matching name to your Heroku app name**  
 * For region, **select the region closest to you**. 
 * You need to **allow pulic access** since the images will be publically viewed - you do this by **un-ticking the 'block all public access' checkbox**, it will look like this which can be a little daunting, but is correct!:
+
 ![](docs/aws_public_access.png)
+
 * Then you can click on the 'Create Bucket' as the bottom of the page:
+
 ![](docs/create_bucket.png)
+
 * Once the bucket is created you will be re-directed to your list of buckets.  
 * From here further settings need to be put in place. 
 Firstly, you will need to **click on the properties tab**:
+
 ![](docs/properties_tab.png)
+
 * From here, scroll down to Static website hosting and for Static webhosting choose **Enable**, Hosting type should be **'Host a Static Website'** 
+
 * You will also need to **add defualt values for index document and error document**.  The settings chosen should resemble the below, then you can click to save changes:
+
 ![](docs/static_web_hosting.png)
-Next up, select the permissions tab:
+
+* Next up, select the permissions tab:
+
 ![](docs/permissions_tab.png)
+
 * It is necessary to add a **Cross-origin resource sharing (CORS)** to enable the domains to interact with one another - This cors JSON format is one I used from the Code Institute lessons, and I pasted it in here like so, then save changes:
+
 ![](docs/cors_config.png)
+
 * Still in the permissions tab it is necessary to **create a bucket policy** - handly this can be automatically generated by *clicking on Policy Generator:
+
 ![](docs/edit_bucket_policy.png)
+
 * Once in the generator you need to select the following options:
+
 * Policy type should be **S3 Bucket Policy**
 * Effect should be **Allow**
 * Principal should be an '*' to allow all
 * Actions should be **Get Object**
 * Amazon resource name you can find in the **edit bucket policy tab** and paste it in. 
 * Finally you can click add statement:
+
 ![](docs/add_statement.png)
+
 * Then click **Generate Policy**:
+
 ![](docs/generate_policy.png)
+
 * This will generate a json formatted policy that you then copy and paste into the **Bucket Policy** tab. 
 * In the "Resource" row, ensure to add "/*" within the quotes at the end - This is to enable access to all resources in the bucket. 
 Then click **save**.
 * Still in the permissions tab, **click edit** in the **Access control list (ACL)**
 * From here set to **allow public access** and save changes:
+
 ![](docs/list_access_control.png)
 
 ### Creating a user for AWS
@@ -200,25 +235,37 @@ To use the S3 Bucket, it is necessary to create a user.
 * Back in the AWS Management Console, either **click on IAM** in your recently visited services or serach for the same in the search bar. 
 
 * Create a **user group** for the user by clicking on **User Groups** in the side menu of AWS:
+
 ![](docs/user_groups.png)
-* Then click on **Create Group**
+
+* Then click on **Create Group**:
+
 ![](docs/create_group.png)
+
 * Give your group a name that is relevant to the project / user
 * Click through the following steps to create group ( we come back to those later on )
 * Create an **access policy** associated with the relevant S3 bucket by choosing **policies** from the side menu bar:
+
 ![](docs/policies.png)
+
 * Then **click create policy button**
 * From the Create Policy page click **import managed policy**
+
 ![](docs/import_managed_policy.png)
+
 * From the choose policies to import page **search for S3** and select **s3 full access policy** and **click the import button**:
+
 ![](docs/import_policy.png)
+
 in the JSON tab, on the resources row, you will need to add again the **arn number** that you used previously from the bucket policy page to the json text - in the format of a list with one line including the arn number, and one including the arn number with "/*" at the end. 
 * Then you can click **review policy** to add a name and a description. 
 * Finally click through to **create policy**
 * Then back in **User Groups** click on your newly created group
 * Search for the **policy** you created and click **Attach Policy**
 * Next **Create a User** to add to the group by navigating to the **Users** page:
+
 ![](docs/users.png)
+
 * Click **add user** and give the user a name that makes sense to your project and user access and select the **Programmatic Access** radio button and click **Next** 
 * From this page you can tick the appropriate group and click **Next** until the final **Create User** button.  
 * A CSV will be created with the user access details - **download this and save it in a safe place** These details can only be downloaded once. 
@@ -229,28 +276,27 @@ in the JSON tab, on the resources row, you will need to add again the **arn numb
 * pip3 install boto3
 * I also installed [django-storages](https://django-storages.readthedocs.io/en/latest/) which is a collection of storage backends for Django, using the command:
 * pip3 install django-storages
-* followed by pip3 freeze > requirements.txt to ensure the dependencies are installed in deployment.
+* followed by `pip3 freeze > requirements.txt` to ensure the dependencies are installed in deployment.
 * next add 'storages' to installed apps in settings.py:
+
 ![](docs/storages.png)
 
-* Define access variables and media storage config in the settings.py file being sure to keep any secret keys either in your env.py file or in the environment variables on GIT. 
+* Define access variables and media storage config in the settings.py file being sure to keep any secret keys either in your env.py file or in the environment variables on GIT.
+
 ![](docs/aws_settings_config.png)
 ![](docs/aws_custom_storages.png)
+
 * Set up the same variables in the Heroku config vars.
-* Create a custom storages file, importing ettings and S3Boto3Storage. with classes inheriting S3Boto3Storage and defining location for static files and media files. 
+* Create a custom storages file, importing ettings and S3Boto3Storage. with classes inheriting S3Boto3Storage and defining location for static files and media files.
+
 ![](docs/aws_config_vars_heroku.png)
+
 * Remove the Collect Static Config var to enable the static files to be collected into the buid on the next push.
 * If the build has been successful, you should see a similar output to this in the Heroku build log:
+
 ![](docs/build_success_heroku.png)
+
 * You should then also be able to see your static folder in your S3 bucket
-
-
-
-
-
-
-
-
 
 
 #### DEPLOYMENT ISSUES 
@@ -261,9 +307,11 @@ upon which I entered the command to see if there were outstanding migrations:
 This revealed that indeed there were quite a few migrations that had not applied. 
 ![Migrations](docs/deployment_migrations_1.png)
 I searched on slack to see if anyone had encountered a similar problem, and discovered that you can skip the offending migration using:
-* python3 manage.py migrate app_name migration_name --fake
+* `python3 manage.py migrate app_name migration_name --fake`
 So I decided to try this and the remaining migrations processed. However another error was thrown: 
+
  ![Error](docs/deployment_error_2.png)
+
 After running through where the process may have gone wrong and with my mentor and finding no obvious methodology errors, we decided to remove the migrations - and with help from tutor support re-install them and re-running all the migrations. 
 
 
@@ -271,7 +319,7 @@ After running through where the process may have gone wrong and with my mentor a
 
 * Filtering checkbox choices:
 
-Part of the **US 2** is to be able to view the products by Categroy, which I had chosen to deliver as a checkbox of options on the collections page.  For some time I was unable to get the products to filter appropriately ( no filtering was occuring, despite query logic in the view )
+Part of the **US 2** is to be able to view the products by Category, which I had chosen to deliver as a checkbox of options on the collections page.  For some time I was unable to get the products to filter appropriately ( no filtering was occuring, despite query logic in the view )
 
 In the end I managed to solve this by combining solutions from these two Stack overflow posts:
 [How to get checkbox values in django application](https://stackoverflow.com/questions/48735726/how-to-get-checkbox-values-in-django-application)
