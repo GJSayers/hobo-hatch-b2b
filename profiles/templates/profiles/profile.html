@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static '/css/profiles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profiles.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -26,7 +26,7 @@
         </div>
     </div>
     {% if request.user.is_authenticated %}
-    {% include 'profiles/inlcudes/logged_in_row.html' %}
+    {% include 'profiles/includes/logged_in_row.html' %}
     <div class="row">
         <div class="col-12">
             <h2 class="my-2 title-text text-left">
