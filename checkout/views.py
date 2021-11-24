@@ -11,7 +11,7 @@ from products.models import Product
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from bag.contexts import bag_contents
-from .email_handler import EmailConfHandler
+# from .email_handler import EmailConfHandler
 
 import stripe
 import json

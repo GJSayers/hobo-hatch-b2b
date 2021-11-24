@@ -1,0 +1,35 @@
+Hi {{ order.buyer_name }}
+
+Thank you for ordering with hobo & Hatch B2B. 
+
+Below is a summary of your order:
+
+Order Number: {{ order.order_number }}
+
+Order Date: {{ order.date }}
+
+Order Total: £ {{ order.order_total }}
+Delivery Cost: £ {{ order.delivery_cost }}
+Grand Total: £ {{ order.grand_total }}
+
+We will try to ship your order as close to your requested delivery date of {{ order.delivery_date }} as possible.
+
+Your order will be shipped to:
+
+{{ order.address_1 }}
+{{ order.town_or_city }}
+{{ order.postcode }}
+
+Please contact the team at {{ contact_email }} if you have any questions relating to your order. 
+
+Many thanks for ordering with Hobo & Hatch B2B
+
+Best regards,
+
+The Hobo & Hatch Team
+
+
+
+
+
+
