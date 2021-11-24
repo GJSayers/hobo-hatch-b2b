@@ -13,7 +13,7 @@
 
 <main class="container justify-content-center ">
     {% if request.user.is_authenticated %}
-        {% include 'profiles/inlcudes/logged_in_row.html' %}
+        {% include 'profiles/includes/logged_in_row.html' %}
     {% else %}
     <div class="row authenticate-row justify-content-center">
         <p class="text-center">
@@ -51,7 +51,7 @@
             <div id="carouselControls" class="carousel slide align-items-center pt-4" data-ride="carousel" data-interval="false" >
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="{{ MEDIA_URL }}.hobo_imagery_lake.jpg" class="d-block w-100 carousel-img" alt="hobo_lake_image">
+                    <img src="{{ MEDIA_URL }}hobo_imagery_lake.jpg" class="d-block w-100 carousel-img" alt="hobo_lake_image">
                     <div class="absolute-div">
                         <div class="carousel-caption">
                             
@@ -63,7 +63,7 @@
                     </div>
                   </div>
                   <div class="carousel-item text-center">
-                    <img src="{{ MEDIA_URL }}.hobo_imagery_sea.png" class="d-block w-100 carousel-img" alt="hobo_sea_image">
+                    <img src="{{ MEDIA_URL }}hobo_imagery_sea.png" class="d-block w-100 carousel-img" alt="hobo_sea_image">
                     
                         <div class="carousel-caption">
                             

@@ -125,7 +125,7 @@
                 <div class="col mb-4">
                     <div class="card text-white category-image">
                         <a href="{% url 'collections' %}?chosen_categories={{ category.name }}">
-                        <img src="{{ MEDIA_URL }}.{{ category.name }}.jpeg" class="card-img" alt="category {{ category.name }}">
+                        <img src="{{ MEDIA_URL }}{{ category.name }}.jpeg" class="card-img" alt="category {{ category.name }}">
                         <div class="card-img-overlay">
                         <h4 class="card-title category-card-title title-text text-right">Shop {{ category.name }}</h4>
                         
