@@ -34,22 +34,22 @@ def collections(request):
             products = Product.objects.filter(product_category__in=Category.objects.filter(
                                             name__in=chosen_categories))
 
-        context = {
-            'profile': profile,
-            'permissions_list': permissions_list,
-            'products': products,
-            'categories': categories,
-            'product_category': str(product_category),
-            'jewellery_size_type': jewellery_size_type,
-            'ring': ring,
-            'clothing_sizes': clothing_sizes,
-            'categories': categories,
-            'chosen_categories': chosen_categories,
-            
-        }
-        print("product_category", product_category)
-        print('chosen_categories', chosen_categories)
-        return render(request, 'products/collections.html', context)
+    context = {
+        'profile': profile,
+        'permissions_list': permissions_list,
+        'products': products,
+        'categories': categories,
+        'product_category': str(product_category),
+        'jewellery_size_type': jewellery_size_type,
+        'ring': ring,
+        'clothing_sizes': clothing_sizes,
+        'categories': categories,
+        'chosen_categories': chosen_categories,
+        
+    }
+    print("product_category", product_category)
+    print('chosen_categories', chosen_categories)
+    return render(request, 'products/collections.html', context)
     return render(request, 'products/collections.html')
 
 

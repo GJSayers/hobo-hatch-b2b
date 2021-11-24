@@ -9,65 +9,36 @@
 </div>
 {% endblock %}
 
-
 {% block content %}
     <main class="container-fluid">
+        <div class="row">
         
         <!-- Logged in customer contents -->
         {% if request.user.is_authenticated %}
-        {% include 'profiles/inlcudes/logged_in_row.html' %}
-        <div class="row">
-            <!-- Filter by category section -->
-            <section class="col-12 category-filter justify-content-center" id="categories-filter" style="display: none;">
-                
-                <form method="GET" action="{% url 'collections' %}?Category">
-                    <button type="button" class="categories-close btn float-right"><i class="fas fa-times"></i></button>
-                    {% for category in categories %}
-                        {% if category.name in permissions_list %}
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox{{ category.name }}" name="chosen_categories" value="{{ category.name }}" {% if category.name in chosen_categories %}checked{% endif %}>
-                            <label class="form-check-label" for="inlineCheckbox{{ category.name }}">{{ category.friendly_name }}</label>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                        
-                        <button type="submit" class="form-control filter-button">Filter  <i class="fas fa-filter"></i></button></button>
-                </form>
-    
-            </section>
-            <div class="col-12 text-center filter-display">
-                <button type="button" class="categories-open filter-button">Filter by Category <i class="fas fa-filter"></i></button>
-            </div>
-        {% else %}
-        <div class="row">
-            <div class="col-12 login-row body-text justify-content-center">
-                <h2 class="py-2 title-text">Sorry, you need to be logged in to view this page</h2>
-                <p class="body-text justify-content-center">Already a Stockist? 
-                    <a href="{% url 'account_login' %}" class="login-link" role="link">
-                    Login to Shop the latest Hobo & Hatch Collections
-                    </a>
-                </p>
-                
-            </div>
-            <div class="col-12 apply-row justify-content-center">
-                <p class="body-text justify-content-center">Not a stockist yet?
-                    <a href="{% url 'account_signup' %}" class="apply-link" role="link">
-                        Apply to be a stockist
-                    </a>
-                </p>
-            </div>
-            <div class="col-12 retail-row justify-content-center">
-                <p class="body-text justify-content-center">Regular customer?
-                    <a href="https://www.hoboandhatch.co.uk/" class="shop-link" role="link">
-                        Shop our retail site
-                    </a>
-                </p>
-            </div>
-        </div>
-         
-
-       
-        <!-- Collection dropdown and descriptive div -->
+            {% include 'profiles/inlcudes/logged_in_row.html' %}
+        
+            
+                <!-- Filter by category section -->
+                <section class="col-12 category-filter justify-content-center" id="categories-filter" style="display: none;">
+                    
+                    <form method="GET" action="{% url 'collections' %}?Category">
+                        <button type="button" class="categories-close btn float-right"><i class="fas fa-times"></i></button>
+                        {% for category in categories %}
+                            {% if category.name in permissions_list %}
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox{{ category.name }}" name="chosen_categories" value="{{ category.name }}" {% if category.name in chosen_categories %}checked{% endif %}>
+                                <label class="form-check-label" for="inlineCheckbox{{ category.name }}">{{ category.friendly_name }}</label>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                            
+                            <button type="submit" class="form-control filter-button">Filter  <i class="fas fa-filter"></i></button></button>
+                    </form>
+        
+                </section>
+                <div class="col-12 text-center filter-display">
+                    <button type="button" class="categories-open filter-button">Filter by Category <i class="fas fa-filter"></i></button>
+                </div>
         
             {% for product in products %}
             <!-- Only display items/products the user has permission to view  -->      
@@ -94,22 +65,47 @@
                                             alt="{{ product.product_name|lower }}">
                                     </a>
                                 </div>
-
                             </div>
+
+                            <!-- Product input & quick add div -->
+                            <div class="row">
+                                <div class="col">
                             
-                            
-                                <!-- Product input & quick add div -->
-                                <div class="row">
-                                    <div class="col">
-                                
-                                    </div>
                                 </div>
                             </div>
                             <hr>
                         </div>
+                    </div>
                     
             
             {% endfor %}
+            {% else %}
+            <div class="row">
+                <div class="col-12 login-row body-text justify-content-center">
+                    <h2 class="py-2 title-text">Sorry, you need to be logged in to view this page</h2>
+                    <p class="body-text justify-content-center">Already a Stockist? 
+                        <a href="{% url 'account_login' %}" class="login-link" role="link">
+                        Login to Shop the latest Hobo & Hatch Collections
+                        </a>
+                    </p>
+                    
+                </div>
+                <div class="col-12 apply-row justify-content-center">
+                    <p class="body-text justify-content-center">Not a stockist yet?
+                        <a href="{% url 'account_signup' %}" class="apply-link" role="link">
+                            Apply to be a stockist
+                        </a>
+                    </p>
+                </div>
+                <div class="col-12 retail-row justify-content-center">
+                    <p class="body-text justify-content-center">Regular customer?
+                        <a href="https://www.hoboandhatch.co.uk/" class="shop-link" role="link">
+                            Shop our retail site
+                        </a>
+                    </p>
+                </div>
+            </div>
+             
         {% endif %}
     </div>
     </main>
@@ -119,5 +115,4 @@
     {{ block.super }}
     {% include 'products/includes/details_display.html' %}
 {% endblock %}
-
 
