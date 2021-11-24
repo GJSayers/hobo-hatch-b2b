@@ -14,7 +14,7 @@
   {% block extra_meta %}
   {% endblock %}
 
-  <!-- Bootstrap CSS -->
+  <!-- Bootstrap,  CSS & Google fonts -->
   {% block corecss %}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -49,106 +49,80 @@
 
 <body>
   
-  <!-- header -->
+    <!-- header -->
+
   <header class="container-fluid fixed-top p-0">
-      <!-- account and shopping bag div -->
-      <!-- <div class="col-4 my-0 text-center">
-                <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
-                  <div class="text-center">
-                    <div><i class="fas fa-shopping-bag"></i></div>
-                    <span class="my-0">
-                      items
-                      {% if total_items %}
-                      {{ total_items }}
-                      {% else %}
-                      0
-                      {% endif %}
-                    </span>
-                    <span class="my-0">
-                      |{% if grand_total %}
-                        £{{ grand_total|floatformat:2 }}
-                        {% else %}
-                        £0.00
-                      {% endif %}
-                    </span>
-                  </div>
-                </a>
-        </div>
-      <div class="col-4"></div> -->
-
-      
-
-                        <!-- Navigation -->
+      <!-- Navigation -->
     <nav class="navbar navbar-expand-lg p-0">
       <div class="col-lg-4 navbar-collapse collapse w-100 dual-collapse2 order-1 order-lg-0 justify-content-center p-0">
         <ul class="navbar-nav text-center">
 
-                        <!-- Check which items to display in Navbar based on if user is authenticated or not -->
+            <!-- Check which items to display in Navbar based on if user is authenticated or not -->
           {% if request.user.is_authenticated %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  href="#">Collections   <i class="fas fa-angle-double-down"></i></a>
-              <ul class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  href="#">Collections   <i class="fas fa-angle-double-down"></i></a>
+                <ul class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink">
 
-                        <!-- If user is a super user they can access product management -->
-                  {% if request.user.is_superuser %}
-                  <li>
-                    <a href="#" class="dropdown-item">Manage Products</a>
-                  </li>  
-                  {% endif %}
+                      <!-- If user is a super user they can access product management -->
+                    {% if request.user.is_superuser %}
+                    <li>
+                      <a href="#" class="dropdown-item">Manage Products</a>
+                    </li>  
+                    {% endif %}
 
-                        <!-- Collections dropdown -->
-                  <li class="">
-                    <a class="dropdown-item" href="{% url 'collections' %}">View All</a>
-                  </li>
-                  <li class="">
-                    <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=blankets">Blankets</a>
-                  </li>
-                  <li class="">
-                    <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=leather_accessories">Leather Accessories</a>
-                  </li>
-                  <li class="">
-                  <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=jewellery">Jewellery</a>
-                  </li>
-                  <li class="">
-                  <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=knitted_accessories">Knitted Accessories</a>
-                  </li>
-                  <li class="">
-                    <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=clothing">Clothing</a>
-                  </li>
-              </ul>
-          </li>
+                      <!-- Collections dropdown -->
+                    <li class="">
+                      <a class="dropdown-item" href="{% url 'collections' %}">View All</a>
+                    </li>
+                    <li class="">
+                      <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=blankets">Blankets</a>
+                    </li>
+                    <li class="">
+                      <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=leather_accessories">Leather Accessories</a>
+                    </li>
+                    <li class="">
+                    <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=jewellery">Jewellery</a>
+                    </li>
+                    <li class="">
+                    <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=knitted_accessories">Knitted Accessories</a>
+                    </li>
+                    <li class="">
+                      <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=clothing">Clothing</a>
+                    </li>
+                </ul>
+            </li>
 
-                        <!-- Profile dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  href="{% url 'profile' %}">Account   <i class="fas fa-angle-double-down"></i></a>
-            <ul class="dropdown-menu ml-auto text-left" aria-labelledby="navbarDropdownMenuLink">
-              <li class="">
-                <a class="dropdown-item" href="{% url 'profile' %}">My Account</a>
-              </li>
-              <li class="">
-                <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-              </li>
-            </ul> 
-          </li>
+              <!-- Profile dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  href="{% url 'profile' %}">Account   <i class="fas fa-angle-double-down"></i></a>
+              <ul class="dropdown-menu ml-auto text-left" aria-labelledby="navbarDropdownMenuLink">
+                <li class="">
+                  <a class="dropdown-item" href="{% url 'profile' %}">My Account</a>
+                </li>
+                <li class="">
+                  <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                </li>
+              </ul> 
+            </li>
+
           {% else %}
 
-                        <!-- If user not logged in show login & register links -->
+              <!-- If user not logged in show login & register links -->
             <li>
               <a class="nav-link" role="button" href="{% url 'account_login' %}">Login</a>
             </li>
             <li>
               <a class="nav-link" role="button" href="{% url 'account_signup' %}">Register</a>
             </li>
-            {% endif %}
+          {% endif %}
         </ul>
-        
       </div>
       
 
-                        <!-- Logo block -->
+        <!-- Logo block -->
       <div class="col-sm-12 col-lg-4 logo-div my-2 py-2 pb-2 order-0 position-relative justify-content-center">
           <a class="mx-auto" href="{% url 'home' %}">
-              <img class="home-logo center-block" src="{{ MEDIA_URL }}logo_home.png" alt="hobo-hatch-logo">
+            <img class="home-logo center-block" src="{{ MEDIA_URL }}logo_home.png" alt="hobo-hatch-logo">
           </a>
         <div class="col mx-auto justify-content-center navbars-div">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
@@ -157,42 +131,18 @@
         </div>
       </div>
 
-                        <!-- About us & faq nav links -->
+        <!-- About us & faq nav links -->
       <div class="col-lg-4 navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2 justify-content-center" >
         <ul class="navbar-nav text-center">
           <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About Us</a>
+            <a class="nav-link" href="{% url 'about' %}">About Us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'faqs' %}">FAQ's</a>
           </li>
         </ul>
       </div>
- 
     </nav>
-    <!-- {% if request.user.is_authenticated %}
-    <div class="row align-items-center pb-2">
-         Search Form
-        <div class="col-8 my-0 search body-text">
-          <form action="" method="GET">
-            <div class="col input-group center-block">
-              <div class="input-group-append">
-                <button type="submit" class="form-control rounded-0 my-0 search-bar">
-                  <span class="icon">
-                    <i class="fas fa-search"></i>
-                  </span>
-                </button>
-              </div>
-              <input class="form-control rounded-0 my-0 search-bar" type="text" name="q" placeholder="Search">
-            </div>
-          </form>
-        </div>
-          Bag 
-      <div class="col-4 text-center px-3">
-        <a class="text-center" href="{% url 'view_bag' %}"><i class="fas fa-shopping-bag"></i></a>
-      </div>
-    </div>
-    {% endif %} -->
   </header>
 
   <!-- Messages -->
@@ -238,22 +188,19 @@
               </h6>
               <div class="col pt-2 p-0 mx-0">
                 <span>
-                  <a href="https://www.instagram.com/hoboandhatchuk/?hl=en" class="text-center">
+                  <a href="https://www.instagram.com/hoboandhatchuk/?hl=en" target="_blank" class="text-center">
                     <i class="fab fa-instagram fa-l"></i>
                   </a>
                 </span>
                 <span>
-                  <a href="" class="text-center">
+                  <a href="linkedin.com/" target="_blank" class="text-center">
                     <i class="fab fa-linkedin fa-l"></i>
                   </a>
                 </span>
               </div>
-              <p>
-
-              </p>
             </div>
 
-            <!-- Collections links -->
+              <!-- Collections links -->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 mt-3 p-0">
               <h6 class="text-uppercase  mb-3 mt-3">
                 Collections
@@ -272,11 +219,12 @@
               </p>
             </div>
 
-            <!-- Contact Links -->
+              <!-- Contact Links -->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-3 mt-3 p-0">
               <h6 class="text-uppercase mb-3 mt-3">
                 Contact
               </h6>
+              <p>
               <i class="fas fa-envelope"></i>
               info@hoboandhatch.co.uk
               </p>
@@ -284,14 +232,11 @@
             </div>
           </div>
         </div>
-      
-
       <div class="text-center pb-3">
         © 2021 Copyright Gemma Sayers
       </div>
     </section>
     </footer>
-
   </body>
 
   </html>
