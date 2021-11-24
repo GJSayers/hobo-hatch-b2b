@@ -11,6 +11,7 @@ from products.models import Product
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from bag.contexts import bag_contents
+from .email_handler import EmailConfHandler
 
 import stripe
 import json
@@ -143,6 +144,29 @@ def checkout(request):
     return render(request, template, context)
 
 
+# def _send_confirmation_email(request, order):
+#         """
+#         Send the user a confirmation email
+#         """
+#         cust_email = order.email
+#         subject = render_to_string(
+#             'checkout/confirmation_emails/confirmation_email_subject.txt',
+#             {'order': order})
+#         body = render_to_string(
+#             'checkout/confirmation_emails/confirmation_email_body.txt',
+#             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+#         send_mail(
+#             subject,
+#             body,
+#             settings.DEFAULT_FROM_EMAIL,
+#             [cust_email]
+#         )
+#     return HttpResponse(
+#             content=f'Email sent: {event["type"]} | SUCCESS: Order confirmation email sent',
+#             status=200)        
+
+
 def checkout_success(request, order_number):
     """
     Define what the user sees when they have had a successful checkout
@@ -153,11 +177,11 @@ def checkout_success(request, order_number):
     messages.success(request, f'Thankyou, your order have been successfully placed! \
         #     Order number: {order_number}. An email confirmation \
         #         will be sent to {order.buyer_email}')
-
+    # self._send_confirmation_email(order)
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
-        # Attach the user's profile to the order
+        # Attach the user profile to the order
         order.save()
         if save_info:
             profile_data = {
@@ -185,6 +209,8 @@ def checkout_success(request, order_number):
         template = 'checkout/checkout_success.html'
         context = {
             'order': order,
+            'order_line_item': order_line_item,
         }
+        
 
     return render(request, template, context)

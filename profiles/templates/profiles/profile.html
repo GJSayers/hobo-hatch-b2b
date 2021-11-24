@@ -35,11 +35,11 @@
             <hr>
         </div>
         <div class="col-6 text-left">
-            <p><span class="text-muted">Buyer email:</span> {{ profile.buyer_email }}</p>
-            <p><span class="text-muted">Accounts email: </span>{{ profile.buyer_email }}</p>
+            <p><span class="text-muted"> <i class="fas fa-envelope-open-text"></i> Buyer email:</span> {{ profile.buyer_email }}</p>
+            <p><span class="text-muted"><i class="fas fa-envelope-open-text"></i> Accounts email: </span>{{ profile.buyer_email }}</p>
         </div>
         <div class="col-6 text-right">
-            <p><span class="text-muted">Address: </span></p>
+            <p><span class="text-muted"><i class="far fa-address-book"></i> Address: </span></p>
             <p class="p-0 m-0">{{ profile.address_1 }}</p>
             <p class="p-0 m-0">{{ profile.town_or_city }}</p>
             <p class="p-0 m-0">{{ profile.county_or_state }}</p>
@@ -58,7 +58,7 @@
 
         <section class="col-sm-12 col-md-6 mt-3 mb-3 text-right details-section">
             <hr>
-            <p>Update Details</p>
+            <p><span><i class="fas fa-user-edit"></i> Update Details</span></p>
             <button type="button" class="profile-details-open">
                 <i class="fas fa-chevron-circle-down"></i>
             </button>
@@ -70,7 +70,7 @@
                 <form action="{% url 'profile' %}" method="POST" class="mt-3" id="profile-update-form">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button class="btn btn-affirmative float-right">Update Details</button>
+                    <button class="btn btn-affirmative float-right"><i class="fas fa-user-edit"></i> Update Details</button>
                 </form>
             </div>
         </section>
@@ -80,7 +80,7 @@
 
         <section class="col-sm-12 col-md-6 mt-md-3 mb-3 text-right history-section">
             <hr>
-            <p>Order History</p>
+            <p><span><i class="fas fa-clipboard-list"></span></i> Order History</p>
             <button type="button" class="order-history-open">
                 <i class="fas fa-chevron-circle-down"></i>
             </button>
