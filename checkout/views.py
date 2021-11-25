@@ -59,6 +59,7 @@ def checkout(request):
                     product_type = str(product.product_type)
                     size_qty = item_data[product_type]
                     print("size_qty", size_qty)
+                    
                     qty = size_qty.values()
                     print("qty", qty)
                     xs_l_one_size = list(qty)[0]
@@ -99,7 +100,6 @@ def checkout(request):
                                     lineitem_qty=line_qty,
                                     lineitem_total=line_total,
                                 )
-                    print("order_line_item", order_line_item)
                     order_line_item.save()
                 
                 except Product.DoesNotExist:
@@ -201,7 +201,6 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    order_line_item = get_object_or_404(OrderLineItem, order=order)
     messages.success(request, f'Thankyou, your order have been successfully placed! \
         #     Order number: {order_number}. An email confirmation \
         #         will be sent to {order.buyer_email}')
@@ -237,7 +236,6 @@ def checkout_success(request, order_number):
         template = 'checkout/checkout_success.html'
         context = {
             'order': order,
-            'order_line_item': order_line_item,
         }
         
 
