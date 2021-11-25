@@ -76,7 +76,12 @@ class OrderLineItem(models.Model):
                               related_name='lineitems',)
     product = models.ForeignKey(Product, null=False,
                                 blank=False, on_delete=models.CASCADE)
-    product_type = models.CharField(max_length=25, null=False, blank=False,)
+    product_type = models.CharField(max_length=25, null=False, blank=False)
+    xs_l_one_size = models.IntegerField(null=False, blank=False, default=0)
+    sm_n = models.IntegerField(null=False, blank=False, default=0)
+    m_p = models.IntegerField(null=False, blank=False, default=0)
+    lg_s = models.IntegerField(null=False, blank=False, default=0)
+    xl_u = models.IntegerField(null=False, blank=False, default=0)
     lineitem_qty = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,
                                          null=False, blank=False, editable=False)
@@ -86,7 +91,8 @@ class OrderLineItem(models.Model):
         Override the original save method to set the lineitem total
         and update the order total.
         """
-        # self.lineitem_total = self.product.product_price * self.lineitem_qty
+        self.lineitem_qty = (self.xs_l_one_size + self.sm_n + self.m_p + self.lg_s + self.xl_u)
+        self.lineitem_total = self.product.product_price * self.lineitem_qty
         super().save(*args, **kwargs)
 
     def __str__(self):
