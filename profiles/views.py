@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 
+from products.models import Category
 from .models import UserProfile
 from .forms import UserProfileForm
-from products.models import Category
+
 
 from checkout.models import Order
 
