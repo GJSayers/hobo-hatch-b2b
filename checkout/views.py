@@ -58,7 +58,31 @@ def checkout(request):
                     # if 'knitwear' in item_data:
                     product_type = str(product.product_type)
                     size_qty = item_data[product_type]
+                    print("size_qty", size_qty)
+                    
                     qty = size_qty.values()
+                    print("qty", qty)
+                    xs_l_one_size = list(qty)[0]
+                    print("xs_l_one_size", xs_l_one_size)
+                    if product_type != 'rings' and product_type != 'knitwear':
+                        sm_n = 0
+                        print("sm_n", sm_n)
+                        m_p = 0
+                        print("m_p", m_p)
+                        lg_s = 0
+                        print("lg_s", lg_s)
+                        xl_u = 0
+                        print("xl_u", xl_u)
+                    else:
+                        sm_n = list(qty)[1]
+                        print("sm_n", sm_n)
+                        m_p = list(qty)[2]
+                        print("m_p", m_p)
+                        lg_s = list(qty)[3]
+                        print("lg_s", lg_s)
+                        xl_u = list(qty)[4]
+                        print("xl_u", xl_u)
+
                     line_qty = int(sum(qty))
                     print("order form line_qtys", line_qty)
                     line_total = line_qty * product.product_price
@@ -68,10 +92,14 @@ def checkout(request):
                                     order=order,
                                     product=product,
                                     product_type=product_type,
+                                    xs_l_one_size=xs_l_one_size,
+                                    sm_n=sm_n,
+                                    m_p=m_p,
+                                    lg_s=lg_s,
+                                    xl_u=xl_u,
                                     lineitem_qty=line_qty,
                                     lineitem_total=line_total,
                                 )
-                    print("order_line_item", order_line_item)
                     order_line_item.save()
                 
                 except Product.DoesNotExist:
@@ -173,7 +201,6 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    order_line_item = get_object_or_404(OrderLineItem, order=order)
     messages.success(request, f'Thankyou, your order have been successfully placed! \
         #     Order number: {order_number}. An email confirmation \
         #         will be sent to {order.buyer_email}')
@@ -209,7 +236,6 @@ def checkout_success(request, order_number):
         template = 'checkout/checkout_success.html'
         context = {
             'order': order,
-            'order_line_item': order_line_item,
         }
         
 
