@@ -59,41 +59,42 @@
                         </div>
                     </div>
 
-                    {% for item in order.lineitems.all %}
+                    
                     <div class="row">
                             <div class="col table-responsive rounded">
-                                <table class="table table-sm table-borderless justify-content-left">
+                                <table class="table table-xs table-borderless justify-content-around">
                                     <thead class="text-muted text-left">
                                         <tr>
                                             <th scope="col">Item</th>
+                                            
+                                            <th scope="col">Size Run</th>
+
                                             <th scope="col">Line Qty</th>
+
                                             <th scope="col">Value</th>
                                         </tr>
                                     </thead>
+                                    {% for item in order.lineitems.all %}
                                     <tr>
                                         <td>
                                             <p>{{ item.product.product_name }}</p>
                                         </td>
                                         <td>
-                                            <p>{{ order_line_item.lineitem_qty }}</p>
+                                            {{ item.xs_l_one_size }}, {{ item.sm_n }}, {{ item.m_p }}, {{ item.lg_s }}, {{ item.xl_u }}
                                         </td>
                                         <td>
-                                            <p>{{ order_line_item.lineitem_total }}</p>
+                                            <p>{{ item.lineitem_qty }}</p>
+                                        </td>
+                                    
+                                        <td>
+                                            <p>£ {{ item.lineitem_total }}</p>
                                         </td>
                                     </tr>
+                                    {% endfor %}
                                 </table>
-                                
-                                <!-- <p class="my-0 small">Size run:
-                                    <br> 
-                                    {% for s, q in item.product.size_items %}{{ s|upper }}, <strong>{{ q|upper }}</strong> | {% endfor %}
-                                </p> -->
-                            <!-- </p>
-                        </div>
-                        <div class="col-6 text-md-right">
-                            <p class="small mb-0">Line qty: {{ order_line_item.lineitem_qty }} Line total: £ {{ order_line_item.lineitem_total }}</p> -->
                         </div> 
                     </div>
-                    {% endfor %}
+                    
                     <hr>
 
                     <div class="row">
@@ -104,13 +105,13 @@
 
                     <div class="row">
                         <div class="col-12 justify-content-between">
-                            <p class="mb-0">
-                                <span> Buyer Name: </span>
-                            </p>
-                            <p>
-                                <span class="mb-0"> <i class="fas fa-id-badge"></i> {{ order.buyer_name }}</span>
-                            </p>
-
+                                <p class="mb-0">
+                                    <span> Buyer Name: </span>
+                                </p>
+                                <p>
+                                    <span class="mb-0"> <i class="fas fa-id-badge"></i> {{ order.buyer_name }}</span>
+                                </p>
+                            
                             <br>
                             <p class="mb-0 title-text text-left">Requested Delivery Date:
 
@@ -186,14 +187,7 @@
 
                     <br>
 
-                    <div class="row">
-                        <div class="col-12">
-                            <p class="mb-0  title-text text-left">Buyer Phone:</p>
-                        </div>
-                        <div class="col-12 text-left">
-                            <p class="mb-0"><span><i class="fas fa-phone-alt"></i> {{ order.buyer_phone }}</span></p>
-                        </div>
-                    </div>
+                    
 
 
                     <hr>
