@@ -1,33 +1,31 @@
 from django.shortcuts import (render, redirect,
                               reverse, get_object_or_404,)
-from django.views.decorators.http import require_POST
-from django.utils.datastructures import MultiValueDict
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+
 from django.contrib import messages
 from django.conf import settings
 
-from .forms import OrderForm
-from .models import Order, OrderLineItem
+import stripe
 from products.models import Product
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from bag.contexts import bag_contents
-# from .email_handler import EmailConfHandler
-
-import stripe
-import json
-
-
-# @require_POST
-# def cache_checkout_data(request):
-#     try:
-#         pid = request.POST.get('client')
+from .forms import OrderForm
+from .models import Order, OrderLineItem
 
 
 def checkout(request):
+    """
+    Sends a request to stripe to make a purchase
+    """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
+        """
+        Retreives the posted form data and bag/ purchase data
+        """
         bag = request.session.get('bag', {})
         live_bag = bag_contents(request)
 
@@ -44,50 +42,41 @@ def checkout(request):
             'county_or_state': request.POST['county_or_state'],
             'postcode': request.POST['postcode'],
             'country': request.POST['country'],
-            'delivery_date': request.POST['delivery_date'],      
+            'delivery_date': request.POST['delivery_date'],
 
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
+            """
+            Checks id the order form data is valid
+            Saves buyer data if box is checked
+            """
             print("form valid")
             order = order_form.save()
             for item_id, item_data in bag.items():
-                print("bag.items", bag.items())
+                """
+                Iterates through items in bag
+                Assigns size qtys & lineqty
+                """
                 try:
                     product = Product.objects.get(id=item_id)
-                    # if 'knitwear' in item_data:
                     product_type = str(product.product_type)
                     size_qty = item_data[product_type]
-                    print("size_qty", size_qty)
-                    
                     qty = size_qty.values()
-                    print("qty", qty)
                     xs_l_one_size = list(qty)[0]
-                    print("xs_l_one_size", xs_l_one_size)
                     if product_type != 'rings' and product_type != 'knitwear':
                         sm_n = 0
-                        print("sm_n", sm_n)
                         m_p = 0
-                        print("m_p", m_p)
                         lg_s = 0
-                        print("lg_s", lg_s)
                         xl_u = 0
-                        print("xl_u", xl_u)
                     else:
                         sm_n = list(qty)[1]
-                        print("sm_n", sm_n)
                         m_p = list(qty)[2]
-                        print("m_p", m_p)
                         lg_s = list(qty)[3]
-                        print("lg_s", lg_s)
                         xl_u = list(qty)[4]
-                        print("xl_u", xl_u)
 
                     line_qty = int(sum(qty))
-                    print("order form line_qtys", line_qty)
                     line_total = line_qty * product.product_price
-                    print("order form line_total", line_total)
-            
                     order_line_item = OrderLineItem(
                                     order=order,
                                     product=product,
@@ -101,7 +90,6 @@ def checkout(request):
                                     lineitem_total=line_total,
                                 )
                     order_line_item.save()
-                
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "The product you requested was not found in our \
@@ -148,20 +136,19 @@ def checkout(request):
                     'address_1': profile.address_1,
                     'address_2': profile.address_2,
                     'town_or_city': profile.town_or_city,
-                    'county_or_state': profile.county_or_state, 
+                    'county_or_state': profile.county_or_state,
                     'postcode': profile.postcode,
                     'country': profile.country,
-                    # 'delivery_date': request.POST['delivery_date'],  
                 })
             except UserProfile.DoesNotExist:
-                order_form = OrderFrom()
+                order_form = OrderForm()
         else:
             order_form = OrderForm()
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
-            Did you forget to set it in your environment?')   
-        
+            Did you forget to set it in your environment?')
+
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
@@ -172,27 +159,24 @@ def checkout(request):
     return render(request, template, context)
 
 
-# def _send_confirmation_email(request, order):
-#         """
-#         Send the user a confirmation email
-#         """
-#         cust_email = order.email
-#         subject = render_to_string(
-#             'checkout/confirmation_emails/confirmation_email_subject.txt',
-#             {'order': order})
-#         body = render_to_string(
-#             'checkout/confirmation_emails/confirmation_email_body.txt',
-#             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+def send_confirmation_email(request, order):
+    """
+    Send the user a confirmation email
+    """
+    cust_email = order.buyer_email
+    subject = render_to_string(
+        'checkout/confirmation_emails/confirmation_email_subject.txt',
+        {'order': order})
+    body = render_to_string(
+        'checkout/confirmation_emails/confirmation_email_body.txt',
+        {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
 
-#         send_mail(
-#             subject,
-#             body,
-#             settings.DEFAULT_FROM_EMAIL,
-#             [cust_email]
-#         )
-#     return HttpResponse(
-#             content=f'Email sent: {event["type"]} | SUCCESS: Order confirmation email sent',
-#             status=200)        
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [cust_email]
+    )
 
 
 def checkout_success(request, order_number):
@@ -201,13 +185,10 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    messages.success(request, f'Thankyou, your order have been successfully placed! \
-        #     Order number: {order_number}. An email confirmation \
-        #         will be sent to {order.buyer_email}')
-    # self._send_confirmation_email(order)
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
+        order = get_object_or_404(Order, order_number=order_number)
         # Attach the user profile to the order
         order.save()
         if save_info:
@@ -226,17 +207,18 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
+            send_confirmation_email(request, order=order)
+
         messages.success(request, f'Thankyou, your order has been successfully placed! \
             Order number: {order_number}. An email confirmation \
                 will be sent to {order.buyer_email}')
 
         if 'bag' in request.session:
             del request.session['bag']
-        
+
         template = 'checkout/checkout_success.html'
         context = {
             'order': order,
         }
-        
 
     return render(request, template, context)
