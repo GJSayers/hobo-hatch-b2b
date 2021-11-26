@@ -23,6 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@300&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  
   {% endblock %}
 
   {% block extra_css %}
@@ -39,6 +40,10 @@
     </script>
     <script src="https://kit.fontawesome.com/50cb4e3408.js" crossorigin="anonymous"></script>
     <script src="https://js.stripe.com/v3/"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon/manifest.json' %}">
   {% endblock %}
 
   {% block extra_js %}

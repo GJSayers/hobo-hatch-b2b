@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row justify-content-center">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+<main class="container justify-content-center error-container">
+    <div class="row">
+        <div class="col">
+            <h2>Sorry, you are not allowed to visit this page! (403 error)</h2>
+            <p>Go back to home {% url 'home' %}</p>
+        </div>
+
+    </div>
+</main>
+{% endblock %}

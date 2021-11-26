@@ -1,0 +1,21 @@
+{
+    "name": "Hobo & Hatch B2B: Environmentally Concious Wholesale Accessories & Clothing",
+    "short_name":"Hobo & Hatch B2B",
+    "icons":[
+        {
+            "src":"/android-chrome-192x192.png",
+            "sizes":"192x192",
+            "type":"image/png"
+        },
+        {
+            "src":"/android-chrome-512x512.png",
+            "type":"image/png",
+            "sizes":"512x512"
+        }
+        ],
+        "start_url": "/?source=pwa",
+        "background_color": "#A98B7D",
+        "display": "standalone",
+        "scope": "/",
+        "theme_color": "#A98B7D"
+        }

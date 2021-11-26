@@ -14,3 +14,7 @@ urlpatterns = [
     path('about/', include('about.urls')),
     path('faqs/', include('faqs.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'hobo_hatch_b2b.views.error_404'
+handler403 = 'hobo_hatch_b2b.views.error_403'
+handler400 = 'hobo_hatch_b2b.views.error_400'
