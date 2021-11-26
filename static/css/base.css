@@ -478,3 +478,9 @@ input[name='q']::placeholder {
 }
 }
 }
+
+/* --------------------------- error handlers */
+.error-container {
+    background-color: #A98B7D;
+    color:#0A151A;
+}
