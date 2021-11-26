@@ -7,27 +7,15 @@ $('.categories-open').on("click",function() {
 // on clicking the filter closing button, hide the checkboxes
 
 $('.categories-close').on("click",function() {
-    $(".category-filter").hide(200);
+    $('.category-filter').hide(200);
     $('.categories-open').show(200);
 });
-
-
-// $('.types-open').on("click",function() {
-//     $(".type-filter").show(200);
-//     $('.types-open').hide(200);
-// });
-
-// // on clicking the filter closing button, hide the checkboxes
-
-// $('.types-close').on("click",function() {
-//     $(".type-filter").hide(200);
-// });
-
 
 // toggle product info to display on demand
 
 $('.info-open').on("click",function() {
-    $('.info').toggle();
+    $(this).siblings('.info').toggle();
+    console.log(this);
 });
 
 $('.order-history-open').on("click",function() {
