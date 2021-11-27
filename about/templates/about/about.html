@@ -12,6 +12,9 @@
 {% block content %}
 
 <main class="container justify-content-center ">
+
+        <!-- bag row -->
+
     {% if request.user.is_authenticated %}
         {% include 'profiles/includes/logged_in_row.html' %}
     {% else %}

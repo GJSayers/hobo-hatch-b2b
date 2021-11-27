@@ -10,9 +10,11 @@
 {% endblock %}
 
 {% block content %}
-    <main class="container-fluid product-section">
+    <main class="container-fluid product-section py-2">
         <!-- Logged in customer section -->
             <div class="row text-center justify-content-center">
+            {% if request.user.is_authenticated %}
+                {% include 'profiles/includes/logged_in_row.html' %}
 
         <!-- Product Card & title -->
                     <div class="col-sm-12 col-md-6 col-lg-4 image_card">
@@ -426,10 +428,14 @@
                         </div>
 
                 </section>
-                        <!-- Product input & quick add section -->
-                <!-- <section class="col-sm-12 col-md-6 input_section"> -->
-                   
-                    <!-- </section> -->
+            {% else %}
+            Not Logged
+
+            {% endif %}
+                    <!-- Product input & quick add section -->
+            <!-- <section class="col-sm-12 col-md-6 input_section"> -->
+                
+                <!-- </section> -->
             </div>
         </div>
     </main>

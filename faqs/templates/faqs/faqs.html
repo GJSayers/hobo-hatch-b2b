@@ -11,6 +11,10 @@
 
 {% block content %}
 <main class="container justify-content-center index-container">
+    {% if request.user.is_authenticated %}
+    {% include 'profiles/includes/logged_in_row.html' %}
+    {% endif %}
+
 
             <!-- FAQ's Section -->
 

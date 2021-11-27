@@ -1,5 +1,5 @@
-/* jshint esversion: 8, jquery: true */
 <script>
+    
 // Enable / disable
 function handleEnableDisable(size) {
     currentValue = parseInt($(`#id_qty_${size}`).val());
@@ -46,8 +46,4 @@ $('.decrement-qty').click(function(e) {
     var size = $(this).data('size');
     handleEnableDisable(size);
 });
-
-
-
 </script>
-

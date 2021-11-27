@@ -13,6 +13,10 @@
 <main class="container justify-content-center index-container">
 
             <!-- Welcome Section -->
+    {% if request.user.is_authenticated %}
+            {% include 'profiles/includes/logged_in_row.html' %}
+    {% endif %}
+
 
     <section class="p-2 row welcome-section justify-content-center text-center">
         <h1 class="page-title title-text">
