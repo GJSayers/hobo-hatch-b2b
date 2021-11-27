@@ -13,7 +13,9 @@ def bag_contents(request):
     bag = request.session.get('bag', {})
     total = 0
     total_items = 0
-    delivery = Decimal(settings.STANDARD_DELIVERY_COST)
+    delivery = 0
+    grand_total = 0
+
 
     for item_id, item_data in bag.items():
         product = get_object_or_404(Product, pk=item_id)
@@ -47,7 +49,10 @@ def bag_contents(request):
         total = sum(line_totals)
 
     print("line_totals", line_totals)
-    grand_total = delivery + total
+
+    if total_items > 0:
+        delivery = Decimal(settings.STANDARD_DELIVERY_COST)
+        grand_total = delivery + total
 
     context = {
         'bag_items': bag_items,
