@@ -5,8 +5,9 @@ from .models import UserProfile
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        exclude = ('user','purchasing_currency', 'stockist_channel', 'categories', 'stockist_market')
-    
+        exclude = ('user', 'purchasing_currency', 'stockist_channel',
+                   'categories', 'stockist_market')
+
     def __init__(self, *args, **kwargs):
         """
         Add placeholders and classes, remove auto-generated
@@ -16,7 +17,6 @@ class UserProfileForm(forms.ModelForm):
         placeholders = {
             'buyer_name': 'Buyer Name',
             'stockist': 'Store Name',
-            'buyer_name': 'Buyer Name',
             'buyer_phone': 'Buyer Phone',
             'buyer_email': 'Buyer Email Address',
             'accounts_phone': 'Accounts Phone Number',
@@ -39,5 +39,6 @@ class UserProfileForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
+            self.fields[field].widget.attrs[
+                'class'] = 'border-black rounded-0 profile-form-input'
             self.fields[field].label = False

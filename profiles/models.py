@@ -67,9 +67,8 @@ class UserProfile(models.Model):
     categories = MultiSelectField(max_length=100,
                                   choices=PURCHASING_CATEGORIES)
 
-
-def __str__(self):
-    return self.user.username
+    def __str__(self):
+        return self.user.username
 
 
 @receiver(post_save, sender=User)

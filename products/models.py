@@ -5,7 +5,8 @@ from djchoices import DjangoChoices, ChoiceItem
 
 class Category(models.Model):
     """
-    Class to define categories for products and Products Types within the categories
+    Class to define categories for products and
+    Products Types within the categories
     """
     class Meta:
         """
@@ -50,7 +51,8 @@ class Category(models.Model):
 
 class Type(models.Model):
     """
-    Class to identify different product types and which Categories they belong to
+    Class to identify different product types
+    stockist and which Categories they belong to
     """
     class Meta:
         """
@@ -94,7 +96,7 @@ class Product(models.Model):
         hand_crafted = ChoiceItem("HC")
         fairly_produced = ChoiceItem("FP")
         low_environmental_impact = ChoiceItem("LI")
-   
+
     class SizeType(DjangoChoices):
         """
         Subclass to define product size options - use to display size entry
@@ -115,20 +117,19 @@ class Product(models.Model):
     product_description = models.TextField()
     product_is_bestseller = models.BooleanField(default=False,
                                                 null=False, blank=False)
-    # added fields due to issues with display 
-    ring_size_matrix = models.BooleanField(default=False, null=True, blank=True)
-    clothing_size_matrix = models.BooleanField(default=False, null=True, blank=True)
-    one_size = models.BooleanField(default=True, null=True, blank=True)
-    # size_type = models.MultiSelectField(max_length=30, choices=SizeType.choices,
-    #                            default="universal_size_type")
+    ring_size_matrix = models.BooleanField(default=False,
+                                           null=True, blank=True)
+    clothing_size_matrix = models.BooleanField(default=False,
+                                               null=True, blank=True)
+    one_size = models.BooleanField(default=True,
+                                   null=True, blank=True)
     product_price = models.DecimalField(max_digits=6, decimal_places=2)
     rrp_price = models.DecimalField(max_digits=6, decimal_places=2)
     image_url = models.URLField(max_length=1024, null=False, blank=False)
     image = models.ImageField(null=True, blank=True)
 
-
-def __str__(self):
-    return self.product_name
+    def __str__(self):
+        return self.product_name
 
 
 class Ring(Product):
@@ -144,8 +145,6 @@ class Ring(Product):
         silver = ChoiceItem("SR")
         gold = ChoiceItem("GD")
 
-    
-
     class RingSizes(DjangoChoices):
         """
         Subclass of Rings for size run definition
@@ -159,7 +158,7 @@ class Ring(Product):
     jewellery_properties = models.CharField(
          max_length=2, choices=JewelleryProperties.choices)
     ring_sizes = MultiSelectField(max_length=11, choices=RingSizes.choices,
-                                   default="6")
+                                  default="6")
 
     def __str__(self):
         return 'ring str'
@@ -180,8 +179,10 @@ class Clothing(Product):
         M = ChoiceItem("M")
         L = ChoiceItem("L")
         XL = ChoiceItem("XL")
-   
-    clothing_sizes = MultiSelectField(max_length=11, choices=ClothingSizes.choices, default="XS")
+
+    clothing_sizes = MultiSelectField(max_length=11,
+                                      choices=ClothingSizes.choices,
+                                      default="XS")
 
     # def __str__(self):
     #    return self.product_name

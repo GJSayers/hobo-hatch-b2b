@@ -38,7 +38,7 @@ class OrderForm(forms.ModelForm):
         }
 
         self.fields['buyer_name'].widget.attrs['autofocus'] = True
-        self.fields['delivery_date'].widget=forms.widgets.DateInput(
+        self.fields['delivery_date'].widget = forms.widgets.DateInput(
              attrs={'type': 'date'})
         for field in self.fields:
             if self.fields[field].required:
@@ -47,4 +47,4 @@ class OrderForm(forms.ModelForm):
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
-            self.fields[field].label = False       
+            self.fields[field].label = False
