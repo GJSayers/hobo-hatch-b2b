@@ -14,7 +14,7 @@
         <!-- Logged in customer section -->
             <div class="row text-center justify-content-center">
 
-        <!-- Product Card & tile -->
+        <!-- Product Card & title -->
                     <div class="col-sm-12 col-md-6 col-lg-4 image_card">
                         <div style="border: 0px; border-radius: none;" class="card">    
                             <div class="card-body">
@@ -30,15 +30,19 @@
                 
                 <!-- Product Info section -->
                 <section class="col-sm-12 col-md-6 col-lg-4 product_info_input justify-content-center">
-                    <p class="card-text product-info">Product Info </p>
+                    <div class="col justify-content-center text-center">
+                        <div class="col-12 card-text product-info">Product Info </div>
+                       
                                 <button type="button" class="info-open"><i class="fas fa-chevron-circle-down"></i></a></button>
-                        <div class="col-12 properties info" style="display: none;">
-                            <!-- Product Info div -->
+                        
+                            
+                            
+                            <!-- Product Info include -->
                             {% include 'products/includes/product_properties.html' %}
                             <div class="col-12 p-4 description">
-                                {{ product.product_description }}
+                                <p>{{ product.product_description }}</p>
                             </div>
-                        </div>
+                    </div>
                         <div class="col-12 inputs">
                             <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                                 {% csrf_token %}
@@ -208,7 +212,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    
                                     {% endif %}
                                 {% endwith %}
                                 {% with product.clothing_size_matrix as clothing %}
