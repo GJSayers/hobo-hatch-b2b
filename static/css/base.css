@@ -321,6 +321,12 @@ button.info-open:hover {
     font-family: 'Montserrat', 'sans-serif';
 }
 
+/* ----------------------------------------- Bag */
+
+.bag-item-separator {
+    align-self: center;
+}
+
 /* ------------------------------- Media queries */
 
 @media only screen and (min-width: 768px) and (min-height:1024px) {
