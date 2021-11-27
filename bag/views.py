@@ -90,22 +90,22 @@ def add_to_bag(request, item_id):
                 bag[item_id][product_type]['one_size'] += one_size
                 messages.success(
                     request,
-                    f'{product.product_name} has been updated {bag[item_id]}')
+                    f'{product.product_name} quantities updated, ({one_size})')
             if beltbag_bumbag:
                 bag[item_id][product_type]['one_size'] += one_size
                 messages.success(
                     request,
-                    f'{product.product_name} has been updated {bag[item_id]}')
+                    f'{product.product_name} quantities updated, ({one_size})')
             if belts:
                 bag[item_id][product_type]['one_size'] += one_size
                 messages.success(
                     request,
-                    f'{product.product_name} has been updated {bag[item_id]}')
+                    f'{product.product_name} quantities updated, ({one_size})')
             if blankets:
                 bag[item_id][product_type]['one_size'] += one_size
                 messages.success(
                     request,
-                    f'{product.product_name} has been updated {bag[item_id]}')
+                    f'{product.product_name} quantities updated, ({one_size})')
             if clothing:
                 bag[item_id][product_type]['xs'] += xs
                 bag[item_id][product_type]['sm'] += sm
@@ -114,7 +114,7 @@ def add_to_bag(request, item_id):
                 bag[item_id][product_type]['xl'] += xl
                 messages.success(
                     request,
-                    f'{product.product_name} has been updated {bag[item_id]}')
+                    f'{product.product_name} quantities updated, XS, {xs} | SM, {sm} | M, {m} | LG, {lg} | XL, {xl}')
             if rings:
                 bag[item_id][product_type]['l'] += l
                 bag[item_id][product_type]['n'] += n
@@ -123,7 +123,8 @@ def add_to_bag(request, item_id):
                 bag[item_id][product_type]['u'] += u
                 messages.success(
                     request,
-                    f'{product.product_name} has been updated {bag[item_id]}')
+                    f'{product.product_name} quantities updated, L, {l} | N, {n} | P, {p} | S, {s} | U, {u}')
+                    
 
         else:
             bag[item_id] = {product_type: size_qty}
