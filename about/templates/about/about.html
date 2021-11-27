@@ -51,27 +51,27 @@
                 <h2 class="title-text pb-3">What our customers say about us...</h2>
             </div>
             <hr>
-            <div id="carouselControls" class="carousel slide align-items-center pt-4" data-ride="carousel" data-interval="false" >
+            <div id="carouselControls" class="carousel slide align-items-center mt-4" data-ride="carousel" data-interval="false" >
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img src="{{ MEDIA_URL }}hobo_imagery_lake.jpg" class="d-block w-100 carousel-img" alt="hobo_lake_image">
                     <div class="absolute-div">
-                        <div class="carousel-caption">
+                        <div class="carousel-caption title-text">
                             
                             
-                            <h3>" {{ testimonials|random }} "</h3>
-                            <!-- <h4>{{ buyer }}</h4> -->
+                            <h3 style="font-style: italic;">" {{ testimonials|random }} "</h3>
+                            <h4>{{ testimonials.buyer_name }}</h4> 
                            
                         </div>
                     </div>
                   </div>
-                  <div class="carousel-item text-center">
+                  <div class="carousel-item text-center title-text">
                     <img src="{{ MEDIA_URL }}hobo_imagery_sea.png" class="d-block w-100 carousel-img" alt="hobo_sea_image">
                     
                         <div class="carousel-caption">
                             
-                            <h3>" {{ testimonials|random }} "</h3>
-                            <!-- <h4>{{ buyer }}</h4> -->
+                            <h3 style="font-style: italic;">" {{ testimonials|random }} "</h3>
+                            <h4>{{ buyer }}</h4>
                            
                     </div>
                   </div>

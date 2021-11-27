@@ -25,10 +25,13 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2 class="title-text mb-4">Checkout</h2>
+            <h2 class="title-text my-2">Checkout <span><i class="fas fa-lock"></span></i></h2>
         </div>
+        
     </div>
+    <hr>
     <div class="row">
+        
         <div class="col-md-12 col-lg-6 order-lg-last mb-5">
             <p class="text-muted">Order Summary ({{ total_items }})</p>
             <div class="row">
@@ -42,7 +45,7 @@
             {% for item in bag_items %}
                 <div class="row">
                     <div class="col-md-2 mb-1">
-                        <p class="d-sm-block d-md-none my-0"><strong>{{ item.product.product_name }}</strong></p>
+                        <p class="title-text d-sm-block d-md-none my-0">{{ item.product.product_name }}</p>
                         <a href="{% url 'product_detail' item.product.id %}">
                             {% if item.product.image %}
                                 <img class="w-100 px-sm-2 py-sm-2" src="{{ item.product.image.url }}" alt="{{ product.product_name }}">
@@ -52,7 +55,7 @@
                         </a>
                     </div>
                     <div class="col-md-7">
-                        <p class="d-none d-md-block my-0"><strong>{{ item.product.product_name }}</strong></p>
+                        <p class="title-text d-none d-md-block my-0">{{ item.product.product_name }}</p>
                         <p class="my-0 small">Size run:
                             <br> 
                             {% for s, q in item.size_items %}{{ s|upper }}, <strong>{{ q|upper }}</strong> | {% endfor %}</p>
@@ -72,9 +75,9 @@
                     <p class="my-0">Grand Total:</p>
                 </div>
                 <div class="col-3">
-                    <p class="my-0">£ {{ total | floatformat:2 }}</p>
-                    <p class="my-0">£ {{ delivery | floatformat:2 }}</p>
-                    <p class="my-0"><strong>£ {{ grand_total | floatformat:2 }}</strong></p>
+                    <p class="title-text my-0">£ {{ total | floatformat:2 }}</p>
+                    <p class="title-text my-0">£ {{ delivery | floatformat:2 }}</p>
+                    <p class="title-text my-0"><strong>£ {{ grand_total | floatformat:2 }}</strong></p>
                 </div>
             </div>
         </div>
@@ -143,6 +146,7 @@
                 </div>
             </form>
         </div>
+    </div>
   
     <!-- {% else %}
     <div>

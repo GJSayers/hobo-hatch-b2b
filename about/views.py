@@ -11,8 +11,6 @@ def about(request):
     testimonials = Testimonial.objects.all()
     context = {
         'testimonials': testimonials,
-        # 'buyer': buyer,
     }
-    print("testimonials", testimonials)
 
     return render(request, 'about/about.html', context)
