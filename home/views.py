@@ -6,9 +6,11 @@ def index(request):
     """
     Index Page View
     """
-    profile = get_object_or_404(UserProfile, user=request.user)
-    context = {
-        'profile': profile,
-    }
+    if request.user.is_authenticated:
+        profile = get_object_or_404(UserProfile, user=request.user)
+        context = {
+            'profile': profile,
+        }
 
-    return render(request, 'home/index.html', context)
+        return render(request, 'home/index.html', context)
+    return render(request, 'home/index.html')

@@ -10,54 +10,98 @@
 {% endblock %}
 
 {% block content %}
-<main class="container justify-content-center index-container">
-
+<main class="container justify-content-center index-container mx-0">
+    <div id="bg" class="bg-overlay"><img src="{{ MEDIA_URL }}clothing.jpeg" alt="hobo-hatch-home-image">
+    </div>
+    <div id="bg-overlay" class="bg-overlay"></div>
+    
             <!-- Welcome Section -->
+
     {% if request.user.is_authenticated %}
             {% include 'profiles/includes/logged_in_row.html' %}
-    {% endif %}
+    {% endif %}   
 
+            <!-- Intro text -->
 
-    <section class="p-2 row welcome-section justify-content-center text-center">
-        <h1 class="page-title title-text">
-            Hobo & Hatch B2B
-        </h1>
-
-            <!-- Intro paragraphs -->
-
-        <div class="col-12 home-page-text justify-content-center">
-            <p class="about-p1 body-text justify-content-center">
-                Designed in South-Western Australia, Hobo and Hatch is a treasure trove for the searcher of the extraordinary.  Individually designed items merged with vintage inspiration, simple honest craftsmanship with elegant design.
+    <section class="p-2 row welcome-section justify-content-center text-left">
+        <div class="col-xs-12 col-md-6">
+            <h1 class="page-title title-text home-page-text">
+                Hobo & Hatch
+                <br>
+                B2B
+            </h1>
+            <br>
+            <p class="about-p1 body-text justify-content-center home-page-text">
+                Ethically Produced Accessories & Clothing. 
             </p>
-            <p class="about-p2 body-text">
-                Treading lightly and directly empowering creative communities, Hobo and Hatch celebrates finding beauty in the simple.
+            <p class="about-p2 body-text home-page-text">
+                Treading lightly and directly empowering creative communities.
+            </p>
+            <p class="about-p3 body-text home-page-text">
+                Make the concious buying choice.
             </p>
         </div>
 
-            <!-- Call to action -->
-  
-        <div class="col-12 login-row body-text justify-content-center">
-            <p class="body-text justify-content-center">Already a Stockist? 
-                <a href="{% url 'account_login' %}" class="login-link">
-                Login to Shop the latest Hobo & Hatch Collections
-                </a>
-            </p>
+    {% if request.user.is_authenticated %}
+
+        {% if profile.buyer_name != None %}
+
+        <!-- Direct logged in profile users to shop -->
             
+            <div class="col-xs-12 col-md-6">
+                <div class="col-12 login-row text-right">
+                    <a href="{% url 'collections' %}" role="button" class="btn btn-homepage">
+                    Shop Now
+                    </a>
+                </div>
+            </div>
+
+        {% elif profile.buyer_name == None %}
+
+        <!-- Direct Authenticated but not profile users to complete profile -->
+
+        <div class="col-xs-12 col-md-6">
+            <div class="col-12 login-row text-right">
+                    <a href="{% url 'profile' %}" role="button" class="btn btn-homepage">
+                    Complete Buyer Profile
+                    </a>
+            </div>
         </div>
-        <div class="col-12 apply-row justify-content-center">
-            <p class="body-text justify-content-center">Not a stockist yet?
-                <a href="{% url 'account_signup' %}" class="apply-link">
-                    Apply to be a stockist
+
+        {% endif %}
+        
+    {% else %}
+
+        <!-- Direct non-authenticated visitors to either login or sign-up -->
+
+        <div class="col-xs-12 col-md-6">
+
+            <!-- login-link -->
+
+            <div class="col-12 login-row text-right">
+                <a href="{% url 'account_login' %}" role="button" class="btn btn-homepage">
+                Login 
                 </a>
-            </p>
-        </div>
-        <div class="col-12 retail-row justify-content-center">
-            <p class="body-text justify-content-center">Regular customer?
-                <a href="https://www.hoboandhatch.co.uk/" class="shop-link">
+            </div>
+
+            <!-- Application link -->
+
+            <div class="col-12 apply-row text-right">
+                <a href="{% url 'account_signup' %}" role="button" class="btn btn-homepage">
+                    Stockist Application
+                </a>
+            </div>
+
+            <!-- Redirect to Ecommerce incase not B2B user -->
+
+            <div class="col-12 retail-row text-right">
+                <a href="https://www.hoboandhatch.co.uk/" role="button" class="btn btn-homepage">
                     Shop our retail site
                 </a>
-            </p>
+            </div>
         </div>
+        
+    {% endif %}
     </section>  
 </main>
 {% endblock %}
