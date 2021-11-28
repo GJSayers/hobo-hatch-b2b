@@ -15,6 +15,8 @@
             <div class="row text-center justify-content-center">
             {% if request.user.is_authenticated %}
                 {% include 'profiles/includes/logged_in_row.html' %}
+                {% if product %}
+                    {% if product_category in permissions_list %}
 
         <!-- Product Card & title -->
                     <div class="col-sm-12 col-md-6 col-lg-4 image_card">
@@ -428,6 +430,8 @@
                         </div>
 
                 </section>
+                {% endif %}
+                {% endif %}
             {% else %}
             Not Logged
 

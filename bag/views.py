@@ -3,14 +3,17 @@ from django.shortcuts import (render, redirect, reverse,
 from django.contrib import messages
 from products.models import Product
 from profiles.models import UserProfile
-# from django.utils.datastructures import MultiValueDict
 
 
 def view_bag(request):
     """
     A view to return the shopping cart / bag contents
     """
-    return render(request, 'bag/bag.html')
+    profile = get_object_or_404(UserProfile, user=request.user)
+    context = {
+        'profile': profile,
+    }
+    return render(request, 'bag/bag.html', context)
 
 
 def add_to_bag(request, item_id):
