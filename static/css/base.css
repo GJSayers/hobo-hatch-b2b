@@ -6,23 +6,65 @@ html, body {
 }
 
 body {
-    /* background: url('/media/hobo_imagery_beach.png'); */
-    /* background-color: #F2F3F7; */
     font-family: 'Quicksand', 'sans-serif';
     color: #0A151A;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 180px);
+    min-height: 50vh;
 }
 
 body > footer {
     position: sticky;
-    top: 100vh;
+    height: calc(100vh - 300px);
 }
 
-/* .index-container {
-    background: url('/media/hobo_imagery_sea.png');
-    background-size: cover;
-    z-index: 100;
+@media (min-width: 768px) {
+.container, .container-md, .container-sm {
+    max-width: 1040px;
+
 }
+}
+
+.index-container {
+    background-color: rgba(153, 99, 97, .9);
+    margin: 0%;
+    padding: 0%;
+
+}
+
+#bg {
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+  }
+
+#bg img {
+    position: absolute; 
+    top: 20%; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    padding-top: 20%;
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
+    opacity: 70%;
+  }
+
+.bg-overlay {
+    background-color: rgba(153, 99, 97, .3);
+    position: absolute; 
+    top: 20%; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    padding-top: 20%;
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
+}
+
 
 
 /* ------------------------------ header & nav */
@@ -76,7 +118,8 @@ i {
 /* ------------------------------ body */
 
 section h1 .page-title {
-    text-align:start;
+    text-align: start;
+    z-index: -1;
 }
 
 .title-text {
@@ -90,13 +133,19 @@ section h1 .page-title {
 }
 
 .header-container {
-    padding-top: 250px;
+    padding-top: 180px;
 }
 
 .home-logo {
     align-items: center;
     max-width: 250px;
     max-height: 150px;
+}
+
+.home-page-text {
+    color: #F2F3F7;
+
+    
 }
 
 /* @media only screen and (max-width: 600px) {
@@ -162,6 +211,21 @@ section h1 .page-title {
     color: #996361;
 }
 
+.btn-homepage {
+    border-radius: 0px;
+    background-color: rgba(153, 99, 97, 0.3);
+    border: 1px solid #F2F3F7;
+    margin: 7px;
+    width: 200px;
+    font-size: small;
+    color: #F2F3F7;
+}
+
+.btn-homepage:hover {
+    size-adjust: 10%;
+    width: 210px;
+}
+
 .filter-button {
     border: none;
     color: #996361;
@@ -183,7 +247,15 @@ section h1 .page-title {
 
 /* ------------------------------- Homepage */
 .welcome-section {
-    padding: 5%;
+    padding-top: 20%;
+    background-color: rgba(153, 99, 97, .9);
+    letter-spacing: 0.4vw;
+    margin: 0%;
+    
+}
+
+.welcome-div {
+    padding-top: 20%;
 }
 
 .about-section,
@@ -400,13 +472,14 @@ button.info-open:hover {
 /* ------------------------------- Footer */
 
 footer {
-    background: rgba(169, 139, 125, .5);
+    background: #F2F3F7;
     margin-bottom: 0px;
+
 }
 
 @media only screen and (min-height: 1024px) {
     footer {
-        margin-top: 120px;
+        margin-top: 220px;
 }
 
 @media only screen and (min-height: 1300px) {

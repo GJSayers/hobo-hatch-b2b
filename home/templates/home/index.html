@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-<main class="container justify-content-center index-container mx-0">
+<main class="justify-content-center index-container mx-0">
     <div id="bg" class="bg-overlay"><img src="{{ MEDIA_URL }}clothing.jpeg" alt="hobo-hatch-home-image">
     </div>
     <div id="bg-overlay" class="bg-overlay"></div>
@@ -23,21 +23,21 @@
 
             <!-- Intro text -->
 
-    <section class="p-2 row welcome-section justify-content-center text-left">
-        <div class="col-xs-12 col-md-6">
+    <section class="py-4 row welcome-section justify-content-center text-left">
+        <div class="col-xs-12 col-md-6 py-4 welcome-div">
             <h1 class="page-title title-text home-page-text">
                 Hobo & Hatch
                 <br>
                 B2B
             </h1>
             <br>
-            <p class="about-p1 body-text justify-content-center home-page-text">
+            <p class="about-p1 body-text justify-content-center home-page-text pr-3">
                 Ethically Produced Accessories & Clothing. 
             </p>
-            <p class="about-p2 body-text home-page-text">
+            <p class="about-p2 body-text home-page-text pr-3">
                 Treading lightly and directly empowering creative communities.
             </p>
-            <p class="about-p3 body-text home-page-text">
+            <p class="about-p3 body-text home-page-text pr-3">
                 Make the concious buying choice.
             </p>
         </div>
@@ -69,7 +69,7 @@
         </div>
 
         {% endif %}
-        
+
     {% else %}
 
         <!-- Direct non-authenticated visitors to either login or sign-up -->

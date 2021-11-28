@@ -52,161 +52,161 @@
   <title>Hobo & Hatch B2B</title>
 </head>
 
-<body>
+  <body>
   
     <!-- header -->
 
-  <header class="container-fluid fixed-top p-0">
-      <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg p-0">
-      <div class="col-lg-4 navbar-collapse collapse w-100 dual-collapse2 order-1 order-lg-0 justify-content-center p-0">
-        <ul class="navbar-nav text-center">
+    <header class="container-fluid fixed-top p-0">
+        <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg p-0">
+        <div class="col-lg-4 navbar-collapse collapse w-100 dual-collapse2 order-1 order-lg-0 justify-content-center p-0">
+          <ul class="navbar-nav text-center">
 
-            <!-- Check which items to display in Navbar based on if user is authenticated or not -->
-          {% if request.user.is_authenticated %}
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  href="#">Collections   <i class="fas fa-angle-double-down"></i></a>
-                <ul class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink">
+              <!-- Check which items to display in Navbar based on if user is authenticated or not -->
+            {% if request.user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  href="#">Collections   <i class="fas fa-angle-double-down"></i></a>
+                  <ul class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink">
 
-                      <!-- If user is a super user they can access product management -->
-                    
- 
-                    
-
-                      <!-- Collections dropdown -->
-                    <li class="">
-                      <a class="dropdown-item" href="{% url 'collections' %}">View All</a>
-                    </li>
-                    {% if profile.categories %}
-
-                      {% if 'blankets' in profile.categories %}
-                    <li class="">
-                      <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=blankets">Blankets</a>
-                    </li>
-                      {% endif %}
+                        <!-- If user is a super user they can access product management -->
+                      
+  
                       
 
-                      {% if 'leather_accessories' in profile.categories  %}
-                    <li class="">
-                      <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=leather_accessories">Leather Accessories</a>
-                    </li>
+                        <!-- Collections dropdown -->
+                      <li class="">
+                        <a class="dropdown-item" href="{% url 'collections' %}">View All</a>
+                      </li>
+                      {% if profile.categories %}
+
+                        {% if 'blankets' in profile.categories %}
+                      <li class="">
+                        <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=blankets">Blankets</a>
+                      </li>
+                        {% endif %}
+                        
+
+                        {% if 'leather_accessories' in profile.categories  %}
+                      <li class="">
+                        <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=leather_accessories">Leather Accessories</a>
+                      </li>
+                        {% endif %}
+                        
+
+                        {% if 'jewellery' in profile.categories %}
+                      <li class="">
+                      <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=jewellery">Jewellery</a>
+                      </li>
+                        {% endif %}
+
+                        {% if 'knitted_accessories' in profile.categories %}
+                      <li class="">
+                      <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=knitted_accessories">Knitted Accessories</a>
+                      </li>
+                        {% endif %}
+                        
+
+                        {% if 'clothing' in profile.categories %}
+                      <li class="">
+                        <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=clothing">Clothing</a>
+                      </li>
+                        {% endif %}
                       {% endif %}
-                      
+                  </ul>
+              </li>
 
-                      {% if 'jewellery' in profile.categories %}
-                    <li class="">
-                    <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=jewellery">Jewellery</a>
-                    </li>
-                      {% endif %}
+                <!-- Profile dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  href="{% url 'profile' %}">Account   <i class="fas fa-angle-double-down"></i></a>
+                <ul class="dropdown-menu ml-auto text-left" aria-labelledby="navbarDropdownMenuLink">
+                  <li class="">
+                    <a class="dropdown-item" href="{% url 'profile' %}">My Account</a>
+                  </li>
+                  <li class="">
+                    <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                  </li>
+                </ul> 
+              </li>
 
-                      {% if 'knitted_accessories' in profile.categories %}
-                    <li class="">
-                    <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=knitted_accessories">Knitted Accessories</a>
-                    </li>
-                      {% endif %}
-                      
+            {% else %}
 
-                      {% if 'clothing' in profile.categories %}
-                    <li class="">
-                      <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=clothing">Clothing</a>
-                    </li>
-                      {% endif %}
-                    {% endif %}
-                </ul>
-            </li>
-
-              <!-- Profile dropdown -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  href="{% url 'profile' %}">Account   <i class="fas fa-angle-double-down"></i></a>
-              <ul class="dropdown-menu ml-auto text-left" aria-labelledby="navbarDropdownMenuLink">
-                <li class="">
-                  <a class="dropdown-item" href="{% url 'profile' %}">My Account</a>
-                </li>
-                <li class="">
-                  <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-                </li>
-              </ul> 
-            </li>
-
-          {% else %}
-
-              <!-- If user not logged in show login & register links -->
-            <li>
-              <a class="nav-link" role="button" href="{% url 'account_login' %}">Login</a>
-            </li>
-            <li>
-              <a class="nav-link" role="button" href="{% url 'account_signup' %}">Register</a>
-            </li>
-          {% endif %}
-        </ul>
-      </div>
-      
-
-        <!-- Logo block -->
-      <div class="col-sm-12 col-lg-4 logo-div my-2 py-2 pb-2 order-0 position-relative justify-content-center">
-          <a class="mx-auto" href="{% url 'home' %}">
-            <img class="home-logo center-block" src="{{ MEDIA_URL }}logo_home.png" alt="hobo-hatch-logo">
-          </a>
-        <div class="col mx-auto justify-content-center navbars-div">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-            <i class="fas fa-bars"></i>
-          </button>
+                <!-- If user not logged in show login & register links -->
+              <li>
+                <a class="nav-link" role="button" href="{% url 'account_login' %}">Login</a>
+              </li>
+              <li>
+                <a class="nav-link" role="button" href="{% url 'account_signup' %}">Register</a>
+              </li>
+            {% endif %}
+          </ul>
         </div>
-      </div>
+        
 
-        <!-- About us & faq nav links -->
-      <div class="col-lg-4 navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2 justify-content-center" >
-        <ul class="navbar-nav text-center">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'faqs' %}">FAQ's</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+          <!-- Logo block -->
+        <div class="col-sm-12 col-lg-4 logo-div my-2 py-2 pb-2 order-0 position-relative justify-content-center">
+            <a class="mx-auto" href="{% url 'home' %}">
+              <img class="home-logo center-block" src="{{ MEDIA_URL }}logo_home.png" alt="hobo-hatch-logo">
+            </a>
+          <div class="col mx-auto justify-content-center navbars-div">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
 
-  <!-- Messages -->
-  {% if messages %}
-  <aside class="message-container">
-    {% for message in messages %}
-      {% with message.level as level %}
-        {% if level == 40 %}
-          {% include 'includes/toasts/toast_error.html' %}
-        {% elif level == 30 %}
-          {% include 'includes/toasts/toast_warning.html' %}
-        {% elif level == 25 %}
-          {% include 'includes/toasts/toast_success.html' %}
-        {% else %}
-          {% include 'includes/toasts/toast_info.html' %}
-        {% endif %}
-      {% endwith %}
-    {% endfor %}
-  </aside>
-  {% endif %}
-  {% block page_header %}
- 
-  {% endblock %}
+          <!-- About us & faq nav links -->
+        <div class="col-lg-4 navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2 justify-content-center" >
+          <ul class="navbar-nav text-center">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'faqs' %}">FAQ's</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
 
-  {% block content %}
-  {% endblock %}
+    <!-- Messages -->
+    {% if messages %}
+    <aside class="message-container">
+      {% for message in messages %}
+        {% with message.level as level %}
+          {% if level == 40 %}
+            {% include 'includes/toasts/toast_error.html' %}
+          {% elif level == 30 %}
+            {% include 'includes/toasts/toast_warning.html' %}
+          {% elif level == 25 %}
+            {% include 'includes/toasts/toast_success.html' %}
+          {% else %}
+            {% include 'includes/toasts/toast_info.html' %}
+          {% endif %}
+        {% endwith %}
+      {% endfor %}
+    </aside>
+    {% endif %}
+    {% block page_header %}
+  
+    {% endblock %}
 
-  {% block postloadjs %}
-  <script>
-    $('.toast').toast('show')
-  </script>
-  {% endblock %}
+    {% block content %}
+    {% endblock %}
 
-    <footer class="row text-center text-lg-start footer-text p-0 mx-0">
-      <section class="col-12 footer-links p-0">
-        <div class="container footer-container text-center text-md-start mt-2 pt-2 px-0">
+    {% block postloadjs %}
+    <script>
+      $('.toast').toast('show')
+    </script>
+    {% endblock %}
+
+    <footer class="row text-center footer-text p-0 mx-0 mt-0">
+      <section class="col-12 footer-links p-0 mt-0">
+        <div class="container footer-container text-center mt-2 pt-2 px-0">
           <div class="row mt-3 mx-0 px-0">
 
             <!-- Hobo & Hatch Blog & Social  -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-0 mb-3 mt-3 p-0">
-              <h6 class="text-uppercase fw-bold mb-3 mt-3 mx-0 p-0">
+            <div class="col-md-4 mx-0 mb-3 mt-2 p-0">
+              <h6 class="text-uppercase fw-bold mb-3 mt-2 mx-0 p-0">
                 GET SOCIAL WITH US
               </h6>
               <div class="col pt-2 p-0 mx-0">
@@ -224,45 +224,59 @@
             </div>
 
               <!-- Collections links -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-3 mt-3 p-0">
+            <div class="col-md-4 text-center mx-0 mb-3 mt-2 p-0">
               <h6 class="text-uppercase  mb-3 mt-3">
                 Collections
               </h6>
-              <p>
-                <a href="{% url 'collections' %}?chosen_categories=blankets" class="text-reset">Blankets</a>
-              </p>
-              <p>
-                <a href="{% url 'collections' %}?chosen_categories=jewellery" class="text-reset">Jewellery</a>
-              </p>
-              <p>
-                <a href="{% url 'collections' %}?chosen_categories=clothing" class="text-reset">Clothing</a>
-              </p>
-              <p>
-                <a href="{% url 'collections' %}?chosen_categories=leather_accessories" class="text-reset">Leather Accessories</a>
-              </p>
-              <p>
-                <a href="{% url 'collections' %}?chosen_categories=knitted_accessories" class="text-reset">Knitted Accessories</a>
-              </p>
+              {% if profile.categories %}
+                {% if 'blankets' in profile.categories %}
+                  
+                  <p>
+                    <a href="{% url 'collections' %}?chosen_categories=blankets" class="text-reset">{{ blankets }}</a>
+                  </p>
+                {% endif %}
+                {% if 'jewellery' in profile.categories %}
+                  <p>
+                    <a href="{% url 'collections' %}?chosen_categories=jewellery" class="text-reset">Jewellery</a>
+                  </p>
+                {% endif %}
+                {% if 'clothing' in profile.categories %}
+                  <p>
+                    <a href="{% url 'collections' %}?chosen_categories=clothing" class="text-reset">Clothing</a>
+                  </p>
+                {% endif %}
+                {% if 'leather_accessories' in profile.categories %}
+                  <p>
+                    <a href="{% url 'collections' %}?chosen_categories=leather_accessories" class="text-reset">Leather Accessories</a>
+                  </p>
+                {% endif %}
+                {% if 'knitted_accessories' in profile.categories %}
+                  <p>
+                    <a href="{% url 'collections' %}?chosen_categories=knitted_accessories" class="text-reset">Knitted Accessories</a>
+                  </p>
+                {% endif %}
+              {% else %}
+                <p>
+                  <a href="{% url 'account_login' %}" class="text-reset">Login to View Collections</a>
+                </p>
+              {% endif %}
+              <p class="mb-0 pb-0">© 2021 Copyright Gemma Sayers</p>
             </div>
 
               <!-- Contact Links -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-3 mt-3 p-0">
+            <div class="col-md-4 text-center mx-0 mb-3 mt-3 p-0">
               <h6 class="text-uppercase mb-3 mt-3">
                 Contact
               </h6>
-              <p>
+              <p class="pb-0">
               <i class="fas fa-envelope"></i>
               info@hoboandhatch.co.uk
               </p>
-              <p><i class="fas fa-phone"></i> + 44 1323 710710</p>
+              <p class="pb-0"><i class="fas fa-phone"></i> + 44 1323 710710</p>
             </div>
           </div>
         </div>
-      <div class="text-center pb-3">
-        © 2021 Copyright Gemma Sayers
-      </div>
-    </section>
+      </section>
     </footer>
   </body>
-
-  </html>
+</html>

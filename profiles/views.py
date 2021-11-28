@@ -53,7 +53,7 @@ def profile(request):
             'on_profile_page': True,
         }
         template = 'profiles/profile.html'
-        return render(request, template, profile)
+        return render(request, template, context)
     template = 'profiles/profile.html'
     return render(request, template)
 
