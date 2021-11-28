@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/profiles.css' %}">
+<link rel="stylesheet" href="{% static 'css/profiles.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -17,16 +17,21 @@
 {% block content %}
 <div class="overlay"></div>
 <div class="container px-lg-5">
+    {% if request.user.is_authenticated %}
+    {% if profile.buyer_name != None %}
+    {% include 'profiles/includes/logged_in_row.html' %}
+
+    <!-- If Logged in and profile already created - Profile Details  -->
+
     <div class="row">
         <div class="col">
-                <h2 class="title-text my-1 text-left">
-                    My Account
-                </h2>
+            <h2 class="title-text my-1 text-left">
+                My Account
+            </h2>
             <hr>
         </div>
     </div>
-    {% if request.user.is_authenticated %}
-    {% include 'profiles/includes/logged_in_row.html' %}
+
     <div class="row">
         <div class="col-12">
             <h2 class="my-2 title-text text-left">
@@ -35,8 +40,10 @@
             <hr>
         </div>
         <div class="col-6 text-left">
-            <p><span class="text-muted"> <i class="fas fa-envelope-open-text"></i> Buyer email:</span> {{ profile.buyer_email }}</p>
-            <p><span class="text-muted"><i class="fas fa-envelope-open-text"></i> Accounts email: </span>{{ profile.buyer_email }}</p>
+            <p><span class="text-muted"> <i class="fas fa-envelope-open-text"></i> Buyer email:</span>
+                {{ profile.buyer_email }}</p>
+            <p><span class="text-muted"><i class="fas fa-envelope-open-text"></i> Accounts email:
+                </span>{{ profile.buyer_email }}</p>
         </div>
         <div class="col-6 text-right">
             <p><span class="text-muted"><i class="far fa-address-book"></i> Address: </span></p>
@@ -47,36 +54,61 @@
             <p class="p-0 m-0">{{ profile.country }}</p>
 
         </div>
-        
-        
     </div>
-    
+
+    {% else %}
+
+
+    <div class="row">
+        <div class="col">
+            <h2 class="title-text my-1 text-left">
+                Stockist Profile Creation
+            </h2>
+            <hr>
+        </div>
+    </div>
+
+    {% endif %}
+
     <main class="row pb-3">
 
-            <!-- Profile Details  -->
-        
+            
+
 
         <section class="col-sm-12 col-md-6 mt-3 mb-3 text-right details-section">
+
+            {% if profile.buyer_name != None %}
+
+            <!-- Display Update details buttons -->
+
             <hr>
             <p><span><i class="fas fa-user-edit"></i> Update Details</span></p>
             <button type="button" class="profile-details-open">
                 <i class="fas fa-chevron-circle-down"></i>
             </button>
+
             <div class="col-12 profile-details text-right" style="display:none;">
 
-                    <!-- Profile Update Form -->
+            {% else %}
+            <div class="col-12 profile-details text-right" style="display:block;">
 
-                
+            {% endif %}
+
+            <!-- Profile Update Form / Profile creation form -->
+
                 <form action="{% url 'profile' %}" method="POST" class="mt-3" id="profile-update-form">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button class="btn btn-affirmative float-right"><i class="fas fa-user-edit"></i> Update Details</button>
+                    <button class="btn btn-affirmative float-right"><i class="fas fa-user-edit"></i> Submit
+                        Details</button>
                 </form>
             </div>
         </section>
 
-            <!-- Order History  -->
-        
+       
+        {% if profile.buyer_name != None %}
+
+         <!-- Order History if profile already created -->
 
         <section class="col-sm-12 col-md-6 mt-md-3 mb-3 text-right history-section">
             <hr>
@@ -84,26 +116,27 @@
             <button type="button" class="order-history-open">
                 <i class="fas fa-chevron-circle-down"></i>
             </button>
-            <div class="col-12 order-history table-responsive"  style="display:none;">
+            <div class="col-12 order-history table-responsive" style="display:none;">
                 <div class="table table-borderless">
                     <table>
-                    <thead>
-                        <tr>
-                            <th>Order Number</th>
-                            <th>Date Ordered </th>
-                            <th>Delivery Date</th>
-                            <th>Quantity</th>
-                            <th>Order Total</th>
-                        </tr>
-                    </thead>
-                    
+                        <thead>
+                            <tr>
+                                <th>Order Number</th>
+                                <th>Date Ordered </th>
+                                <th>Delivery Date</th>
+                                <th>Quantity</th>
+                                <th>Order Total</th>
+                            </tr>
+                        </thead>
+
                         {% for order in orders %}
                         <tr>
                             <td>
-                                 <a class="nav-link" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number|truncatechars:6 }}">
-                                    {{ order.order_number|truncatechars:6 }}  
+                                <a class="nav-link" href="{% url 'order_history' order.order_number %}"
+                                    title="{{ order.order_number|truncatechars:6 }}">
+                                    {{ order.order_number|truncatechars:6 }}
                                 </a>
-                                
+
                             </td>
                             <td>{{ order.date }}
                             </td>
@@ -118,44 +151,54 @@
                 </div>
             </div>
         </section>
+
+        <!-- List of approved categories links  -->
+
         <section class="container categories">
             <div class="row row-cols-1 row-cols-md-3">
-            {% for category in categories %}
+                {% for category in categories %}
                 {% if category.name in permissions_list %}
                 <div class="col mb-4">
                     <div class="card text-white category-image">
                         <a href="{% url 'collections' %}?chosen_categories={{ category.name }}">
-                        <img src="{{ MEDIA_URL }}{{ category.name }}.jpeg" class="card-img" alt="category {{ category.name }}">
-                        <div class="card-img-overlay">
-                        <h4 class="card-title category-card-title title-text text-right">Shop {{ category.name }}</h4>
-                        
-                        </div>
+                            <img src="{{ MEDIA_URL }}{{ category.name }}.jpeg" class="card-img"
+                                alt="category {{ category.name }}">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title category-card-title title-text text-right">Shop
+                                    {{ category.name }}</h4>
+
+                            </div>
                         </a>
                     </div>
                 </div>
-               
+
                 {% endif %}
-            
-            {% endfor %}
-            <div class="col mb-4">
-                <div class="card text-white">
-                    <a href="{% url 'collections' %}" class="category-title-link">
-                    <img src="{{ MEDIA_URL }}shop_all.jpeg" class="card-img" alt="category all">
-                    <div class="card-img-overlay">
-                    <h4 class="card-title category-card-title title-text text-right">Shop All</h4>
-                    
+
+                {% endfor %}
+
+        <!-- Shop all link to all approved category products  -->
+
+                <div class="col mb-4">
+                    <div class="card text-white">
+                        <a href="{% url 'collections' %}" class="category-title-link">
+                            <img src="{{ MEDIA_URL }}shop_all.jpeg" class="card-img" alt="category all">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title category-card-title title-text text-right">Shop All</h4>
+
+                            </div>
+                        </a>
                     </div>
-                    </a>
                 </div>
             </div>
-            </div>
         </section>
+        {% endif %}
     </main>
-    {% endif %}  
+
+    {% endif %}
 </div>
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    {% include 'products/includes/details_display.html' %}
+{{ block.super }}
+{% include 'products/includes/details_display.html' %}
 {% endblock %}
