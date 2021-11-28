@@ -28,12 +28,13 @@ def checkout(request):
         """
         bag = request.session.get('bag', {})
         live_bag = bag_contents(request)
+        profile = UserProfile.objects.get(user=request.user)
 
         form_data = {
+            'stockist': profile,
             'buyer_name': request.POST['buyer_name'],
             'buyer_phone': request.POST['buyer_phone'],
             'buyer_email': request.POST['buyer_email'],
-            'stockist': request.POST['stockist'],
             'accounts_phone': request.POST['accounts_phone'],
             'accounts_email': request.POST['accounts_email'],
             'address_1': request.POST['address_1'],
@@ -130,7 +131,7 @@ def checkout(request):
                     'buyer_name': profile.user.get_full_name(),
                     'buyer_email': profile.user.email,
                     'buyer_phone': profile.buyer_phone,
-                    'stockist': profile.stockist,
+                    'stockist': profile,
                     'accounts_phone': profile.accounts_phone,
                     'accounts_email': profile.accounts_email,
                     'address_1': profile.address_1,
@@ -193,6 +194,7 @@ def checkout_success(request, order_number):
         order.save()
         if save_info:
             profile_data = {
+                'buyer_name': order.buyer_name,
                 'buyer_phone': order.buyer_phone,
                 'buyer_email': order.buyer_email,
                 'accounts_phone': order.accounts_phone,

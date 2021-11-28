@@ -8,7 +8,8 @@ from .models import Order
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('buyer_name', 'stockist', 'buyer_phone',
+        readonly_fields = 'stockist'
+        fields = ('buyer_name', 'buyer_phone', 'stockist',
                   'buyer_email', 'accounts_phone', 'accounts_email',
                   'delivery_date',
                   'address_1', 'address_2', 'town_or_city',
@@ -22,8 +23,8 @@ class OrderForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
+            'stockist': 'Store Name', 
             'buyer_name': 'Buyer Name',
-            'stockist': 'Store Name',
             'buyer_phone': 'Buyer Phone',
             'buyer_email': 'Buyer Email Address',
             'accounts_phone': 'Accounts Phone Number',
@@ -40,6 +41,7 @@ class OrderForm(forms.ModelForm):
         self.fields['buyer_name'].widget.attrs['autofocus'] = True
         self.fields['delivery_date'].widget = forms.widgets.DateInput(
              attrs={'type': 'date'})
+        self.fields['stockist'].widget.attrs['disabled'] = True
         for field in self.fields:
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'
