@@ -69,31 +69,49 @@
                 <ul class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink">
 
                       <!-- If user is a super user they can access product management -->
-                    {% if request.user.is_superuser %}
-                    <li>
-                      <a href="#" class="dropdown-item">Manage Products</a>
-                    </li>  
-                    {% endif %}
+                    
+ 
+                    
 
                       <!-- Collections dropdown -->
                     <li class="">
                       <a class="dropdown-item" href="{% url 'collections' %}">View All</a>
                     </li>
+                    {% if profile.categories %}
+
+                      {% if 'blankets' in profile.categories %}
                     <li class="">
                       <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=blankets">Blankets</a>
                     </li>
+                      {% endif %}
+                      
+
+                      {% if 'leather_accessories' in profile.categories  %}
                     <li class="">
                       <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=leather_accessories">Leather Accessories</a>
                     </li>
+                      {% endif %}
+                      
+
+                      {% if 'jewellery' in profile.categories %}
                     <li class="">
                     <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=jewellery">Jewellery</a>
                     </li>
+                      {% endif %}
+
+                      {% if 'knitted_accessories' in profile.categories %}
                     <li class="">
                     <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=knitted_accessories">Knitted Accessories</a>
                     </li>
+                      {% endif %}
+                      
+
+                      {% if 'clothing' in profile.categories %}
                     <li class="">
                       <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=clothing">Clothing</a>
                     </li>
+                      {% endif %}
+                    {% endif %}
                 </ul>
             </li>
 
@@ -210,6 +228,9 @@
               <h6 class="text-uppercase  mb-3 mt-3">
                 Collections
               </h6>
+              <p>
+                <a href="{% url 'collections' %}?chosen_categories=blankets" class="text-reset">Blankets</a>
+              </p>
               <p>
                 <a href="{% url 'collections' %}?chosen_categories=jewellery" class="text-reset">Jewellery</a>
               </p>

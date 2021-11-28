@@ -50,28 +50,39 @@ def collections(request):
     print("product_category", product_category)
     print('chosen_categories', chosen_categories)
     return render(request, 'products/collections.html', context)
-    return render(request, 'products/collections.html')
 
 
 def product_detail(request, product_id):
     """
     A view to show full detail of selected product
     """
-    
-    product = get_object_or_404(Product, pk=product_id)
-    categories = Category.name
-    product_type = Type.name
-    jewellery_size_type = Product.SizeType.jewellery_sizes
-    ring = Ring.objects.all()
-    clothing_sizes = Clothing(Product).ClothingSizes.choices
-    
-    context = {
-        'product': product,
-        'categories': categories,
-        'product_type': str(product_type),
-        'jewellery_size_type': jewellery_size_type,
-        'ring': ring,
-        'clothing_sizes': clothing_sizes
-    }
-    print("product type in product details", product_type)
-    return render(request, 'products/product_detail.html', context)
+    if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        product = get_object_or_404(Product, pk=product_id)
+        user_categories = profile.categories
+        print("user_categories", user_categories)
+        
+        permissions_list = user_categories[0:]
+        print("permissions_list", permissions_list)
+        categories = Category.name
+        print("categories", categories)
+        product_category = str(product.product_category)
+        print("product categrory", product_category)
+        product_type = Type.name
+        jewellery_size_type = Product.SizeType.jewellery_sizes
+        ring = Ring.objects.all()
+        clothing_sizes = Clothing(Product).ClothingSizes.choices
+        
+        context = {
+            'profile': profile,
+            'permissions_list': permissions_list,
+            'product': product,
+            'product_category': product_category,
+            'categories': categories,
+            'product_type': str(product_type),
+            'jewellery_size_type': jewellery_size_type,
+            'ring': ring,
+            'clothing_sizes': clothing_sizes
+        }
+        print("product type in product details", product_type)
+        return render(request, 'products/product_detail.html', context)

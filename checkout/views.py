@@ -28,6 +28,7 @@ def checkout(request):
         """
         bag = request.session.get('bag', {})
         live_bag = bag_contents(request)
+        profile = get_object_or_404(UserProfile, user=request.user)
 
         form_data = {
             'buyer_name': request.POST['buyer_name'],
@@ -151,6 +152,7 @@ def checkout(request):
 
     template = 'checkout/checkout.html'
     context = {
+        'profile': profile,
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
