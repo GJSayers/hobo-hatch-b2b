@@ -113,6 +113,77 @@
 
 ![](docs/github_projectboard.png)
 
+## Features
+
+### Homepage
+
+* For the Homepage of Hobo & Hatch B2B it was essential for the potential or existing customer to get a sense of the brand on first site and a simple to navigate set of call to actions base on whether the customer is a new user, a registered user or completed profile user. 
+
+### Navigation
+ 
+* For the Navigation, due to the level of permissions required for a B2B Site it is also necessary to ensure that the links to not lead to any non-permitted pages
+
+### Profile & Authentication Process for a B2B site
+
+* A B2B site operates a little differently from a standard authentication site, in that purchases can only happen once the Profile is set-up not only by the user having registered, but also approved by admin.  This is due to the B2B business needing to ensure that they have all relevent details needed for business supply and analysis.  This means that there is a three step process involved:
+ 1) Customer registers as a user 
+ 2) Customer is redirected to fill in a more detailed profile form and submits this(and receives a message in the window to let them know their account application will be reviewed)
+ 3) Admin user selects the relevant Category permissions in the backend & contacts the customer to alert them that they can now begin to place orders. From this point the profile user has access to their assigned/ permitted categories and this is reflected across the site
+
+### Profile Page
+
+* Once the profile page is populated, it contains both the order history and the customer details, as well as a form to update the profile field which are not exclusive to the admin user.  
+
+### Collections
+
+* The collections consist of currently 5 different categories, and there is scope to increase this in the backend.  The product listings are delivered using bootsrtap cards to keep a uniform appearance
+
+### Filtering 
+
+* From the collections page the products can be filtered by one or more Categories using the checkbox filter feature - This is a permissions-based feature linking back to the assigned categories
+
+### Product Detail
+
+* The products detail also uses cards, and included a detailed description of the product as well as multiple size inputs & product info dropdown 
+
+#### **Product Info Feature**
+
+* To display the product info without the option to hide it makes for a busy page, so I decided that a dropdown functionality was necessary so that buyers can access the product details at a glance - This feature is operational on both the Product detail and collections pages.  The data for the infosections is populated by the data held in the Product Model, and an icon is added depending on which info item is relevant
+
+
+#### **Multiple Sizing Entry**
+
+* Since B2B customers have to consider the size ratio as a whole, it was necessary to be able to add multiple sizes in one product submission  - This took a great deal of trial and error to perfect, but the result has great UX!  The code for this is also  fairly easily scalable, so there is potential to add different options in the future should the brand require
+
+
+### Multiple Sizing Entry in Admin
+
+* In order to successfully edit an order / lineitem in the admin it was necessary to apply a similar logic to the sizing inputs - An admin user can easily update all different types of products and their size breakdowns in the admin
+
+
+### Bag
+
+* The bag contains a great deal of information due to the multiple sizes per item and the potential multiple items a professional buyer would be adding to the bag - It took quite a lot of refactoring to get to the final version of the bag, which is fully responsive and with the option to edit the sizes or remive the items. 
+
+
+### Checkout with Stripe
+
+* The checkout provided is using the Stripe API with styling from crispy-forms.  The user has an easy to use form and can update their profile details on checkout should they choose to do so
+
+* The checkout success fires an email to the given email address and returns a summary of the order placed. 
+
+### About Us & Testimonials
+
+* The About us page is accessible to everybody, the testimonials carousel is populated with testimonials from the Testimonials model db, these can be updated over time. 
+
+### Messages
+
+* Bootstrap toasts are used as user messages to keep the customer informed during the customer journey - There are various messages for bag, 
+### FAQ's
+### Footer
+
+## Future Features
+
 ## Technologies Used
 -----
 ### Languages Used
