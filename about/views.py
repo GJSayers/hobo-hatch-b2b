@@ -8,11 +8,13 @@ def about(request):
     """
     About Page View
     """
-    profile = get_object_or_404(UserProfile, user=request.user)
-    testimonials = Testimonial.objects.all()
-    context = {
-        'testimonials': testimonials,
-        'profile': profile,
-    }
+    if request.user.is_authenticated:
+        profile = get_object_or_404(UserProfile, user=request.user)
+        testimonials = Testimonial.objects.all()
+        context = {
+            'testimonials': testimonials,
+            'profile': profile,
+        }
 
-    return render(request, 'about/about.html', context)
+        return render(request, 'about/about.html', context)
+    return render(request, 'about/about.html')
