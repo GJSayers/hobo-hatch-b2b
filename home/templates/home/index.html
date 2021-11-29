@@ -47,7 +47,7 @@
         {% if profile.buyer_name != None %}
 
         <!-- Direct logged in profile users to shop -->
-            
+        <div class="col-xs-12 col-md-6 py-4 welcome-div">   
             <div class="col-xs-12 col-md-6">
                 <div class="col-12 login-row text-right">
                     <a href="{% url 'collections' %}" role="button" class="btn btn-homepage">
@@ -55,16 +55,18 @@
                     </a>
                 </div>
             </div>
+        </div> 
 
         {% elif profile.buyer_name == None %}
 
         <!-- Direct Authenticated but not profile users to complete profile -->
-
+        <div class="col-xs-12 col-md-6 py-4 welcome-div"> 
         <div class="col-xs-12 col-md-6">
             <div class="col-12 login-row text-right">
                     <a href="{% url 'profile' %}" role="button" class="btn btn-homepage">
                     Complete Buyer Profile
                     </a>
+                </div>
             </div>
         </div>
 
@@ -74,7 +76,7 @@
 
         <!-- Direct non-authenticated visitors to either login or sign-up -->
 
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-md-6 py-4 welcome-div">
 
             <!-- login-link -->
 
