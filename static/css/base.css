@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,500;0,600;0,800;1,400;1,500&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
+/* -------------------------- main / dody */
+
 
 html, body {
     height: 100%;
@@ -12,17 +14,16 @@ body {
     min-height: 50vh;
 }
 
-body > footer {
-    position: sticky;
-    height: calc(100vh - 300px);
-}
+
 
 @media (min-width: 768px) {
-.container, .container-md, .container-sm {
-    max-width: 1040px;
+    .container, .container-md, .container-sm {
+        max-width: 1040px;
 
+    }
 }
-}
+
+/* ---------------------------- homepage */
 
 .index-container {
     background-color: rgba(153, 99, 97, .9);
@@ -66,6 +67,41 @@ body > footer {
 }
 
 
+.welcome-section {
+    padding-top: 20%;
+    background-color: rgba(153, 99, 97, .9);
+    letter-spacing: 0.4vw;
+    margin: 0%;
+    
+}
+
+.welcome-div {
+    padding-top: 20%;
+}
+
+.about-section,
+.action-section {
+    text-align: center;
+}
+
+.action-section {
+    padding-top: 5%;
+}
+
+.login-link,
+.apply-link,
+.shop-link {
+    color: #005E66;
+    font-weight: 600;
+}
+
+.login-link:hover,
+.apply-link:hover,
+.shop-link:hover {
+    color:#996361;
+}
+
+
 
 /* ------------------------------ header & nav */
 
@@ -77,24 +113,10 @@ header {
     color: #996361;
 }
 
-i {
-    color: #005E66;
-}
-
-.fa-plus,
-.fa-minus {
-    color: #0A151A;
-}
-
-.fa-plus:hover,
-.fa-minus:hover {
-    color: #005E66;
-    font-size: larger;
-}
-
 .nav-link:hover {
     color: #005E66;
 }
+
 
 .logo-div,
 .navbars-div {
@@ -114,24 +136,6 @@ i {
     border-radius: 0;
 }
 
-
-/* ------------------------------ body */
-
-section h1 .page-title {
-    text-align: start;
-    z-index: -1;
-}
-
-.title-text {
-    /* text-align: center; */
-    font-family: 'Montserrat', 'sans-serif';
-    font-weight: 400;
-}
-
-.body-text {
-    font-family: 'Quicksand', 'sans-serif';
-}
-
 .header-container {
     padding-top: 180px;
 }
@@ -142,17 +146,50 @@ section h1 .page-title {
     max-height: 150px;
 }
 
+/* ------------------------------ icons */
+
+
+i {
+    color: #005E66;
+}
+
+.fa-plus,
+.fa-minus {
+    color: #0A151A;
+}
+
+.fa-plus:hover,
+.fa-minus:hover {
+    color: #005E66;
+    font-size: larger;
+}
+
+
+/* ------------------------------ text & fonts */
+
+section h1 .page-title {
+    text-align: start;
+    z-index: -1;
+}
+
+.title-text {
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: 400;
+}
+
+.body-text {
+    font-family: 'Quicksand', 'sans-serif';
+}
+
+
+
 .home-page-text {
     color: #F2F3F7;
 
     
 }
 
-/* @media only screen and (max-width: 600px) {
-    .home-logo {
-        align-items: center;
-        max-width: 150px;
-  } */
+/* ------------------------------ search */
 
 .search-bar {
     background: none;
@@ -180,7 +217,7 @@ section h1 .page-title {
 }
 
 
-/* ------------------------------- Product detail */
+/* --------------------------- product detail & inputs */
 
 .product-section {
 
@@ -201,7 +238,7 @@ section h1 .page-title {
 
 }
 
-/* ------------------------------- Buttons */
+/* ------------------------------- buttons */
 
 .btn-affirmative,
 .btn-back {
@@ -243,41 +280,6 @@ section h1 .page-title {
     border: 1px solid #A98B7D;
     border-radius: 0px;
     color: #996361;
-}
-
-/* ------------------------------- Homepage */
-.welcome-section {
-    padding-top: 20%;
-    background-color: rgba(153, 99, 97, .9);
-    letter-spacing: 0.4vw;
-    margin: 0%;
-    
-}
-
-.welcome-div {
-    padding-top: 20%;
-}
-
-.about-section,
-.action-section {
-    text-align: center;
-}
-
-.action-section {
-    padding-top: 5%;
-}
-
-.login-link,
-.apply-link,
-.shop-link {
-    color: #005E66;
-    font-weight: 600;
-}
-
-.login-link:hover,
-.apply-link:hover,
-.shop-link:hover {
-    color:#996361;
 }
 
 /* ------------------------------- About Page */
@@ -357,7 +359,6 @@ section h1 .page-title {
 
 
 /* ------------------------------- Product Cards */
-
 
 
 hr {
@@ -460,16 +461,12 @@ button.info-open:hover {
 }
 
 
-
-/* .collection-card-img-bottom
-.collection-card
-.collection-card-body
-.collection-card-title
-.collection-card-text {
-
-} */
-
 /* ------------------------------- Footer */
+
+body > footer {
+    position: sticky;
+    top: 100vh;
+}
 
 footer {
     background: #F2F3F7;
@@ -561,6 +558,7 @@ input[name='q']::placeholder {
 }
 
 /* --------------------------- error handlers */
+
 .error-container {
     background-color: #A98B7D;
     color:#0A151A;
