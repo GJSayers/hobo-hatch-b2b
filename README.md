@@ -107,7 +107,7 @@
 
 ## Project Management / Timekeeping
 
-* I used [Github Projects](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/about-projects) to keep track of tasks that needd completing as part of this Full Stack Ecommerce project.  You can view the live project board [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1)
+* I used [Github Projects](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/about-projects) to keep track of tasks that need completing as part of this Full Stack Ecommerce project.  You can view the live project board [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1)
 
 * Here is an example of the board in full swing part way through the project, I used the issues features to track bugs and fixes
 

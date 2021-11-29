@@ -1,3 +1,12 @@
+# Hobo & Hatch B2B Ordering Portal - Testing Documentation
+
+
+## User Story Testing 
+
+* I have gone through and tested each userjourney in relation to the user stories for functionality, usability and responsiveness - below is the final version of the sheet which I have been updating througout the project - Any bugs encountered along the way are documented in the next section covering the Bugs & Fixes:
+
+
+
 | **US ID**       | **User Type**                       | **Action**                                                    |                                                                                                                                                                                                                                                | **Expected Outcome**                                                                                                                                                                                                                                                         | **Page / feature**                                                                                             | **Functionality**                  | **Usability**                                                                                                                                                                                                                                                 | **Responsiveness**                                                                                                                              | **Data Management**                                                                                                                                                                                                                                                                 | **CRUD**                   |
 | --------------- | ----------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
 | **US 1**        | **Shopper / Stockist**              | **View Products**                                             |                                                                                                                                                                                                                                                | **Select items to purchase**                                                                                                                                                                                                                                                 |                                                                                                                | **User story satisfied** ✅         |                                                                                                                                                                                                                                                               |                                                                                                                                                 |                                                                                                                                                                                                                                                                                     | **Product - R** ✅          |
@@ -51,18 +60,34 @@
 
 ## Bugs & Fixes
 
-* Filtering checkbox choices:
+* BUG: I have keps a track of the various bug details and solutions that were encountered in the project by raising issues in the Bugs & Fixes column of the project board - Where relevant below, the solutions are linked to. 
 
-Part of the **US 2** is to be able to view the products by Category, which I had chosen to deliver as a checkbox of options on the collections page.  For some time I was unable to get the products to filter appropriately ( no filtering was occuring, despite query logic in the view )
+* BUG: Product detail page not showing product properties dropdown. You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-73742593)
 
-In the end I managed to solve this by combining solutions from these two Stack overflow posts:
-[How to get checkbox values in django application](https://stackoverflow.com/questions/48735726/how-to-get-checkbox-values-in-django-application)
-[How to filter with multiple values from checkboxes in Django?](https://stackoverflow.com/questions/58245655/how-to-filter-with-multiple-values-from-checkboxes-in-django)
+* BUG: Checkout success not diplaying sizeitem breakdown You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-73636239)
+
+* BUG: Checkout and Admin, unable to display individual sizes. You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-73636055)
+
+* BUG: Input boxes are not displaying the numeric content due to size crunching on smaller devices. You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-72361530)
+
+* BUG: When adding products to the bag, the first product does not add correctly to the bag, the first product goes in as an empty dictionary, then following entries add correctly. You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-72361114)
+
+* BUG: Checkout Issue with saving the database - Problem in Orders & Profiles Models #4 You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-70915631)
 
 
-### Testing Tools
+* BUG: Filtering checkbox choices - Not showing despite logic in place: You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-73826858)
+
+
+
+
+
+
+### Testing Tools & Results 
+
+* The following tools were used to test the validity of the code on the site.  
 
 * [W3C Validator](https://validator.w3.org/) To test the validity of the HTML code
+* Round 1 of testing can be viewed in [this folder](docs/code_testing/round_1)
 * [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) To test the validity of the CSS code
 * [JShint](https://jshint.com/)  To test the validity of the JS code
 * [PEP8 Online](http://pep8online.com/) To test the validity of the JS code
