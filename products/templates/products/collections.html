@@ -15,7 +15,8 @@
         
         <!-- Logged in customer contents -->
         {% if request.user.is_authenticated %}
-            {% include 'profiles/includes/logged_in_row.html' %}
+            {% if profile.buyer_name != None %}
+                {% include 'profiles/includes/logged_in_row.html' %}
         
             
                 <!-- Filter by category section -->
@@ -40,74 +41,58 @@
                     <button type="button" class="categories-open filter-button">Filter by Category <i class="fas fa-filter"></i></button>
                 </div>
         
-            {% for product in products %}
-            <!-- Only display items/products the user has permission to view  -->      
-            
+                {% for product in products %}
+                <!-- Only display items/products the user has permission to view  -->      
+                
 
-                    <div class="col-sm-12 col-md-6 col-lg-4 text-center">
-                        <!-- Product Image and Title div -->
-                        <div class="col">
+                        <div class="col-sm-12 col-md-6 col-lg-4 text-center">
+                            <!-- Product Image and Title div -->
                             <div class="col">
-                                <div class="card collection-card">
-                                    <div class="card-body collection-card-body">
-                                        <h5 class="card-title title-text collection-card-title">{{ product.product_name }}</h5>
-                                        <p class="card-text collection-card-text">Cost £{{ product.product_price }} | RRP
-                                            £{{ product.rrp_price}}</p>
-                                        <p class="card-text product-info">Product Info </p>
-                                        <button type="button" class="info-open"><i
-                                                class="fas fa-chevron-circle-down"></i></a></button>
-
-                                        <!-- Product Info div -->
-                                        {% include 'products/includes/product_properties.html' %}
-                                    </div>
-                                    <a href="{% url 'product_detail' product.id %}">
-                                        <img src="{{ product.image_url }}" class="card-img-bottom collection-card-img-bottom"
-                                            alt="{{ product.product_name|lower }}">
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- Product input & quick add div -->
-                            <div class="row">
                                 <div class="col">
-                            
+                                    <div class="card collection-card">
+                                        <div class="card-body collection-card-body">
+                                            <h5 class="card-title title-text collection-card-title">{{ product.product_name }}</h5>
+                                            <p class="card-text collection-card-text">Cost £{{ product.product_price }} | RRP
+                                                £{{ product.rrp_price}}</p>
+                                            <p class="card-text product-info">Product Info </p>
+                                            <button type="button" class="info-open"><i
+                                                    class="fas fa-chevron-circle-down"></i></a></button>
+
+                                            <!-- Product Info div -->
+                                            {% include 'products/includes/product_properties.html' %}
+                                        </div>
+                                        <a href="{% url 'product_detail' product.id %}">
+                                            <img src="{{ product.image_url }}" class="card-img-bottom collection-card-img-bottom"
+                                                alt="{{ product.product_name|lower }}">
+                                        </a>
+                                    </div>
                                 </div>
+
+                                <!-- Product input & quick add div -->
+                                <div class="row">
+                                    <div class="col">
+                                
+                                    </div>
+                                </div>
+                                <hr>
                             </div>
-                            <hr>
                         </div>
-                    </div>
-                    
-            
-            {% endfor %}
+                {% endfor %}
             {% else %}
-            <div class="row">
-                <div class="col-12 login-row body-text justify-content-center">
-                    <h2 class="py-2 title-text">Sorry, you need to be logged in to view this page</h2>
-                    <p class="body-text justify-content-center">Already a Stockist? 
-                        <a href="{% url 'account_login' %}" class="login-link" role="link">
-                        Login to Shop the latest Hobo & Hatch Collections
+            <div class="row p-4 m-4">
+                <div class="col-12 login-row body-text awaiting-profile p-4 m-4 text-center">
+                    <hr>
+                    <h2 class="py-2 title-text">Please complete your Profile to shop the collections!</h2>
+                        <a href="{% url 'profile' %}" role="button" class="btn btn-homepage">
+                            Complete Buyer Profile
                         </a>
                     </p>
-                    
-                </div>
-                <div class="col-12 apply-row justify-content-center">
-                    <p class="body-text justify-content-center">Not a stockist yet?
-                        <a href="{% url 'account_signup' %}" class="apply-link" role="link">
-                            Apply to be a stockist
-                        </a>
-                    </p>
-                </div>
-                <div class="col-12 retail-row justify-content-center">
-                    <p class="body-text justify-content-center">Regular customer?
-                        <a href="https://www.hoboandhatch.co.uk/" class="shop-link" role="link">
-                            Shop our retail site
-                        </a>
-                    </p>
+                    <hr>
                 </div>
             </div>
-             
+            {% endif %}
         {% endif %}
-    </div>
+        </div>
     </main>
 {% endblock %}
 
