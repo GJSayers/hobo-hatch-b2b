@@ -15,7 +15,6 @@ body {
 }
 
 
-
 @media (min-width: 768px) {
     .container, .container-md, .container-sm {
         max-width: 1040px;
@@ -554,8 +553,7 @@ input[name='q']::placeholder {
     border: 1px solid #0A151A;
     border-radius: 0%;
 }
-}
-}
+
 
 /* --------------------------- error handlers */
 
