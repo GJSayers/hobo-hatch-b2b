@@ -105,6 +105,50 @@
 ### Imagery
 * Imagery used will be source from the brand itself - [Hobo & Hatch](https://www.hoboandhatch.co.uk/)
 
+## Project Management / Timekeeping
+
+* I used [Github Projects](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/about-projects) to keep track of tasks that needd completing as part of this Full Stack Ecommerce project.  You can view the live project board [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1)
+
+* Here is an example of the board in full swing part way through the project, I used the issues features to track bugs and fixes
+
+![](docs/github_projectboard.png)
+
+## Technologies Used
+-----
+### Languages Used
+-----
+
+*  [HTML5](https://en.wikipedia.org/wiki/HTML5)
+*  [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+*  [Javascript](https://www.javascript.com/)
+*  [Python3](https://www.python.org/)
+
+### Frameworks, Libraries, Programs & Platforms Used
+-----
+*  [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/) is used as a css framework to ensure responsive design delivery within the timeframe, particular items tilised for features include cards for the products, accordion for the FAQ's, Carousel for the About
+*  [Lucid.io](https://lucid.co/) is used to create the conceptual designs for the database
+*  [Django](https://docs.djangoproject.com/en/3.2/topics/auth/default/) is used as a the backend and supports the use of Jinja templates. 
+*  [Table to Markdown](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/) is used to convert spreadsheets to markdown formatting for the purposes of readme and testing 
+*  [Balsamiq](https://balsamiq.com/) is used to create the wireframes
+*  [JQuery](https://jquery.com/) is used mainly to activate elements in the materialise CSS. 
+*  [Hover.css](https://ianlunn.github.io/Hover/) I used hover to make elements more interactive.
+*  [Google Fonts](https://fonts.google.com/) Is used to serve the archivo and Montserrat and Quicksand 
+fonts used throughout the project
+*  [Favicon.io](https://favicon.io/favicon-converter/) Was used to generate favicons for the project.
+*  [Website Mockup Generator](https://websitemockupgenerator.com/) Was used to generate project mock-ups. 
+*  [Coolors](https://coolors.co/) was used to generate the colour pallete.
+*  [GitHub](https://github.com/) is used to file the repository and record the version control. 
+*  [GitPod](https://gitpod.io) was used for development and version control.
+*  [Heroku](https://www.heroku.com) is the cloud-based platform used to deploy the project.
+* [Google DevTools](https://developer.chrome.com/docs/devtools/) Has been used without the project to test, evaluate, edit and assess the project. 
+
+### Testing Tools
+
+* [W3C Validator](https://validator.w3.org/) To test the vlidity of the HTML code
+* [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) To test the validity of the CSS code
+* [JShint](https://jshint.com/)  To test the validity of the JS code
+* [PEP8 Online](http://pep8online.com/) To test the validity of the JS code
+
 ## Deployment
 
 The deployment of a Full Stack ecommerce store using the Django framework takes multiple different considerations since we are also needing to store and serve multiple different images, take payments and store product and order data. 
@@ -299,6 +343,13 @@ in the JSON tab, on the resources row, you will need to add again the **arn numb
 * You should then also be able to see your static folder in your S3 bucket
 
 
+
+
+#### Testing
+-----
+Detailed testings has been carried out for functionality, usability and responsiveness which are documented in [Testing](TESTING.md) with supporting documentation and testing results available in the [testing folder](static/testing)
+
+
 #### DEPLOYMENT ISSUES 
 I decided to deploy early so as not to get nasty surprises close to the due date of the project - I came up against a few issues and I thought it would be useful to document these here.  
 * The first error I encountered on this process was "Django.db.utiles.DataError: value to long for type"
@@ -315,15 +366,7 @@ So I decided to try this and the remaining migrations processed. However another
 After running through where the process may have gone wrong and with my mentor and finding no obvious methodology errors, we decided to remove the migrations - and with help from tutor support re-install them and re-running all the migrations. 
 
 
-## Bugs & Fixes
 
-* Filtering checkbox choices:
-
-Part of the **US 2** is to be able to view the products by Category, which I had chosen to deliver as a checkbox of options on the collections page.  For some time I was unable to get the products to filter appropriately ( no filtering was occuring, despite query logic in the view )
-
-In the end I managed to solve this by combining solutions from these two Stack overflow posts:
-[How to get checkbox values in django application](https://stackoverflow.com/questions/48735726/how-to-get-checkbox-values-in-django-application)
-[How to filter with multiple values from checkboxes in Django?](https://stackoverflow.com/questions/58245655/how-to-filter-with-multiple-values-from-checkboxes-in-django)
 
 
 
