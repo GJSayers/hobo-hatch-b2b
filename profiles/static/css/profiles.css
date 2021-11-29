@@ -1,7 +1,30 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 /* ---------------------------------- profile page styling */
 /* ---------------------------------- form controls */
 #profile-update-form .form-control {
     color: #0A151A;
+}
+
+#profile-update-form input::-webkit-input-placeholder {
+    color: #A98B7D;
+}
+
+#profile-update-form input::-moz-placeholder {
+    color: #A98B7D;
+}
+
+#profile-update-form input:-ms-input-placeholder {
+    color: #A98B7D;
+}
+
+#profile-update-form input::-ms-input-placeholder {
+    color: #A98B7D;
 }
 
 #profile-update-form input::placeholder {
@@ -23,7 +46,8 @@
     width: 100%;
     opacity: 80%;
     height: 20vw;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
 }
 
 .card-img-overlay {

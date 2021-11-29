@@ -83,6 +83,10 @@ body {
     text-align: center;
 }
 
+.about-page-text {
+    color: #0A151A;
+}
+
 .action-section {
     padding-top: 5%;
 }
@@ -141,8 +145,8 @@ header {
 
 .home-logo {
     align-items: center;
-    max-width: 250px;
-    max-height: 150px;
+    max-width: 200px;
+    max-height: 125px;
 }
 
 /* ------------------------------ icons */
@@ -272,6 +276,14 @@ section h1 .page-title {
     font-size: large;
     color: #005E66;
 }
+
+/* -------------------------- category filter */
+
+.filter-display {
+    padding-top: 7%;
+}
+
+
 
 /* ------------------------------- Checkboxes */
 
