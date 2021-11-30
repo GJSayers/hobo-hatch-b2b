@@ -75,45 +75,42 @@
 
                         <!-- If user is a super user they can access product management -->
                       
-  
-                      
-
                         <!-- Collections dropdown -->
-                      <li class="">
-                        <a class="dropdown-item" href="{% url 'collections' %}">View All</a>
+                      <li>
+                        <a class="dropdown-item" href="{% url 'collections' %}" aria-label="view all products">View All</a>
                       </li>
                       {% if profile.categories %}
 
                         {% if 'blankets' in profile.categories %}
-                      <li class="">
-                        <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=blankets">Blankets</a>
+                      <li>
+                        <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=blankets" aria-label="view blankets">Blankets</a>
                       </li>
                         {% endif %}
                         
 
                         {% if 'leather_accessories' in profile.categories  %}
-                      <li class="">
-                        <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=leather_accessories">Leather Accessories</a>
+                      <li>
+                        <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=leather_accessories" aria-label="view leather accessories">Leather Accessories</a>
                       </li>
                         {% endif %}
                         
 
                         {% if 'jewellery' in profile.categories %}
-                      <li class="">
-                      <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=jewellery">Jewellery</a>
+                      <li>
+                      <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=jewellery" aria-label="view jewellery">Jewellery</a>
                       </li>
                         {% endif %}
 
                         {% if 'knitted_accessories' in profile.categories %}
                       <li class="">
-                      <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=knitted_accessories">Knitted Accessories</a>
+                      <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=knitted_accessories" aria-label="knitted accessories">Knitted Accessories</a>
                       </li>
                         {% endif %}
                         
 
                         {% if 'clothing' in profile.categories %}
                       <li class="">
-                        <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=clothing">Clothing</a>
+                        <a class="dropdown-item" href="{% url 'collections' %}?chosen_categories=clothing" aria-label="clothing">Clothing</a>
                       </li>
                         {% endif %}
                       {% endif %}
@@ -145,7 +142,6 @@
             {% endif %}
           </ul>
         </div>
-        
 
           <!-- Logo block -->
         <div class="col-sm-12 col-lg-4 logo-div my-2 py-2 pb-2 order-0 position-relative justify-content-center">
@@ -230,12 +226,11 @@
 
               <!-- Collections links -->
             <div class="col-md-4 text-center mx-0 mb-3 mt-2 p-0">
-              <p class="text-uppercase  mb-3 mt-3">
+              <p class="text-uppercase  mb-3 mt-2 mx-0 p-0">
                 Collections
               </p>
               {% if profile.categories %}
                 {% if 'blankets' in profile.categories %}
-                  
                   <p>
                     <a href="{% url 'collections' %}?chosen_categories=blankets" class="text-reset" aria-label="blankets">{{ blankets }}</a>
                   </p>
@@ -269,8 +264,8 @@
             </div>
 
               <!-- Contact Links -->
-            <div class="col-md-4 text-center mx-0 mb-3 mt-3 p-0">
-              <p class="text-uppercase mb-3 mt-3">
+            <div class="col-md-4 text-center mx-0 mb-3 mt-2 p-0">
+              <p class="text-uppercase mb-3 mt-2 mx-0 p-0">
                 Contact
               </p>
               <p class="pb-0">

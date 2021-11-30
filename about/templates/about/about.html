@@ -15,15 +15,17 @@
 
         <!-- bag row -->
 
-    {% if request.user.is_authenticated %}
+    
+    <div class="row authenticate-row justify-content-center pt-4">
+        {% if request.user.is_authenticated %}
         {% include 'profiles/includes/logged_in_row.html' %}
-    {% else %}
-    <div class="row authenticate-row justify-content-center">
+        {% else %}
         <p class="text-center">
         <span class="col-6"><a class="login-link" href="{% url 'account_login' %}">Login</a></span>|<span class="col-6"><a class="login-link" href="{% url 'account_signup' %}">Join</a></span>
         </p>
+        {% endif %}
     </div>
-    {% endif %}
+    
 
             <!-- Welcome Section -->
 

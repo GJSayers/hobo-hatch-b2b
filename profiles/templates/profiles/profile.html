@@ -75,7 +75,7 @@
 
             <hr>
             <p><span><i class="fas fa-user-edit"></i> Update Details</span></p>
-            <button type="button" class="profile-details-open">
+            <button type="button" class="profile-details-open" aria-label="toggle profile details">
                 <i class="fas fa-chevron-circle-down"></i>
             </button>
             <div class="col-12 profile-details text-right" style="display:none;">
@@ -88,10 +88,10 @@
 
             <!-- Profile Update Form / Profile creation form -->
 
-                <form action="{% url 'profile' %}" method="POST" class="mt-3" id="profile-update-form">
+                <form action="{% url 'profile' %}" method="POST" class="mt-3" id="profile-update-form" aria-label="update profile details form">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button class="btn btn-affirmative float-right"><i class="fas fa-user-edit"></i> Submit
+                    <button class="btn btn-affirmative float-right" aria-label="submit updated details"><i class="fas fa-user-edit"></i> Submit
                         Details</button>
                 </form>
             </div>
@@ -105,7 +105,7 @@
         <section class="col-sm-12 col-md-6 mt-md-3 mb-3 text-right history-section">
             <hr>
             <p><span><i class="fas fa-clipboard-list"></span></i> Order History</p>
-            <button type="button" class="order-history-open">
+            <button type="button" class="order-history-open" aria-label="toggle order history">
                 <i class="fas fa-chevron-circle-down"></i>
             </button>
             <div class="col-12 order-history table-responsive" style="display:none;">
