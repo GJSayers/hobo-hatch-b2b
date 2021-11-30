@@ -8,14 +8,15 @@ def faqs(request):
     """
     Index Page View 
     """
+    faqs = Faqs.objects.all()
+    context = {
+            'faqs': faqs,
+        }
     if request.user.is_authenticated:
         profile = get_object_or_404(UserProfile, user=request.user)
-        faqs = Faqs.objects.all()
-
         context = {
-            'profile': profile,
             'faqs': faqs,
         }
 
         return render(request, 'faqs/faqs.html', context)
-    return render(request, 'faqs/faqs.html')
+    return render(request, 'faqs/faqs.html', context)

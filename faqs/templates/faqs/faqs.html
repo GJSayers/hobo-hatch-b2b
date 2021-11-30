@@ -18,15 +18,16 @@
 
             <!-- FAQ's Section -->
 
-    <section class="p-2 row faq-section justify-content-center text-center">
+    <section class="py-4 row faq-section justify-content-center text-center">
         <div class="col-12">
-            <h1 class="page-title title-text">
+            <h1 class="pt-4 page-title title-text">
                 FAQ's
             </h1>
+            <hr>
         </div>
             <!-- Accordion of faq's -->
 
-        <div class="accordion" id="accordianFaqs">
+        <div class="accordion py-2" id="accordianFaqs">
 
             {% for faq in faqs %}
 
@@ -43,7 +44,7 @@
                     </h2>
                 </div>
           
-                <div id="collapse{{ faq.id }}" class="collapse" aria-labelledby="heading{{ faq.id }}" data-parent="#accordianFaqs">
+                <div id="collapse{{ faq.id }}" class="collapse pb-4" aria-labelledby="heading{{ faq.id }}" data-parent="#accordianFaqs">
                     <div class="card-body accordian-card-body">
                     
                             {{ faq.answer }}
@@ -52,11 +53,6 @@
                 </div>
             </div>
             {% endfor %}
-        </div>
-        <div class="col-12 text-center contact-div">
-            <h3 class="contact-text">Didn't find the answer you were looking for?
-                <a class="contact-link" href="#">Please contact our team</a>
-            </h3>
         </div>
     </section>  
 </main>
