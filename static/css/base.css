@@ -54,7 +54,7 @@ body {
     margin: auto; 
     min-width: 50%;
     min-height: 50%;
-    opacity: 70%;
+    opacity: 90%;
   }
 
 /* .bg-overlay {
@@ -259,7 +259,7 @@ section h1 .page-title {
 
 .btn-homepage {
     border-radius: 0px;
-    background-color: rgba(153, 99, 97, 0.3);
+    background-color: rgba(153, 99, 97, 0.5);
     border: 1px solid #F2F3F7;
     margin: 7px;
     width: 200px;
