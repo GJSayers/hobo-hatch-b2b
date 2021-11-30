@@ -16,9 +16,11 @@
 <main class="container justify-content-center error-container">
     <div class="row">
         <div class="col">
-            <h2>Sorry, something's not quite right here! (400 error)</h2>
-            <p>Try clearing your cache and checking you have the right address</p>
-            <p>Go back to home {% url 'home' %}</p>
+            <h2 class="py-2">Sorry, something's not quite right here! (400 error)</h2>
+            <p class="py-2">Try clearing your cache and checking you have the right address</p>
+            <a href="{% url 'home' %}" role="button" class="btn btn-homepage">
+                Back to Homepage
+            </a>
         </div>
 
     </div>

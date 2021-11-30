@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = False
 
 ALLOWED_HOSTS = ['hobo-hatch-b2b.herokuapp.com', 'localhost']
 
@@ -104,9 +104,6 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 5
-# ACCOUNT_FORMS = {
-# 'signup': 'profiles.forms.UserProfileForm',
-# }
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 

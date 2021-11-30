@@ -669,7 +669,8 @@ input[name='q']::placeholder {
 /* --------------------------- error handlers */
 
 .error-container {
-    background-color: #A98B7D;
+    padding: 20%;
+    background-color: rgba(153, 99, 97, .3);
     color:#0A151A;
 }
 

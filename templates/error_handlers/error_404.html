@@ -16,8 +16,10 @@
 <main class="container justify-content-center error-container">
     <div class="row">
         <div class="col">
-            <h2>Sorry, this page no longer lives here! (404 error)</h2>
-            <p>Go back to home {% url 'home' %}</p>
+            <h2 class="py-2">Sorry, this page no longer lives here! (404 error)</h2>
+            <a href="{% url 'home' %}" role="button" class="btn btn-homepage">
+                Back to Homepage
+            </a>
         </div>
 
     </div>

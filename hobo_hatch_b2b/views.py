@@ -1,8 +1,6 @@
 from django.shortcuts import render
 
 
-
-
 def error_404(request, exception):
     """
     Display 404 error message and home link
