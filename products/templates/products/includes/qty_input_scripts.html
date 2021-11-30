@@ -39,7 +39,7 @@
         e.preventDefault();
         var closestInput = $(this).closest('.input-wrapper').find('.qty_input')[0];
         var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue - 1)
+        $(closestInput).val(currentValue - 1);
         var size = $(this).data('size');
         handleEnableDisable(size);
     });

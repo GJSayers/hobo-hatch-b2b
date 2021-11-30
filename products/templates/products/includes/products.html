@@ -1,13 +1,10 @@
 <script>
-    
+
 // Enable / disable
 function handleEnableDisable(size) {
     currentValue = parseInt($(`#id_qty_${size}`).val());
-    console.log(currentValue)
     var minusDisabled = currentValue < 1;
-    console.log(currentValue)
     var plusDisabled = currentValue > 98;
-    console.log(currentValue)
     $(`.decrement-qty_${size}`).prop('disabled', minusDisabled);
     $(`.increment-qty_${size}`).prop('disabled', plusDisabled);
 }
@@ -42,7 +39,7 @@ $('.decrement-qty').click(function(e) {
     e.preventDefault();
     var closestInput = $(this).closest('.input-wrapper').find('.qty_input')[0];
     var currentValue = parseInt($(closestInput).val());
-    $(closestInput).val(currentValue - 1)
+    $(closestInput).val(currentValue - 1);
     var size = $(this).data('size');
     handleEnableDisable(size);
 });

@@ -17,8 +17,9 @@ def collections(request):
         user_categories = profile.categories
         permissions_list = user_categories[0:]
         print("permissions_list", permissions_list)
-        products = Product.objects.filter(product_category__in=Category.objects.filter(
-                                            name__in=permissions_list))
+        products = Product.objects.filter(
+            product_category__in=Category.objects.filter(
+                name__in=permissions_list))
         categories = Category.objects.all()
         permissions_categories = Category.objects.filter(
                                             name__in=permissions_list)
@@ -28,11 +29,12 @@ def collections(request):
         ring = Ring.objects.all()
         clothing_sizes = Clothing(Product).ClothingSizes.choices
         chosen_categories = None
-        
+
         if request.GET:  # filter the products by category checkbox
             chosen_categories = request.GET.getlist('chosen_categories')
-            products = Product.objects.filter(product_category__in=Category.objects.filter(
-                                            name__in=chosen_categories))
+            products = Product.objects.filter(
+                            product_category__in=Category.objects.filter(
+                                name__in=chosen_categories))
 
         context = {
             'profile': profile,
@@ -45,7 +47,7 @@ def collections(request):
             'clothing_sizes': clothing_sizes,
             'categories': categories,
             'chosen_categories': chosen_categories,
-            
+
         }
         print("product_category", product_category)
         print('chosen_categories', chosen_categories)
@@ -62,7 +64,7 @@ def product_detail(request, product_id):
         product = get_object_or_404(Product, pk=product_id)
         user_categories = profile.categories
         print("user_categories", user_categories)
-        
+
         permissions_list = user_categories[0:]
         print("permissions_list", permissions_list)
         categories = Category.name
@@ -73,7 +75,7 @@ def product_detail(request, product_id):
         jewellery_size_type = Product.SizeType.jewellery_sizes
         ring = Ring.objects.all()
         clothing_sizes = Clothing(Product).ClothingSizes.choices
-        
+
         context = {
             'profile': profile,
             'permissions_list': permissions_list,

@@ -34,16 +34,19 @@ def profile(request):
                 if user_categories:
                     messages.success(request, 'Details updated successfully')
                 else:
-                    messages.success(request, 'Thank you for applying to be a stockist, your request will be processed by our team within 1 working day')
+                    messages.success(request, 'Thank you for applying \
+                                     to be a stockist, your request will \
+                                        be processed by our team \
+                                            within 1 working day')
                     return render(request, 'home/index.html')
 
             else:
-                messages.error(request, 'Update failed. Please check your form is valid.')
+                messages.error(request, 'Update failed. \
+                               Please check your form is valid.')
         else:
             form = UserProfileForm(instance=profile)
         orders = profile.orders.all()
 
-        
         context = {
             'profile': profile,
             'categories': categories,
@@ -59,12 +62,14 @@ def profile(request):
 
 
 def order_history(request, order_number):
-    
+
     order = get_object_or_404(Order, order_number=order_number)
     order_date = order.date
 
     messages.info(request, (
-        f'This order was placed on {order_date}, this is a copy of order number {{order_number|truncatechars:6}}the confirmation generated at the time of purchase.'
+        f'This order was placed on {order_date}, \
+            this is a copy of order number {{order_number|truncatechars:6}} \
+                the confirmation generated at the time of purchase.'
     ))
 
     template = 'checkout/checkout_success.html'

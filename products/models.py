@@ -183,6 +183,3 @@ class Clothing(Product):
     clothing_sizes = MultiSelectField(max_length=11,
                                       choices=ClothingSizes.choices,
                                       default="XS")
-
-    # def __str__(self):
-    #    return self.product_name

@@ -51,7 +51,7 @@ class UserProfile(models.Model):
         ('Clothing', 'Clothing'),
         ('Gifting', 'Gifting'),
     )
-    
+
     stockist_market = MultiSelectField(max_length=100,
                                        choices=MARKET_OPTIONS)
     website_url = models.URLField(max_length=200, null=True, blank=True)
@@ -74,7 +74,7 @@ class UserProfile(models.Model):
 @receiver(post_save, sender=User)
 def create_or_update_stockist(sender, instance, created, **kwargs):
     """
-    Create / Update stockist profile 
+    Create / Update stockist profile
     """
     if created:
         UserProfile.objects.create(user=instance)
