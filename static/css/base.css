@@ -147,8 +147,8 @@ header {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    max-width: 250px;
-    max-height: 150px;
+    width: 225px;
+    height: 145px;
 }
 
 /* ------------------------------ icons */
@@ -259,7 +259,7 @@ section h1 .page-title {
 
 .btn-homepage {
     border-radius: 0px;
-    background-color: rgba(153, 99, 97, 0.5);
+    background-color: rgba(153, 99, 97, 0.7);
     border: 1px solid #F2F3F7;
     margin: 7px;
     width: 200px;
