@@ -52,7 +52,6 @@ def checkout(request):
             Checks id the order form data is valid
             Saves buyer data if box is checked
             """
-            print("form valid")
             order = order_form.save()
             for item_id, item_data in bag.items():
                 """
@@ -98,17 +97,14 @@ def checkout(request):
                                  for assistance!"))
                     order.delete()
                     return redirect(reverse('view_bag'))
-            # Update user profile details
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(
                    reverse('checkout_success', args=[order.order_number]))
         else:
-            print(order_form.errors)
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
         bag = request.session.get('bag', {})
-        print("checkout bag", bag)
 
         if not bag:
             messages.error(request, "There are currently \
@@ -116,7 +112,6 @@ def checkout(request):
             return redirect(reverse('collections'))
 
         live_bag = bag_contents(request)
-        print("live_bag", live_bag)
         total = live_bag['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
@@ -191,7 +186,6 @@ def checkout_success(request, order_number):
         profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
         order = get_object_or_404(Order, order_number=order_number)
-        # Attach the user profile to the order
         order.save()
         if save_info:
             profile_data = {

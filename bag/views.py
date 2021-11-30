@@ -132,7 +132,6 @@ def add_to_bag(request, item_id):
 
         else:
             bag[item_id] = {product_type: size_qty}
-            print("create", size_qty)
             messages.success(
                 request,
                 f'{product.product_name} has been added to your bag')
@@ -156,7 +155,6 @@ def add_to_bag(request, item_id):
         add_quantities(universal_qty, product_type, item_id, bag)
 
     request.session['bag'] = bag
-    print("session bag", request.session['bag'])
     return redirect(redirect_url)
 
 
@@ -164,60 +162,44 @@ def edit_bag(request, item_id):
     """
     Edit or remove items from the bag view
     """
-    print("edit_bag", edit_bag)
     beltbag_bumbag = request.POST.get('beltbag_bumbag')
-    print("beltbag_bumbag", beltbag_bumbag)
     belts = request.POST.get('belts')
-    print("belts", belts)
     beanie_hats = request.POST.get('beanie_hats')
-    print("beanie_hats", beanie_hats)
     blankets = request.POST.get('blankets')
-    print("blankets", blankets)
     knitwear = request.POST.get('knitwear')
-    print("knitwear", knitwear)
     rings = request.POST.get('rings')
-    print("rings", rings)
 
     if knitwear:
-        print("knitwear recognsed")
         xs = int(request.POST.get('xs'))
         sm = int(request.POST.get('sm'))
         m = int(request.POST.get('m'))
         lg = int(request.POST.get('lg'))
         xl = int(request.POST.get('xl'))
         product_qty = [xs, sm, m, lg, xl]
-        print("product_qty",  product_qty)
         clothing_line_count = int(sum(product_qty))
-        print("clothing_line_count", clothing_line_count)
         ring_line_count = None
         one_size = None
     elif rings:
-        print("rings recognised")
         l = int(request.POST.get('l'))
         n = int(request.POST.get('n'))
         p = int(request.POST.get('p'))
         s = int(request.POST.get('s'))
         u = int(request.POST.get('u'))
         product_qty = [l, n, p, s, u]
-        print("product_qty",  product_qty)
         ring_line_count = sum(product_qty)
-        print("ring_line_count", ring_line_count)
         clothing_line_count = None
         one_size = None
     elif beltbag_bumbag or belts or beanie_hats or blankets:
-        print("other items recognised")
         one_size = int(request.POST.get('one_size'))
         clothing_line_count = None
         ring_line_count = None
     else:
-        print("edit not working")
         return redirect(reverse('view_bag'))
 
     product = get_object_or_404(Product, pk=item_id)
     bag = request.session.get('bag', {})
 
     if clothing_line_count is not None:
-        print("clothing_line_count 2", clothing_line_count)
         bag[item_id]['knitwear']['xs'] = xs
         bag[item_id]['knitwear']['sm'] = sm
         bag[item_id]['knitwear']['m'] = m

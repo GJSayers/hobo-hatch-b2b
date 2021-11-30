@@ -13,10 +13,8 @@ def collections(request):
     """
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        print("profile", profile)
         user_categories = profile.categories
         permissions_list = user_categories[0:]
-        print("permissions_list", permissions_list)
         products = Product.objects.filter(
             product_category__in=Category.objects.filter(
                 name__in=permissions_list))
@@ -49,8 +47,6 @@ def collections(request):
             'chosen_categories': chosen_categories,
 
         }
-        print("product_category", product_category)
-        print('chosen_categories', chosen_categories)
         return render(request, 'products/collections.html', context)
     return render(request, 'home/index.html')
 
@@ -63,14 +59,9 @@ def product_detail(request, product_id):
         profile = UserProfile.objects.get(user=request.user)
         product = get_object_or_404(Product, pk=product_id)
         user_categories = profile.categories
-        print("user_categories", user_categories)
-
         permissions_list = user_categories[0:]
-        print("permissions_list", permissions_list)
         categories = Category.name
-        print("categories", categories)
         product_category = str(product.product_category)
-        print("product categrory", product_category)
         product_type = Type.name
         jewellery_size_type = Product.SizeType.jewellery_sizes
         ring = Ring.objects.all()
@@ -87,5 +78,4 @@ def product_detail(request, product_id):
             'ring': ring,
             'clothing_sizes': clothing_sizes
         }
-        print("product type in product details", product_type)
         return render(request, 'products/product_detail.html', context)

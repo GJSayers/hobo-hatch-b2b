@@ -17,15 +17,10 @@ def profile(request):
         profile = UserProfile.objects.get(user=request.user)
         user_categories = profile.categories
         permissions_list = user_categories[0:]
-        print("permissions_list", permissions_list)
         categories = Category.objects.all()
         permissions_categories = Category.objects.filter(
                                             name__in=permissions_list)
         form = UserProfileForm(instance=profile)
-        print("profile", profile)
-        print("profile", profile.user)
-        print("profile", profile.stockist)
-        print("profile", profile.buyer_name)
 
         if request.method == 'POST':
             form = UserProfileForm(request.POST, instance=profile)
@@ -65,7 +60,6 @@ def order_history(request, order_number):
 
     order = get_object_or_404(Order, order_number=order_number)
     order_date = order.date
-
     messages.info(request, (
         f'This order was placed on {order_date}, \
             this is a copy of order number {{order_number|truncatechars:6}} \

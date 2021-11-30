@@ -8,7 +8,6 @@ def bag_contents(request):
     bag_items = []
     line_totals = []
     line_qtys = []
-    print("line_totals", line_totals)
     bag = request.session.get('bag', {})
     total = 0
     total_items = 0
@@ -40,8 +39,6 @@ def bag_contents(request):
         line_qtys.append(line_qty)
         total_items = sum(line_qtys)
         total = sum(line_totals)
-
-    print("line_totals", line_totals)
 
     if total_items > 0:
         delivery = Decimal(settings.STANDARD_DELIVERY_COST)
