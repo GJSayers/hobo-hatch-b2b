@@ -31,4 +31,4 @@ class EmailConfHandler:
             body,
             settings.DEFAULT_FROM_EMAIL,
             [cust_email]
-        )        
+        )

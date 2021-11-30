@@ -37,7 +37,6 @@ class Order(models.Model):
     grand_total = models.DecimalField(max_digits=12, decimal_places=2,
                                       null=False, default=0)
 
-
     def _generate_order_number(self):
         """
         Generate a random, unique order number using UUID
@@ -69,7 +68,6 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
-    # IMPORTANT - DO NOT REMOVE ORDER LINE COLUMN #
     order = models.ForeignKey(Order, null=False, blank=False,
                               on_delete=models.CASCADE,
                               related_name='lineitems',)
@@ -83,16 +81,20 @@ class OrderLineItem(models.Model):
     xl_u = models.IntegerField(null=False, blank=False, default=0)
     lineitem_qty = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,
-                                         null=False, blank=False, editable=False)
+                                         null=False, blank=False,
+                                         editable=False)
 
     def save(self, *args, **kwargs):
         """
         Override the original save method to set the lineitem total
         and update the order total.
         """
-        self.lineitem_qty = (self.xs_l_one_size + self.sm_n + self.m_p + self.lg_s + self.xl_u)
+        self.lineitem_qty = (self.xs_l_one_size +
+                             self.sm_n + self.m_p +
+                             self.lg_s + self.xl_u)
         self.lineitem_total = self.product.product_price * self.lineitem_qty
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'SKU {self.product.product_sku} on order {self.order.order_number}'
+        return f'SKU {self.product.product_sku} \
+                on order {self.order.order_number}'

@@ -1,9 +1,6 @@
 from django import forms
 from .models import Order
 
-# class DateInput(forms.DateInput):
-#     input_type = 'date'
-
 
 class OrderForm(forms.ModelForm):
     class Meta:
@@ -23,7 +20,7 @@ class OrderForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'stockist': 'Store Name', 
+            'stockist': 'Store Name',
             'buyer_name': 'Buyer Name',
             'buyer_phone': 'Buyer Phone',
             'buyer_email': 'Buyer Email Address',
