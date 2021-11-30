@@ -121,11 +121,11 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  href="{% url 'profile' %}">Account   <i class="fas fa-angle-double-down"></i></a>
                 <ul class="dropdown-menu ml-auto text-left" aria-labelledby="navbarDropdownMenuLink">
-                  <li class="">
-                    <a class="dropdown-item" href="{% url 'profile' %}">My Account</a>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'profile' %}" aria-label="my account">My Account</a>
                   </li>
-                  <li class="">
-                    <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                  <li >
+                    <a class="dropdown-item" href="{% url 'account_logout' %}" aria-label="log out">Logout</a>
                   </li>
                 </ul> 
               </li>
@@ -134,10 +134,10 @@
 
                 <!-- If user not logged in show login & register links -->
               <li>
-                <a class="nav-link" role="button" href="{% url 'account_login' %}">Login</a>
+                <a class="nav-link" role="button" href="{% url 'account_login' %}" aria-label="log in">Login</a>
               </li>
               <li>
-                <a class="nav-link" role="button" href="{% url 'account_signup' %}">Register</a>
+                <a class="nav-link" role="button" href="{% url 'account_signup' %}" aria-label="register">Register</a>
               </li>
             {% endif %}
           </ul>
