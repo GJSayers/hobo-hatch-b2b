@@ -6,7 +6,7 @@ from .models import Faqs
 
 def faqs(request):
     """
-    Index Page View 
+    Index Page View
     """
     faqs = Faqs.objects.all()
     context = {
