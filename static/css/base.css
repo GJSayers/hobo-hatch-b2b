@@ -17,8 +17,6 @@ html, body {
 body {
     font-family: 'Quicksand', 'sans-serif';
     color: #0A151A;
-    height: calc(100vh - 180px);
-    min-height: 50vh;
 }
 
 
@@ -269,6 +267,16 @@ section h1 .page-title {
     color: #F2F3F7;
 }
 
+.btn-profile {
+    border-radius: 0px;
+    background-color: rgba(153, 99, 97, 0.7);
+    border: 1px solid #F2F3F7;
+    margin: 7px;
+    width: 200px;
+    font-size: small;
+    color: #F2F3F7;
+}
+
 .btn-homepage:hover {
 
     width: 210px;
@@ -423,6 +431,12 @@ button.info-open:hover {
 
 /* ------------------------------- Media queries */
 
+@media onlyscreen and (min-width: 375px) and (min-height: 667px){
+    .filter-button {
+        margin-top: 20%;
+    }
+}
+
 @media only screen and (min-width: 768px) and (min-height:1024px) {
     .collection-card-img-bottom {
         width: 100%;
@@ -513,18 +527,18 @@ footer {
 
 @media only screen and (min-height: 767px) and (min-width: 1023) {
     body {
-        min-height: 300px;
+        min-height: 1024px;
     }
 
     footer .footer-links {
         margin-top: 20%;
-        padding-bottom: 20%;
+        padding-bottom: 40%;
 
     }
 
     footer {
         position: sticky;
-        top: 100vh;
+        top: 800vh;
     }
     
     footer {

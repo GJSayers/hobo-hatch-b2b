@@ -11,7 +11,7 @@
 
 {% block content %}
     <main class="container-fluid">
-        <div class="row">
+        <div class="row justify-content-center">
         
         <!-- Logged in customer contents -->
         {% if request.user.is_authenticated %}
@@ -38,14 +38,14 @@
         
                 </section>
                 <div class="col-12 text-center filter-display">
-                    <button type="button" class="categories-open filter-button">Filter by Category <i class="fas fa-filter"></i></button>
+                    <button type="button" class="categories-open filter-button pt-4 mt-4">Filter by Category <i class="fas fa-filter"></i></button>
                 </div>
         
                 {% for product in products %}
                 <!-- Only display items/products the user has permission to view  -->      
                 
 
-                        <div class="col-sm-12 col-md-6 col-lg-4 text-center">
+                        <div class="col-sm-12 col-md-6 col-lg-4 text-center pb-4">
                             <!-- Product Image and Title div -->
                             <div class="col">
                                 <div class="col">
@@ -67,23 +67,16 @@
                                         </a>
                                     </div>
                                 </div>
-
-                                <!-- Product input & quick add div -->
-                                <div class="row">
-                                    <div class="col">
-                                
-                                    </div>
-                                </div>
-                                <hr>
                             </div>
+                            <hr class="align-bottom">
                         </div>
+                        
                 {% endfor %}
             {% else %}
-            <div class="row p-4 m-4">
-                <div class="col-12 login-row body-text awaiting-profile p-4 m-4 text-center">
-                    <hr>
+            <div class="row p-4 m-4 justify-content-center text-center">
+                <div class="col-12 body-text awaiting-profile p-4 m-4 text-center justify-content-center">
                     <h2 class="py-2 title-text">Please complete your Profile to shop the collections!</h2>
-                        <a href="{% url 'profile' %}" role="button" class="btn btn-homepage">
+                        <a href="{% url 'profile' %}" role="button" class="btn btn-profile" aria-label="profile button">
                             Complete Buyer Profile
                         </a>
                     </p>
