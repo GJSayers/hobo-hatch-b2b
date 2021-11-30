@@ -57,7 +57,7 @@ body {
     opacity: 70%;
   }
 
-.bg-overlay {
+/* .bg-overlay {
     background-color: rgba(153, 99, 97, .3);
     position: absolute; 
     top: 20%; 
@@ -68,7 +68,7 @@ body {
     margin: auto; 
     min-width: 50%;
     min-height: 50%;
-}
+} */
 
 
 .welcome-section {
