@@ -69,7 +69,7 @@
               <!-- Check which items to display in Navbar based on if user is authenticated or not -->
             {% if request.user.is_authenticated %}
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  href="#">Collections   <i class="fas fa-angle-double-down"></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  aria-label="Menu bars" href="#">Collections   <i class="fas fa-angle-double-down"></i></a>
                   <ul class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink">
 
                         <!-- If user is a super user they can access product management -->
@@ -236,32 +236,32 @@
                 {% if 'blankets' in profile.categories %}
                   
                   <p>
-                    <a href="{% url 'collections' %}?chosen_categories=blankets" class="text-reset">{{ blankets }}</a>
+                    <a href="{% url 'collections' %}?chosen_categories=blankets" class="text-reset" aria-label="blankets">{{ blankets }}</a>
                   </p>
                 {% endif %}
                 {% if 'jewellery' in profile.categories %}
                   <p>
-                    <a href="{% url 'collections' %}?chosen_categories=jewellery" class="text-reset">Jewellery</a>
+                    <a href="{% url 'collections' %}?chosen_categories=jewellery" class="text-reset" aria-label="jewellery">Jewellery</a>
                   </p>
                 {% endif %}
                 {% if 'clothing' in profile.categories %}
                   <p>
-                    <a href="{% url 'collections' %}?chosen_categories=clothing" class="text-reset">Clothing</a>
+                    <a href="{% url 'collections' %}?chosen_categories=clothing" class="text-reset" aria-label="clothing">Clothing</a>
                   </p>
                 {% endif %}
                 {% if 'leather_accessories' in profile.categories %}
                   <p>
-                    <a href="{% url 'collections' %}?chosen_categories=leather_accessories" class="text-reset">Leather Accessories</a>
+                    <a href="{% url 'collections' %}?chosen_categories=leather_accessories" class="text-reset" aria-label="leather accessories">Leather Accessories</a>
                   </p>
                 {% endif %}
                 {% if 'knitted_accessories' in profile.categories %}
                   <p>
-                    <a href="{% url 'collections' %}?chosen_categories=knitted_accessories" class="text-reset">Knitted Accessories</a>
+                    <a href="{% url 'collections' %}?chosen_categories=knitted_accessories" class="text-reset" aria-label="knitted accessories">Knitted Accessories</a>
                   </p>
                 {% endif %}
               {% else %}
                 <p>
-                  <a href="{% url 'account_login' %}" class="text-reset">Login to View Collections</a>
+                  <a href="{% url 'account_login' %}" class="text-reset" aria-label="login">Login to View Collections</a>
                 </p>
               {% endif %}
               <p class="mb-0 pb-0">© 2021 Copyright Gemma Sayers</p>
