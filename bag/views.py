@@ -117,7 +117,8 @@ def add_to_bag(request, item_id):
                 bag[item_id][product_type]['xl'] += xl
                 messages.success(
                     request,
-                    f'{product.product_name} quantities updated, XS, {xs} | SM, {sm} | M, {m} | LG, {lg} | XL, {xl}')
+                    f'{product.product_name} quantities updated, XS, \
+                      {xs} | SM, {sm} | M, {m} | LG, {lg} | XL, {xl}')
             if rings:
                 bag[item_id][product_type]['l'] += l
                 bag[item_id][product_type]['n'] += n
@@ -126,8 +127,8 @@ def add_to_bag(request, item_id):
                 bag[item_id][product_type]['u'] += u
                 messages.success(
                     request,
-                    f'{product.product_name} quantities updated, L, {l} | N, {n} | P, {p} | S, {s} | U, {u}')
-                    
+                    f'{product.product_name} quantities updated, L, \
+                      {l} | N, {n} | P, {p} | S, {s} | U, {u}')
 
         else:
             bag[item_id] = {product_type: size_qty}
@@ -224,7 +225,8 @@ def edit_bag(request, item_id):
         bag[item_id]['knitwear']['xl'] = xl
         messages.success(
             request,
-            f'{product.product_name} quantities updated, XS, {xs} | SM, {sm} | M, {m} | LG, {lg} | XL, {xl}')
+            f'{product.product_name} quantities updated, XS, \
+              {xs} | SM, {sm} | M, {m} | LG, {lg} | XL, {xl}')
 
     elif ring_line_count is not None:
         bag[item_id]['rings']['l'] = l
@@ -235,7 +237,8 @@ def edit_bag(request, item_id):
         ring_line_count = ring_line_count
         messages.success(
             request,
-            f'{product.product_name} quantities updated, L, {l} | N, {n} | P, {p} | S, {s} | U, {u}')
+            f'{product.product_name} quantities updated, L, \
+              {l} | N, {n} | P, {p} | S, {s} | U, {u}')
 
     elif one_size is not None:
         if beltbag_bumbag:
@@ -251,9 +254,9 @@ def edit_bag(request, item_id):
             f'{product.product_name} quantities updated, One Size: {one_size}')
     else:
         bag.pop(item_id)
-        messages.success(
-        request,
-        f'{product.product_name} has been removed from your bag')
+        messages.success(request,
+                         f'{product.product_name} has been \
+                         removed from your bag')
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))

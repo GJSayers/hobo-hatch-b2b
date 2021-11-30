@@ -5,7 +5,6 @@ from products.models import Product
 
 
 def bag_contents(request):
-
     bag_items = []
     line_totals = []
     line_qtys = []
@@ -16,7 +15,6 @@ def bag_contents(request):
     delivery = 0
     grand_total = 0
 
-
     for item_id, item_data in bag.items():
         product = get_object_or_404(Product, pk=item_id)
         product_type = str(product.product_type)
@@ -26,11 +24,6 @@ def bag_contents(request):
         qty = size_qty.values()
         line_qty = int(sum(qty))
         line_total = line_qty * product.product_price
-        
-        print("total", total)
-        # line_count = int(sum(line_qty))
-        # product_count += line_count
-        # total += int(sum(line_total))
         bag_items.append({
                                 'item_id': item_id,
                                 'product_type': str(product.product_type),
