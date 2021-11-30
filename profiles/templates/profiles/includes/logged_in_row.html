@@ -1,12 +1,6 @@
-<div class="col-12 align-items-center">
-    <div class="row px-4 align-items-center">
-        
-        <div class="d-none d-sm-block col-6 text-left">
-            <p class="profile-welcome">{% if  profile.buyer_name != None %}Logged in as {{ profile.buyer_name }},{% endif %} {% if  profile.stockist != None %} <span>{{ profile.stockist }}</span></p>{% endif %}
-        </div>
-        
+
         {% if grand_total > 0 %}
-        <div class="col-md-6 text-right float-right">
+        <div class="col-md-4 text-right float-right pt-4">
             <p>
                 <a class="nav-link" href="{% url 'view_bag' %}">
                     <span><i class="fas fa-shopping-bag"></i></span>
@@ -29,5 +23,3 @@
             </p>
         </div>
         {% endif %}
-    </div>
-</div>

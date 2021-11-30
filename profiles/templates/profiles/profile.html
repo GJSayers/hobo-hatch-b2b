@@ -18,27 +18,24 @@
 <div class="overlay"></div>
 <div class="container px-lg-5">
     {% if request.user.is_authenticated %}
-    {% if profile.buyer_name != None %}
-    {% include 'profiles/includes/logged_in_row.html' %}
 
     <!-- If Logged in and profile already created - Profile Details  -->
 
+        {% if profile.buyer_name != None %}
+            {% include 'profiles/includes/logged_in_row.html' %}
+
     <div class="row py-2 pt-sm-4 my-sm-4">
-        <div class="col py-4 mt-sm-4">
+        <div class="col-6 py-4 mt-sm-4">
             <h2 class="title-text my-1 text-left">
-                My Account
+                {% if profile.buyer_name != None %}
+                {{ profile.buyer_name }}'s Account
+                {% else %} My Account {% endif %}
             </h2>
             <hr>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-12">
-            <h2 class="my-2 title-text text-left">
-                <small>Current Details Summary</small>
-            </h2>
-            <hr>
-        </div>
         <div class="col-6 text-left">
             <p><span class="text-muted"> <i class="fas fa-envelope-open-text"></i> Buyer email:</span>
                 {{ profile.buyer_email }}</p>
@@ -52,7 +49,6 @@
             <p class="p-0 m-0">{{ profile.county_or_state }}</p>
             <p class="p-0 m-0">{{ profile.postcode }}</p>
             <p class="p-0 m-0">{{ profile.country }}</p>
-
         </div>
     </div>
 
@@ -71,10 +67,6 @@
     {% endif %}
 
     <main class="row pb-3">
-
-            
-
-
         <section class="col-sm-12 col-md-6 mt-3 mb-3 text-right details-section">
 
             {% if profile.buyer_name != None %}
@@ -86,10 +78,10 @@
             <button type="button" class="profile-details-open">
                 <i class="fas fa-chevron-circle-down"></i>
             </button>
-
             <div class="col-12 profile-details text-right" style="display:none;">
 
             {% else %}
+
             <div class="col-12 profile-details text-right" style="display:block;">
 
             {% endif %}
@@ -129,6 +121,7 @@
                         </thead>
 
                         {% for order in orders %}
+
                         <tr>
                             <td>
                                 <a class="nav-link" href="{% url 'order_history' order.order_number %}"
@@ -139,7 +132,6 @@
                             </td>
                             <td>{{ order.date }}
                             </td>
-
                             <td>{{ order.delivery_date }}</td>
                             <td>£ {{ order.grand_total }}</td>
                         </tr>
@@ -181,7 +173,6 @@
                             <img src="{{ MEDIA_URL }}shop_all.jpeg" class="card-img" alt="category all">
                             <div class="card-img-overlay">
                                 <h4 class="card-title category-card-title title-text text-right">Shop All</h4>
-
                             </div>
                         </a>
                     </div>
@@ -190,7 +181,6 @@
         </section>
         {% endif %}
     </main>
-
     {% endif %}
 </div>
 {% endblock %}
