@@ -23,8 +23,8 @@
 
     <!-- If Logged in and profile already created - Profile Details  -->
 
-    <div class="row">
-        <div class="col">
+    <div class="row py-2 pt-sm-4 my-sm-4">
+        <div class="col py-4 mt-sm-4">
             <h2 class="title-text my-1 text-left">
                 My Account
             </h2>
@@ -59,8 +59,8 @@
     {% else %}
 
 
-    <div class="row">
-        <div class="col">
+    <div class="row py-2 pt-sm-4 my-sm-4">
+        <div class="col py-4 mt-sm-4">
             <h2 class="title-text my-1 text-left">
                 Stockist Profile Creation
             </h2>
@@ -124,7 +124,6 @@
                                 <th>Order Number</th>
                                 <th>Date Ordered </th>
                                 <th>Delivery Date</th>
-                                <th>Quantity</th>
                                 <th>Order Total</th>
                             </tr>
                         </thead>
@@ -142,12 +141,10 @@
                             </td>
 
                             <td>{{ order.delivery_date }}</td>
-                            <td>{{ order.total_items }}</td>
                             <td>£ {{ order.grand_total }}</td>
                         </tr>
                         {% endfor %}
                     </table>
-
                 </div>
             </div>
         </section>
@@ -165,7 +162,7 @@
                                 alt="category {{ category.name }}">
                             <div class="card-img-overlay">
                                 <h4 class="card-title category-card-title title-text text-right">Shop
-                                    {{ category.name }}</h4>
+                                    {{ category.friendly_name }}</h4>
 
                             </div>
                         </a>

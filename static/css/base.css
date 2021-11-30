@@ -431,11 +431,6 @@ button.info-open:hover {
 
 /* ------------------------------- Media queries */
 
-@media onlyscreen and (min-width: 375px) and (min-height: 667px){
-    .filter-button {
-        margin-top: 20%;
-    }
-}
 
 @media only screen and (min-width: 768px) and (min-height:1024px) {
     .collection-card-img-bottom {
