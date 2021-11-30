@@ -31,44 +31,21 @@ body {
 
 .index-container {
     margin: 0%;
-    
-    background-color: #F2F3F7;
+    background: url('/media/clothing.jpeg') no-repeat center top;
+    opacity: 70%;
+    background-size: cover;
+    min-height: 75vh;
 
 }
 
-#bg {
-    position: fixed; 
-    top: -50%; 
-    left: -50%; 
-    width: 200%; 
-    height: 200%;
-  }
-
-#bg img {
-    position: absolute; 
-    top: 20%; 
-    left: 0; 
-    right: 0; 
-    bottom: 0;
-    padding-top: 20%;
-    margin: auto; 
-    min-width: 50%;
-    min-height: 50%;
-    opacity: 90%;
-  }
-
-/* .bg-overlay {
-    background-color: rgba(153, 99, 97, .3);
-    position: absolute; 
-    top: 20%; 
-    left: 0; 
-    right: 0; 
-    bottom: 0;
-    padding-top: 20%;
-    margin: auto; 
-    min-width: 50%;
-    min-height: 50%;
-} */
+.index-overlay {
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(153, 99, 97, 0.5);
+}
 
 
 .welcome-section {
@@ -514,10 +491,6 @@ footer {
         padding: 5%;
     }
 
-    .header-container {
-        padding-top: 150px;
-    }
-
 } 
 
 @media only screen and (min-height: 767px) and (min-width: 1023) {
@@ -543,17 +516,6 @@ footer {
 
     .welcome-div {
         padding: 5%;
-    }
-
-    .index-container {
-        padding-top: 100px;
-    } 
-
-    #bg {
-        top: -50%; 
-        left: -50%; 
-        width: 100%; 
-        height: 100%;
     }
 
 } 
@@ -673,6 +635,3 @@ input[name='q']::placeholder {
     background-color: rgba(153, 99, 97, .3);
     color:#0A151A;
 }
-
-
-
