@@ -1,5 +1,7 @@
 # Hobo & Hatch B2B Ordering Portal
 
+![](docs/feature_images/all-devices-black.png)
+
 * This ordering portal is created for the fourth and final project on the Full Stack Developer Diploma with Code Institute.  
 * The project encompasses the languages and frameworks that I have been using throughout the course, and in particular HTML5, CSS3 & Javascript as frontend tools, using Bootstrap as a frontend framework.  The backend is created with Python, sqlite3 and Django and deployed on Heroku at which point the database used is Postgres. 
 * The project is based on a real life spec to design a wholesale / B2B ordering portal for retail & wholesale clothing and accessories brand Hobo & Hatch.  The project is delivered at this stage as an MVP, with future features and implementations expected in V2. 
@@ -111,7 +113,7 @@
 
 * Here is an example of the board in full swing part way through the project, I used the issues features to track bugs and fixes
 
-![](docs/github_projectboard.png)
+![Project Board](docs/github_projectboard.png)
 
 ## Version Control 
 
@@ -121,15 +123,23 @@
 
 ### Homepage
 
-* For the Homepage of Hobo & Hatch B2B it was essential for the potential or existing customer to get a sense of the brand on first site and a simple to navigate set of call to actions base on whether the customer is a new user, a registered user or completed profile user. 
+* For the Homepage of Hobo & Hatch B2B it was essential for the potential or existing customer to get a sense of the brand on first site and a simple to navigate set of call to actions base on whether the customer is a new user, a registered user or completed profile user, so I used one of the brand's autumn-winter season photos as the main backdrop with a colour filter overlay to ensure text is accessible.
+
+![Homepage](docs/feature_images/home_desktop.png)
+
+![Mobile](docs/feature_images/home_mobile-black.png)
 
 ### Navigation
  
 * For the Navigation, due to the level of permissions required for a B2B Site it is also necessary to ensure that the links to not lead to any non-permitted pages
 
+![Navigation Full Permissions](docs/feature_images/nav_full_perm.png)
+
+![Navigation Limited Permissions](docs/feature_images/nav_limited_perm.png)
+
 ### Profile, Authentication & Permission Process for a B2B site
 
-* A B2B site operates a little differently from a standard authentication site, in that purchases can only happen once the Profile is set-up not only by the user having registered, but also approved by admin.  This is due to the B2B business needing to ensure that they have all relevent details needed for business supply and analysis.  This means that there is a three step process involved:
+* A B2B site operates a little differently from a standard Ecommerce site, in that purchases can only happen once the Profile is set-up not only by the user having registered, but also approved by admin.  This is due to the B2B business needing to ensure that they have all relevent details needed for business supply and analysis.  This means that there is a three step process involved:
  1) Customer registers as a user 
  2) Customer is redirected to fill in a more detailed profile form and submits this(and receives a message in the window to let them know their account application will be reviewed)
  3) Admin user selects the relevant Category permissions in the backend & contacts the customer to alert them that they can now begin to place orders. From this point the profile user has access to their assigned/ permitted categories and this is reflected across the site
@@ -172,6 +182,12 @@
 
 * The products detail also uses cards, and included a detailed description of the product as well as multiple size inputs & product info dropdown 
 
+![Product Detail](docs/feature_images/hobo-hatch-b2b_product_details.png)
+
+![Product Detail - Info Open](docs/feature_images/hobo-hatch-b2b_product_details_open.png)
+
+![Product Detail Mobile](docs/feature_images/hobo-hatch-b2b_product_detail_mobile.png)
+
 #### ** Interactive Product Info Feature**
 
 * To display the product info without the option to hide it makes for a busy page, so I decided that a dropdown functionality was necessary so that buyers can access the product details at a glance - This feature is operational on both the Product detail and collections pages.  The data for the infosections is populated by the data held in the Product Model, and an icon is added depending on which info item is relevant
@@ -196,12 +212,19 @@
 
 * The bag contains a great deal of information due to the multiple sizes per item and the potential multiple items a professional buyer would be adding to the bag - It took quite a lot of refactoring to get to the final version of the bag, which is fully responsive and with the option to edit the sizes or remive the items. 
 
+![Bag](docs/feature_images/hobo-hatch-b2b_bag.png)
+![Bag - Mobile](docs/feature_images/hobo-hatch-b2b_bag_mobile.png)
+
 
 ### Checkout with Stripe
 
 * The checkout provided is using the Stripe API with styling from crispy-forms.  The user has an easy to use form and can update their profile details on checkout should they choose to do so
 
+![Checkout](docs/feature_images/hobo-hatch-b2b_checkout.png)
+
 * The checkout success fires an email to the given email address and returns a summary of the order placed. 
+
+![Checkout Success](docs/feature_images/hobo-hatch-b2b_checkout_success.png)
 
 ### About Us & Testimonials
 
@@ -211,17 +234,33 @@
 
 ### Messages
 
-* Bootstrap toasts are used as user messages to keep the customer informed during the customer journey - There are various messages for bag, 
+* Bootstrap toasts are used as user messages to keep the customer informed during the customer journey.
+
+* At each stage of the user journey, the user receives feedback - for example login success, add to bag, remove from bag, logout, errors.  Some example messages:
+
+![Login - Success](docs/feature_images/messages_login_success.png)
+
+![Messages - Bag Added](docs/feature_images/messages_success_bag_added.png)
+
+![Messages - Bag Edited](docs/feature_images/messages_bag_update_success.png)
+
+![Messages - Bag Removed](docs/feature_images/messages_bag_removed_success.png)
+
+![Messages - Bag Error](docs/feature_images/messages_error_bag.png)
+
+
 ### FAQ's
 
 * The FAQ bootstrap accordian is populated by data built on a model of the same name - The store owner / manager can add to the FAQ's in the admin end of the site as and when new ones arise, the more populated this becomes, the more time saves on customer service enquiries.  **Future Feature** would be to make this searchable at a point it becomes necessary
 
-![](docs/feature_images/hobo-hatch-b2b_faqs.png)
+![FAQ's](docs/feature_images/hobo-hatch-b2b_faqs.png)
 
 ### Forms
 ### Footer
-### Error Pages & Manifest
-### Favicon
+
+### Error Pages, Favicon & Manifest
+
+* Simple Error pages have been included alonside a site manifest and a set of favicons to complete the user experience, this has also conritubles to the 100% Best Practices and SEO scores received across the site. 
 
 ###
 
@@ -254,14 +293,11 @@ fonts used throughout the project
 *  [GitHub](https://github.com/) is used to file the repository and record the version control. 
 *  [GitPod](https://gitpod.io) was used for development and version control.
 *  [Heroku](https://www.heroku.com) is the cloud-based platform used to deploy the project.
-* [Google DevTools](https://developer.chrome.com/docs/devtools/) Has been used without the project to test, evaluate, edit and assess the project. 
-
-### Testing Tools
-
-* [W3C Validator](https://validator.w3.org/) To test the vlidity of the HTML code
-* [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) To test the validity of the CSS code
-* [JShint](https://jshint.com/)  To test the validity of the JS code
-* [PEP8 Online](http://pep8online.com/) To test the validity of the JS code
+*  [Google DevTools](https://developer.chrome.com/docs/devtools/) Has been used without the project to test, evaluate, edit and assess the project. 
+*  [W3C Validator](https://validator.w3.org/) To test the vlidity of the HTML code
+*  [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) To test the validity of the CSS code
+*  [JShint](https://jshint.com/)  To test the validity of the JS code
+*  [PEP8 Online](http://pep8online.com/) To test the validity of the JS code
 
 ## Deployment
 
@@ -479,7 +515,7 @@ So I decided to try this and the remaining migrations processed. However another
 
 After running through where the process may have gone wrong and with my mentor and finding no obvious methodology errors, we decided to remove the migrations - and with help from tutor support re-install them and re-running all the migrations. 
 
-
+### Credits 
 
 
 

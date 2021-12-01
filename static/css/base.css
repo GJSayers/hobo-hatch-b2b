@@ -166,9 +166,7 @@ section h1 .page-title {
 
 
 .home-page-text {
-    color: #F2F3F7;
-
-    
+    color: #F2F3F7;  
 }
 
 /* ------------------------------ search */
@@ -236,7 +234,6 @@ section h1 .page-title {
 
 .btn-homepage {
     border-radius: 0px;
-    
     border: 1px solid #F2F3F7;
     margin: 7px;
     width: 200px;
@@ -493,7 +490,7 @@ footer {
 
 } 
 
-@media only screen and (min-height: 767px) and (min-width: 1023) {
+@media only screen and (min-height: 767px) and (min-width: 1023px) {
     body {
         min-height: 1024px;
     }
@@ -507,11 +504,7 @@ footer {
     footer {
         position: sticky;
         top: 800vh;
-    }
-    
-    footer {
         background: #F2F3F7;
-    
     }
 
     .welcome-div {
@@ -636,8 +629,4 @@ input[name='q']::placeholder {
     color:#0A151A;
 }
 
-/* --------------------------- checkboxes */
 
-.form-check {
-    color: #005E66;
-}
