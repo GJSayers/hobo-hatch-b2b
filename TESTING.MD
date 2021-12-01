@@ -58,6 +58,77 @@
 | **US 20**       | **Site User**                       | **Easily create personalised user profile**                   |                                                                                                                                                                                                                                                | **Be able to view order history and edit account / business details.**                                                                                                                                                                                                       | /profile<customerid>                                                                                           | **User story satisfied** ✅         |                                                                                                                                                                                                                                                               |                                                                                                                                                 |                                                                                                                                                                                                                                                                                     | **Profile - C** ✅          |
 | **US 21**       | **Site User**                       | **Have a good re-direction experience if not a B2B customer** |                                                                                                                                                                                                                                                | **Be redirected to the E-commerce site and / or social media profiles**                                                                                                                                                                                                      | /home                                                                                                          | **User story satisfied** ✅         |                                                                                                                                                                                                                                                               |                                                                                                                                                 |                                                                                                                                                                                                                                                                                     |                            |
 
+
+## Feature Testing
+
+### Homepage
+
+* For the Homepage of Hobo & Hatch B2B it was essential for the potential or existing customer to get a sense of the brand on first site and a simple to navigate set of call to actions base on whether the customer is a new user, a registered user or completed profile user. 
+
+### Navigation
+ 
+* For the Navigation, due to the level of permissions required for a B2B Site it is also necessary to ensure that the links to not lead to any non-permitted pages
+
+### Profile & Authentication Process for a B2B site
+
+* A B2B site operates a little differently from a standard authentication site, in that purchases can only happen once the Profile is set-up not only by the user having registered, but also approved by admin.  This is due to the B2B business needing to ensure that they have all relevent details needed for business supply and analysis.  This means that there is a three step process involved:
+ 1) Customer registers as a user 
+ 2) Customer is redirected to fill in a more detailed profile form and submits this(and receives a message in the window to let them know their account application will be reviewed)
+ 3) Admin user selects the relevant Category permissions in the backend & contacts the customer to alert them that they can now begin to place orders. From this point the profile user has access to their assigned/ permitted categories and this is reflected across the site
+
+### Profile Page
+
+* ![Lighthouse](docs/code_testing/final/lighthouse/lighthouse_profile_scores.png)
+
+
+### Collections
+
+* ![Lighthouse](lighthouse_collections_scores)
+
+### Filtering 
+
+* From the collections page the products can be filtered by one or more Categories using the checkbox filter feature - This is a permissions-based feature linking back to the assigned categories
+
+### Product Detail
+
+* The products detail also uses cards, and included a detailed description of the product as well as multiple size inputs & product info dropdown 
+
+#### **Product Info Feature**
+
+* To display the product info without the option to hide it makes for a busy page, so I decided that a dropdown functionality was necessary so that buyers can access the product details at a glance - This feature is operational on both the Product detail and collections pages.  The data for the infosections is populated by the data held in the Product Model, and an icon is added depending on which info item is relevant
+
+
+#### **Multiple Sizing Entry**
+
+* Since B2B customers have to consider the size ratio as a whole, it was necessary to be able to add multiple sizes in one product submission  - This took a great deal of trial and error to perfect, but the result has great UX!  The code for this is also  fairly easily scalable, so there is potential to add different options in the future should the brand require
+
+
+### Multiple Sizing Entry in Admin
+
+* In order to successfully edit an order / lineitem in the admin it was necessary to apply a similar logic to the sizing inputs - An admin user can easily update all different types of products and their size breakdowns in the admin
+
+
+### Bag
+
+* The bag contains a great deal of information due to the multiple sizes per item and the potential multiple items a professional buyer would be adding to the bag - It took quite a lot of refactoring to get to the final version of the bag, which is fully responsive and with the option to edit the sizes or remive the items. 
+
+
+### Checkout with Stripe
+
+* The checkout provided is using the Stripe API with styling from crispy-forms.  The user has an easy to use form and can update their profile details on checkout should they choose to do so
+
+* The checkout success fires an email to the given email address and returns a summary of the order placed. 
+
+### About Us & Testimonials
+
+* The About us page is accessible to everybody, the testimonials carousel is populated with testimonials from the Testimonials model db, these can be updated over time. 
+
+### Messages
+
+* Bootstrap toasts are used as user messages to keep the customer informed during the customer journey - There are various messages for bag, 
+### FAQ's
+### Footer
+
 ## Bugs & Fixes
 
 * BUG: I have keps a track of the various bug details and solutions that were encountered in the project by raising issues in the Bugs & Fixes column of the project board - Where relevant below, the solutions are linked to. 
@@ -79,15 +150,16 @@
 
 
 
-
-
-
 ### Testing Tools & Results 
 
 * The following tools were used to test the validity of the code on the site.  
 
-* [W3C Validator](https://validator.w3.org/) To test the validity of the HTML code
+* [W3C Validator](https://validator.w3.org/) Was used to test the validity of the HTML code - The first round resulted in minimal errors, all of which were corrects in the final round of testing.  
 * Round 1 of testing can be viewed in [this folder](docs/code_testing/round_1)
+* Final round pass screenshots can be viewed in [this folder](docs/code_testing/final)
 * [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) To test the validity of the CSS code
-* [JShint](https://jshint.com/)  To test the validity of the JS code
-* [PEP8 Online](http://pep8online.com/) To test the validity of the JS code
+* [JShint](https://jshint.com/)  was used to test the validity of the JS code, all code passed, there were some comments regarding items that are only available in ES6 and also the tool did not recognise the $ in the jquery, however there were no actual warnings once the code was complete, only these info points. 
+* [PEP8 Online](http://pep8online.com/) Was used to test the validity of the Python code, all code resulted in a pass, with the exception of the authorisation passwords in the Settings file on lines 118, 121, 124, 127 which cannot be split.  The testing screenshots can be viewed in [this folder](docs/code_testing/final/pep8)
+
+
+### Browser Testing

@@ -1,7 +1,7 @@
 # Hobo & Hatch B2B Ordering Portal
 
 * This ordering portal is created for the fourth and final project on the Full Stack Developer Diploma with Code Institute.  
-* The project encompasses the languages and frameworks that I have been using throughout the course, and in particular HTML5, CSS3 & Javascript as frontend tools, using Bootstrap as a frontend framework.  The backend is created with Python, sqlite3 and Django and deployed on Heroku at which point the database used is postgres. 
+* The project encompasses the languages and frameworks that I have been using throughout the course, and in particular HTML5, CSS3 & Javascript as frontend tools, using Bootstrap as a frontend framework.  The backend is created with Python, sqlite3 and Django and deployed on Heroku at which point the database used is Postgres. 
 * The project is based on a real life spec to design a wholesale / B2B ordering portal for retail & wholesale clothing and accessories brand Hobo & Hatch.  The project is delivered at this stage as an MVP, with future features and implementations expected in V2. 
 
 ## Strategy
@@ -113,6 +113,10 @@
 
 ![](docs/github_projectboard.png)
 
+## Version Control 
+
+* [Gitpod](https://gitpod.io/) Was used for version control, with branched being used for each separate set of aps with closely related functionality - This enabled me to safely develop on the branches and then merge into the main branch when a certain feature or fix had been tested on it's branch.  At the later stages some work was carried out directly on main, and I also created simply a 'dev' branch to ensure there were not too many conflicts to deal with at crucial last stages of the project.
+
 ## Features
 
 ### Homepage
@@ -123,20 +127,42 @@
  
 * For the Navigation, due to the level of permissions required for a B2B Site it is also necessary to ensure that the links to not lead to any non-permitted pages
 
-### Profile & Authentication Process for a B2B site
+### Profile, Authentication & Permission Process for a B2B site
 
 * A B2B site operates a little differently from a standard authentication site, in that purchases can only happen once the Profile is set-up not only by the user having registered, but also approved by admin.  This is due to the B2B business needing to ensure that they have all relevent details needed for business supply and analysis.  This means that there is a three step process involved:
  1) Customer registers as a user 
  2) Customer is redirected to fill in a more detailed profile form and submits this(and receives a message in the window to let them know their account application will be reviewed)
  3) Admin user selects the relevant Category permissions in the backend & contacts the customer to alert them that they can now begin to place orders. From this point the profile user has access to their assigned/ permitted categories and this is reflected across the site
 
-### Profile Page
+### Profile Page - Newly approved stockist
 
-* Once the profile page is populated, it contains both the order history and the customer details, as well as a form to update the profile field which are not exclusive to the admin user.  
+
+
+### Profile Page - Populated
+
+* Once the profile page is populated, it contains both the order history and the customer details, as well as a form to update the profile field which are not exclusive to the admin user.
+
+* You can see in the screenshots that the categories tabs are ppoulated by the permitted categories and the user gets a personalised experience by being greeted in their accnt with their name:
+
+![Full Access User](docs/feature_images/hobo-hatch-b2b_profile_all_categories.png)
+
+![Restricted Access User](docs/feature_images/hobo-hatch-b2b.restricted_categories.png)
+
+![Mobile](docs/feature_images/hobo-hatch-b2b_profile_iPhone 5_SE.png)
+
+* From the **Profile Page** You can also **update your details** which are pre-filled with existing data where relevant, and **order history** - both features are hidden until requested by clicking on the green chevron circle:
+
+![Update & History](docs/feature_images/hobo-hatch-b2b_profile_update_history.png)
+
+
 
 ### Collections
 
-* The collections consist of currently 5 different categories, and there is scope to increase this in the backend.  The product listings are delivered using bootsrtap cards to keep a uniform appearance
+* The collections consist of currently 5 different categories, and there is scope to increase this in the backend.  The product listings are delivered using bootstrap cards to keep a uniform appearance, and because the brand has differning size images, I have used object-fit vh rulse in the CSS so the products can sit next to each other and still be pleasing to the eye
+
+![Mobile](docs/feature_images/hobo-hatch-b2b_collections_mobile.png)
+
+![Collections](docs/feature_images/hobo-hatch-b2b_collections.png)
 
 ### Filtering 
 
@@ -146,20 +172,25 @@
 
 * The products detail also uses cards, and included a detailed description of the product as well as multiple size inputs & product info dropdown 
 
-#### **Product Info Feature**
+#### ** Interactive Product Info Feature**
 
 * To display the product info without the option to hide it makes for a busy page, so I decided that a dropdown functionality was necessary so that buyers can access the product details at a glance - This feature is operational on both the Product detail and collections pages.  The data for the infosections is populated by the data held in the Product Model, and an icon is added depending on which info item is relevant
+
+![Product Info](docs/feature_images/hobo-hatch-b2b_collections_product_info.png)
 
 
 #### **Multiple Sizing Entry**
 
 * Since B2B customers have to consider the size ratio as a whole, it was necessary to be able to add multiple sizes in one product submission  - This took a great deal of trial and error to perfect, but the result has great UX!  The code for this is also  fairly easily scalable, so there is potential to add different options in the future should the brand require
 
+![Multiple Sizing Entry](docs/feature_images/hobo-hatch-b2b_multiple_size_entry.png)
+
 
 ### Multiple Sizing Entry in Admin
 
 * In order to successfully edit an order / lineitem in the admin it was necessary to apply a similar logic to the sizing inputs - An admin user can easily update all different types of products and their size breakdowns in the admin
 
+![Multiple Sizing Entry](docs/feature_images/hobo-hatch-b2b_multiple_size_entry_admin.png)
 
 ### Bag
 
@@ -176,11 +207,23 @@
 
 * The About us page is accessible to everybody, the testimonials carousel is populated with testimonials from the Testimonials model db, these can be updated over time. 
 
+![About Us](docs/feature_images/hobo-hatch-b2b_about.png)
+
 ### Messages
 
 * Bootstrap toasts are used as user messages to keep the customer informed during the customer journey - There are various messages for bag, 
 ### FAQ's
+
+* The FAQ bootstrap accordian is populated by data built on a model of the same name - The store owner / manager can add to the FAQ's in the admin end of the site as and when new ones arise, the more populated this becomes, the more time saves on customer service enquiries.  **Future Feature** would be to make this searchable at a point it becomes necessary
+
+![](docs/feature_images/hobo-hatch-b2b_faqs.png)
+
+### Forms
 ### Footer
+### Error Pages & Manifest
+### Favicon
+
+###
 
 ## Future Features
 
@@ -267,7 +310,7 @@ Install Gunicorn using:
 * Since I am hosting images in an S3 bucket on AWS, it is necessary to instruct Heroku not to pick up the static media files from the Git repository by COLLECT-STATIC -1 in Heroku config vars.
 * Set up secret key in eny.py and also in the Heroku environment variables. 
 * Set up allowed hosts in settings.py
-* Ensure that your env.py is in your Gitignore before pushing changes. 
+* Ensure that your .env is in your Gitignore before pushing changes. 
 * Push and merge any changes to main branch if relevant then push again.  
 * Login to Heroku through the GIT CLI and git push heroku main to deploy the first verion to Heroku
 * In Heroku set up automatic deployments by linking from github - please note on branches that you will need to merge your branch to main in git if your automatic deploys are set up in Heroku. 
@@ -396,7 +439,7 @@ in the JSON tab, on the resources row, you will need to add again the **arn numb
 
 ![](docs/storages.png)
 
-* Define access variables and media storage config in the settings.py file being sure to keep any secret keys either in your env.py file or in the environment variables on GIT.
+* Define access variables and media storage config in the settings.py file being sure to keep any secret keys either in your .env file or in the environment variables on GIT.
 
 ![](docs/aws_settings_config.png)
 ![](docs/aws_custom_storages.png)
@@ -404,7 +447,7 @@ in the JSON tab, on the resources row, you will need to add again the **arn numb
 * Set up the same variables in the Heroku config vars.
 * Create a custom storages file, importing ettings and S3Boto3Storage. with classes inheriting S3Boto3Storage and defining location for static files and media files.
 
-![](docs/aws_config_vars_heroku.png)
+![](docs/aws_config_vars.png)
 
 * Remove the Collect Static Config var to enable the static files to be collected into the buid on the next push.
 * If the build has been successful, you should see a similar output to this in the Heroku build log:

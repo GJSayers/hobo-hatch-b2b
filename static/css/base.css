@@ -635,3 +635,9 @@ input[name='q']::placeholder {
     background-color: rgba(153, 99, 97, .3);
     color:#0A151A;
 }
+
+/* --------------------------- checkboxes */
+
+.form-check.form-check-inline input[type=checkbox] {
+    color: #005E66;
+}
