@@ -19,10 +19,10 @@ def checkout(request):
     """
     Sends a request to stripe to make a purchase
     """
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
-
     if request.user.is_authenticated:
+        stripe_public_key = settings.STRIPE_PUBLIC_KEY
+        stripe_secret_key = settings.STRIPE_SECRET_KEY
+
         if request.method == 'POST':
             """
             Retreives the posted form data and bag/ purchase data
@@ -156,7 +156,6 @@ def checkout(request):
 
         return render(request, template, context)
     return render(request, 'home/index.html')
-
 
 def send_confirmation_email(request, order):
     """
