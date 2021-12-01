@@ -78,15 +78,15 @@
 
 * Desktop View
 
-![Wire frames](/docs/wire frames/wireframes_desktop_view.png)
+![Wire frames](docs/wireframes/wireframes_desktop_view.png)
 
 * Mobile View
 
-![Wire frames](/docs/wire frames/wireframes_mobile_view.png)
+![Wire frames](docs/wireframes/wireframes_mobile_view.png)
 
 * Tablet View
 
-![Wire frames](/docs/wire frames/wireframes_tablet_view.png)
+![Wire frames](docs/wireframes/wireframes_tablet_view.png)
 
 ## Surface
 ------
