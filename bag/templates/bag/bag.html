@@ -11,170 +11,184 @@
 {% endblock %}
 
 {% block content %}
-<div class="overlay"></div>
 <div class="container mb-2">
+{% if request.user.is_authenticated %}
+    {% if profile.buyer_name != None %}
 
-    <!-- Title row -->
+        <!-- Title row -->
 
-    <div class="row pt-4">
-        <div class="col pt-4">
-            <h2 class="title-text my-2">Shopping Bag <i class="fas fa-shopping-bag"></i></h2>
+        <div class="row pt-4">
+            <div class="col pt-4">
+                <h2 class="title-text my-2">Shopping Bag <i class="fas fa-shopping-bag"></i></h2>
+            </div>
         </div>
-    </div>
-    <hr>
+        <hr>
 
-    {% if bag_items %}
+        {% if bag_items %}
 
-    <!-- Row headers -->
+        <!-- Row headers -->
 
-    <div class="row justify-content-center pt-2">        
-            <div class="col-md-3 d-none d-md-block text-center title-text px-0">Items</div>
-            <div class="col-md-7 d-none d-md-block text-center title-text px-0">Size Run</div>
-            <div class="col-md-2 d-none d-md-block text-center title-text px-0"><span><small>Line Qty</small></span> | <span><small>Line Val</small></span></div>
-           
-    </div>
+        <div class="row justify-content-center pt-2">        
+                <div class="col-md-3 d-none d-md-block text-center title-text px-0">Items</div>
+                <div class="col-md-7 d-none d-md-block text-center title-text px-0">Size Run</div>
+                <div class="col-md-2 d-none d-md-block text-center title-text px-0"><span><small>Line Qty</small></span> | <span><small>Line Val</small></span></div>
+            
+        </div>
 
-    {% for item in bag_items %}
+        {% for item in bag_items %}
 
-    <!-- create a row for each bag item -->
+        <!-- create a row for each bag item -->
 
-    <div class="row justify-content-center align-items-center mt-3 mb-3 mr-0 ml-0">
+        <div class="row justify-content-center align-items-center mt-3 mb-3 mr-0 ml-0">
 
-        <!-- Image & product details segment -->
+            <!-- Image & product details segment -->
 
-        <section class="col-xs-12 col-md-3 col-lg-3 product-details">
-            <div class="col-sm-12 px-0 text-center">
-                <p class="my-0 title-text">{{ item.product.product_name }}</p>
-                <img class="img-fluid rounded" src="{{ item.product.image.url }}">
-            </div>
-            <div class="col-sm-12 px-0 text-center">
-                <p class="my-0 small text-muted">SKU: {{ item.product.product_sku|upper }}</p>
-                <p class="my-0">Cost Price: £{{ item.product.product_price }}</p>
-                <p class="my-0">RRP: £{{ item.product.rrp_price }}</p>
-            </div>
-        </section>
+            <section class="col-xs-12 col-md-3 col-lg-3 product-details">
+                <div class="col-sm-12 px-0 text-center">
+                    <p class="my-0 title-text">{{ item.product.product_name }}</p>
+                    <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                </div>
+                <div class="col-sm-12 px-0 text-center">
+                    <p class="my-0 small text-muted">SKU: {{ item.product.product_sku|upper }}</p>
+                    <p class="my-0">Cost Price: £{{ item.product.product_price }}</p>
+                    <p class="my-0">RRP: £{{ item.product.rrp_price }}</p>
+                </div>
+            </section>
 
-        <!-- Quantity Edit / input segment -->
+            <!-- Quantity Edit / input segment -->
 
-        <section class="col-xs-10 col-md-7 col-lg-7 product-input text-center justify-content-center px-0">
-            <div class="col-sm-12 inputs justify-content-center px-0">
+            <section class="col-xs-10 col-md-7 col-lg-7 product-input text-center justify-content-center px-0">
+                <div class="col-sm-12 inputs justify-content-center px-0">
 
-                <!-- Input form -->
+                    <!-- Input form -->
 
-                <form class="form update-form" action="{% url 'edit_bag' item.item_id %}" method="POST">
-                    {% csrf_token %}
-                    <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0 align-items-center">
+                    <form class="form update-form" action="{% url 'edit_bag' item.item_id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="row form-group justify-content-center mt-3 mb-3 mr-0 ml-0 align-items-center">
 
-                        <!-- Render sizing qty inputs using template tags -->
+                            <!-- Render sizing qty inputs using template tags -->
 
-                        {% for s,q in item.size_items %}
+                            {% for s,q in item.size_items %}
 
-                        <div class="col-2 px-1 input-wrapper text-center">
-                            <input type="hidden" name="{{ item.product.product_type }}"
-                                id="{{ item.product.product_type }}" value="{{ item.product.product_type }}">
-                            <span class="input-group justify-content-center">{{ s|upper }}</span>
+                            <div class="col-2 px-1 input-wrapper text-center">
+                                <input type="hidden" name="{{ item.product.product_type }}"
+                                    id="{{ item.product.product_type }}" value="{{ item.product.product_type }}">
+                                <span class="input-group justify-content-center">{{ s|upper }}</span>
 
-                            <!-- input minus buttons -->
+                                <!-- input minus buttons -->
 
-                            <div class="input-group-prepend">
-                                <button class="decrement-qty decrement-qty_{{ s }} btn rounded-0"
-                                    data-item_id="{{ item.item_id }}" data-size="{{ s }}" name="{{ s }}">
-                                    <span class="icon">
-                                        <i class="fas fa-minus"></i>
-                                    </span>
-                                </button>
+                                <div class="input-group-prepend">
+                                    <button class="decrement-qty decrement-qty_{{ s }} btn rounded-0"
+                                        data-item_id="{{ item.item_id }}" data-size="{{ s }}" name="{{ s }}">
+                                        <span class="icon">
+                                            <i class="fas fa-minus"></i>
+                                        </span>
+                                    </button>
+                                </div>
+
+                                <!-- input values -->
+
+                                <input type="hidden" name="{{ s }}" id="{{ s }}" value="{{ s }}">
+                                <span class="input-group"></span>
+                                <input type="number"
+                                    class="form-control qty_input qty_input_{{ s }} input-box rounded-0 text-center"
+                                    data-size="{{ s }}" value="{{ q }}" name="{{ s }}" id="id_qty_{{ s }}" min="0" max="99"
+                                    data-item_id="{{ item.item_id }}" aria-label="size{{ s }}">
+
+                                <!-- input add buttons -->
+
+                                <div class="input-group-append">
+                                    <button class="increment-qty increment-qty_{{ s }} btn rounded-0"
+                                        data-item_id="{{ item.item_id }}" data-size="{{ s }}" name="{{ s }}" id="">
+                                        <span class="icon">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                    </button>
+                                </div>
                             </div>
 
-                            <!-- input values -->
+                            {% endfor %}
 
-                            <input type="hidden" name="{{ s }}" id="{{ s }}" value="{{ s }}">
-                            <span class="input-group"></span>
-                            <input type="number"
-                                class="form-control qty_input qty_input_{{ s }} input-box rounded-0 text-center"
-                                data-size="{{ s }}" value="{{ q }}" name="{{ s }}" id="id_qty_{{ s }}" min="0" max="99"
-                                data-item_id="{{ item.item_id }}" aria-label="size{{ s }}">
-
-                            <!-- input add buttons -->
-
-                            <div class="input-group-append">
-                                <button class="increment-qty increment-qty_{{ s }} btn rounded-0"
-                                    data-item_id="{{ item.item_id }}" data-size="{{ s }}" name="{{ s }}" id="">
-                                    <span class="icon">
-                                        <i class="fas fa-plus"></i>
-                                    </span>
-                                </button>
-                            </div>
                         </div>
+                    </form>
 
-                        {% endfor %}
+                    <!-- Edit / Update & remove buttons -->
 
-                    </div>
-                </form>
-
-                <!-- Edit / Update & remove buttons -->
-
-                <div class="row form-group justify-content-center">
-                    <div class="col-xs-12 col-sm-12 col-md-6 px-0 justify-content-around text-center">
-                        <a class="update-link btn btn-affirmative align-right">Edit <i class="fas fa-pen"></i></a>
-                        <a class="remove-item btn btn-back align-right" id="remove_{{ item.item_id }}"
-                            data-type="{{ item.product.product_type }}">Remove <i class="far fa-trash-alt"></i></a>
+                    <div class="row form-group justify-content-center">
+                        <div class="col-xs-12 col-sm-12 col-md-6 px-0 justify-content-around text-center">
+                            <a class="update-link btn btn-affirmative align-right">Edit <i class="fas fa-pen"></i></a>
+                            <a class="remove-item btn btn-back align-right" id="remove_{{ item.item_id }}"
+                                data-type="{{ item.product.product_type }}">Remove <i class="far fa-trash-alt"></i></a>
+                        </div>
                     </div>
                 </div>
+                <hr class="bag-item-separator">
+            </section>
+
+            <!-- item & value line totals -->
+
+            <div class="col-xs-2 col-md-2 col-lg-2 justify-content-around text-center px-0">
+                <p class="justify-content-center title-text text-muted"><span>( {{ item.line_qty }} )</span> | <span>£ {{ item.line_total|floatformat:2 }}</span>
+                </p>
             </div>
-            <hr class="bag-item-separator">
+        </div>
+
+        {% endfor %}
+
+        <!-- item & value grand totals -->
+
+        <div class="row px-3">
+            <div class="col-12 pt-5 text-right">
+                <h6 class="title-text text-right">Sub Total: £{{ total|floatformat:2 }}</h6>
+                <h6 class="title-text text-right">Total Item Qty: {{ total_items }}</h6>
+                <h6 class="title-text text-right">Delivery: £{{ delivery|floatformat:2 }}</h6>
+                <h4 class="mt-4 title-text text-right">Grand Total: £{{ grand_total|floatformat:2 }}</h4>
+            </div>
+        </div>
+
+        <!-- checkout & continue shopping buttons -->
+
+        <div class="col text-right px-0">
+            <div class="col text-right">
+                <a href="{% url 'collections' %}" class="btn btn-back rounded-0 btn-lg" role="button">
+                    <span class="text-uppercase">Continue Shopping</span>
+                </a>
+                <a href="{% url 'checkout' %}" class="btn btn-affirmative rounded-0 btn-lg" role="button">
+                    <span class="text-uppercase">Secure Checkout</span>
+                    <span class="icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        {% else %}
+
+        <!-- Empty Bag notification -->
+
+        <section>
+            <div>
+                <p class="lead mb-5">Your bag is empty.</p>
+                <a href="{% url 'collections' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                    <span class="text-uppercase">Keep Shopping</span>
+                </a>
+            </div>
         </section>
 
-        <!-- item & value line totals -->
-
-        <div class="col-xs-2 col-md-2 col-lg-2 justify-content-around text-center px-0">
-            <p class="justify-content-center title-text text-muted"><span>( {{ item.line_qty }} )</span> | <span>£ {{ item.line_total|floatformat:2 }}</span>
-            </p>
-        </div>
-    </div>
-
-    {% endfor %}
-
-    <!-- item & value grand totals -->
-
-    <div class="row px-3">
-        <div class="col-12 pt-5 text-right">
-            <h6 class="title-text text-right">Sub Total: £{{ total|floatformat:2 }}</h6>
-            <h6 class="title-text text-right">Total Item Qty: {{ total_items }}</h6>
-            <h6 class="title-text text-right">Delivery: £{{ delivery|floatformat:2 }}</h6>
-            <h4 class="mt-4 title-text text-right">Grand Total: £{{ grand_total|floatformat:2 }}</h4>
-        </div>
-    </div>
-
-    <!-- checkout & continue shopping buttons -->
-
-    <div class="col text-right px-0">
-        <div class="col text-right">
-            <a href="{% url 'collections' %}" class="btn btn-back rounded-0 btn-lg" role="button">
-                <span class="text-uppercase">Continue Shopping</span>
-            </a>
-            <a href="{% url 'checkout' %}" class="btn btn-affirmative rounded-0 btn-lg" role="button">
-                <span class="text-uppercase">Secure Checkout</span>
-                <span class="icon">
-                    <i class="fas fa-lock"></i>
-                </span>
-            </a>
-        </div>
-    </div>
-
+        {% endif %}
     {% else %}
-
-    <!-- Empty Bag notification -->
-
-    <section>
-        <div>
-            <p class="lead mb-5">Your bag is empty.</p>
-            <a href="{% url 'collections' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                <span class="text-uppercase">Keep Shopping</span>
-            </a>
+    <div class="row p-4 m-4 justify-content-center text-center">
+        <div class="col-12 body-text awaiting-profile p-4 m-4 text-center justify-content-center">
+            <h2 class="py-2 title-text">Please complete your Profile to shop the collections!</h2>
+                <a href="{% url 'profile' %}" role="button" class="btn btn-profile" aria-label="profile button">
+                    Complete Buyer Profile
+                </a>
+            </p>
+            <hr>
         </div>
-    </section>
-
+    </div>
     {% endif %}
+{% endif %}
 
 </div>
 

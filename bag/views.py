@@ -9,11 +9,13 @@ def view_bag(request):
     """
     A view to return the shopping cart / bag contents
     """
-    profile = get_object_or_404(UserProfile, user=request.user)
-    context = {
-        'profile': profile,
-    }
-    return render(request, 'bag/bag.html', context)
+    if request.user.is_authenticated:
+        profile = get_object_or_404(UserProfile, user=request.user)
+        context = {
+            'profile': profile,
+        }
+        return render(request, 'bag/bag.html', context)
+    return render(request, 'home/index.html')
 
 
 def add_to_bag(request, item_id):
