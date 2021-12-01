@@ -154,12 +154,120 @@ I have kept a track of the various bug details and solutions that were encounter
 
 * The following tools were used to test the validity of the code on the site.  
 
-* [W3C Validator](https://validator.w3.org/) Was used to test the validity of the HTML code - The first round resulted in minimal errors, all of which were corrects in the final round of testing.  
+* [W3C Validator](https://validator.w3.org/) Was used to test the validity of the HTML code - The first round resulted in minimal errors, all of which were corrects in the final round of testing:
+
+* [Hompage](https://validator.w3.org/nu/?doc=https://hobo-hatch-b2b.herokuapp.com/)
+
+![](docs/code_testing/final/html_validation/validation_homepage_pass.png/
+
+* [login](https://validator.w3.org/nu/?doc=https://hobo-hatch-b2b.herokuapp.com/accounts/login/)
+
+![](docs/code_testing/final/html_validation/validation_login_pass.png)
+
+* [Signup](https://validator.w3.org/nu/?doc=https://hobo-hatch-b2b.herokuapp.com/accounts/signup/)
+
+![](docs/code_testing/final/html_validation/validation_signup_pass.png)
+
+* [About](https://validator.w3.org/nu/?doc=https://hobo-hatch-b2b.herokuapp.com/about/)
+
+![](docs/code_testing/final/html_validation/validation_about_pass.png)
+
+* [Faqs](https://validator.w3.org/nu/?doc=https://hobo-hatch-b2b.herokuapp.com/faqs/)
+
+![](docs/code_testing/final/html_validation/validation_faqs_pass.png)
+
+* [Password Reset](https://validator.w3.org/nu/?doc=https://hobo-hatch-b2b.herokuapp.com/accounts/password/reset/)
+
+![](docs/code_testing/final/html_validation/validation_password_reset_pass.png)
+
 * Round 1 of testing can be viewed in [this folder](docs/code_testing/round_1)
-* Final round pass screenshots can be viewed in [this folder](docs/code_testing/final)
-* [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) To test the validity of the CSS code
+
+
+* Final round pass screenshots can be viewed in [this folder](docs/code_testing/final/html_validation)
+
+
+* [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) To test the validity of the CSS code:
+
+* [W3C Jigsaw Hobo & Hacth B2B](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fhobo-hatch-b2b.herokuapp.com)
+
+![](docs/code_testing/final/jigsaw_testing.png)
+
 * [JShint](https://jshint.com/)  was used to test the validity of the JS code, all code passed, there were some comments regarding items that are only available in ES6 and also the tool did not recognise the $ in the jquery, however there were no actual warnings once the code was complete, only these info points. 
+
+![](docs/code_testing/final/jshint/jshint_bag_script.png)
+![](docs/code_testing/final/jshint/jshint_checkout_app.png)
+![](docs/code_testing/final/jshint/jshint_products_app_products.png)
+![](docs/code_testing/final/jshint/jshint_products_details.png)
+![](docs/code_testing/final/jshint/jshint_products_qty_input.png)
+
 * [PEP8 Online](http://pep8online.com/) Was used to test the validity of the Python code, all code resulted in a pass, with the exception of the authorisation passwords in the Settings file on lines 118, 121, 124, 127 which cannot be split.  The testing screenshots can be viewed in [this folder](docs/code_testing/final/pep8)
+
+* About App:
+
+![](docs/code_testing/final/pep8/pep_about_admin.png)
+![](docs/code_testing/final/pep8/pep_about_apps.png)
+![](docs/code_testing/final/pep8/pep_about_models.png)
+![](docs/code_testing/final/pep8/pep_about_urls.png)
+![](docs/code_testing/final/pep8/pep_about_views.png)
+
+* Bag App:
+
+![](docs/code_testing/final/pep8/pep_bag_apps.png)
+![](docs/code_testing/final/pep8/pep_bag_contexts.png)
+![](docs/code_testing/final/pep8/pep_bag_urls.png)
+![](docs/code_testing/final/pep8/pep_bag_views_errors.png)
+![](docs/code_testing/final/pep8/pep_bag_views_passed.png)
+
+* Checkout App:
+
+![](docs/code_testing/final/pep8/pep_checkout_models_errors.png)
+![](docs/code_testing/final/pep8/pep_checkout_models.png)
+![](docs/code_testing/final/pep8/pep_checkout_signals.png)
+![](docs/code_testing/final/pep8/pep_checkout_urls.png)
+![](docs/code_testing/final/pep8/pep_checkout_views.png)
+
+* FAQ's App:
+
+![](docs/code_testing/final/pep8/pep_faqs_admin.png)
+![](docs/code_testing/final/pep8/pep_faqs_apps.png)
+![](docs/code_testing/final/pep8/pep_faqs_models.png)
+![](docs/code_testing/final/pep8/pep_faqs_urls.png)
+![](docs/code_testing/final/pep8/pep_faqs_views.png)
+
+* Home App:
+
+![](docs/code_testing/final/pep8/pep_home_admin.png)
+![](docs/code_testing/final/pep8/pep_home_apps.png)
+![](docs/code_testing/final/pep8/pep_home_urls.png)
+![](docs/code_testing/final/pep8/pep_home_views.png)
+
+* Products App:
+
+![](docs/code_testing/final/pep8/pep_products_admin.png)
+![](docs/code_testing/final/pep8/pep_products_apps.png)
+![](docs/code_testing/final/pep8/pep_products_models.png)
+![](docs/code_testing/final/pep8/pep_products_urls.png)
+![](docs/code_testing/final/pep8/pep_products_views_errors.png)
+
+* Profiles App:
+
+![](docs/code_testing/final/pep8/pep_profiles_admin.png)
+![](docs/code_testing/final/pep8/pep_profiles_apps.png)
+![](docs/code_testing/final/pep8/pep_profiles_forms.png)
+![](docs/code_testing/final/pep8/pep_profiles_models.png)
+![](docs/code_testing/final/pep8/pep_profiles_urls.png)
+![](docs/code_testing/final/pep8/pep_profiles_views_errors.png)
+![](docs/code_testing/final/pep8/pep_profiles_views_final.png)
+
+* Main Project file:
+
+![](docs/code_testing/final/pep8/pep_project_urls.png)
+![](docs/code_testing/final/pep8/pep_project_views.png)
+![](docs/code_testing/final/pep8/pep_project_wsgi.png)
+![](docs/code_testing/final/pep8/pep_settings_errors.png)
+![](docs/code_testing/final/pep8/pep_settings_errors.png)
+![](docs/code_testing/final/pep8/pep_settings_final.png)
+
 
 
 ### Browser Testing
@@ -180,3 +288,9 @@ I have kept a track of the various bug details and solutions that were encounter
 | **Confirmation Email** | ✅                                                          | ✅                                                                                             | ✅                                                                | ✅                                                                                   |
 | **Confirmation Link**  | ❗️link comes through as solid text rather than link        | ✅                                                                                             | ✅                                                                | ✅                                                                                   |
 | **Checkout**           | ✅                                                          | ✅                                                                                             | ✅                                                                | ✅                                                                                   |
+
+
+
+### Device Testing
+
+* The site has been tested across all the devices on the Google Devtools inspector, as well as MacBook Air 2020, Mackbook Air 2015, Iphone11, Iphone5SE, Iphone8 Plus by friendls and family. 
