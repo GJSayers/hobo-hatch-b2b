@@ -129,25 +129,25 @@
 ### FAQ's
 ### Footer
 
+
 ## Bugs & Fixes
 
-* BUG: I have keps a track of the various bug details and solutions that were encountered in the project by raising issues in the Bugs & Fixes column of the project board - Where relevant below, the solutions are linked to. 
+I have kept a track of the various bug details and solutions that were encountered in the project by raising issues in the Bugs & Fixes column of the project board - Where relevant below, the solutions are linked to. 
 
-* BUG: Product detail page not showing product properties dropdown. You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-73742593)
+* BUG: Product detail page not showing product properties dropdown. Issue [#8](https://github.com/GJSayers/hobo-hatch-b2b/issues/8) | [board](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-73742593)
 
-* BUG: Checkout success not diplaying sizeitem breakdown You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-73636239)
+* BUG: Checkout success not displaying sizeitem breakdown Issue [#9](https://github.com/GJSayers/hobo-hatch-b2b/issues/9) | [board](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-73636239)
 
-* BUG: Checkout and Admin, unable to display individual sizes. You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-73636055)
+* BUG: Checkout and Admin, unable to display individual sizes. Issue [#6](https://github.com/GJSayers/hobo-hatch-b2b/issues/6) | [board](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-73636055)
 
-* BUG: Input boxes are not displaying the numeric content due to size crunching on smaller devices. You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-72361530)
+* BUG: Input boxes are not displaying the numeric content due to size crunching on smaller devices. Issue [#3](https://github.com/GJSayers/hobo-hatch-b2b/issues/3) | [board](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-72361530)
 
-* BUG: When adding products to the bag, the first product does not add correctly to the bag, the first product goes in as an empty dictionary, then following entries add correctly. You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-72361114)
+* BUG: When adding products to the bag, the first product does not add correctly to the bag, the first product goes in as an empty dictionary, then following entries add correctly. Issue [#2](https://github.com/GJSayers/hobo-hatch-b2b/issues/2) | [board](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-72361114)
 
-* BUG: Checkout Issue with saving the database - Problem in Orders & Profiles Models #4 You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-70915631)
+* BUG: Checkout Issue with saving the database - Problem in Orders & Profiles Models #4 - Issue [#4](https://github.com/GJSayers/hobo-hatch-b2b/issues/4) | [board](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-70915631)
 
 
-* BUG: Filtering checkbox choices - Not showing despite logic in place: You can view the issue details [here](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-73826858)
-
+* BUG: Filtering checkbox choices - Not showing despite logic in place: Issue [#10](https://github.com/GJSayers/hobo-hatch-b2b/issues/10) | [board](https://github.com/GJSayers/hobo-hatch-b2b/projects/1#card-73826858)
 
 
 ### Testing Tools & Results 
