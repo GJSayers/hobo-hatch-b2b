@@ -247,6 +247,22 @@ section h1 .page-title {
     color:#F2F3F7;
 }
 
+.btn-error-page {
+    border-radius: 0px;
+    border: 1px solid #0A151A;
+    margin: 7px;
+    width: 200px;
+    font-size: small;
+    color: #0A151A;
+}
+
+.btn-homepage:focus,
+.btn-homepage:hover {
+    width: 210px;
+    color:#0A151A;
+}
+
+
 .btn-profile {
     border-radius: 0px;
     background-color: rgba(153, 99, 97, 0.7);
