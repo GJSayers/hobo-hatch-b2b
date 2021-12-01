@@ -279,10 +279,14 @@
 ![Error Page](docs/feature_images/hobo-hatch-b2b_404.png)
 
 
-
-###
-
 ## Future Features
+
+The potential scope for future features is enourmous here, here are a few key items that would make great future implementations:
+
+* It would be useful to have stock control so that the client can use the system to house central stocks / the buyer can see available stocks
+* Automatic account approval based on the email domain 
+* Live tracking of order shipment
+* Stockist map on about us page
 
 ## Technologies Used
 -----
@@ -539,9 +543,10 @@ After running through where the process may have gone wrong and with my mentor a
 
 * The project was built following completing the final video-based learning module in the Code Institute course. There are particular items that have been expanded on from the course project where it made little sense to adapt dramatically, in particular:
 
-* Messages / toasts implementation
+* Messages / toasts implementation prticularly the bag preview in messages
 
 * Javascript for controlling the plus / minus controls at bag and shopping bag ( also therw was significant trial and error and edits to enable this successfully across the multipe sizes)
+
 * Stripe implementation
 
 ## Content
@@ -550,6 +555,12 @@ After running through where the process may have gone wrong and with my mentor a
 
 
 ## Acknowledgements
+
+* Thank you to my family and friends for their patience and support whilst I worked on this project 💛
+
+* Thank you to the entire Code Institute Tutor support team for their knowledge and support on bug solving 🐞 
+
+* Thank you to my mentor Tim Nelson for going above and beyond, sharing useful resources and ideas and being super organised and thorough! 💡 ✅ 🤗
 
 
 
