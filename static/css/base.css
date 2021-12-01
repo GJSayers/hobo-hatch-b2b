@@ -31,8 +31,8 @@ body {
 
 .index-container {
     margin: 0%;
-    background: url('/media/clothing.jpeg') no-repeat center top;
-    opacity: 70%;
+    background: url('/media/home-min.jpg') no-repeat center top;
+    opacity: 85%;
     background-size: cover;
     min-height: 75vh;
 
@@ -44,7 +44,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(153, 99, 97, 0.5);
+    background-color: rgba(161, 61, 58, 0.4);
 }
 
 
@@ -236,7 +236,7 @@ section h1 .page-title {
 
 .btn-homepage {
     border-radius: 0px;
-    background-color: rgba(153, 99, 97, 0.7);
+    
     border: 1px solid #F2F3F7;
     margin: 7px;
     width: 200px;
@@ -638,6 +638,6 @@ input[name='q']::placeholder {
 
 /* --------------------------- checkboxes */
 
-.form-check.form-check-inline input[type=checkbox] {
+.form-check {
     color: #005E66;
 }
