@@ -517,12 +517,12 @@ in the JSON tab, on the resources row, you will need to add again the **arn numb
 
 
 
-#### Testing
+## Testing
 -----
 Detailed testings has been carried out for functionality, usability and responsiveness which are documented in [Testing](TESTING.md) with supporting documentation and testing results available in the [testing folder](static/testing)
 
 
-#### DEPLOYMENT ISSUES 
+### DEPLOYMENT ISSUES 
 I decided to deploy early so as not to get nasty surprises close to the due date of the project - I came up against a few issues and I thought it would be useful to document these here.  
 * The first error I encountered on this process was "Django.db.utiles.DataError: value to long for type"
 upon which I entered the command to see if there were outstanding migrations:
@@ -537,9 +537,9 @@ So I decided to try this and the remaining migrations processed. However another
 
 After running through where the process may have gone wrong and with my mentor and finding no obvious methodology errors, we decided to remove the migrations - and with help from tutor support re-install them and re-running all the migrations. 
 
-### Credits 
+## Credits 
 
-## Code
+### Code
 
 * The project was built following completing the final video-based learning module in the Code Institute course. There are particular items that have been expanded on from the course project where it made little sense to adapt dramatically, in particular:
 
