@@ -83,7 +83,7 @@
 
 ### Collections
 
-* ![Lighthouse](lighthouse_collections_scores)
+* ![Lighthouse](docs/code_testing/final/lighthouse/lighthouse_collections_scores.png)
 
 ### Filtering 
 
@@ -158,7 +158,7 @@ I have kept a track of the various bug details and solutions that were encounter
 
 * [Hompage](https://validator.w3.org/nu/?doc=https://hobo-hatch-b2b.herokuapp.com/)
 
-![](docs/code_testing/final/html_validation/validation_homepage_pass.png/
+![](docs/code_testing/final/html_validation/validation_homepage_pass.png/)
 
 * [login](https://validator.w3.org/nu/?doc=https://hobo-hatch-b2b.herokuapp.com/accounts/login/)
 
