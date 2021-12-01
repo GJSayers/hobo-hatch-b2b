@@ -65,7 +65,8 @@ def checkout(request):
                         size_qty = item_data[product_type]
                         qty = size_qty.values()
                         xs_l_one_size = list(qty)[0]
-                        if product_type != 'rings' and product_type != 'knitwear':
+                        if (product_type != 'rings'and
+                                product_type != 'knitwear'):
                             sm_n = 0
                             m_p = 0
                             lg_s = 0
@@ -156,6 +157,7 @@ def checkout(request):
 
         return render(request, template, context)
     return render(request, 'home/index.html')
+
 
 def send_confirmation_email(request, order):
     """
