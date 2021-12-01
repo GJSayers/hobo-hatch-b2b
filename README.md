@@ -188,7 +188,7 @@
 
 ![Product Detail Mobile](docs/feature_images/hobo-hatch-b2b_product_detail_mobile.png)
 
-#### ** Interactive Product Info Feature**
+#### **Interactive Product Info Feature**
 
 * To display the product info without the option to hide it makes for a busy page, so I decided that a dropdown functionality was necessary so that buyers can access the product details at a glance - This feature is operational on both the Product detail and collections pages.  The data for the infosections is populated by the data held in the Product Model, and an icon is added depending on which info item is relevant
 
@@ -256,11 +256,29 @@
 ![FAQ's](docs/feature_images/hobo-hatch-b2b_faqs.png)
 
 ### Forms
+
+* In addition to the crispy-styled Allauth Django forms for authentication, there is a Profile creation form which is also updated in the checkout - This is what a user is directed to complete after they have registered - Without it they are not permitted to place an order;
+
+![Profile Creation](docs/feature_images/hobo-hatch-b2b_profile_creation.png)
+
+
 ### Footer
+
+* The footer has a responsive design and contains contact info and echos the permitted links for each user:
+
+![Footer Desktop](docs/feature_images/footer_desktop.png)
+
+![Footer Mobile](docs/feature_images/footer_mobile.png)
 
 ### Error Pages, Favicon & Manifest
 
-* Simple Error pages have been included alonside a site manifest and a set of favicons to complete the user experience, this has also conritubles to the 100% Best Practices and SEO scores received across the site. 
+* Simple Error pages have been included alonside a site manifest and a set of favicons to complete the user experience, this has also conritubles to the 100% Best Practices and SEO scores received across the site.
+
+![Favicon Icons in the manifest](docs/feature_images/favicon_manifest_icons.png)
+
+![Error Page](docs/feature_images/hobo-hatch-b2b_404.png)
+
+
 
 ###
 
@@ -467,9 +485,9 @@ in the JSON tab, on the resources row, you will need to add again the **arn numb
 ### Connecting AWS to Django 
 
 * To be able to use crud functionality to create, update and delete static files in AWS through the django UI it is necessary to install boto3 usign the following command:
-* pip3 install boto3
+* `pip3 install boto3`
 * I also installed [django-storages](https://django-storages.readthedocs.io/en/latest/) which is a collection of storage backends for Django, using the command:
-* pip3 install django-storages
+* `pip3 install django-storages`
 * followed by `pip3 freeze > requirements.txt` to ensure the dependencies are installed in deployment.
 * next add 'storages' to installed apps in settings.py:
 
@@ -517,6 +535,21 @@ After running through where the process may have gone wrong and with my mentor a
 
 ### Credits 
 
+## Code
+
+* The project was built following completing the final video-based learning module in the Code Institute course. There are particular items that have been expanded on from the course project where it made little sense to adapt dramatically, in particular:
+
+* Messages / toasts implementation
+
+* Javascript for controlling the plus / minus controls at bag and shopping bag ( also therw was significant trial and error and edits to enable this successfully across the multipe sizes)
+* Stripe implementation
+
+## Content
+
+* The images, logos and descriptions are provided by [Hobo & Hatch](https://www.hoboandhatch.co.uk/), the pricing is edited for business privacy purposes. 
+
+
+## Acknowledgements
 
 
 
