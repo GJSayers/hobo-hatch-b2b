@@ -15,18 +15,19 @@
     <main class="container-fluid product-section py-2">
 
             <!-- Logged in customer section -->
-
-            <div class="row text-center justify-content-center">
-
             {% if request.user.is_authenticated %}
                 {% if profile.buyer_name != None %}
                     {% include 'profiles/includes/logged_in_row.html' %}
+
+            <div class="row text-center justify-content-center pt-4">
+
+            
                     {% if product %}
                         {% if product_category in permissions_list %}
 
                             <!-- Product Card & title -->
 
-                            <div class="col-sm-12 col-md-6 col-lg-4 image_card">
+                            <div class="col-sm-12 col-md-6 col-lg-5 image_card">
                                 <div style="border: 0px; border-radius: none;" class="card">    
                                     <div class="card-body">
                                         <h5 class="card-title title-text">{{ product.product_name }}</h5>
@@ -41,7 +42,7 @@
                         
                             <!-- Product Info section -->
 
-                            <section class="col-sm-12 col-md-6 col-lg-4 product_info_input justify-content-center">
+                            <section class="col-sm-12 col-md-6 col-lg-5 product_info_input justify-content-center">
                                 <div class="col justify-content-center text-center">
                                     <div class="col-12 card-text product-info">Product Info </div>
                                         <button type="button" class="info-open"><i class="fas fa-chevron-circle-down"></i></a></button>
