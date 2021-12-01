@@ -69,6 +69,7 @@
 
               <!-- Check which items to display in Navbar based on if user is authenticated or not -->
             {% if request.user.is_authenticated %}
+            {% if profile.buyer_name != None %}
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false"  aria-label="Menu bars" href="#">Collections   <i class="fas fa-angle-double-down"></i></a>
                   <ul class="dropdown-menu text-left" aria-labelledby="navbarDropdownMenuLink">
@@ -115,7 +116,14 @@
                         {% endif %}
                       {% endif %}
                   </ul>
+                  
+                  <li>
               </li>
+              {% else %}
+                  <li>
+                    <a class="nav-link" role="button" href="{% url 'account_login' %}" aria-label="log in">Login</a>
+                  </li>
+              {% endif %}
 
                 <!-- Profile dropdown -->
               <li class="nav-item dropdown">
@@ -217,7 +225,7 @@
                   </a>
                 </span>
                 <span>
-                  <a href="linkedin.com/" target="_blank" rel="no-referrer" class="text-center" aria-label="linked in">
+                  <a href="https://www.linkedin.com/" target="_blank" rel="no-referrer" class="text-center" aria-label="linked in">
                     <i class="fab fa-linkedin fa-l"></i>
                   </a>
                 </span>

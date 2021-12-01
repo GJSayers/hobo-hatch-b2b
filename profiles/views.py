@@ -62,7 +62,7 @@ def order_history(request, order_number):
     order_date = order.date
     messages.info(request, (
         f'This order was placed on {order_date}, \
-            this is a copy of order number {{order_number|truncatechars:6}} \
+            this is a copy of order number {order_number} \
                 the confirmation generated at the time of purchase.'
     ))
 

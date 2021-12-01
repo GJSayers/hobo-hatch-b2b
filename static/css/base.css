@@ -241,6 +241,12 @@ section h1 .page-title {
     color: #F2F3F7;
 }
 
+.btn-homepage:focus,
+.btn-homepage:hover {
+    width: 210px;
+    color:#F2F3F7;
+}
+
 .btn-profile {
     border-radius: 0px;
     background-color: rgba(153, 99, 97, 0.7);
@@ -251,10 +257,7 @@ section h1 .page-title {
     color: #F2F3F7;
 }
 
-.btn-homepage:hover {
 
-    width: 210px;
-}
 
 .filter-button {
     border: none;
