@@ -159,7 +159,7 @@
 
 ![Restricted Access User](docs/feature_images/hobo-hatch-b2b.restricted_categories.png)
 
-![Mobile](docs/feature_images/hobo-hatch-b2b_profile_iPhone 5_SE.png)
+![Mobile](docs/feature_images/hobo-hatch-b2b_profile_iPhone5_SE.png)
 
 * From the **Profile Page** You can also **update your details** which are refilled with existing data where relevant, and **order history** - both features are hidden until requested by clicking on the green chevron circle:
 
