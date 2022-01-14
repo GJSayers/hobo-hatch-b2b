@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'checkout',
     'about',
     'faqs',
+    'stock_control',
     'multiselectfield',
     'bootstrap_datepicker_plus',
     'storages',
