@@ -3,8 +3,9 @@
 ![mockup](docs/feature_images/all-devices-black.png)
 
 * This ordering portal is created for the fourth and final project on the Full Stack Developer Diploma with Code Institute.  
-* The project encompasses the languages and frameworks that I have been using throughout the course, and in particular HTML5, CSS3 & JavaScript as front-end tools, using Bootstrap as a front-end framework.  The back-end is created with Python, sqlite3 and Django and deployed on Heroku at which point the database used is Postures. 
+* The project encompasses the languages and frameworks that I have been using throughout the course, and in particular HTML5, CSS3 & JavaScript as front-end tools, using Bootstrap as a front-end framework.  The back-end is created with Python, sqlite3 and Django and deployed on Heroku at which point the database used is Postgres. 
 * The project is based on a real life spec to design a wholesale / B2B ordering portal for retail & wholesale clothing and accessories brand Hobo & Hatch.  The project is delivered at this stage as an MVP, with future features and implementations expected in V2. 
+* View the [live site](https://hobo-hatch-b2b.onrender.com/)
 
 ## Strategy
 ------
@@ -66,7 +67,7 @@
 
 ### Database Schema
 
-* In the development environment sqlite3 and fixtures will be used to create the relational database.  Then in production to Heroku, postures will be used. 
+* In the development environment sqlite3 and fixtures will be used to create the relational database.  Then in production to Heroku, Postgres will be used. 
 * Below you can see the intended database model for this project including anticipated fixtures and forms.
  
 ![Database Schema / Model](docs/conceptual_design/hobo_hatch_db_model.png)
@@ -159,7 +160,6 @@
 
 ![Restricted Access User](docs/feature_images/hobo-hatch-b2b.restricted_categories.png)
 
-![Mobile](docs/feature_images/hobo-hatch-b2b_profile_iPhone5_SE.png)
 
 * From the **Profile Page** You can also **update your details** which are refilled with existing data where relevant, and **order history** - both features are hidden until requested by clicking on the green chevron circle:
 
@@ -253,7 +253,7 @@
 
 ### Forms
 
-* In addition to the crispy-styled Allah Django forms for authentication, there is a Profile creation form which is also updated in the checkout - This is what a user is directed to complete after they have registered - Without it they are not permitted to place an order;
+* In addition to the crispy-styled Allauth Django forms for authentication, there is a Profile creation form which is also updated in the checkout - This is what a user is directed to complete after they have registered - Without it they are not permitted to place an order;
 
 ![Profile Creation](docs/feature_images/hobo-hatch-b2b_profile_creation.png)
 
@@ -308,18 +308,20 @@ The potential scope for future features is enormous here, here are a few key ite
 * [Website Mockup Generator](https://websitemockupgenerator.com/) Was used to generate project mock-ups. 
 * [Coolors](https://coolors.co/) was used to generate the colour palette.
 * [GitHub](https://github.com/) is used to file the repository and record the version control. 
-* [Gitpod](https://gitpod.io) was used for development and version control.
+* [GitPod](https://gitpod.io) was used for development and version control.
 * [Heroku](https://www.heroku.com) is the cloud-based platform used to deploy the project.
 * [Google Retools](https://developer.chrome.com/docs/devtools/) Has been used without the project to test, evaluate, edit and assess the project. 
 * [W3C Validator](https://validator.w3.org/) To test the validity of the HTML code
 * [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) To test the validity of the CSS code
 * [JShint](https://jshint.com/) To test the validity of the JS code
 * [PEP8 Online](http://pep8online.com/) To test the validity of the JS code
+* [Render](https://render.com/) For hosting after Heroku Free tier was removed
+* [ElephantDB](https://www.elephantsql.com/) For Database once Heroku Postgres became a chargable add-on.
 
 ## Deployment
 
 The deployment of a Full Stack e-commerce store using the Django framework takes multiple different considerations since we are also needing to store and serve multiple different images, take payments and store product and order data. 
-To serve the project I am using an AWS S3 bucket to store and serve the static files / images, I am using Heroku to host the site and using the Heroku Postures add-on as the database.
+To serve the project I am using an AWS S3 bucket to store and serve the static files / images, I initially used  Heroku to host the site and using the Heroku Postgres add-on as the database.  This was updated to use Render with Elephastsql Postgres DB.
 
 ## Local Deployment
 
@@ -329,7 +331,7 @@ In order to make a local copy of this project, you can clone it. In your IDE Ter
 
 Alternatively, if using Git pod, you can click below to create your own workspace using this repository.
 
-[![Open in Git pod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/GJSayers/hobo-hatch-b2b)
+[![Open in GitPod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/GJSayers/hobo-hatch-b2b)
 
 ### Heroku Set-up
 
@@ -339,7 +341,7 @@ Alternatively, if using Git pod, you can click below to create your own workspac
 ![add-postgres](docs/add_postrges.png)
 ![add-postgres-submit](docs/add_postrgress_submit.png)
 
-* To enable the use of Postgres, back in Gitpod install `dj_database_url`, and `psycopg2-binary` in the CLI.  The CLI commands are:
+* To enable the use of Postgres, back in GitPod install `dj_database_url`, and `psycopg2-binary` in the CLI.  The CLI commands are:
 * `pip3 install dj_database_url`
 * `pip3 install psycopg2-binary`
 Then: 
@@ -358,7 +360,7 @@ The pip3 command is to save your installation dependencies.
 Install gunicorn using:
 * `pip3 install gunicorn`
 
-* Create a Profile to enable dynos.
+* Create a Procfile to enable dynos.
 * Since I am hosting images in an S3 bucket on AWS, it is necessary to instruct Heroku not to pick up the static media files from the Git repository by `COLLECT-STATIC` -1 in Heroku config vars.
 * Set up secret key in **eny.py** and also in the Heroku environment variables. 
 * Set up allowed hosts in **settings.py**
@@ -546,7 +548,7 @@ Detailed testings has been carried out for functionality, usability and responsi
 
 ### Content
 
-* The images, logos and descriptions are provided by [Hobo & Hatch](https://www.hoboandhatch.co.uk/), the pricing is edited for business privacy purposes. 
+* The images, logos and descriptions are provided by [Hobo & Hatch](https://www.hoboandhatch.com/), the pricing is edited for business privacy purposes. 
 
 ## Acknowledgments
 
@@ -554,4 +556,4 @@ Detailed testings has been carried out for functionality, usability and responsi
 
 * Thank you to the entire [Code Institute](https://codeinstitute.net/global/) Tutor support team for their knowledge and support on bug solving 🐞 
 
-* Thank you to my mentor [Tim Nelson](https://github.com/TravelTimN) for going above and beyond, sharing useful resources and ideas and being super ororganizednd thorough! 💡 ✅ 🤗
+* Thank you to my mentor [Tim Nelson](https://github.com/TravelTimN) for going above and beyond, sharing useful resources and ideas and being super organised and thorough! 💡 ✅ 🤗
