@@ -129,9 +129,11 @@
 
 * For the Homepage of Hobo & Hatch B2B it was essential for the potential or existing customer to get a sense of the brand on first site and a simple to navigate set of call to actions base on whether the customer is a new user, a registered user or completed profile user, so I used one of the brand's autumn-winter season photos as the main backdrop with a colour filter overlay to ensure text is accessible.
 
-![Homepage](docs/feature_images/home_desktop.png)
+![Homepage](docs/feature_images/desktop.png)
 
-![Mobile](docs/feature_images/home_mobile-black.png)
+![Mobile](docs/feature_images/mobile-black.png)
+![Laptop](docs/feature_images/laptop.png)
+![Tablet](docs/feature_images/tablet-black.png)
 
 ### Navigation
  
